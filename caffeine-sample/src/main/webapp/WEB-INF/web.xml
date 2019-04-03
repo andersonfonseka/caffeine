@@ -13,12 +13,12 @@
 
 	<context-param>
 		<param-name>projectClass</param-name>
-		<param-value>com.andersonfonseka.fastui.CustomerProject</param-value>
+		<param-value>com.andersonfonseka.caffeine.CustomerProject</param-value>
 	</context-param>
 
 	<servlet>
 		<servlet-name>FastUIServlet</servlet-name>
-		<servlet-class>com.andersonfonseka.fastui.servlet.FastUIServlet</servlet-class>
+		<servlet-class>com.andersonfonseka.caffeine.servlet.FastUIServlet</servlet-class>
 	</servlet>
 
 	<servlet-mapping>
