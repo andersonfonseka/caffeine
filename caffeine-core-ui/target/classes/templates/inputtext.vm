@@ -1,0 +1,5 @@
+<div class="form-group">
+    <label for="$inputtext.getId()">$inputtext.getTitle()</label>
+    <input type="text" class="form-control" id="$inputtext.getId()" name="$inputtext.getId()" value="$inputtext.getValue()">
+</div>
+

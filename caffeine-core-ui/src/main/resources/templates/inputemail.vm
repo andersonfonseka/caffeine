@@ -1,0 +1,5 @@
+<div class="form-group">
+    <label for="$inputemail.getId()">$inputemail.getTitle()</label>
+    <input type="email" class="form-control" id="$inputemail.getId()" name="$inputemail.getId()" value="$inputemail.getValue()">
+</div>
+

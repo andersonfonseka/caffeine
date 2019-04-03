@@ -1,0 +1,17 @@
+<script>
+	function setAction(val){
+		document.forms['$form.getId()']["op"].value = val;
+		document.forms['$form.getId()'].submit();
+	}
+</script>
+
+
+<form id="$form.getId()" name="$form.getId()" method="POST">
+
+<input type="hidden" name="op" value="">
+<input type="hidden" name="componentId" value="$form.getParent()">
+
+#foreach($comp in $form.getComponents())
+$comp.doRender()
+#end
+</form>

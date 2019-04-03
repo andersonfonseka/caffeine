@@ -1,0 +1,13 @@
+<div class="form-group">
+    <label for="$Select.getId()">$select.getTitle()</label>
+
+	<select class="form-control" id="$select.getId()" name="$select.getId()">
+	#foreach($comp in $select.getComponents())
+		#if($comp.isSelected())
+		<option value="$comp.getValue()" selected>$comp.getLabel()</option>
+		#else
+		<option value="$comp.getValue()">$comp.getLabel()</option>
+		#end
+	#end
+	</select>
+</div>
