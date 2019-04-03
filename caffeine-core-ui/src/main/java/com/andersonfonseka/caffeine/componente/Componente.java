@@ -46,9 +46,9 @@ public abstract class Componente implements Serializable {
 			
 			for (Componente component2 : component.getComponents()) {
 
-				if (!comp.isPresent() && component2 instanceof GridLayout) {
+				if (!comp.isPresent() && component2 instanceof Conteiner) {
 					
-					GridLayout gridLayout = (GridLayout) component2;
+					Conteiner gridLayout = (Conteiner) component2;
 					Iterator<Integer>  it = gridLayout.getRowCell().keySet().iterator();
 					
 					while(it.hasNext()) {

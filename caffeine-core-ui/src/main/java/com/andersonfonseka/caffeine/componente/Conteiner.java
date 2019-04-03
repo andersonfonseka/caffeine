@@ -11,7 +11,7 @@ import lombok.Data;
 import lombok.Getter;
 
 @Model
-public @Data class GridLayout extends Componente {
+public @Data class Conteiner extends Componente {
 
 	/**
 	 * 
@@ -26,11 +26,11 @@ public @Data class GridLayout extends Componente {
 	
 	private @Getter Map<Integer, List<Componente>> rowCell = new HashMap<Integer, List<Componente>>();
 	
-	public GridLayout() {
+	public Conteiner() {
 		this(1);
 	}
 	
-	public GridLayout(Integer rows) {
+	public Conteiner(Integer rows) {
 		super();
 		this.rows = rows;
 			for (int i = 0; i < this.rows; i++) {
@@ -39,7 +39,7 @@ public @Data class GridLayout extends Componente {
 			}
 	}
 
-	public GridLayout add(Integer row, Componente component) {
+	public Conteiner add(Integer row, Componente component) {
 		
 		if (row < rows) {
 			this.rowCell.get(row).add(component);

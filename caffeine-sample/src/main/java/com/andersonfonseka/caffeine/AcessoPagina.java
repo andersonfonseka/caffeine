@@ -8,7 +8,7 @@ import com.andersonfonseka.caffeine.componente.Botao;
 import com.andersonfonseka.caffeine.componente.EntradaEmail;
 import com.andersonfonseka.caffeine.componente.EntradaSenha;
 import com.andersonfonseka.caffeine.componente.Formulario;
-import com.andersonfonseka.caffeine.componente.GridLayout;
+import com.andersonfonseka.caffeine.componente.Conteiner;
 import com.andersonfonseka.caffeine.componente.Pagina;
 import com.andersonfonseka.caffeine.componente.acao.Acao;
 import com.andersonfonseka.caffeine.servlet.PaginaResposta;
@@ -28,7 +28,7 @@ public class AcessoPagina extends Pagina {
 		setTitulo("Login Form");
 		
 		final Formulario form = new Formulario();
-		GridLayout gridLayout = new GridLayout(3);
+		Conteiner gridLayout = new Conteiner(3);
 
 		Botao button = new Botao();
 

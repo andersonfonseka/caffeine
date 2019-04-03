@@ -12,7 +12,7 @@ import com.andersonfonseka.caffeine.componente.EntradaData;
 import com.andersonfonseka.caffeine.componente.EntradaEmail;
 import com.andersonfonseka.caffeine.componente.EntradaTexto;
 import com.andersonfonseka.caffeine.componente.Formulario;
-import com.andersonfonseka.caffeine.componente.GridLayout;
+import com.andersonfonseka.caffeine.componente.Conteiner;
 import com.andersonfonseka.caffeine.componente.OpcaoSelecao;
 import com.andersonfonseka.caffeine.componente.Pagina;
 import com.andersonfonseka.caffeine.componente.Selecao;
@@ -42,7 +42,7 @@ public class ClientePagina extends Pagina {
 		Botao btnApply = new Botao();
 		Botao btnCancel = new Botao();
 		
-		final GridLayout gridLayout = new GridLayout(6);
+		final Conteiner conteiner = new Conteiner(6);
 		
 		txtFirstName.setTitle("First Name");
 		txtFirstName.setRequired(true);
@@ -94,9 +94,9 @@ public class ClientePagina extends Pagina {
 		});
 		
 		add(form);
-		form.add(gridLayout);
+		form.add(conteiner);
 		
-		gridLayout.add(0, txtFirstName)
+		conteiner.add(0, txtFirstName)
 					.add(1, txtLastName)
 					.add(2, txtEmail)
 					.add(2, txtDoB)
