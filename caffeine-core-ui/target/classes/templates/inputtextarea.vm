@@ -1,5 +1,0 @@
-<div class="form-group">
-    <label for="$inputtextarea.getId()">$inputtextarea.getTitle()</label>
-    <textarea class="form-control" id="$inputtextarea.getId()" name="$inputtextarea.getId()" rows="$inputtextarea.getRows()">$inputtextarea.getValue()</textarea>
-</div>
-

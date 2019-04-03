@@ -1,1 +1,0 @@
-<button id="$button.getId()" name="$button.getId()" type="submit" class="btn btn-primary" onclick="setAction(this.id)">$button.getTitle()</button>

@@ -1,1 +1,0 @@
-<jsp:forward page="FastUIServlet.do"></jsp:forward>
