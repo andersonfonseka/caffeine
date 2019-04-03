@@ -1,8 +1,8 @@
-package com.andersonfonseka.caffeine.component;
+package com.andersonfonseka.caffeine.componente;
 
 import lombok.Data;
 
-public @Data class SelectOption extends Component {
+public @Data class OpcaoSelecao extends Componente {
 
 	/**
 	 * 
@@ -15,7 +15,7 @@ public @Data class SelectOption extends Component {
 	
 	private boolean selected;
 
-	public SelectOption(String value, String label) {
+	public OpcaoSelecao(String value, String label) {
 		super();
 		this.value = value;
 		this.label = label;

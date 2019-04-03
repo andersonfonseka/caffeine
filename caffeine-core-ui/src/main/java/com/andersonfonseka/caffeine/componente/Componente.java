@@ -1,4 +1,4 @@
-package com.andersonfonseka.caffeine.component;
+package com.andersonfonseka.caffeine.componente;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -6,12 +6,12 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
 
-import com.andersonfonseka.caffeine.engine.Engine;
+import com.andersonfonseka.caffeine.engine.Engenho;
 
 import lombok.Getter;
 import lombok.Setter;
 
-public abstract class Component implements Serializable {
+public abstract class Componente implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
@@ -23,28 +23,28 @@ public abstract class Component implements Serializable {
 	
 	private @Getter String template;
 	
-	private @Getter List<Component> components = new ArrayList<Component>();
+	private @Getter List<Componente> components = new ArrayList<Componente>();
 	
-	public Component() {
+	public Componente() {
 		this.id = this.getClass().getSimpleName() + internalId;
 		internalId++;
 	}
 
-	public Component add(Component component) {
+	public Componente add(Componente component) {
 		this.components.add(component);
 		component.setParent(this.getClass().getName());
 		return this;
 	}
 	
-	public Optional<Component> findById(Component component, String id) {
+	public Optional<Componente> findById(Componente component, String id) {
 		
-		Optional<Component> comp = component.getComponents().stream()
+		Optional<Componente> comp = component.getComponents().stream()
 				.filter(x -> x.getId().equals(id))
 				.findFirst();
 		
 		if (!comp.isPresent()) {
 			
-			for (Component component2 : component.getComponents()) {
+			for (Componente component2 : component.getComponents()) {
 
 				if (!comp.isPresent() && component2 instanceof GridLayout) {
 					
@@ -81,7 +81,7 @@ public abstract class Component implements Serializable {
 	
 	public String doRender() {
 		
-		Engine engine = new Engine(this.getTemplate() + ".vm");
+		Engenho engine = new Engenho(this.getTemplate() + ".vm");
 		engine.putOnContext(this.getTemplate(), this);
 		return engine.execute();
 		

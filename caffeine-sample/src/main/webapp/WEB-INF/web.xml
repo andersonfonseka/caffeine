@@ -13,7 +13,7 @@
 
 	<context-param>
 		<param-name>projectClass</param-name>
-		<param-value>com.andersonfonseka.caffeine.CustomerProject</param-value>
+		<param-value>com.andersonfonseka.caffeine.ClienteProjeto</param-value>
 	</context-param>
 
 	<servlet>

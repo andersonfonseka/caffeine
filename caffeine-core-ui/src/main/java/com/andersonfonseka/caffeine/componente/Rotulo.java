@@ -1,11 +1,11 @@
-package com.andersonfonseka.caffeine.component;
+package com.andersonfonseka.caffeine.componente;
 
 import javax.enterprise.inject.Model;
 
 import lombok.Data;
 
 @Model
-public @Data class Label extends Component {
+public @Data class Rotulo extends Componente {
 
 	/**
 	 * 

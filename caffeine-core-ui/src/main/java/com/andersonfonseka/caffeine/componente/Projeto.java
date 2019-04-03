@@ -1,4 +1,4 @@
-package com.andersonfonseka.caffeine.component;
+package com.andersonfonseka.caffeine.componente;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -13,7 +13,7 @@ import org.jboss.weld.bean.ManagedBean;
 import lombok.Data;
 
 @ApplicationScoped
-public @Data class Project extends Component {
+public @Data class Projeto extends Componente {
 
 	/**
 	 * 
@@ -23,27 +23,27 @@ public @Data class Project extends Component {
 	@Inject
 	private BeanManager beanManager;
 	
-	private String title;
+	private String titulo;
 
-	private Class<? extends Page> initialPage;
+	private Class<? extends Pagina> paginaInicial;
 
-	private Map<String, Class<? extends Page>> pages = new HashMap<String, Class<? extends Page>>();
+	private Map<String, Class<? extends Pagina>> paginas = new HashMap<String, Class<? extends Pagina>>();
 
-	public Project() {}
+	public Projeto() {}
 
 	@Override
 	public String getTemplate() {
 		return "project";
 	}
 
-	public Project addPage(Class<? extends Page> page) {
-		this.pages.put(page.getName(), page);
+	public Projeto addPage(Class<? extends Pagina> page) {
+		this.paginas.put(page.getName(), page);
 		return this;
 	}
 
-	public Page findPageById(String id) {
+	public Pagina findPageById(String id) {
 
-		Page page = null;
+		Pagina page = null;
 
 		try {
 			
@@ -52,7 +52,7 @@ public @Data class Project extends Component {
 	    	if (bean != null) {
 	            CreationalContext<?> creationalContext = beanManager.createCreationalContext(bean);
 	            if (creationalContext != null) {
-	                page = (Page) bean.create(creationalContext);
+	                page = (Pagina) bean.create(creationalContext);
 	            }
 	        }
 
@@ -64,8 +64,8 @@ public @Data class Project extends Component {
 		return page;
 	}
 
-	public Page getInitialPage() {
-		return findPageById(this.initialPage.getName());
+	public Pagina getInitialPage() {
+		return findPageById(this.paginaInicial.getName());
 	}
 
 }

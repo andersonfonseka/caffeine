@@ -1,4 +1,4 @@
-package com.andersonfonseka.caffeine.component;
+package com.andersonfonseka.caffeine.componente;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -10,18 +10,18 @@ import javax.enterprise.inject.Model;
 import lombok.Data;
 
 @Model
-public abstract @Data class Page extends Component implements Serializable {
+public abstract @Data class Pagina extends Componente implements Serializable {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 5766132691862009035L;
 
-	private String title;
+	private String titulo;
 	
-	private List<String> messages = new ArrayList<String>();
+	private List<String> mensagens = new ArrayList<String>();
 	
-	public Page() {
+	public Pagina() {
 		internalId = 1;
 	}
 	
@@ -30,14 +30,14 @@ public abstract @Data class Page extends Component implements Serializable {
 		return "page";
 	}
 	
-	public void addMessages(String message) {
+	public void adicionaMensagem(String message) {
 		if (message.length() > 0) {
-			this.messages.add(message);	
+			this.mensagens.add(message);	
 		}
 	}
 	
 	
-	public abstract void onLoad(Map<String, String> parameters);
+	public abstract void aoCarregar(Map<String, String> parametros);
 	
 	
 }

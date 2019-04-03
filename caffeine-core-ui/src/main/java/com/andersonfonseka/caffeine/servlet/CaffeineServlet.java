@@ -18,13 +18,13 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.jboss.weld.bean.ManagedBean;
 
-import com.andersonfonseka.caffeine.component.Button;
-import com.andersonfonseka.caffeine.component.Component;
-import com.andersonfonseka.caffeine.component.Input;
-import com.andersonfonseka.caffeine.component.Page;
-import com.andersonfonseka.caffeine.component.Project;
+import com.andersonfonseka.caffeine.componente.Botao;
+import com.andersonfonseka.caffeine.componente.Componente;
+import com.andersonfonseka.caffeine.componente.Entrada;
+import com.andersonfonseka.caffeine.componente.Pagina;
+import com.andersonfonseka.caffeine.componente.Projeto;
 
-public class FastUIServlet extends HttpServlet {
+public class CaffeineServlet extends HttpServlet {
 
 	@Inject
 	private BeanManager beanManager;
@@ -39,7 +39,7 @@ public class FastUIServlet extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L;
 	
-	private static Logger log = Logger.getLogger(FastUIServlet.class.getName());
+	private static Logger log = Logger.getLogger(CaffeineServlet.class.getName());
 	
 
 	@Override
@@ -58,20 +58,20 @@ public class FastUIServlet extends HttpServlet {
 			componentId = req.getParameter(COMPONENTID);
 		}
 			
-		Project project = null; 
+		Projeto project = null; 
 		
 		project = startProject(req, project);
 		
 		if (componentId != null) {
 		
-			Page page = (Page) project.findPageById(componentId);
-			page.onLoad(getParameters(req, page));
+			Pagina page = (Pagina) project.findPageById(componentId);
+			page.aoCarregar(getParameters(req, page));
 			
 			log.info(page.toString());
 			
-			Button button = (Button) page.findById(page, op).get();
+			Botao button = (Botao) page.findById(page, op).get();
 			
-			if (!button.isImmediate()) {
+			if (!button.isImediato()) {
 				updateModel(req, page);
 				applyValidation(req, page);
 			}
@@ -84,7 +84,7 @@ public class FastUIServlet extends HttpServlet {
 		}
 	}
 
-	private Project startProject(HttpServletRequest req, Project project) {
+	private Projeto startProject(HttpServletRequest req, Projeto project) {
 		if (req.getServletContext().getAttribute(PROJECT) == null)  {
 			
 		    try {
@@ -94,7 +94,7 @@ public class FastUIServlet extends HttpServlet {
 		    	if (bean != null) {
 		            CreationalContext creationalContext = beanManager.createCreationalContext(bean);
 		            if (creationalContext != null) {
-		                project = (Project) bean.create(creationalContext);
+		                project = (Projeto) bean.create(creationalContext);
 		            	req.getServletContext().setAttribute(PROJECT, project);	
 		            }
 		        }
@@ -105,30 +105,30 @@ public class FastUIServlet extends HttpServlet {
 			
 		
 		} else {
-			project = (Project) req.getServletContext().getAttribute(PROJECT);
+			project = (Projeto) req.getServletContext().getAttribute(PROJECT);
 		}
 		return project;
 	}
 
-	private Page executeAction(HttpServletRequest req, Project project, Page page, String op) {
+	private Pagina executeAction(HttpServletRequest req, Projeto project, Pagina page, String op) {
 		
-		Page pageResult = page;
+		Pagina pageResult = page;
 		
-		if (page.getMessages().isEmpty()) {
+		if (page.getMensagens().isEmpty()) {
 			
-			Button button = (Button) page.findById(page, op).get();
-			PageResponse pageResponse = button.doClick();
+			Botao button = (Botao) page.findById(page, op).get();
+			PaginaResposta pageResponse = button.doClick();
 			
 			pageResult = project.findPageById(pageResponse.pageUrl);
-			pageResult.setMessages(pageResponse.getMessages());
-			pageResult.onLoad(getParameters(req, page));
+			pageResult.setMensagens(pageResponse.getMessages());
+			pageResult.aoCarregar(getParameters(req, page));
 			
 		}
 
 		return pageResult;
 	}
 
-	private void updateModel(HttpServletRequest req, Page page) {
+	private void updateModel(HttpServletRequest req, Pagina page) {
 		Enumeration<String> names = req.getParameterNames();
 		while(names.hasMoreElements()) {
 			
@@ -138,9 +138,9 @@ public class FastUIServlet extends HttpServlet {
 			if (!id.equals(OP) && !id.equals(COMPONENTID)) {
 				
 				if (page.findById(page, id).isPresent()) {
-					Component component =  page.findById(page, id).get();
-					if (component instanceof Input) {
-						Input input = (Input) component;
+					Componente component =  page.findById(page, id).get();
+					if (component instanceof Entrada) {
+						Entrada input = (Entrada) component;
 						input.setValue(req.getParameter(id));
 					}
 				}
@@ -148,7 +148,7 @@ public class FastUIServlet extends HttpServlet {
 		}
 	}
 	
-	private Map<String, String> getParameters(HttpServletRequest req, Page page) {
+	private Map<String, String> getParameters(HttpServletRequest req, Pagina page) {
 
 		Map<String, String> results = new HashMap<String, String>();
 		Enumeration<String> names = req.getParameterNames();
@@ -161,7 +161,7 @@ public class FastUIServlet extends HttpServlet {
 		return results;
 	}
 	
-	private void applyValidation(HttpServletRequest req, Page page) {
+	private void applyValidation(HttpServletRequest req, Pagina page) {
 		Enumeration<String> names = req.getParameterNames();
 		while(names.hasMoreElements()) {
 			
@@ -171,28 +171,28 @@ public class FastUIServlet extends HttpServlet {
 			if (!id.equals(OP) && !id.equals(COMPONENTID)) {
 
 				if (page.findById(page, id).isPresent()) {
-					Component component =  page.findById(page, id).get();
-					if (component instanceof Input) {
-						Input input = (Input) component;
-						page.addMessages(input.validate());
+					Componente component =  page.findById(page, id).get();
+					if (component instanceof Entrada) {
+						Entrada input = (Entrada) component;
+						page.adicionaMensagem(input.validate());
 					}
 				}
 			}
 		}
 	}
 
-	private void printPage(HttpServletResponse resp, Page page) throws IOException {
+	private void printPage(HttpServletResponse resp, Pagina page) throws IOException {
 		PrintWriter pw = new PrintWriter(resp.getOutputStream());
 		pw.write(page.doRender());
 		pw.close();
 	}
 
-	private void printInitialPage(HttpServletResponse resp, Project project) throws IOException {
+	private void printInitialPage(HttpServletResponse resp, Projeto project) throws IOException {
 		PrintWriter pw = new PrintWriter(resp.getOutputStream());
 		
-		Page initialPage = project.getInitialPage(); 
+		Pagina initialPage = project.getInitialPage(); 
 		
-		initialPage.onLoad(null);
+		initialPage.aoCarregar(null);
 		pw.write(initialPage.doRender());
 		pw.close();
 	}

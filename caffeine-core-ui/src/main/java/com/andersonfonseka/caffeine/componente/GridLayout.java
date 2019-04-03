@@ -1,4 +1,4 @@
-package com.andersonfonseka.caffeine.component;
+package com.andersonfonseka.caffeine.componente;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -11,7 +11,7 @@ import lombok.Data;
 import lombok.Getter;
 
 @Model
-public @Data class GridLayout extends Component {
+public @Data class GridLayout extends Componente {
 
 	/**
 	 * 
@@ -24,7 +24,7 @@ public @Data class GridLayout extends Component {
 	
 	private Integer columns = 1;
 	
-	private @Getter Map<Integer, List<Component>> rowCell = new HashMap<Integer, List<Component>>();
+	private @Getter Map<Integer, List<Componente>> rowCell = new HashMap<Integer, List<Componente>>();
 	
 	public GridLayout() {
 		this(1);
@@ -34,12 +34,12 @@ public @Data class GridLayout extends Component {
 		super();
 		this.rows = rows;
 			for (int i = 0; i < this.rows; i++) {
-				rowCell.put(i, new ArrayList<Component>(columns));
+				rowCell.put(i, new ArrayList<Componente>(columns));
 				rowsList.add(i);
 			}
 	}
 
-	public GridLayout add(Integer row, Component component) {
+	public GridLayout add(Integer row, Componente component) {
 		
 		if (row < rows) {
 			this.rowCell.get(row).add(component);
@@ -50,7 +50,7 @@ public @Data class GridLayout extends Component {
 		return this;
 	}
 	
-	public List<Component> get(Integer row) {
+	public List<Componente> get(Integer row) {
 		return this.rowCell.get(row);
 	}
 	

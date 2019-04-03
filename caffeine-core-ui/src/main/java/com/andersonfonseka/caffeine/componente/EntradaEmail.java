@@ -1,15 +1,15 @@
-package com.andersonfonseka.caffeine.component;
+package com.andersonfonseka.caffeine.componente;
 
 import javax.enterprise.inject.Model;
 
 import org.apache.commons.validator.routines.EmailValidator;
 
-import com.andersonfonseka.caffeine.util.MessageUtil;
+import com.andersonfonseka.caffeine.util.MensagemUtil;
 
 import lombok.Data;
 
 @Model
-public @Data class InputEmail extends Input {
+public @Data class EntradaEmail extends Entrada {
 
 	/**
 	 * 
@@ -31,7 +31,7 @@ public @Data class InputEmail extends Input {
 		EmailValidator emailValidator = EmailValidator.getInstance();
 		
 		if (!emailValidator.isValid(getValue())){
-			return MessageUtil.getInstance().getMessage("EMAILFIELD", getTitle());	
+			return MensagemUtil.getInstance().getMessage("EMAILFIELD", getTitle());	
 		}
 		
 		return "";

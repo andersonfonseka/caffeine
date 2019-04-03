@@ -1,15 +1,15 @@
-package com.andersonfonseka.caffeine.component;
+package com.andersonfonseka.caffeine.componente;
 
 import javax.enterprise.inject.Model;
 
 import org.apache.commons.validator.routines.DateValidator;
 
-import com.andersonfonseka.caffeine.util.MessageUtil;
+import com.andersonfonseka.caffeine.util.MensagemUtil;
 
 import lombok.Data;
 
 @Model
-public @Data class InputDate extends Input {
+public @Data class EntradaData extends Entrada {
 
 	/**
 	 * 
@@ -28,7 +28,7 @@ public @Data class InputDate extends Input {
 		DateValidator dateValidator = DateValidator.getInstance();
 		
 		if (!dateValidator.isValid(getValue(), getPattern())){
-			return MessageUtil.getInstance().getMessage("DATEFIELD", getTitle());	
+			return MensagemUtil.getInstance().getMessage("DATEFIELD", getTitle());	
 		}
 		
 		return "";

@@ -9,14 +9,14 @@ import org.apache.velocity.app.VelocityEngine;
 import org.apache.velocity.runtime.RuntimeConstants;
 import org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader;
 
-public class Engine {
+public class Engenho {
 
 	private VelocityEngine ve = new VelocityEngine();
 	private Template template;
 	private VelocityContext context = new VelocityContext();
 	private String templateName;
 	
-	public Engine(String templateName) {
+	public Engenho(String templateName) {
 		
 		this.templateName = templateName;
 		ve.setProperty(RuntimeConstants.RESOURCE_LOADER, "classpath");

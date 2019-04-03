@@ -4,23 +4,23 @@ import java.io.IOException;
 import java.text.MessageFormat;
 import java.util.Properties;
 
-public class MessageUtil {
+public class MensagemUtil {
 
 	private Properties properties = new Properties();
 	
-	private static MessageUtil INSTANCE;
+	private static MensagemUtil INSTANCE;
 	
-	public MessageUtil() {
+	public MensagemUtil() {
 		try {
-			properties.load(MessageUtil.class.getResourceAsStream("/messages.properties"));
+			properties.load(MensagemUtil.class.getResourceAsStream("/messages.properties"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
 	
-	public static MessageUtil getInstance() {
+	public static MensagemUtil getInstance() {
 		if (INSTANCE == null) {
-			INSTANCE = new MessageUtil();
+			INSTANCE = new MensagemUtil();
 		}
 		return INSTANCE;
 	}

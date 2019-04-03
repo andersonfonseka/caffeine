@@ -1,11 +1,11 @@
-package com.andersonfonseka.caffeine.component;
+package com.andersonfonseka.caffeine.componente;
 
 import javax.enterprise.inject.Model;
 
 import lombok.Data;
 
 @Model
-public @Data class Select extends Input {
+public @Data class Selecao extends Entrada {
 
 	/**
 	 * 
@@ -16,16 +16,16 @@ public @Data class Select extends Input {
 	
 	private Integer maxLength;
 	
-	private SelectOption selected;
+	private OpcaoSelecao selected;
 	
-	public Select() {
-		add(new SelectOption("", "Choose one..."));
+	public Selecao() {
+		add(new OpcaoSelecao("", "Choose one..."));
 	}
 	
-	private SelectOption getSelected() {
+	private OpcaoSelecao getSelected() {
 		
-		for(Component component: getComponents()) {
-			SelectOption selectOption = (SelectOption) component;
+		for(Componente component: getComponents()) {
+			OpcaoSelecao selectOption = (OpcaoSelecao) component;
 			if (selectOption.getValue().equals(getValue())) {
 				selectOption.setSelected(true);
 				this.selected = selectOption;

@@ -5,7 +5,7 @@ import java.util.List;
 
 import lombok.Data;
 
-public @Data class PageResponse {
+public @Data class PaginaResposta {
 	
 	List<String> messages = new ArrayList<String>();
 	
