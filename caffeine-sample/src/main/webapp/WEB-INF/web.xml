@@ -17,12 +17,12 @@
 	</context-param>
 
 	<servlet>
-		<servlet-name>FastUIServlet</servlet-name>
-		<servlet-class>com.andersonfonseka.caffeine.servlet.FastUIServlet</servlet-class>
+		<servlet-name>CaffeineServlet</servlet-name>
+		<servlet-class>com.andersonfonseka.caffeine.servlet.CaffeineServlet</servlet-class>
 	</servlet>
 
 	<servlet-mapping>
-		<servlet-name>FastUIServlet</servlet-name>
+		<servlet-name>CaffeineServlet</servlet-name>
 		<url-pattern>*.do</url-pattern>
 	</servlet-mapping>
 

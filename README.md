@@ -3,21 +3,24 @@ um java web framework para brasileiros
 
 por que?
 
-em sua maioria existem vÃ¡rios frameworks java web gringos, temos uma sÃ©rie particularidades, componentes e normalmente temos que 
-adaptar-nos ao padrÃ£o do framework, e o negÃ³cio deixa de ser o propÃ³sito.
+- em sua maioria existem vários frameworks java web gringos; 
+- temos uma série particularidades em termos de negócio;
+- funcionalidades que facilmente poderiams se tornar componentes são reescritos, gerando possíveis erros;
+- normalmente temos que adaptar-nos ao padrão do framework, e o negócio deixa de ser o propósito;
+- frameworks tradicionais oferecem funcionalidades além do necessário, gerando um custo de desempenho.
 
-por que eu nÃ£o usaria um framework jÃ¡ consolidado no mercado?
+por que eu não usaria um framework já consolidado no mercado?
 
-vocÃª pode usar qualquer framework, mas, considere a curva de aprendizado e se realmente faz sentido gastar tanto tempo aprendendo conceitos
-que jÃ¡ poderiam vir embutidos e abstraÃ­dos dentro do Caffeine, permitindo que vocÃª foque exatamente no nÃ©gocio da sua aplicaÃ§Ã£o.
+você pode usar qualquer framework, porém, considere a curva de aprendizado e se realmente faz sentido gastar tanto tempo entendendo conceitos
+que já poderiam vir embutidos e abstraídos dentro pelo Caffeine, permitindo que você foque exatamente no négocio da sua aplicação.
 
-diferencial
+**diferenciais**
 
 - 100% java, sem necessidade de conhecimentos em HTML, CSS, Javascript, ...
-- uma linguagem para a construÃ§Ã£o de paginas e formularios em portugues;
-- simplificaÃ§Ã£o na configuraÃ§Ã£o e aprendizado;
-- componentes como CPF, CNPJ conforme os padrÃµes brasileiros;
-- flexivel, sendo possÃ­vel criar seus prÃ³prios componentes;
-- gratuÃ­to, pode baixar e usar a vontade;
+- uma linguagem para a construção de paginas e formularios em portugues;
+- simplificação na configuração e aprendizado;
+- componentes como CPF, CNPJ conforme os padrões brasileiros;
+- flexivel, sendo possível criar seus próprios componentes;
+- gratuíto, pode baixar e usar a vontade;
 
-abraÃ§os.
+abraços.

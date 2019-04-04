@@ -19,14 +19,14 @@ public @Data class Selecao extends Entrada {
 	private OpcaoSelecao selected;
 	
 	public Selecao() {
-		add(new OpcaoSelecao("", "Choose one..."));
+		add(new OpcaoSelecao("", "Selecione..."));
 	}
 	
 	private OpcaoSelecao getSelected() {
 		
 		for(Componente component: getComponents()) {
 			OpcaoSelecao selectOption = (OpcaoSelecao) component;
-			if (selectOption.getValue().equals(getValue())) {
+			if (selectOption.getValue().equals(getValor())) {
 				selectOption.setSelected(true);
 				this.selected = selectOption;
 				break;
@@ -42,9 +42,9 @@ public @Data class Selecao extends Entrada {
 	}
 
 	@Override
-	public void setValue(String value) {
+	public void setValor(String value) {
 		// TODO Auto-generated method stub
-		super.setValue(value);
+		super.setValor(value);
 		getSelected();
 	}
 

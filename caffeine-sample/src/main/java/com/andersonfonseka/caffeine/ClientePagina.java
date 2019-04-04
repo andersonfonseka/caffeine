@@ -3,22 +3,22 @@ package com.andersonfonseka.caffeine;
 import java.util.Map;
 
 import javax.enterprise.context.RequestScoped;
-import javax.swing.Action;
 
 import com.andersonfonseka.caffeine.componente.Botao;
+import com.andersonfonseka.caffeine.componente.Conteiner;
+import com.andersonfonseka.caffeine.componente.Endereco;
 import com.andersonfonseka.caffeine.componente.EntradaAreaTexto;
 import com.andersonfonseka.caffeine.componente.EntradaArquivo;
 import com.andersonfonseka.caffeine.componente.EntradaData;
 import com.andersonfonseka.caffeine.componente.EntradaEmail;
+import com.andersonfonseka.caffeine.componente.EntradaNumero;
 import com.andersonfonseka.caffeine.componente.EntradaTexto;
 import com.andersonfonseka.caffeine.componente.Formulario;
-import com.andersonfonseka.caffeine.componente.Conteiner;
 import com.andersonfonseka.caffeine.componente.OpcaoSelecao;
 import com.andersonfonseka.caffeine.componente.Pagina;
 import com.andersonfonseka.caffeine.componente.Selecao;
 import com.andersonfonseka.caffeine.componente.acao.Acao;
-import com.andersonfonseka.caffeine.servlet.PaginaResposta;
-import com.andersonfonseka.caffeine.servlet.PaginaResposta;
+import com.andersonfonseka.caffeine.servlet.Resposta;
 
 @RequestScoped
 public class ClientePagina extends Pagina {
@@ -28,7 +28,8 @@ public class ClientePagina extends Pagina {
 	private EntradaEmail txtEmail = new EntradaEmail();
 	
 	public ClientePagina() {
-		setTitulo("Customer Form");
+		
+		setTitulo("Cliente");
 		
 		Formulario form = new Formulario(); 
 		EntradaTexto txtFirstName = new EntradaTexto();
@@ -36,6 +37,7 @@ public class ClientePagina extends Pagina {
 		
 		EntradaData txtDoB = new EntradaData();
 		Selecao selGender = new Selecao();
+		EntradaNumero txDependentes = new EntradaNumero();
 		EntradaAreaTexto txtDescription = new EntradaAreaTexto();
 		EntradaArquivo txtFile = new EntradaArquivo();
 		
@@ -44,49 +46,51 @@ public class ClientePagina extends Pagina {
 		
 		final Conteiner conteiner = new Conteiner(6);
 		
-		txtFirstName.setTitle("First Name");
-		txtFirstName.setRequired(true);
+		txtFirstName.setTitulo("Primeiro nome");
+		txtFirstName.setObrigatorio(true);
 
-		txtLastName.setTitle("Last Name");
-		txtLastName.setRequired(true);
+		txtLastName.setTitulo("Ultimo nome");
+		txtLastName.setObrigatorio(true);
 		
-		txtEmail.setTitle("E-mail");
-		txtEmail.setRequired(true);
+		txtEmail.setTitulo("E-mail");
+		txtEmail.setObrigatorio(true);
 
-		txtDoB.setTitle("Date of birth");
+		txtDoB.setTitulo("Data de nascimento");
 		txtDoB.setPattern("yyyy-MM-dd");
 		
-		selGender.setRequired(true);
-		selGender.setTitle("Gender");
-		selGender.add(new OpcaoSelecao("1", "Male"));
-		selGender.add(new OpcaoSelecao("2", "Female"));
+		txDependentes.setTitulo("Dependentes");
 		
-		txtDescription.setRequired(true);
-		txtDescription.setTitle("Description");
+		selGender.setObrigatorio(true);
+		selGender.setTitulo("Genero");
+		selGender.add(new OpcaoSelecao("1", "Masculino"));
+		selGender.add(new OpcaoSelecao("2", "Feminino"));
+		
+		txtDescription.setObrigatorio(true);
+		txtDescription.setTitulo("Observacoes");
 		txtDescription.setRows(5);
 		
-		txtFile.setRequired(true);
-		txtFile.setTitle("CV/Resume");
+		txtFile.setObrigatorio(true);
+		txtFile.setTitulo("CV");
 		
-		btnApply.setTitulo("Apply");
+		btnApply.setTitulo("Enviar");
 		
 		btnApply.setAcao(new Acao(form) {
-			public PaginaResposta execute() {
+			public Resposta execute() {
 				
-				PaginaResposta pageResponse = new PaginaResposta();
+				Resposta pageResponse = new Resposta();
 				pageResponse.setPageUrl(ClientePagina.class.getName());
 				
 				return pageResponse;
 			}
 		});
 		
-		btnCancel.setTitulo("Cancel");
+		btnCancel.setTitulo("Cancelar");
 		btnCancel.setImediato(true);
 		
 		btnCancel.setAcao(new Acao(form) {
-			public PaginaResposta execute() {
+			public Resposta execute() {
 				
-				PaginaResposta pageResponse = new PaginaResposta();
+				Resposta pageResponse = new Resposta();
 				pageResponse.setPageUrl(AcessoPagina.class.getName());
 				
 				return pageResponse;
@@ -94,16 +98,25 @@ public class ClientePagina extends Pagina {
 		});
 		
 		add(form);
+		
+		Endereco endereco = new Endereco();
+		
 		form.add(conteiner);
 		
 		conteiner.add(0, txtFirstName)
-					.add(1, txtLastName)
-					.add(2, txtEmail)
-					.add(2, txtDoB)
-					.add(3, selGender)
-					.add(4, txtDescription)
-					.add(5, btnApply)
-				    .add(5, btnCancel);
+					.add(0, txtLastName)
+					.add(1, txtEmail)
+					.add(1, txtDoB)
+					.add(2, selGender)
+					.add(2, txDependentes)
+					.add(3, txtDescription);
+		
+		endereco.getConteiner()
+					.add(3, btnApply)
+					.add(3, btnCancel);
+		
+		form.add(endereco.getConteiner());
+		
 	}
 	
 
@@ -113,7 +126,7 @@ public class ClientePagina extends Pagina {
 		if(parameters == null)
 			return;
 		
-		this.txtEmail.setValue(parameters.get("InputEmail1"));
+		this.txtEmail.setValor(parameters.get("EntradaEmail1"));
 	}
 	
 }

@@ -1,6 +1,6 @@
 package com.andersonfonseka.caffeine.componente.acao;
 
-import com.andersonfonseka.caffeine.servlet.PaginaResposta;
+import com.andersonfonseka.caffeine.servlet.Resposta;
 
 import lombok.Getter;
 
@@ -13,6 +13,6 @@ public abstract class Acao {
 		this.source = source;
 	}
 	
-	public abstract PaginaResposta execute();
+	public abstract Resposta execute();
 
 }

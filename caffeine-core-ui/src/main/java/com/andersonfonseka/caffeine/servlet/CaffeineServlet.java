@@ -117,7 +117,7 @@ public class CaffeineServlet extends HttpServlet {
 		if (page.getMensagens().isEmpty()) {
 			
 			Botao button = (Botao) page.findById(page, op).get();
-			PaginaResposta pageResponse = button.doClick();
+			Resposta pageResponse = button.doClick();
 			
 			pageResult = project.findPageById(pageResponse.pageUrl);
 			pageResult.setMensagens(pageResponse.getMessages());
@@ -141,7 +141,7 @@ public class CaffeineServlet extends HttpServlet {
 					Componente component =  page.findById(page, id).get();
 					if (component instanceof Entrada) {
 						Entrada input = (Entrada) component;
-						input.setValue(req.getParameter(id));
+						input.setValor(req.getParameter(id));
 					}
 				}
 			}

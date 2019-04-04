@@ -1,5 +1,5 @@
 <div class="form-group">
-    <label for="$inputemail.getId()">$inputemail.getTitle()</label>
-    <input type="email" class="form-control" id="$inputemail.getId()" name="$inputemail.getId()" value="$inputemail.getValue()">
+    <label for="$inputemail.getId()">$inputemail.getTitulo()</label>
+    <input type="email" class="form-control" id="$inputemail.getId()" name="$inputemail.getId()" value="$inputemail.getValor()">
 </div>
 

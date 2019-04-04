@@ -5,13 +5,13 @@ import java.util.Map;
 import javax.enterprise.context.RequestScoped;
 
 import com.andersonfonseka.caffeine.componente.Botao;
+import com.andersonfonseka.caffeine.componente.Conteiner;
 import com.andersonfonseka.caffeine.componente.EntradaEmail;
 import com.andersonfonseka.caffeine.componente.EntradaSenha;
 import com.andersonfonseka.caffeine.componente.Formulario;
-import com.andersonfonseka.caffeine.componente.Conteiner;
 import com.andersonfonseka.caffeine.componente.Pagina;
 import com.andersonfonseka.caffeine.componente.acao.Acao;
-import com.andersonfonseka.caffeine.servlet.PaginaResposta;
+import com.andersonfonseka.caffeine.servlet.Resposta;
 import com.andersonfonseka.caffeine.util.MensagemUtil;
 
 @RequestScoped
@@ -19,43 +19,43 @@ public class AcessoPagina extends Pagina {
 	
 	private EntradaEmail txtEmail = new EntradaEmail();
 	
-	private EntradaSenha txtPassword = new EntradaSenha();
+	private EntradaSenha txtSenha = new EntradaSenha();
 
 	private static final long serialVersionUID = 1L;
 
 	public AcessoPagina() {
 
-		setTitulo("Login Form");
+		setTitulo("Acesso");
 		
 		final Formulario form = new Formulario();
 		Conteiner gridLayout = new Conteiner(3);
 
 		Botao button = new Botao();
 
-		txtEmail.setTitle("Email");
-		txtEmail.setRequired(true);
+		txtEmail.setTitulo("Email");
+		txtEmail.setObrigatorio(true);
 
-		txtPassword.setTitle("Password");
-		txtPassword.setRequired(true);
+		txtSenha.setTitulo("Senha");
+		txtSenha.setObrigatorio(true);
 
-		button.setTitulo("Apply");
+		button.setTitulo("Conectar");
 
 		button.setAcao(new Acao(form) {
-			public PaginaResposta execute() {
+			public Resposta execute() {
 
-				PaginaResposta pageResponse = new PaginaResposta();
+				Resposta pageResponse = new Resposta();
 				
 				EntradaEmail inputText = (EntradaEmail) findById(form, txtEmail.getId()).get();
-				EntradaSenha inputPassword = (EntradaSenha) findById(form, txtPassword.getId()).get();
+				EntradaSenha inputPassword = (EntradaSenha) findById(form, txtSenha.getId()).get();
 				
-				if (inputText.getValue().equals("anderson.fonseka@gmail.com") &&
-						inputPassword.getValue().equals("123456")) {
+				if (inputText.getValor().equals("anderson.fonseka@gmail.com") &&
+						inputPassword.getValor().equals("123456")) {
 
 					pageResponse.setPageUrl(ClientePagina.class.getName());
 
 				} else {
 
-					pageResponse.addMessage(MensagemUtil.getInstance().getMessage("Invalid access input!"));
+					pageResponse.addMessage(MensagemUtil.getInstance().getMessage("INVALIDACCESS", inputText.getValor()));
 					pageResponse.setPageUrl(AcessoPagina.class.getName());
 					
 				}
@@ -67,7 +67,7 @@ public class AcessoPagina extends Pagina {
 
 		gridLayout.
 				add(0, txtEmail).
-				add(1, txtPassword).
+				add(1, txtSenha).
 				add(2, button);
 
 		form.
@@ -84,8 +84,8 @@ public class AcessoPagina extends Pagina {
 			return;
 	
 		
-		this.txtEmail.setValue(parameters.get("InputEmail1"));
-		this.txtPassword.setValue(parameters.get("InputPassword2"));
+		this.txtEmail.setValor(parameters.get("EntradaEmail1"));
+		this.txtSenha.setValor(parameters.get("EntradaSenha2"));
 		
 	}
 

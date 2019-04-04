@@ -1,1 +1,1 @@
-<jsp:forward page="FastUIServlet.do"></jsp:forward>
+<jsp:forward page="CaffeineServlet.do"></jsp:forward>

@@ -1,5 +1,5 @@
 <div class="form-group">
-    <label for="$inputfile.getId()">$inputfile.getTitle()</label>
-    <input type="file" class="form-control" id="$inputfile.getId()" name="$inputfile.getId()" value="$inputfile.getValue()">
+    <label for="$inputfile.getId()">$inputfile.getTitulo()</label>
+    <input type="file" class="form-control" id="$inputfile.getId()" name="$inputfile.getId()" value="$inputfile.getValor()">
 </div>
 

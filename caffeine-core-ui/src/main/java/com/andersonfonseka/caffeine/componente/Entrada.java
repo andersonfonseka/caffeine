@@ -12,19 +12,19 @@ public abstract @Data class Entrada extends Componente implements Validador {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	private String name;
+	private String nome;
 	
-	private String title;
+	private String titulo;
 	
-	private String value = "";
+	private String valor = "";
 	
-	private boolean required;
+	private boolean obrigatorio;
 
 	@Override
 	public String validate() {
 		
-		if (required && value.trim().length() == 0) {
-			return MensagemUtil.getInstance().getMessage("REQUIREDFIELD", getTitle());
+		if (obrigatorio && valor.trim().length() == 0) {
+			return MensagemUtil.getInstance().getMessage("REQUIREDFIELD", getTitulo());
 		}
 		return "";
 	}

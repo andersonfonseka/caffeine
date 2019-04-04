@@ -27,8 +27,8 @@ public @Data class EntradaData extends Entrada {
 		
 		DateValidator dateValidator = DateValidator.getInstance();
 		
-		if (!dateValidator.isValid(getValue(), getPattern())){
-			return MensagemUtil.getInstance().getMessage("DATEFIELD", getTitle());	
+		if (!dateValidator.isValid(getValor(), getPattern())){
+			return MensagemUtil.getInstance().getMessage("DATEFIELD", getTitulo());	
 		}
 		
 		return "";

@@ -1,1 +1,1 @@
-<label id="$label.getId()" class="col-form-label">$label.getTitle()</label>
+<label id="$label.getId()" class="col-form-label">$label.getTitulo()</label>

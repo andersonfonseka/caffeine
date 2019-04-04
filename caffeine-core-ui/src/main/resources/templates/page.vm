@@ -26,11 +26,11 @@
 <body>
 
 <div class="container">
-<h2>$page.getTitle()</h2>
+<h2>$page.getTitulo()</h2>
 
-#if(!$page.getMessages().isEmpty())
+#if(!$page.getMensagens().isEmpty())
 <div class="alert alert-warning alert-dismissible fade show" role="alert">
-	#foreach($msg in $page.getMessages())
+	#foreach($msg in $page.getMensagens())
 	$msg<br/>
 	#end
   <button type="button" class="close" data-dismiss="alert" aria-label="Close">

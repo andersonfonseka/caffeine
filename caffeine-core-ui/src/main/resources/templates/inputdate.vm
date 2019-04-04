@@ -1,5 +1,5 @@
 <div class="form-group">
-    <label for="$inputdate.getId()">$inputdate.getTitle()</label>
-    <input type="date" class="form-control" id="$inputdate.getId()" name="$inputdate.getId()" value="$inputdate.getValue()" placeholder="$inputdate.getPattern()">
+    <label for="$inputdate.getId()">$inputdate.getTitulo()</label>
+    <input type="date" class="form-control" id="$inputdate.getId()" name="$inputdate.getId()" value="$inputdate.getValor()" placeholder="$inputdate.getPattern()">
 </div>
 

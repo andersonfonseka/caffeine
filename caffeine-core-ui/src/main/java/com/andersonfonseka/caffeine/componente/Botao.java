@@ -3,7 +3,7 @@ package com.andersonfonseka.caffeine.componente;
 import javax.enterprise.inject.Model;
 
 import com.andersonfonseka.caffeine.componente.acao.Acao;
-import com.andersonfonseka.caffeine.servlet.PaginaResposta;
+import com.andersonfonseka.caffeine.servlet.Resposta;
 
 import lombok.Data;
 
@@ -28,7 +28,7 @@ public @Data class Botao extends Componente {
 		return "button";
 	}
 
-	public PaginaResposta doClick() {
+	public Resposta doClick() {
 		return this.acao.execute();
 	}
 
