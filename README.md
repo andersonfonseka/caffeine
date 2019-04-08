@@ -14,9 +14,12 @@ por que eu não usaria um framework já consolidado no mercado?
 você pode usar qualquer framework, porém, considere a curva de aprendizado e se realmente faz sentido gastar tanto tempo entendendo conceitos
 que já poderiam vir abstraídos do desenvolvedor pelo Caffeine:
 
-- pense como você implementa o fluxo de nevageção, 
+- pense como você implementa o fluxo de nevegação, 
 - quantos descritores (XML/Anotações) você precisa definir, 
 - quantas páginas HTML/CSS + ManagedBean você precisa criar.
+- por que você precisa se preocupar tanto com escopos como: session, request, etc?
+- como passar parâmetros de uma tela para outra?
+- por que é comum colocar negócio dentro de apresentação e se torna difícil definir uma fronteira?
 
 ...permitindo que você foque exatamente no négocio da sua aplicação.
 
