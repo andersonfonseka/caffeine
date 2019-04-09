@@ -24,6 +24,8 @@ public @Data class Botao extends Componente implements IBotao {
 	
 	private boolean imediato;
 	
+	Botao(){}
+	
 	@Override
 	public String getTemplate() {
 		return "button";

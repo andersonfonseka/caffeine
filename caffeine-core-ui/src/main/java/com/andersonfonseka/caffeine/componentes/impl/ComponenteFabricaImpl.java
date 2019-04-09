@@ -1,7 +1,8 @@
-package com.andersonfonseka.caffeine.componentes;
+package com.andersonfonseka.caffeine.componentes.impl;
 
+import com.andersonfonseka.caffeine.componentes.ComponenteFabrica;
+import com.andersonfonseka.caffeine.componentes.IBotao;
 import com.andersonfonseka.caffeine.componentes.acao.Acao;
-import com.andersonfonseka.caffeine.componentes.impl.Botao;
 
 public class ComponenteFabricaImpl extends ComponenteFabrica {
 

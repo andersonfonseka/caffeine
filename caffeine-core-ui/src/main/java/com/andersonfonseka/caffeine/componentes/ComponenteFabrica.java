@@ -1,6 +1,7 @@
 package com.andersonfonseka.caffeine.componentes;
 
 import com.andersonfonseka.caffeine.componentes.acao.Acao;
+import com.andersonfonseka.caffeine.componentes.impl.ComponenteFabricaImpl;
 
 public abstract class ComponenteFabrica {
 	

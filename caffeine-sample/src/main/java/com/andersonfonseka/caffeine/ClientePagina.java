@@ -4,20 +4,22 @@ import java.util.Map;
 
 import javax.enterprise.context.RequestScoped;
 
-import com.andersonfonseka.caffeine.componentes.Botao;
-import com.andersonfonseka.caffeine.componentes.Conteiner;
-import com.andersonfonseka.caffeine.componentes.Endereco;
-import com.andersonfonseka.caffeine.componentes.EntradaAreaTexto;
-import com.andersonfonseka.caffeine.componentes.EntradaArquivo;
-import com.andersonfonseka.caffeine.componentes.EntradaData;
-import com.andersonfonseka.caffeine.componentes.EntradaEmail;
-import com.andersonfonseka.caffeine.componentes.EntradaNumero;
-import com.andersonfonseka.caffeine.componentes.EntradaTexto;
-import com.andersonfonseka.caffeine.componentes.Formulario;
-import com.andersonfonseka.caffeine.componentes.OpcaoSelecao;
-import com.andersonfonseka.caffeine.componentes.Pagina;
-import com.andersonfonseka.caffeine.componentes.Selecao;
+import com.andersonfonseka.caffeine.componentes.ComponenteFabrica;
+import com.andersonfonseka.caffeine.componentes.IBotao;
 import com.andersonfonseka.caffeine.componentes.acao.Acao;
+import com.andersonfonseka.caffeine.componentes.impl.Botao;
+import com.andersonfonseka.caffeine.componentes.impl.Conteiner;
+import com.andersonfonseka.caffeine.componentes.impl.Endereco;
+import com.andersonfonseka.caffeine.componentes.impl.EntradaAreaTexto;
+import com.andersonfonseka.caffeine.componentes.impl.EntradaArquivo;
+import com.andersonfonseka.caffeine.componentes.impl.EntradaData;
+import com.andersonfonseka.caffeine.componentes.impl.EntradaEmail;
+import com.andersonfonseka.caffeine.componentes.impl.EntradaNumero;
+import com.andersonfonseka.caffeine.componentes.impl.EntradaTexto;
+import com.andersonfonseka.caffeine.componentes.impl.Formulario;
+import com.andersonfonseka.caffeine.componentes.impl.OpcaoSelecao;
+import com.andersonfonseka.caffeine.componentes.impl.Pagina;
+import com.andersonfonseka.caffeine.componentes.impl.Selecao;
 import com.andersonfonseka.caffeine.servlet.Resposta;
 
 @RequestScoped
@@ -40,9 +42,6 @@ public class ClientePagina extends Pagina {
 		EntradaNumero txDependentes = new EntradaNumero();
 		EntradaAreaTexto txtDescription = new EntradaAreaTexto();
 		EntradaArquivo txtFile = new EntradaArquivo();
-		
-		Botao btnApply = new Botao();
-		Botao btnCancel = new Botao();
 		
 		final Conteiner conteiner = new Conteiner(6);
 		
@@ -72,9 +71,7 @@ public class ClientePagina extends Pagina {
 		txtFile.setObrigatorio(true);
 		txtFile.setTitulo("CV");
 		
-		btnApply.setTitulo("Enviar");
-		
-		btnApply.setAcao(new Acao(form) {
+		IBotao btnApply = ComponenteFabrica.obterInstancia().criarBotao("Enviar", new Acao(form) {
 			public Resposta execute() {
 				
 				Resposta pageResponse = new Resposta();
@@ -82,12 +79,10 @@ public class ClientePagina extends Pagina {
 				
 				return pageResponse;
 			}
-		});
+		}, false);
+
 		
-		btnCancel.setTitulo("Cancelar");
-		btnCancel.setImediato(true);
-		
-		btnCancel.setAcao(new Acao(form) {
+		IBotao btnCancel = ComponenteFabrica.obterInstancia().criarBotao("Cancelar", new Acao(form) {
 			public Resposta execute() {
 				
 				Resposta pageResponse = new Resposta();
@@ -95,7 +90,8 @@ public class ClientePagina extends Pagina {
 				
 				return pageResponse;
 			}
-		});
+		}, true);
+		
 		
 		add(form);
 		

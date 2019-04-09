@@ -2,6 +2,8 @@ package com.andersonfonseka.caffeine.componentes.impl;
 
 import javax.enterprise.inject.Model;
 
+import com.andersonfonseka.caffeine.componentes.IComponente;
+
 import lombok.Data;
 
 @Model
@@ -24,7 +26,7 @@ public @Data class Selecao extends Entrada {
 	
 	private OpcaoSelecao getSelected() {
 		
-		for(Componente component: getComponents()) {
+		for(IComponente component: getComponentes()) {
 			OpcaoSelecao selectOption = (OpcaoSelecao) component;
 			if (selectOption.getValue().equals(getValor())) {
 				selectOption.setSelected(true);
