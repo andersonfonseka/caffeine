@@ -10,7 +10,7 @@
 		
 		<module>caffeine-core-ui</module>
 		<module>caffeine-sample</module>
-		<module>caffeine-core-db</module>
+		
 	</modules>
 
 	<properties>
