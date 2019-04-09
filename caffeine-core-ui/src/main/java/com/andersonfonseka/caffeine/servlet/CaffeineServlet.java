@@ -18,11 +18,11 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.jboss.weld.bean.ManagedBean;
 
-import com.andersonfonseka.caffeine.componente.Botao;
-import com.andersonfonseka.caffeine.componente.Componente;
-import com.andersonfonseka.caffeine.componente.Entrada;
-import com.andersonfonseka.caffeine.componente.Pagina;
-import com.andersonfonseka.caffeine.componente.Projeto;
+import com.andersonfonseka.caffeine.componentes.Botao;
+import com.andersonfonseka.caffeine.componentes.Componente;
+import com.andersonfonseka.caffeine.componentes.Entrada;
+import com.andersonfonseka.caffeine.componentes.Pagina;
+import com.andersonfonseka.caffeine.componentes.Projeto;
 
 public class CaffeineServlet extends HttpServlet {
 

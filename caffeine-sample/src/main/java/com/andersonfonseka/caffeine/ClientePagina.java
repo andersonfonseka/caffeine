@@ -4,20 +4,20 @@ import java.util.Map;
 
 import javax.enterprise.context.RequestScoped;
 
-import com.andersonfonseka.caffeine.componente.Botao;
-import com.andersonfonseka.caffeine.componente.Conteiner;
-import com.andersonfonseka.caffeine.componente.Endereco;
-import com.andersonfonseka.caffeine.componente.EntradaAreaTexto;
-import com.andersonfonseka.caffeine.componente.EntradaArquivo;
-import com.andersonfonseka.caffeine.componente.EntradaData;
-import com.andersonfonseka.caffeine.componente.EntradaEmail;
-import com.andersonfonseka.caffeine.componente.EntradaNumero;
-import com.andersonfonseka.caffeine.componente.EntradaTexto;
-import com.andersonfonseka.caffeine.componente.Formulario;
-import com.andersonfonseka.caffeine.componente.OpcaoSelecao;
-import com.andersonfonseka.caffeine.componente.Pagina;
-import com.andersonfonseka.caffeine.componente.Selecao;
-import com.andersonfonseka.caffeine.componente.acao.Acao;
+import com.andersonfonseka.caffeine.componentes.Botao;
+import com.andersonfonseka.caffeine.componentes.Conteiner;
+import com.andersonfonseka.caffeine.componentes.Endereco;
+import com.andersonfonseka.caffeine.componentes.EntradaAreaTexto;
+import com.andersonfonseka.caffeine.componentes.EntradaArquivo;
+import com.andersonfonseka.caffeine.componentes.EntradaData;
+import com.andersonfonseka.caffeine.componentes.EntradaEmail;
+import com.andersonfonseka.caffeine.componentes.EntradaNumero;
+import com.andersonfonseka.caffeine.componentes.EntradaTexto;
+import com.andersonfonseka.caffeine.componentes.Formulario;
+import com.andersonfonseka.caffeine.componentes.OpcaoSelecao;
+import com.andersonfonseka.caffeine.componentes.Pagina;
+import com.andersonfonseka.caffeine.componentes.Selecao;
+import com.andersonfonseka.caffeine.componentes.acao.Acao;
 import com.andersonfonseka.caffeine.servlet.Resposta;
 
 @RequestScoped

@@ -1,11 +1,11 @@
-package com.andersonfonseka.caffeine.componente;
+package com.andersonfonseka.caffeine.componentes;
 
 import javax.enterprise.inject.Model;
 
 import lombok.Data;
 
 @Model
-public @Data class EntradaNumero extends Entrada {
+public @Data class EntradaTexto extends Entrada {
 
 	/**
 	 * 
@@ -18,7 +18,7 @@ public @Data class EntradaNumero extends Entrada {
 	
 	@Override
 	public String getTemplate() {
-		return "inputnumber";
+		return "inputtext";
 	}
 
 }

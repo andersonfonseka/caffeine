@@ -2,7 +2,7 @@ package com.andersonfonseka.caffeine;
 
 import javax.enterprise.context.SessionScoped;
 
-import com.andersonfonseka.caffeine.componente.Projeto;
+import com.andersonfonseka.caffeine.componentes.Projeto;
 
 @SessionScoped
 public class ClienteProjeto extends Projeto {

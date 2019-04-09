@@ -4,13 +4,13 @@ import java.util.Map;
 
 import javax.enterprise.context.RequestScoped;
 
-import com.andersonfonseka.caffeine.componente.Botao;
-import com.andersonfonseka.caffeine.componente.Conteiner;
-import com.andersonfonseka.caffeine.componente.EntradaEmail;
-import com.andersonfonseka.caffeine.componente.EntradaSenha;
-import com.andersonfonseka.caffeine.componente.Formulario;
-import com.andersonfonseka.caffeine.componente.Pagina;
-import com.andersonfonseka.caffeine.componente.acao.Acao;
+import com.andersonfonseka.caffeine.componentes.Botao;
+import com.andersonfonseka.caffeine.componentes.Conteiner;
+import com.andersonfonseka.caffeine.componentes.EntradaEmail;
+import com.andersonfonseka.caffeine.componentes.EntradaSenha;
+import com.andersonfonseka.caffeine.componentes.Formulario;
+import com.andersonfonseka.caffeine.componentes.Pagina;
+import com.andersonfonseka.caffeine.componentes.acao.Acao;
 import com.andersonfonseka.caffeine.servlet.Resposta;
 import com.andersonfonseka.caffeine.util.MensagemUtil;
 

@@ -1,8 +1,8 @@
-package com.andersonfonseka.caffeine.componente;
+package com.andersonfonseka.caffeine.componentes;
 
 import javax.enterprise.inject.Model;
 
-import com.andersonfonseka.caffeine.componente.acao.Acao;
+import com.andersonfonseka.caffeine.componentes.acao.Acao;
 import com.andersonfonseka.caffeine.servlet.Resposta;
 
 import lombok.Data;

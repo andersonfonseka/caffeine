@@ -1,4 +1,4 @@
-package com.andersonfonseka.caffeine.componente.acao;
+package com.andersonfonseka.caffeine.componentes.acao;
 
 import com.andersonfonseka.caffeine.servlet.Resposta;
 

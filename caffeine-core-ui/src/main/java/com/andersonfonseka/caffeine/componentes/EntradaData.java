@@ -1,4 +1,4 @@
-package com.andersonfonseka.caffeine.componente;
+package com.andersonfonseka.caffeine.componentes;
 
 import javax.enterprise.inject.Model;
 

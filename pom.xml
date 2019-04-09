@@ -7,9 +7,10 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<modules>
-		<module>caffeine-core-db</module>
+		
 		<module>caffeine-core-ui</module>
 		<module>caffeine-sample</module>
+		<module>caffeine-core-db</module>
 	</modules>
 
 	<properties>

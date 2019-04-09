@@ -1,6 +1,6 @@
-package com.andersonfonseka.caffeine.componente;
+package com.andersonfonseka.caffeine.componentes;
 
-import com.andersonfonseka.caffeine.componente.validador.Validador;
+import com.andersonfonseka.caffeine.componentes.validador.Validador;
 import com.andersonfonseka.caffeine.util.MensagemUtil;
 
 import lombok.Data;
