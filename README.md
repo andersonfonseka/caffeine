@@ -3,24 +3,33 @@ um java web framework para brasileiros
 
 por que?
 
-- em sua maioria existem v·rios frameworks java web gringos; 
-- temos uma sÈrie particularidades em termos de negÛcio;
-- funcionalidades que facilmente poderiams se tornar componentes s„o reescritos, gerando possÌveis erros;
-- normalmente temos que adaptar-nos ao padr„o do framework, e o negÛcio deixa de ser o propÛsito;
-- frameworks tradicionais oferecem funcionalidades alÈm do necess·rio, gerando um custo de desempenho.
+- em sua maioria existem v√°rios frameworks java web gringos; 
+- temos uma s√©rie de particularidades em termos de neg√≥cio;
+- funcionalidades que facilmente poderiam se tornar componentes s√£o reescritos, gerando poss√≠veis erros;
+- normalmente o desenvolvedor necessita se adaptar ao modelo de constru√ß√£o do framework e, dependendo da curva de aprendizado, o neg√≥cio deixa de ser o prop√≥sito;
+- frameworks tradicionais oferecem funcionalidades al√©m do necess√°rio, gerando uma possivel redu√ß√£o de desempenho.
 
-por que eu n„o usaria um framework j· consolidado no mercado?
+por que eu n√£o usaria um framework j√° consolidado no mercado?
 
-vocÍ pode usar qualquer framework, porÈm, considere a curva de aprendizado e se realmente faz sentido gastar tanto tempo entendendo conceitos
-que j· poderiam vir embutidos e abstraÌdos dentro pelo Caffeine, permitindo que vocÍ foque exatamente no nÈgocio da sua aplicaÁ„o.
+voc√™ pode usar qualquer framework, por√©m, considere a curva de aprendizado e se realmente faz sentido gastar tanto tempo entendendo conceitos
+que j√° poderiam vir abstra√≠dos do desenvolvedor pelo Caffeine:
+
+- pense como voc√™ implementa o fluxo de nevega√ß√£o, 
+- quantos descritores (XML/Anota√ß√µes) voc√™ precisa definir, 
+- quantas p√°ginas HTML/CSS + ManagedBean voc√™ precisa criar.
+- por que voc√™ precisa se preocupar tanto com escopos como: session, request, etc?
+- como passar par√¢metros de uma tela para outra?
+- por que √© comum colocar neg√≥cio dentro de apresenta√ß√£o e se torna dif√≠cil definir uma fronteira?
+
+...permitindo que voc√™ foque exatamente no n√©gocio da sua aplica√ß√£o.
 
 **diferenciais**
 
 - 100% java, sem necessidade de conhecimentos em HTML, CSS, Javascript, ...
-- uma linguagem para a construÁ„o de paginas e formularios em portugues;
-- simplificaÁ„o na configuraÁ„o e aprendizado;
-- componentes como CPF, CNPJ conforme os padrıes brasileiros;
-- flexivel, sendo possÌvel criar seus prÛprios componentes;
-- gratuÌto, pode baixar e usar a vontade;
+- uma linguagem para a constru√ß√£o de paginas e formularios em portugues;
+- simplifica√ß√£o na configura√ß√£o e aprendizado;
+- componentes como CPF, CNPJ conforme os padr√µes brasileiros;
+- flexivel, sendo poss√≠vel criar seus pr√≥prios componentes;
+- gratu√≠to, livre e de uso irrestrito.
 
-abraÁos.
+abra√ßos.
