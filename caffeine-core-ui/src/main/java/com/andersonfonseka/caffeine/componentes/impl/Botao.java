@@ -1,14 +1,15 @@
-package com.andersonfonseka.caffeine.componentes;
+package com.andersonfonseka.caffeine.componentes.impl;
 
 import javax.enterprise.inject.Model;
 
+import com.andersonfonseka.caffeine.componentes.IBotao;
 import com.andersonfonseka.caffeine.componentes.acao.Acao;
 import com.andersonfonseka.caffeine.servlet.Resposta;
 
 import lombok.Data;
 
 @Model
-public @Data class Botao extends Componente {
+public @Data class Botao extends Componente implements IBotao {
 
 	/**
 	 * 

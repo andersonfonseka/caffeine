@@ -4,13 +4,14 @@ import java.util.Map;
 
 import javax.enterprise.context.RequestScoped;
 
-import com.andersonfonseka.caffeine.componentes.Botao;
-import com.andersonfonseka.caffeine.componentes.Conteiner;
-import com.andersonfonseka.caffeine.componentes.EntradaEmail;
-import com.andersonfonseka.caffeine.componentes.EntradaSenha;
-import com.andersonfonseka.caffeine.componentes.Formulario;
-import com.andersonfonseka.caffeine.componentes.Pagina;
+import com.andersonfonseka.caffeine.componentes.ComponenteFabrica;
+import com.andersonfonseka.caffeine.componentes.IBotao;
 import com.andersonfonseka.caffeine.componentes.acao.Acao;
+import com.andersonfonseka.caffeine.componentes.impl.Conteiner;
+import com.andersonfonseka.caffeine.componentes.impl.EntradaEmail;
+import com.andersonfonseka.caffeine.componentes.impl.EntradaSenha;
+import com.andersonfonseka.caffeine.componentes.impl.Formulario;
+import com.andersonfonseka.caffeine.componentes.impl.Pagina;
 import com.andersonfonseka.caffeine.servlet.Resposta;
 import com.andersonfonseka.caffeine.util.MensagemUtil;
 
@@ -29,18 +30,14 @@ public class AcessoPagina extends Pagina {
 		
 		final Formulario form = new Formulario();
 		Conteiner gridLayout = new Conteiner(3);
-
-		Botao button = new Botao();
-
+		
 		txtEmail.setTitulo("Email");
 		txtEmail.setObrigatorio(true);
 
 		txtSenha.setTitulo("Senha");
 		txtSenha.setObrigatorio(true);
 
-		button.setTitulo("Conectar");
-
-		button.setAcao(new Acao(form) {
+		IBotao button = ComponenteFabrica.obterInstancia().criarBotao("Conectar", new Acao(form) {
 			public Resposta execute() {
 
 				Resposta pageResponse = new Resposta();
@@ -63,7 +60,7 @@ public class AcessoPagina extends Pagina {
 				
 				return pageResponse;
 			}
-		});
+		}, true);
 
 		gridLayout.
 				add(0, txtEmail).
@@ -82,7 +79,6 @@ public class AcessoPagina extends Pagina {
 
 		if (parameters == null)
 			return;
-	
 		
 		this.txtEmail.setValor(parameters.get("EntradaEmail1"));
 		this.txtSenha.setValor(parameters.get("EntradaSenha2"));

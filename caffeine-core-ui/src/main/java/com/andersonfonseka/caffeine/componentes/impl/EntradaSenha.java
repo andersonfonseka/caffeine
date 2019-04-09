@@ -1,16 +1,16 @@
-package com.andersonfonseka.caffeine.componentes;
+package com.andersonfonseka.caffeine.componentes.impl;
 
 import javax.enterprise.inject.Model;
 
 import lombok.Data;
 
 @Model
-public @Data class EntradaTexto extends Entrada {
-
+public @Data class EntradaSenha extends Entrada {
+	
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = -4340908969483338598L;
+	private static final long serialVersionUID = 592825479279322462L;
 
 	private Integer size;
 	
@@ -18,7 +18,7 @@ public @Data class EntradaTexto extends Entrada {
 	
 	@Override
 	public String getTemplate() {
-		return "inputtext";
+		return "inputpassword";
 	}
 
 }

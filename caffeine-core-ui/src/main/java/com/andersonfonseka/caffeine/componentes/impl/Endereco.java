@@ -1,4 +1,4 @@
-package com.andersonfonseka.caffeine.componentes;
+package com.andersonfonseka.caffeine.componentes.impl;
 
 import lombok.Data;
 

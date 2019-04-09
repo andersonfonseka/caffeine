@@ -18,11 +18,12 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.jboss.weld.bean.ManagedBean;
 
-import com.andersonfonseka.caffeine.componentes.Botao;
-import com.andersonfonseka.caffeine.componentes.Componente;
-import com.andersonfonseka.caffeine.componentes.Entrada;
-import com.andersonfonseka.caffeine.componentes.Pagina;
-import com.andersonfonseka.caffeine.componentes.Projeto;
+import com.andersonfonseka.caffeine.componentes.IComponente;
+import com.andersonfonseka.caffeine.componentes.impl.Botao;
+import com.andersonfonseka.caffeine.componentes.impl.Componente;
+import com.andersonfonseka.caffeine.componentes.impl.Entrada;
+import com.andersonfonseka.caffeine.componentes.impl.Pagina;
+import com.andersonfonseka.caffeine.componentes.impl.Projeto;
 
 public class CaffeineServlet extends HttpServlet {
 
@@ -138,7 +139,7 @@ public class CaffeineServlet extends HttpServlet {
 			if (!id.equals(OP) && !id.equals(COMPONENTID)) {
 				
 				if (page.findById(page, id).isPresent()) {
-					Componente component =  page.findById(page, id).get();
+					IComponente component =  page.findById(page, id).get();
 					if (component instanceof Entrada) {
 						Entrada input = (Entrada) component;
 						input.setValor(req.getParameter(id));
@@ -171,7 +172,7 @@ public class CaffeineServlet extends HttpServlet {
 			if (!id.equals(OP) && !id.equals(COMPONENTID)) {
 
 				if (page.findById(page, id).isPresent()) {
-					Componente component =  page.findById(page, id).get();
+					IComponente component =  page.findById(page, id).get();
 					if (component instanceof Entrada) {
 						Entrada input = (Entrada) component;
 						page.adicionaMensagem(input.validate());

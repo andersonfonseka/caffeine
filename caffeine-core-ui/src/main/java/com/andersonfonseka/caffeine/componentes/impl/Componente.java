@@ -1,4 +1,4 @@
-package com.andersonfonseka.caffeine.componentes;
+package com.andersonfonseka.caffeine.componentes.impl;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -6,12 +6,13 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
 
+import com.andersonfonseka.caffeine.componentes.IComponente;
 import com.andersonfonseka.caffeine.engine.Engenho;
 
 import lombok.Getter;
 import lombok.Setter;
 
-public abstract class Componente implements Serializable {
+public abstract class Componente implements IComponente, Serializable {
 
 	private static final long serialVersionUID = 1L;
 
@@ -23,7 +24,7 @@ public abstract class Componente implements Serializable {
 	
 	private @Getter String template;
 	
-	private @Getter List<Componente> components = new ArrayList<Componente>();
+	private @Getter List<IComponente> componentes = new ArrayList<IComponente>();
 	
 	public Componente() {
 		this.id = this.getClass().getSimpleName() + internalId;
@@ -31,20 +32,20 @@ public abstract class Componente implements Serializable {
 	}
 
 	public Componente add(Componente component) {
-		this.components.add(component);
+		this.componentes.add(component);
 		component.setParent(this.getClass().getName());
 		return this;
 	}
 	
-	public Optional<Componente> findById(Componente component, String id) {
+	public Optional<IComponente> findById(IComponente component, String id) {
 		
-		Optional<Componente> comp = component.getComponents().stream()
+		Optional<IComponente> comp = component.getComponentes().stream()
 				.filter(x -> x.getId().equals(id))
 				.findFirst();
 		
 		if (!comp.isPresent()) {
 			
-			for (Componente component2 : component.getComponents()) {
+			for (IComponente component2 : component.getComponentes()) {
 
 				if (!comp.isPresent() && component2 instanceof Conteiner) {
 					
@@ -65,7 +66,7 @@ public abstract class Componente implements Serializable {
 				
 				} else if (!comp.isPresent()) {
 
-					comp = component.getComponents().stream()
+					comp = component.getComponentes().stream()
 							.filter(x -> x.getId().equals(id))
 							.findFirst();
 					

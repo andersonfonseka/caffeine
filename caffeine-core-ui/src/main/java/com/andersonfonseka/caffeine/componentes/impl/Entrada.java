@@ -1,4 +1,4 @@
-package com.andersonfonseka.caffeine.componentes;
+package com.andersonfonseka.caffeine.componentes.impl;
 
 import com.andersonfonseka.caffeine.componentes.validador.Validador;
 import com.andersonfonseka.caffeine.util.MensagemUtil;

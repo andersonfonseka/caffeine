@@ -1,4 +1,4 @@
-package com.andersonfonseka.caffeine.componentes;
+package com.andersonfonseka.caffeine.componentes.impl;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -6,6 +6,8 @@ import java.util.List;
 import java.util.Map;
 
 import javax.enterprise.inject.Model;
+
+import com.andersonfonseka.caffeine.componentes.IComponente;
 
 import lombok.Data;
 import lombok.Getter;
@@ -24,7 +26,7 @@ public @Data class Conteiner extends Componente {
 	
 	private Integer columns = 1;
 	
-	private @Getter Map<Integer, List<Componente>> rowCell = new HashMap<Integer, List<Componente>>();
+	private @Getter Map<Integer, List<IComponente>> rowCell = new HashMap<Integer, List<IComponente>>();
 	
 	public Conteiner() {
 		this(1);
@@ -34,12 +36,12 @@ public @Data class Conteiner extends Componente {
 		super();
 		this.rows = rows;
 			for (int i = 0; i < this.rows; i++) {
-				rowCell.put(i, new ArrayList<Componente>(columns));
+				rowCell.put(i, new ArrayList<IComponente>(columns));
 				rowsList.add(i);
 			}
 	}
 
-	public Conteiner add(Integer row, Componente component) {
+	public Conteiner add(Integer row, IComponente component) {
 		
 		if (row < rows) {
 			this.rowCell.get(row).add(component);
@@ -50,7 +52,7 @@ public @Data class Conteiner extends Componente {
 		return this;
 	}
 	
-	public List<Componente> get(Integer row) {
+	public List<IComponente> get(Integer row) {
 		return this.rowCell.get(row);
 	}
 	
