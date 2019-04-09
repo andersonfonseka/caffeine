@@ -30,6 +30,6 @@ que já poderiam vir abstraídos do desenvolvedor pelo Caffeine:
 - simplificação na configuração e aprendizado;
 - componentes como CPF, CNPJ conforme os padrões brasileiros;
 - flexivel, sendo possível criar seus próprios componentes;
-- gratuíto, pode baixar e usar a vontade;
+- gratuíto, livre e de uso irrestrito.
 
 abraços.
