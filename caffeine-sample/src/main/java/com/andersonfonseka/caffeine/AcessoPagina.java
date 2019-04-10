@@ -23,6 +23,9 @@ import com.andersonfonseka.caffeine.util.MensagemUtil;
 public class AcessoPagina extends Pagina {
 	
 	@Inject
+	private MensagemUtil mensagemUtil;
+	
+	@Inject
 	private IComponenteFabrica componenteFabrica;
 	
 	private IEntradaEmail txtEmail;
@@ -61,7 +64,7 @@ public class AcessoPagina extends Pagina {
 
 				} else {
 
-					pageResponse.addMessage(MensagemUtil.getInstance().getMessage("INVALIDACCESS", inputText.getValor()));
+					pageResponse.addMessage(mensagemUtil.getMessage("INVALIDACCESS", inputText.getValor()));
 					pageResponse.setPageUrl(AcessoPagina.class.getName());
 					
 				}

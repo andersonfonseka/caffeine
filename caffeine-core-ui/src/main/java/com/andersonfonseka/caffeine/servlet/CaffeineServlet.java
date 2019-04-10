@@ -18,9 +18,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.jboss.weld.bean.ManagedBean;
 
+import com.andersonfonseka.caffeine.componentes.IBotao;
 import com.andersonfonseka.caffeine.componentes.IComponente;
 import com.andersonfonseka.caffeine.componentes.impl.Botao;
-import com.andersonfonseka.caffeine.componentes.impl.Componente;
 import com.andersonfonseka.caffeine.componentes.impl.Entrada;
 import com.andersonfonseka.caffeine.componentes.impl.Pagina;
 import com.andersonfonseka.caffeine.componentes.impl.Projeto;
@@ -117,7 +117,7 @@ public class CaffeineServlet extends HttpServlet {
 		
 		if (page.getMensagens().isEmpty()) {
 			
-			Botao button = (Botao) page.findById(page, op).get();
+			IBotao button = (Botao) page.findById(page, op).get();
 			Resposta pageResponse = button.doClick();
 			
 			pageResult = project.findPageById(pageResponse.pageUrl);

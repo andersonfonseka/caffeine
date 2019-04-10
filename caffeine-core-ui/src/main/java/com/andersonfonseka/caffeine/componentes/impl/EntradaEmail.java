@@ -30,7 +30,7 @@ public @Data class EntradaEmail extends Entrada implements IEntradaEmail {
 		EmailValidator emailValidator = EmailValidator.getInstance();
 		
 		if (!emailValidator.isValid(getValor())){
-			return MensagemUtil.getInstance().getMessage("EMAILFIELD", getTitulo());	
+			return new MensagemUtil().getMessage("EMAILFIELD", getTitulo());	
 		}
 		
 		return "";

@@ -8,21 +8,12 @@ public class MensagemUtil {
 
 	private Properties properties = new Properties();
 	
-	private static MensagemUtil INSTANCE;
-	
 	public MensagemUtil() {
 		try {
 			properties.load(MensagemUtil.class.getResourceAsStream("/messages.properties"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-	}
-	
-	public static MensagemUtil getInstance() {
-		if (INSTANCE == null) {
-			INSTANCE = new MensagemUtil();
-		}
-		return INSTANCE;
 	}
 	
 	public String getMessage(String key, String...args) {

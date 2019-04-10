@@ -28,7 +28,7 @@ public abstract @Data class Entrada extends Componente implements IValidador {
 	public String validate() {
 		
 		if (obrigatorio && valor.trim().length() == 0) {
-			return MensagemUtil.getInstance().getMessage("REQUIREDFIELD", getTitulo());
+			return new MensagemUtil().getMessage("REQUIREDFIELD", getTitulo());
 		}
 		return "";
 	}
