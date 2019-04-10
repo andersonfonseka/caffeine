@@ -1,9 +1,10 @@
 package com.andersonfonseka.caffeine.componentes.impl;
 
+import javax.enterprise.context.RequestScoped;
 import javax.enterprise.inject.Model;
 
-import com.andersonfonseka.caffeine.componentes.ComponenteFabrica;
 import com.andersonfonseka.caffeine.componentes.IBotao;
+import com.andersonfonseka.caffeine.componentes.IComponenteFabrica;
 import com.andersonfonseka.caffeine.componentes.IConteiner;
 import com.andersonfonseka.caffeine.componentes.IEndereco;
 import com.andersonfonseka.caffeine.componentes.IEntradaAreaTexto;
@@ -17,12 +18,14 @@ import com.andersonfonseka.caffeine.componentes.IFormulario;
 import com.andersonfonseka.caffeine.componentes.IOpcaoSelecao;
 import com.andersonfonseka.caffeine.componentes.IRotulo;
 import com.andersonfonseka.caffeine.componentes.ISelecao;
-import com.andersonfonseka.caffeine.componentes.acao.Acao;
+import com.andersonfonseka.caffeine.componentes.acao.IAcao;
 
-@Model
-public class ComponenteFabricaImpl implements ComponenteFabrica {
 
-	public IBotao criarBotao(String titulo, Acao acao, boolean imediato) {
+public class ComponenteFabricaImpl implements IComponenteFabrica {
+	
+	public ComponenteFabricaImpl() {}
+	
+	public IBotao criarBotao(String titulo, IAcao acao, boolean imediato) {
 		
 		Botao botao = new Botao();
 			  botao.setImediato(imediato);
@@ -43,7 +46,7 @@ public class ComponenteFabricaImpl implements ComponenteFabrica {
 	}
 	
 	public IEndereco criarEndereco() {
-		return new Endereco();
+		return new Endereco(this);
 	}
 
 	@Override

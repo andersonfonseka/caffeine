@@ -6,13 +6,13 @@ import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 
-import com.andersonfonseka.caffeine.componentes.ComponenteFabrica;
 import com.andersonfonseka.caffeine.componentes.IBotao;
+import com.andersonfonseka.caffeine.componentes.IComponenteFabrica;
 import com.andersonfonseka.caffeine.componentes.IConteiner;
 import com.andersonfonseka.caffeine.componentes.IEntradaEmail;
 import com.andersonfonseka.caffeine.componentes.IEntradaSenha;
 import com.andersonfonseka.caffeine.componentes.IFormulario;
-import com.andersonfonseka.caffeine.componentes.acao.Acao;
+import com.andersonfonseka.caffeine.componentes.acao.IAcao;
 import com.andersonfonseka.caffeine.componentes.impl.EntradaEmail;
 import com.andersonfonseka.caffeine.componentes.impl.EntradaSenha;
 import com.andersonfonseka.caffeine.componentes.impl.Pagina;
@@ -23,7 +23,7 @@ import com.andersonfonseka.caffeine.util.MensagemUtil;
 public class AcessoPagina extends Pagina {
 	
 	@Inject
-	private ComponenteFabrica componenteFabrica;
+	private IComponenteFabrica componenteFabrica;
 	
 	private IEntradaEmail txtEmail;
 	
@@ -46,7 +46,7 @@ public class AcessoPagina extends Pagina {
 		final IFormulario form = componenteFabrica.criarFormulario();
 		IConteiner conteiner = componenteFabrica.criarConteiner(3);
 
-		IBotao button = componenteFabrica.criarBotao("Conectar", new Acao(form) {
+		IBotao button = componenteFabrica.criarBotao("Conectar", new IAcao(form) {
 			public Resposta execute() {
 
 				Resposta pageResponse = new Resposta();

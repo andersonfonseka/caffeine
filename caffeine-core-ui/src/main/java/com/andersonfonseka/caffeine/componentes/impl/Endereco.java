@@ -1,8 +1,9 @@
 package com.andersonfonseka.caffeine.componentes.impl;
 
+import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 
-import com.andersonfonseka.caffeine.componentes.ComponenteFabrica;
+import com.andersonfonseka.caffeine.componentes.IComponenteFabrica;
 import com.andersonfonseka.caffeine.componentes.IConteiner;
 import com.andersonfonseka.caffeine.componentes.IEndereco;
 
@@ -13,9 +14,15 @@ public @Data class Endereco extends Componente implements IEndereco {
 	private IConteiner conteiner;
 	
 	@Inject
-	ComponenteFabrica componenteFabrica;
+	IComponenteFabrica componenteFabrica;
 	
-	Endereco() {
+	Endereco(IComponenteFabrica componenteFabrica) {
+		this.componenteFabrica = componenteFabrica;
+		post();
+	}
+	
+	@PostConstruct
+	public void post() {
 		
 		conteiner = componenteFabrica.criarConteiner(4);
 		
@@ -46,6 +53,7 @@ public @Data class Endereco extends Componente implements IEndereco {
 		conteiner.add(1, bairro);
 		conteiner.add(2, cidade);
 		conteiner.add(2, uf);
+		
 	}
 
 }

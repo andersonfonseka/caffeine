@@ -36,6 +36,7 @@ public abstract @Data class Pagina extends Componente implements Serializable {
 		}
 	}
 	
+	public abstract void post();
 	
 	public abstract void aoCarregar(Map<String, String> parametros);
 	

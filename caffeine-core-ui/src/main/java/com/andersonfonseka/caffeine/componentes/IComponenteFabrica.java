@@ -1,13 +1,13 @@
 package com.andersonfonseka.caffeine.componentes;
 
+import javax.enterprise.context.RequestScoped;
 import javax.enterprise.inject.Model;
 
-import com.andersonfonseka.caffeine.componentes.acao.Acao;
+import com.andersonfonseka.caffeine.componentes.acao.IAcao;
 
-@Model
-public interface ComponenteFabrica {
+public interface IComponenteFabrica {
 
-	IBotao criarBotao(String titulo, Acao acao, boolean imediato);
+	IBotao criarBotao(String titulo, IAcao acao, boolean imediato);
 	
 	IConteiner criarConteiner(Integer rows);
 	

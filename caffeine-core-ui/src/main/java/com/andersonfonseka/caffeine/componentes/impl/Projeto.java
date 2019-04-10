@@ -57,7 +57,6 @@ public abstract @Data class Projeto extends Componente {
 	        }
 
 		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 

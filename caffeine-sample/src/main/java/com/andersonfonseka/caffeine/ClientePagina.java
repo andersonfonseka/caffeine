@@ -6,19 +6,18 @@ import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 
-import com.andersonfonseka.caffeine.componentes.ComponenteFabrica;
 import com.andersonfonseka.caffeine.componentes.IBotao;
+import com.andersonfonseka.caffeine.componentes.IComponenteFabrica;
 import com.andersonfonseka.caffeine.componentes.IConteiner;
 import com.andersonfonseka.caffeine.componentes.IEndereco;
 import com.andersonfonseka.caffeine.componentes.IEntradaAreaTexto;
-import com.andersonfonseka.caffeine.componentes.IEntradaArquivo;
 import com.andersonfonseka.caffeine.componentes.IEntradaData;
 import com.andersonfonseka.caffeine.componentes.IEntradaEmail;
 import com.andersonfonseka.caffeine.componentes.IEntradaNumero;
 import com.andersonfonseka.caffeine.componentes.IEntradaTexto;
 import com.andersonfonseka.caffeine.componentes.IFormulario;
 import com.andersonfonseka.caffeine.componentes.ISelecao;
-import com.andersonfonseka.caffeine.componentes.acao.Acao;
+import com.andersonfonseka.caffeine.componentes.acao.IAcao;
 import com.andersonfonseka.caffeine.componentes.impl.Pagina;
 import com.andersonfonseka.caffeine.servlet.Resposta;
 
@@ -28,7 +27,7 @@ public class ClientePagina extends Pagina {
 	private static final long serialVersionUID = 1L;
 	
 	@Inject
-	private ComponenteFabrica componenteFabrica;
+	private IComponenteFabrica componenteFabrica;
 
 	private IEntradaEmail txtEmail;
 	
@@ -59,7 +58,7 @@ public class ClientePagina extends Pagina {
 		
 		final IConteiner conteiner = componenteFabrica.criarConteiner(6);
 		
-		IBotao btnApply = componenteFabrica.criarBotao("Enviar", new Acao(form) {
+		IBotao btnApply = componenteFabrica.criarBotao("Enviar", new IAcao(form) {
 			public Resposta execute() {
 				
 				Resposta pageResponse = new Resposta();
@@ -70,7 +69,7 @@ public class ClientePagina extends Pagina {
 		}, false);
 
 		
-		IBotao btnCancel = componenteFabrica.criarBotao("Cancelar", new Acao(form) {
+		IBotao btnCancel = componenteFabrica.criarBotao("Cancelar", new IAcao(form) {
 			public Resposta execute() {
 				
 				Resposta pageResponse = new Resposta();
