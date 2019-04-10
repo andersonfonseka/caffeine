@@ -2,76 +2,64 @@ package com.andersonfonseka.caffeine;
 
 import java.util.Map;
 
+import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
 
 import com.andersonfonseka.caffeine.componentes.ComponenteFabrica;
 import com.andersonfonseka.caffeine.componentes.IBotao;
+import com.andersonfonseka.caffeine.componentes.IConteiner;
+import com.andersonfonseka.caffeine.componentes.IEndereco;
+import com.andersonfonseka.caffeine.componentes.IEntradaAreaTexto;
+import com.andersonfonseka.caffeine.componentes.IEntradaArquivo;
+import com.andersonfonseka.caffeine.componentes.IEntradaData;
+import com.andersonfonseka.caffeine.componentes.IEntradaEmail;
+import com.andersonfonseka.caffeine.componentes.IEntradaNumero;
+import com.andersonfonseka.caffeine.componentes.IEntradaTexto;
+import com.andersonfonseka.caffeine.componentes.IFormulario;
+import com.andersonfonseka.caffeine.componentes.ISelecao;
 import com.andersonfonseka.caffeine.componentes.acao.Acao;
-import com.andersonfonseka.caffeine.componentes.impl.Botao;
-import com.andersonfonseka.caffeine.componentes.impl.Conteiner;
-import com.andersonfonseka.caffeine.componentes.impl.Endereco;
-import com.andersonfonseka.caffeine.componentes.impl.EntradaAreaTexto;
-import com.andersonfonseka.caffeine.componentes.impl.EntradaArquivo;
-import com.andersonfonseka.caffeine.componentes.impl.EntradaData;
-import com.andersonfonseka.caffeine.componentes.impl.EntradaEmail;
-import com.andersonfonseka.caffeine.componentes.impl.EntradaNumero;
-import com.andersonfonseka.caffeine.componentes.impl.EntradaTexto;
-import com.andersonfonseka.caffeine.componentes.impl.Formulario;
-import com.andersonfonseka.caffeine.componentes.impl.OpcaoSelecao;
 import com.andersonfonseka.caffeine.componentes.impl.Pagina;
-import com.andersonfonseka.caffeine.componentes.impl.Selecao;
 import com.andersonfonseka.caffeine.servlet.Resposta;
 
 @RequestScoped
 public class ClientePagina extends Pagina {
 	
 	private static final long serialVersionUID = 1L;
-
-	private EntradaEmail txtEmail = new EntradaEmail();
 	
-	public ClientePagina() {
-		
+	@Inject
+	private ComponenteFabrica componenteFabrica;
+
+	private IEntradaEmail txtEmail;
+	
+	public ClientePagina() {}
+	
+	@PostConstruct
+	public void post() {
+
 		setTitulo("Cliente");
 		
-		Formulario form = new Formulario(); 
-		EntradaTexto txtFirstName = new EntradaTexto();
-		EntradaTexto txtLastName  = new EntradaTexto();
+		txtEmail = componenteFabrica.criarEntradaEmail("Email", true);
 		
-		EntradaData txtDoB = new EntradaData();
-		Selecao selGender = new Selecao();
-		EntradaNumero txDependentes = new EntradaNumero();
-		EntradaAreaTexto txtDescription = new EntradaAreaTexto();
-		EntradaArquivo txtFile = new EntradaArquivo();
+		IFormulario form = componenteFabrica.criarFormulario(); 
+		IEntradaTexto txtFirstName = componenteFabrica.criarEntradaTexto("Primeiro nome", true);
+		IEntradaTexto txtLastName  = componenteFabrica.criarEntradaTexto("Ultimo nome", true);
 		
-		final Conteiner conteiner = new Conteiner(6);
+		IEntradaData txtDoB = componenteFabrica.criarEntradaData("Data de nascimento", "yyyy-MM-dd", true);
 		
-		txtFirstName.setTitulo("Primeiro nome");
-		txtFirstName.setObrigatorio(true);
-
-		txtLastName.setTitulo("Ultimo nome");
-		txtLastName.setObrigatorio(true);
+		ISelecao selGender = componenteFabrica.criarSelecao("Genero", true);
 		
-		txtEmail.setTitulo("E-mail");
-		txtEmail.setObrigatorio(true);
-
-		txtDoB.setTitulo("Data de nascimento");
-		txtDoB.setPattern("yyyy-MM-dd");
+		selGender.add(componenteFabrica.criarOpcaoSelecao("1", "Masculino"));
+		selGender.add(componenteFabrica.criarOpcaoSelecao("2", "Feminino"));
 		
-		txDependentes.setTitulo("Dependentes");
+		IEntradaNumero txDependentes = componenteFabrica.criarEntradaNumero("Dependentes", false);
 		
-		selGender.setObrigatorio(true);
-		selGender.setTitulo("Genero");
-		selGender.add(new OpcaoSelecao("1", "Masculino"));
-		selGender.add(new OpcaoSelecao("2", "Feminino"));
+		IEntradaAreaTexto txtDescription = componenteFabrica.criarEntradaAreaTexto("Observacoes", true, 5);
+			
 		
-		txtDescription.setObrigatorio(true);
-		txtDescription.setTitulo("Observacoes");
-		txtDescription.setRows(5);
+		final IConteiner conteiner = componenteFabrica.criarConteiner(6);
 		
-		txtFile.setObrigatorio(true);
-		txtFile.setTitulo("CV");
-		
-		IBotao btnApply = ComponenteFabrica.obterInstancia().criarBotao("Enviar", new Acao(form) {
+		IBotao btnApply = componenteFabrica.criarBotao("Enviar", new Acao(form) {
 			public Resposta execute() {
 				
 				Resposta pageResponse = new Resposta();
@@ -82,7 +70,7 @@ public class ClientePagina extends Pagina {
 		}, false);
 
 		
-		IBotao btnCancel = ComponenteFabrica.obterInstancia().criarBotao("Cancelar", new Acao(form) {
+		IBotao btnCancel = componenteFabrica.criarBotao("Cancelar", new Acao(form) {
 			public Resposta execute() {
 				
 				Resposta pageResponse = new Resposta();
@@ -92,10 +80,9 @@ public class ClientePagina extends Pagina {
 			}
 		}, true);
 		
-		
 		add(form);
 		
-		Endereco endereco = new Endereco();
+		IEndereco endereco = componenteFabrica.criarEndereco();
 		
 		form.add(conteiner);
 		
@@ -112,7 +99,7 @@ public class ClientePagina extends Pagina {
 					.add(3, btnCancel);
 		
 		form.add(endereco.getConteiner());
-		
+
 	}
 	
 

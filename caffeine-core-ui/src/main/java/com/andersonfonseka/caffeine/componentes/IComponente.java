@@ -8,5 +8,10 @@ public interface IComponente {
 	
 	List<IComponente> getComponentes();
 	
+	void setParent(String parentName);
+	
+	IComponente add(IComponente component);
+	
+	String doRender();
 	
 }

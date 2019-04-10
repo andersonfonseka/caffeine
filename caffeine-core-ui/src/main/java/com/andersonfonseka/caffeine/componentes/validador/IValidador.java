@@ -1,6 +1,6 @@
 package com.andersonfonseka.caffeine.componentes.validador;
 
-public interface Validador {
+public interface IValidador {
 	
 	public String validate();
 

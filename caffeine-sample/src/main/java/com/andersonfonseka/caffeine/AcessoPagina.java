@@ -2,15 +2,19 @@ package com.andersonfonseka.caffeine;
 
 import java.util.Map;
 
+import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
 
 import com.andersonfonseka.caffeine.componentes.ComponenteFabrica;
 import com.andersonfonseka.caffeine.componentes.IBotao;
+import com.andersonfonseka.caffeine.componentes.IConteiner;
+import com.andersonfonseka.caffeine.componentes.IEntradaEmail;
+import com.andersonfonseka.caffeine.componentes.IEntradaSenha;
+import com.andersonfonseka.caffeine.componentes.IFormulario;
 import com.andersonfonseka.caffeine.componentes.acao.Acao;
-import com.andersonfonseka.caffeine.componentes.impl.Conteiner;
 import com.andersonfonseka.caffeine.componentes.impl.EntradaEmail;
 import com.andersonfonseka.caffeine.componentes.impl.EntradaSenha;
-import com.andersonfonseka.caffeine.componentes.impl.Formulario;
 import com.andersonfonseka.caffeine.componentes.impl.Pagina;
 import com.andersonfonseka.caffeine.servlet.Resposta;
 import com.andersonfonseka.caffeine.util.MensagemUtil;
@@ -18,26 +22,31 @@ import com.andersonfonseka.caffeine.util.MensagemUtil;
 @RequestScoped
 public class AcessoPagina extends Pagina {
 	
-	private EntradaEmail txtEmail = new EntradaEmail();
+	@Inject
+	private ComponenteFabrica componenteFabrica;
 	
-	private EntradaSenha txtSenha = new EntradaSenha();
+	private IEntradaEmail txtEmail;
+	
+	private IEntradaSenha txtSenha;
 
 	private static final long serialVersionUID = 1L;
 
-	public AcessoPagina() {
+	public AcessoPagina() {}
 
+	@PostConstruct
+	public void post() {
+		
 		setTitulo("Acesso");
 		
-		final Formulario form = new Formulario();
-		Conteiner gridLayout = new Conteiner(3);
+		txtEmail = componenteFabrica.criarEntradaEmail("Email", true);
 		
-		txtEmail.setTitulo("Email");
-		txtEmail.setObrigatorio(true);
+		txtSenha = componenteFabrica.criarEntradaSenha("Senha", true);
 
-		txtSenha.setTitulo("Senha");
-		txtSenha.setObrigatorio(true);
+		
+		final IFormulario form = componenteFabrica.criarFormulario();
+		IConteiner conteiner = componenteFabrica.criarConteiner(3);
 
-		IBotao button = ComponenteFabrica.obterInstancia().criarBotao("Conectar", new Acao(form) {
+		IBotao button = componenteFabrica.criarBotao("Conectar", new Acao(form) {
 			public Resposta execute() {
 
 				Resposta pageResponse = new Resposta();
@@ -62,15 +71,16 @@ public class AcessoPagina extends Pagina {
 			}
 		}, true);
 
-		gridLayout.
+		conteiner.
 				add(0, txtEmail).
 				add(1, txtSenha).
 				add(2, button);
 
 		form.
-			add(gridLayout);
+			add(conteiner);
 
 		add(form);
+
 		
 	}
 

@@ -40,7 +40,7 @@
 #end
 
 
-#foreach($comp in $page.getComponents())
+#foreach($comp in $page.getComponentes())
 	$comp.doRender()
 #end
 </div>

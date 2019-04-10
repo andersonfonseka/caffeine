@@ -1,14 +1,23 @@
 package com.andersonfonseka.caffeine.componentes.impl;
 
+import javax.inject.Inject;
+
+import com.andersonfonseka.caffeine.componentes.ComponenteFabrica;
+import com.andersonfonseka.caffeine.componentes.IConteiner;
+import com.andersonfonseka.caffeine.componentes.IEndereco;
+
 import lombok.Data;
 
-public @Data class Endereco extends Componente {
+public @Data class Endereco extends Componente implements IEndereco {
 	
-	private Conteiner conteiner;
+	private IConteiner conteiner;
 	
-	public Endereco() {
+	@Inject
+	ComponenteFabrica componenteFabrica;
+	
+	Endereco() {
 		
-		conteiner = new Conteiner(4);
+		conteiner = componenteFabrica.criarConteiner(4);
 		
 		EntradaTexto logradouro = new EntradaTexto();
 		logradouro.setTitulo("Logradouro");

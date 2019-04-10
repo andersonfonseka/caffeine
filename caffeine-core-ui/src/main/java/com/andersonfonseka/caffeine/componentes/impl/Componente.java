@@ -31,7 +31,7 @@ public abstract class Componente implements IComponente, Serializable {
 		internalId++;
 	}
 
-	public Componente add(Componente component) {
+	public Componente add(IComponente component) {
 		this.componentes.add(component);
 		component.setParent(this.getClass().getName());
 		return this;

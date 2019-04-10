@@ -3,24 +3,21 @@ package com.andersonfonseka.caffeine.componentes.impl;
 import javax.enterprise.inject.Model;
 
 import com.andersonfonseka.caffeine.componentes.IComponente;
+import com.andersonfonseka.caffeine.componentes.ISelecao;
 
 import lombok.Data;
 
 @Model
-public @Data class Selecao extends Entrada {
+public @Data class Selecao extends Entrada implements ISelecao {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 6966867488997712703L;
-
-	private Integer size;
-	
-	private Integer maxLength;
 	
 	private OpcaoSelecao selected;
 	
-	public Selecao() {
+	Selecao() {
 		add(new OpcaoSelecao("", "Selecione..."));
 	}
 	
@@ -28,8 +25,8 @@ public @Data class Selecao extends Entrada {
 		
 		for(IComponente component: getComponentes()) {
 			OpcaoSelecao selectOption = (OpcaoSelecao) component;
-			if (selectOption.getValue().equals(getValor())) {
-				selectOption.setSelected(true);
+			if (selectOption.getValor().equals(getValor())) {
+				selectOption.setSelecionado(true);
 				this.selected = selectOption;
 				break;
 			}
@@ -45,7 +42,6 @@ public @Data class Selecao extends Entrada {
 
 	@Override
 	public void setValor(String value) {
-		// TODO Auto-generated method stub
 		super.setValor(value);
 		getSelected();
 	}

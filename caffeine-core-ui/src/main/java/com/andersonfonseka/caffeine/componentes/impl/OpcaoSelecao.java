@@ -1,26 +1,23 @@
 package com.andersonfonseka.caffeine.componentes.impl;
 
+import com.andersonfonseka.caffeine.componentes.IOpcaoSelecao;
+
 import lombok.Data;
 
-public @Data class OpcaoSelecao extends Componente {
+public @Data class OpcaoSelecao extends Componente implements IOpcaoSelecao {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -5853745218310142769L;
 
-	private String value;
+	private String valor;
 	
-	private String label;
+	private String rotulo;
 	
-	private boolean selected;
+	private boolean selecionado;
 
-	public OpcaoSelecao(String value, String label) {
+	OpcaoSelecao(String valor, String rotulo) {
 		super();
-		this.value = value;
-		this.label = label;
+		this.valor = valor;
+		this.rotulo = rotulo;
 	}
-	
-	
 	
 }

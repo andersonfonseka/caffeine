@@ -2,10 +2,12 @@ package com.andersonfonseka.caffeine.componentes.impl;
 
 import javax.enterprise.inject.Model;
 
+import com.andersonfonseka.caffeine.componentes.IEntradaArquivo;
+
 import lombok.Data;
 
 @Model
-public @Data class EntradaArquivo extends Entrada {
+public @Data class EntradaArquivo extends Entrada implements IEntradaArquivo {
 
 	/**
 	 * 
@@ -15,6 +17,8 @@ public @Data class EntradaArquivo extends Entrada {
 	private Integer size;
 	
 	private Integer maxLength;
+	
+	EntradaArquivo(){}
 	
 	@Override
 	public String getTemplate() {

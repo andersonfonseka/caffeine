@@ -8,12 +8,13 @@ import java.util.Map;
 import javax.enterprise.inject.Model;
 
 import com.andersonfonseka.caffeine.componentes.IComponente;
+import com.andersonfonseka.caffeine.componentes.IConteiner;
 
 import lombok.Data;
 import lombok.Getter;
 
 @Model
-public @Data class Conteiner extends Componente {
+public @Data class Conteiner extends Componente implements IConteiner {
 
 	/**
 	 * 
@@ -28,11 +29,11 @@ public @Data class Conteiner extends Componente {
 	
 	private @Getter Map<Integer, List<IComponente>> rowCell = new HashMap<Integer, List<IComponente>>();
 	
-	public Conteiner() {
+	Conteiner() {
 		this(1);
 	}
 	
-	public Conteiner(Integer rows) {
+	Conteiner(Integer rows) {
 		super();
 		this.rows = rows;
 			for (int i = 0; i < this.rows; i++) {
@@ -58,7 +59,7 @@ public @Data class Conteiner extends Componente {
 	
 	@Override
 	public String getTemplate() {
-		return "gridlayout";
+		return "conteiner";
 	}
 
 }

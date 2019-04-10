@@ -13,7 +13,7 @@ import org.jboss.weld.bean.ManagedBean;
 import lombok.Data;
 
 @ApplicationScoped
-public @Data class Projeto extends Componente {
+public abstract @Data class Projeto extends Componente {
 
 	/**
 	 * 

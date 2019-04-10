@@ -5,7 +5,7 @@
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
 	metadata-complete="false">
 
-	<display-name>Fastui-sample</display-name>
+	<display-name>caffeine-sample</display-name>
 
 	<listener>
 		<listener-class>org.jboss.weld.environment.servlet.Listener</listener-class>
