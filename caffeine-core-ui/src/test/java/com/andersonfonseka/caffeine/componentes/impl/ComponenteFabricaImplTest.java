@@ -1,7 +1,6 @@
 package com.andersonfonseka.caffeine.componentes.impl;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.junit.jupiter.api.Assertions.fail;
 
 import java.util.Optional;
 
@@ -39,7 +38,6 @@ class ComponenteFabricaImplTest {
 		IBotao button = componenteFabrica.criarBotao("Conectar", new IAcao(new Object()) {
 			@Override
 			public Resposta execute() {
-				// TODO Auto-generated method stub
 				return null;
 			}
 		}, true);

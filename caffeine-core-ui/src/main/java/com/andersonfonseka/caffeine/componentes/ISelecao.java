@@ -1,7 +1,6 @@
 package com.andersonfonseka.caffeine.componentes;
 
-public interface ISelecao extends IComponente {
+public interface ISelecao extends IEntrada {
 	
-	void setValor(String valor);
 
 }

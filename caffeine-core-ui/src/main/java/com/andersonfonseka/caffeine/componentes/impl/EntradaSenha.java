@@ -1,5 +1,7 @@
 package com.andersonfonseka.caffeine.componentes.impl;
 
+import java.util.List;
+
 import javax.enterprise.inject.Model;
 
 import com.andersonfonseka.caffeine.componentes.IEntradaSenha;
@@ -9,7 +11,7 @@ import lombok.EqualsAndHashCode;
 
 @Model
 @EqualsAndHashCode(callSuper=false)
-public @Data class EntradaSenha extends Entrada implements IEntradaSenha {
+@Data class EntradaSenha extends Entrada implements IEntradaSenha {
 	
 	/**
 	 * 
@@ -22,5 +24,4 @@ public @Data class EntradaSenha extends Entrada implements IEntradaSenha {
 	public String getTemplate() {
 		return "inputpassword";
 	}
-
 }

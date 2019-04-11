@@ -6,9 +6,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
-import javax.enterprise.inject.Model;
+import javax.inject.Inject;
 
 import com.andersonfonseka.caffeine.componentes.IComponente;
+import com.andersonfonseka.caffeine.componentes.IComponenteFabrica;
 import com.andersonfonseka.caffeine.componentes.IPagina;
 
 import lombok.Data;
@@ -17,10 +18,18 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(callSuper=false)
 public abstract @Data class Pagina extends Componente implements IPagina {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	private String titulo;
 
 	private List<String> mensagens = new ArrayList<String>();
-
+	
+	@Inject
+	private IComponenteFabrica componenteFabrica;
+	
 	protected Pagina() {
 		internalId = 1;
 	}
@@ -47,6 +56,10 @@ public abstract @Data class Pagina extends Componente implements IPagina {
 				if (component2 instanceof Conteiner) {
 
 					comp = obterComponenteDoConteiner(id, comp, component2);
+					
+					if (comp.isPresent()) {
+						break;
+					}
 
 				} else if (!comp.isPresent()) {
 

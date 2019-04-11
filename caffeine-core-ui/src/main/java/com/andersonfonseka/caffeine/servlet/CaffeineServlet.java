@@ -20,6 +20,7 @@ import org.jboss.weld.bean.ManagedBean;
 
 import com.andersonfonseka.caffeine.componentes.IBotao;
 import com.andersonfonseka.caffeine.componentes.IComponente;
+import com.andersonfonseka.caffeine.componentes.IEntrada;
 import com.andersonfonseka.caffeine.componentes.IPagina;
 import com.andersonfonseka.caffeine.componentes.IResposta;
 import com.andersonfonseka.caffeine.componentes.impl.Botao;
@@ -168,14 +169,19 @@ public class CaffeineServlet extends HttpServlet {
 		while(names.hasMoreElements()) {
 			
 			String id = names.nextElement();
-			log.info(id);
 			
 			if (!id.equals(OP) && !id.equals(COMPONENTID)) {
 
+				log.info(id);
+				
 				if (page.obterPorId(page, id).isPresent()) {
+					
 					IComponente component =  page.obterPorId(page, id).get();
-					if (component instanceof Entrada) {
-						Entrada input = (Entrada) component;
+					
+					log.info(component.getId() + "..." + component.getClass().getName());
+					
+					if (component instanceof IEntrada) {
+						IEntrada input = (IEntrada) component;
 						
 						for (String msg: input.validar()) {
 							page.adicionaMensagem(msg);	

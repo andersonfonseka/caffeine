@@ -15,7 +15,7 @@ import lombok.EqualsAndHashCode;
 
 @Model
 @EqualsAndHashCode(callSuper=false)
-public @Data class EntradaEmail extends Entrada implements IEntradaEmail {
+@Data class EntradaEmail extends Entrada implements IEntradaEmail {
 
 	/**
 	 * 

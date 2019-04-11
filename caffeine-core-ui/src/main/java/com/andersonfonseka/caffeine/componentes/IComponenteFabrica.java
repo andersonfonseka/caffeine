@@ -1,7 +1,5 @@
 package com.andersonfonseka.caffeine.componentes;
 
-import java.util.Optional;
-
 import com.andersonfonseka.caffeine.componentes.acao.IAcao;
 
 public interface IComponenteFabrica {

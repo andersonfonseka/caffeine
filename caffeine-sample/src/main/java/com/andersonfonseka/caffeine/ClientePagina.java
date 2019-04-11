@@ -4,10 +4,8 @@ import java.util.Map;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
-import javax.inject.Inject;
 
 import com.andersonfonseka.caffeine.componentes.IBotao;
-import com.andersonfonseka.caffeine.componentes.IComponenteFabrica;
 import com.andersonfonseka.caffeine.componentes.IConteiner;
 import com.andersonfonseka.caffeine.componentes.IEndereco;
 import com.andersonfonseka.caffeine.componentes.IEntradaAreaTexto;
@@ -26,9 +24,6 @@ public class ClientePagina extends Pagina {
 	
 	private static final long serialVersionUID = 1L;
 	
-	@Inject
-	private IComponenteFabrica componenteFabrica;
-
 	private IEntradaEmail txtEmail;
 	
 	public ClientePagina() {}
@@ -38,50 +33,51 @@ public class ClientePagina extends Pagina {
 
 		setTitulo("Cliente");
 		
-		txtEmail = componenteFabrica.criarEntradaEmail("Email", true);
+		txtEmail = getComponenteFabrica().criarEntradaEmail("Email", true);
 		
-		IFormulario form = componenteFabrica.criarFormulario(); 
-		IEntradaTexto txtFirstName = componenteFabrica.criarEntradaTexto("Primeiro nome", true);
-		IEntradaTexto txtLastName  = componenteFabrica.criarEntradaTexto("Ultimo nome", true);
+		IFormulario form = getComponenteFabrica().criarFormulario(); 
+		IEntradaTexto txtFirstName = getComponenteFabrica().criarEntradaTexto("Primeiro nome", true);
+		IEntradaTexto txtLastName  = getComponenteFabrica().criarEntradaTexto("Ultimo nome", true);
 		
-		IEntradaData txtDoB = componenteFabrica.criarEntradaData("Data de nascimento", "yyyy-MM-dd", true);
+		IEntradaData txtDoB = getComponenteFabrica().criarEntradaData("Data de nascimento", "yyyy-MM-dd", true);
 		
-		ISelecao selGender = componenteFabrica.criarSelecao("Genero", true);
+		ISelecao selGender = getComponenteFabrica().criarSelecao("Genero", true);
 		
-		selGender.adicionar(componenteFabrica.criarOpcaoSelecao("1", "Masculino"));
-		selGender.adicionar(componenteFabrica.criarOpcaoSelecao("2", "Feminino"));
+		selGender.adicionar(getComponenteFabrica().criarOpcaoSelecao("1", "Masculino"));
+		selGender.adicionar(getComponenteFabrica().criarOpcaoSelecao("2", "Feminino"));
 		
-		IEntradaNumero txDependentes = componenteFabrica.criarEntradaNumero("Dependentes", false);
+		IEntradaNumero txDependentes = getComponenteFabrica().criarEntradaNumero("Dependentes", false);
 		
-		IEntradaAreaTexto txtDescription = componenteFabrica.criarEntradaAreaTexto("Observacoes", true, 5);
+		IEntradaAreaTexto txtDescription = getComponenteFabrica().criarEntradaAreaTexto("Observacoes", true, 5);
 			
 		
-		final IConteiner conteiner = componenteFabrica.criarConteiner(6);
+		final IConteiner conteiner = getComponenteFabrica().criarConteiner(4);
 		
-		IBotao btnApply = componenteFabrica.criarBotao("Enviar", new IAcao(form) {
+		IBotao btnApply = getComponenteFabrica().criarBotao("Enviar", new IAcao(form) {
 			public IResposta execute() {
 				
-				IResposta pageResponse = componenteFabrica.criarResposta();
+				IResposta pageResponse = getComponenteFabrica().criarResposta();
 				pageResponse.setPageUrl(ClientePagina.class.getName());
 				
 				return pageResponse;
 			}
 		}, false);
-
 		
-		IBotao btnCancel = componenteFabrica.criarBotao("Cancelar", new IAcao(form) {
+		btnApply.setImediato(false);
+		
+		IBotao btnCancel = getComponenteFabrica().criarBotao("Cancelar", new IAcao(form) {
 			public IResposta execute() {
 				
-				IResposta pageResponse = componenteFabrica.criarResposta();
+				IResposta pageResponse = getComponenteFabrica().criarResposta();
 				pageResponse.setPageUrl(AcessoPagina.class.getName());
 				
 				return pageResponse;
 			}
 		}, true);
 		
-		adicionar(form);
+		btnCancel.setImediato(true);
 		
-		IEndereco endereco = componenteFabrica.criarEndereco();
+		IEndereco endereco = getComponenteFabrica().criarEndereco();
 		
 		form.adicionar(conteiner);
 		
@@ -98,6 +94,8 @@ public class ClientePagina extends Pagina {
 					.adicionar(3, btnCancel);
 		
 		form.adicionar(endereco.getConteiner());
+		
+		adicionar(form);
 
 	}
 	

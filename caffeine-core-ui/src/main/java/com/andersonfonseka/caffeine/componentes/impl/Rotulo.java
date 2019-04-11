@@ -1,7 +1,5 @@
 package com.andersonfonseka.caffeine.componentes.impl;
 
-import javax.enterprise.inject.Model;
-
 import com.andersonfonseka.caffeine.componentes.IRotulo;
 
 import lombok.Data;

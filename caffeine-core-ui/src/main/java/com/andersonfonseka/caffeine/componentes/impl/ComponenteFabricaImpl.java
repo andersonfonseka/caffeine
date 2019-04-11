@@ -30,6 +30,10 @@ import com.andersonfonseka.caffeine.componentes.acao.IAcao;
 
 public class ComponenteFabricaImpl implements IComponenteFabrica, Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Inject
 	private BeanManager beanManager;
 	

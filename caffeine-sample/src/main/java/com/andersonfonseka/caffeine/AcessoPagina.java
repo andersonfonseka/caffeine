@@ -7,15 +7,12 @@ import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 
 import com.andersonfonseka.caffeine.componentes.IBotao;
-import com.andersonfonseka.caffeine.componentes.IComponenteFabrica;
 import com.andersonfonseka.caffeine.componentes.IConteiner;
 import com.andersonfonseka.caffeine.componentes.IEntradaEmail;
 import com.andersonfonseka.caffeine.componentes.IEntradaSenha;
 import com.andersonfonseka.caffeine.componentes.IFormulario;
 import com.andersonfonseka.caffeine.componentes.IResposta;
 import com.andersonfonseka.caffeine.componentes.acao.IAcao;
-import com.andersonfonseka.caffeine.componentes.impl.EntradaEmail;
-import com.andersonfonseka.caffeine.componentes.impl.EntradaSenha;
 import com.andersonfonseka.caffeine.componentes.impl.Pagina;
 import com.andersonfonseka.caffeine.util.MensagemUtil;
 
@@ -24,9 +21,6 @@ public class AcessoPagina extends Pagina {
 	
 	@Inject
 	private MensagemUtil mensagemUtil;
-	
-	@Inject
-	private IComponenteFabrica componenteFabrica;
 	
 	private IEntradaEmail txtEmail;
 	
@@ -41,21 +35,21 @@ public class AcessoPagina extends Pagina {
 		
 		setTitulo("Acesso");
 		
-		txtEmail = componenteFabrica.criarEntradaEmail("Email", true);
+		txtEmail = getComponenteFabrica().criarEntradaEmail("Email", true);
 		
-		txtSenha = componenteFabrica.criarEntradaSenha("Senha", true);
+		txtSenha = getComponenteFabrica().criarEntradaSenha("Senha", true);
 
 		
-		final IFormulario form = componenteFabrica.criarFormulario();
-		IConteiner conteiner = componenteFabrica.criarConteiner(3);
+		final IFormulario form = getComponenteFabrica().criarFormulario();
+		IConteiner conteiner = getComponenteFabrica().criarConteiner(3);
 
-		IBotao button = componenteFabrica.criarBotao("Conectar", new IAcao(form) {
+		IBotao button = getComponenteFabrica().criarBotao("Conectar", new IAcao(form) {
 			public IResposta execute() {
 
-				IResposta pageResponse = componenteFabrica.criarResposta();
+				IResposta pageResponse = getComponenteFabrica().criarResposta();
 				
-				EntradaEmail inputText = (EntradaEmail) obterPorId(form, txtEmail.getId()).get();
-				EntradaSenha inputPassword = (EntradaSenha) obterPorId(form, txtSenha.getId()).get();
+				IEntradaEmail inputText = (IEntradaEmail) obterPorId(form, txtEmail.getId()).get();
+				IEntradaSenha inputPassword = (IEntradaSenha) obterPorId(form, txtSenha.getId()).get();
 				
 				if (inputText.getValor().equals("anderson.fonseka@gmail.com") &&
 						inputPassword.getValor().equals("123456")) {
@@ -72,6 +66,8 @@ public class AcessoPagina extends Pagina {
 				return pageResponse;
 			}
 		}, true);
+		
+		button.setImediato(false);
 
 		conteiner.
 				adicionar(0, txtEmail).

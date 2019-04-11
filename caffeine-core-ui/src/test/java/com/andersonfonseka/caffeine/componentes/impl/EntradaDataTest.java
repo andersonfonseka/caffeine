@@ -10,9 +10,7 @@ import org.jboss.weld.junit5.WeldSetup;
 import org.junit.jupiter.api.Test;
 
 import com.andersonfonseka.caffeine.componentes.IComponenteFabrica;
-import com.andersonfonseka.caffeine.componentes.IEndereco;
 import com.andersonfonseka.caffeine.componentes.IEntradaData;
-import com.andersonfonseka.caffeine.componentes.IEntradaEmail;
 
 @EnableWeld
 class EntradaDataTest {

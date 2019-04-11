@@ -1,5 +1,5 @@
 <div class="form-group">
-    <label for="$Select.getId()">$select.getTitulo()</label>
+    <label for="$select.getId()">$select.getTitulo()</label>
 
 	<select class="form-control" id="$select.getId()" name="$select.getId()">
 	#foreach($comp in $select.getComponentes())
