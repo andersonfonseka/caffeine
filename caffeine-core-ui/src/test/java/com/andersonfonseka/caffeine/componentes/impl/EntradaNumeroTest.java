@@ -34,14 +34,14 @@ class EntradaNumeroTest {
 	void testValidarEntradaNumero(IComponenteFabrica componenteFabrica) {
 		IEntradaNumero entradaNumero = componenteFabrica.criarEntradaNumero("Email", true);
 		entradaNumero.setValor("123");
-		assertTrue(entradaNumero.validar().trim().length() == 0);
+		assertTrue(entradaNumero.validar().isEmpty());
 	}
 	
 	@Test
 	void testValidarErroEntradaNumero(IComponenteFabrica componenteFabrica) {
 		IEntradaNumero entradaNumero = componenteFabrica.criarEntradaNumero("Email", true);
 		entradaNumero.setValor("AAAA");
-		assertTrue(entradaNumero.validar().trim().length() > 0);
+		assertTrue(!entradaNumero.validar().isEmpty());
 	}
 
 }

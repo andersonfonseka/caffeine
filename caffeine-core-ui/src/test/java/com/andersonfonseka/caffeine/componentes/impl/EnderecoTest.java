@@ -27,6 +27,7 @@ class EnderecoTest {
 	@Test
 	void testRenderEndereco(IComponenteFabrica componenteFabrica) {
 		IEndereco endereco = componenteFabrica.criarEndereco();
+		endereco.getTemplate();
 		assertTrue(Optional.of(endereco.getConteiner().gerarSaida()).isPresent() && endereco.getConteiner().gerarSaida().length() > 0);
 	}
 

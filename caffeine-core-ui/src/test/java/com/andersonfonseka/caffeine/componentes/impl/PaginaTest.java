@@ -2,6 +2,8 @@ package com.andersonfonseka.caffeine.componentes.impl;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import org.jboss.weld.junit5.EnableWeld;
@@ -11,7 +13,6 @@ import org.junit.jupiter.api.Test;
 
 import com.andersonfonseka.caffeine.componentes.IComponente;
 import com.andersonfonseka.caffeine.componentes.IComponenteFabrica;
-import com.andersonfonseka.caffeine.componentes.IEndereco;
 import com.andersonfonseka.caffeine.componentes.IPagina;
 import com.andersonfonseka.caffeine.componentes.impl.mock.AcessoPagina;
 
@@ -47,7 +48,14 @@ class PaginaTest {
 	@Test
 	void testMensagemComponentePagina(IComponenteFabrica componenteFabrica) {
 		IPagina pagina = componenteFabrica.criarPagina(AcessoPagina.class.getName());
-		pagina.adicionaMensagem("Hello World");
+		
+		List<String> msgs = new ArrayList<String>();
+		msgs.add("Hello World");
+		
+		for (String string : msgs) {
+			pagina.adicionaMensagem(string);	
+		}
+		
 		assertTrue(Optional.of(pagina.getMensagens()).isPresent());
 		
 	}

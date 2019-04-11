@@ -11,9 +11,11 @@ import com.andersonfonseka.caffeine.componentes.IComponente;
 import com.andersonfonseka.caffeine.componentes.IConteiner;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 
 @Model
+@EqualsAndHashCode(callSuper=false)
 public @Data class Conteiner extends Componente implements IConteiner {
 
 	/**

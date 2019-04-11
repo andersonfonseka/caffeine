@@ -16,7 +16,7 @@ import com.andersonfonseka.caffeine.componentes.acao.IAcao;
 import com.andersonfonseka.caffeine.componentes.impl.EntradaEmail;
 import com.andersonfonseka.caffeine.componentes.impl.EntradaSenha;
 import com.andersonfonseka.caffeine.componentes.impl.Pagina;
-import com.andersonfonseka.caffeine.servlet.Resposta;
+import com.andersonfonseka.caffeine.componentes.impl.Resposta;
 import com.andersonfonseka.caffeine.util.MensagemUtil;
 
 @RequestScoped

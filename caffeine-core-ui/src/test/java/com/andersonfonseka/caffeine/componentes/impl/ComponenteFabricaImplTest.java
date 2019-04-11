@@ -26,7 +26,6 @@ import com.andersonfonseka.caffeine.componentes.IOpcaoSelecao;
 import com.andersonfonseka.caffeine.componentes.IRotulo;
 import com.andersonfonseka.caffeine.componentes.ISelecao;
 import com.andersonfonseka.caffeine.componentes.acao.IAcao;
-import com.andersonfonseka.caffeine.servlet.Resposta;
 
 @EnableWeld
 class ComponenteFabricaImplTest {

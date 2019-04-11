@@ -34,7 +34,7 @@ class EntradaTextoTest {
 	void testValidarEntradaTexto(IComponenteFabrica componenteFabrica) {
 		IEntradaTexto entradaTexto = componenteFabrica.criarEntradaTexto("Texto", true);
 		entradaTexto.setValor("123");
-		assertTrue(entradaTexto.validar().trim().length() == 0);
+		assertTrue(entradaTexto.validar().isEmpty());
 	}
 
 }

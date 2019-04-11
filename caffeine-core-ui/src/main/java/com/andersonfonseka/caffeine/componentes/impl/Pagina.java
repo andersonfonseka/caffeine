@@ -1,6 +1,5 @@
 package com.andersonfonseka.caffeine.componentes.impl;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -13,11 +12,10 @@ import com.andersonfonseka.caffeine.componentes.IComponente;
 import com.andersonfonseka.caffeine.componentes.IPagina;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
-@Model
-public abstract @Data class Pagina extends Componente implements IPagina, Serializable {
-
-	private static final long serialVersionUID = 5766132691862009035L;
+@EqualsAndHashCode(callSuper=false)
+public abstract @Data class Pagina extends Componente implements IPagina {
 
 	private String titulo;
 
@@ -46,20 +44,9 @@ public abstract @Data class Pagina extends Componente implements IPagina, Serial
 
 			for (IComponente component2 : component.getComponentes()) {
 
-				if (!comp.isPresent() && component2 instanceof Conteiner) {
+				if (component2 instanceof Conteiner) {
 
-					Conteiner gridLayout = (Conteiner) component2;
-					Iterator<Integer> it = gridLayout.getRowCell().keySet().iterator();
-
-					while (it.hasNext()) {
-						Integer key = it.next();
-
-						comp = gridLayout.get(key).stream().filter(x -> x.getId().equals(id)).findFirst();
-
-						if (comp.isPresent()) {
-							break;
-						}
-					}
+					comp = obterComponenteDoConteiner(id, comp, component2);
 
 				} else if (!comp.isPresent()) {
 
@@ -72,6 +59,24 @@ public abstract @Data class Pagina extends Componente implements IPagina, Serial
 			}
 		}
 
+		return comp;
+	}
+
+	private Optional<IComponente> obterComponenteDoConteiner(String id, Optional<IComponente> comp,
+			IComponente component2) {
+
+		Conteiner gridLayout = (Conteiner) component2;
+		Iterator<Integer> it = gridLayout.getRowCell().keySet().iterator();
+
+		while (it.hasNext()) {
+			Integer key = it.next();
+
+			comp = gridLayout.get(key).stream().filter(x -> x.getId().equals(id)).findFirst();
+
+			if (comp.isPresent()) {
+				break;
+			}
+		}
 		return comp;
 	}
 

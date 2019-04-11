@@ -2,9 +2,7 @@ package com.andersonfonseka.caffeine.componentes.impl;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Optional;
 
 import com.andersonfonseka.caffeine.componentes.IComponente;
 import com.andersonfonseka.caffeine.engine.Engenho;

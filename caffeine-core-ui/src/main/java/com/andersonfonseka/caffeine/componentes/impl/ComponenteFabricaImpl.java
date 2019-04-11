@@ -1,7 +1,6 @@
 package com.andersonfonseka.caffeine.componentes.impl;
 
 import java.io.Serializable;
-import java.util.Optional;
 
 import javax.enterprise.context.spi.CreationalContext;
 import javax.enterprise.inject.spi.BeanManager;
@@ -23,6 +22,7 @@ import com.andersonfonseka.caffeine.componentes.IEntradaTexto;
 import com.andersonfonseka.caffeine.componentes.IFormulario;
 import com.andersonfonseka.caffeine.componentes.IOpcaoSelecao;
 import com.andersonfonseka.caffeine.componentes.IPagina;
+import com.andersonfonseka.caffeine.componentes.IResposta;
 import com.andersonfonseka.caffeine.componentes.IRotulo;
 import com.andersonfonseka.caffeine.componentes.ISelecao;
 import com.andersonfonseka.caffeine.componentes.acao.IAcao;
@@ -34,6 +34,10 @@ public class ComponenteFabricaImpl implements IComponenteFabrica, Serializable {
 	private BeanManager beanManager;
 	
 	public ComponenteFabricaImpl() {}
+	
+	public IResposta criarResposta() {
+		return new Resposta();
+	}
 	
 	public IBotao criarBotao(String titulo, IAcao acao, boolean imediato) {
 		

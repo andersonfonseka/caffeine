@@ -34,7 +34,7 @@ class EntradaSenhaTest {
 	void testValidarEntradaSenha(IComponenteFabrica componenteFabrica) {
 		IEntradaSenha entradaSenha = componenteFabrica.criarEntradaSenha("Senha", true);
 		entradaSenha.setValor("123");
-		assertTrue(entradaSenha.validar().trim().length() == 0);
+		assertTrue(entradaSenha.validar().isEmpty());
 	}
 	
 }

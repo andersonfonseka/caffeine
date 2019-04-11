@@ -1,9 +1,13 @@
 package com.andersonfonseka.caffeine.componentes.impl;
 
+import java.util.List;
+
 import com.andersonfonseka.caffeine.componentes.IOpcaoSelecao;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
+@EqualsAndHashCode(callSuper=false)
 public @Data class OpcaoSelecao extends Componente implements IOpcaoSelecao {
 
 	private static final long serialVersionUID = -5853745218310142769L;
@@ -21,7 +25,7 @@ public @Data class OpcaoSelecao extends Componente implements IOpcaoSelecao {
 	}
 
 	@Override
-	public String validar() {
+	public List<String> validar() {
 		return null;
 	}
 

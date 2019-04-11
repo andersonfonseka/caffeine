@@ -6,6 +6,8 @@ import com.andersonfonseka.caffeine.componentes.acao.IAcao;
 
 public interface IComponenteFabrica {
 
+	IResposta criarResposta();
+	
 	IBotao criarBotao(String titulo, IAcao acao, boolean imediato);
 	
 	IConteiner criarConteiner(Integer rows);

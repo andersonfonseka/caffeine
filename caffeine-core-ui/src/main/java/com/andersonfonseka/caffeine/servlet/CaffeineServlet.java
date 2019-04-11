@@ -21,9 +21,9 @@ import org.jboss.weld.bean.ManagedBean;
 import com.andersonfonseka.caffeine.componentes.IBotao;
 import com.andersonfonseka.caffeine.componentes.IComponente;
 import com.andersonfonseka.caffeine.componentes.IPagina;
+import com.andersonfonseka.caffeine.componentes.IResposta;
 import com.andersonfonseka.caffeine.componentes.impl.Botao;
 import com.andersonfonseka.caffeine.componentes.impl.Entrada;
-import com.andersonfonseka.caffeine.componentes.impl.Pagina;
 import com.andersonfonseka.caffeine.componentes.impl.Projeto;
 
 public class CaffeineServlet extends HttpServlet {
@@ -62,7 +62,7 @@ public class CaffeineServlet extends HttpServlet {
 			
 		Projeto project = null; 
 		
-		project = startProject(req, project);
+		project = iniciarProjeto(req, project);
 		
 		if (componentId != null) {
 		
@@ -74,19 +74,19 @@ public class CaffeineServlet extends HttpServlet {
 			Botao button = (Botao) page.obterPorId(page, op).get();
 			
 			if (!button.isImediato()) {
-				updateModel(req, page);
-				applyValidation(req, page);
+				atualizarModelo(req, page);
+				aplicarValidacao(req, page);
 			}
 
-			page = executeAction(req, project, page, op);
-			printPage(resp, page);	
+			page = executarAcao(req, project, page, op);
+			renderizarPagina(resp, page);	
 
 		} else {
-			printInitialPage(resp, project);
+			renderizarPaginaInicial(resp, project);
 		}
 	}
 
-	private Projeto startProject(HttpServletRequest req, Projeto project) {
+	private Projeto iniciarProjeto(HttpServletRequest req, Projeto project) {
 		if (req.getServletContext().getAttribute(PROJECT) == null)  {
 			
 		    try {
@@ -112,17 +112,17 @@ public class CaffeineServlet extends HttpServlet {
 		return project;
 	}
 
-	private IPagina executeAction(HttpServletRequest req, Projeto project, IPagina page, String op) {
+	private IPagina executarAcao(HttpServletRequest req, Projeto project, IPagina page, String op) {
 		
 		IPagina pageResult = page;
 		
 		if (page.getMensagens().isEmpty()) {
 			
 			IBotao button = (Botao) page.obterPorId(page, op).get();
-			Resposta pageResponse = button.doClick();
+			IResposta pageResponse = button.doClick();
 			
-			pageResult = project.obterPaginaPeloId(pageResponse.pageUrl);
-			pageResult.setMensagens(pageResponse.getMessages());
+			pageResult = project.obterPaginaPeloId(pageResponse.getPageUrl());
+			pageResult.setMensagens(pageResponse.getMensagens());
 			pageResult.aoCarregar(obterParametros(req));
 			
 		}
@@ -130,7 +130,7 @@ public class CaffeineServlet extends HttpServlet {
 		return pageResult;
 	}
 
-	private void updateModel(HttpServletRequest req, IPagina page) {
+	private void atualizarModelo(HttpServletRequest req, IPagina page) {
 		Enumeration<String> names = req.getParameterNames();
 		while(names.hasMoreElements()) {
 			
@@ -163,7 +163,7 @@ public class CaffeineServlet extends HttpServlet {
 		return results;
 	}
 	
-	private void applyValidation(HttpServletRequest req, IPagina page) {
+	private void aplicarValidacao(HttpServletRequest req, IPagina page) {
 		Enumeration<String> names = req.getParameterNames();
 		while(names.hasMoreElements()) {
 			
@@ -176,26 +176,29 @@ public class CaffeineServlet extends HttpServlet {
 					IComponente component =  page.obterPorId(page, id).get();
 					if (component instanceof Entrada) {
 						Entrada input = (Entrada) component;
-						page.adicionaMensagem(input.validar());
+						
+						for (String msg: input.validar()) {
+							page.adicionaMensagem(msg);	
+						}
 					}
 				}
 			}
 		}
 	}
 
-	private void printPage(HttpServletResponse resp, IPagina page) throws IOException {
+	private void renderizarPagina(HttpServletResponse resp, IPagina page) throws IOException {
 		PrintWriter pw = new PrintWriter(resp.getOutputStream());
 		pw.write(page.gerarSaida());
 		pw.close();
 	}
 
-	private void printInitialPage(HttpServletResponse resp, Projeto project) throws IOException {
+	private void renderizarPaginaInicial(HttpServletResponse resp, Projeto project) throws IOException {
 		PrintWriter pw = new PrintWriter(resp.getOutputStream());
 		
-		IPagina initialPage = project.getPaginaInicial(); 
+		IPagina paginaInicial = project.getPaginaInicial(); 
 		
-		initialPage.aoCarregar(null);
-		pw.write(initialPage.gerarSaida());
+		paginaInicial.aoCarregar(null);
+		pw.write(paginaInicial.gerarSaida());
 		pw.close();
 	}
 	

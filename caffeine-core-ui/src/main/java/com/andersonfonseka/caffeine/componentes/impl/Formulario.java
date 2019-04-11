@@ -5,8 +5,10 @@ import javax.enterprise.inject.Model;
 import com.andersonfonseka.caffeine.componentes.IFormulario;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 @Model
+@EqualsAndHashCode(callSuper=false)
 public @Data class Formulario extends Componente implements IFormulario {
 
 	/**

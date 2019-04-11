@@ -12,11 +12,11 @@ import com.andersonfonseka.caffeine.componentes.IConteiner;
 import com.andersonfonseka.caffeine.componentes.IEntradaEmail;
 import com.andersonfonseka.caffeine.componentes.IEntradaSenha;
 import com.andersonfonseka.caffeine.componentes.IFormulario;
+import com.andersonfonseka.caffeine.componentes.IResposta;
 import com.andersonfonseka.caffeine.componentes.acao.IAcao;
 import com.andersonfonseka.caffeine.componentes.impl.EntradaEmail;
 import com.andersonfonseka.caffeine.componentes.impl.EntradaSenha;
 import com.andersonfonseka.caffeine.componentes.impl.Pagina;
-import com.andersonfonseka.caffeine.servlet.Resposta;
 import com.andersonfonseka.caffeine.util.MensagemUtil;
 
 @RequestScoped
@@ -50,9 +50,9 @@ public class AcessoPagina extends Pagina {
 		IConteiner conteiner = componenteFabrica.criarConteiner(3);
 
 		IBotao button = componenteFabrica.criarBotao("Conectar", new IAcao(form) {
-			public Resposta execute() {
+			public IResposta execute() {
 
-				Resposta pageResponse = new Resposta();
+				IResposta pageResponse = componenteFabrica.criarResposta();
 				
 				EntradaEmail inputText = (EntradaEmail) obterPorId(form, txtEmail.getId()).get();
 				EntradaSenha inputPassword = (EntradaSenha) obterPorId(form, txtSenha.getId()).get();

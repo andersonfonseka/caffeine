@@ -16,10 +16,10 @@ import com.andersonfonseka.caffeine.componentes.IEntradaEmail;
 import com.andersonfonseka.caffeine.componentes.IEntradaNumero;
 import com.andersonfonseka.caffeine.componentes.IEntradaTexto;
 import com.andersonfonseka.caffeine.componentes.IFormulario;
+import com.andersonfonseka.caffeine.componentes.IResposta;
 import com.andersonfonseka.caffeine.componentes.ISelecao;
 import com.andersonfonseka.caffeine.componentes.acao.IAcao;
 import com.andersonfonseka.caffeine.componentes.impl.Pagina;
-import com.andersonfonseka.caffeine.servlet.Resposta;
 
 @RequestScoped
 public class ClientePagina extends Pagina {
@@ -59,9 +59,9 @@ public class ClientePagina extends Pagina {
 		final IConteiner conteiner = componenteFabrica.criarConteiner(6);
 		
 		IBotao btnApply = componenteFabrica.criarBotao("Enviar", new IAcao(form) {
-			public Resposta execute() {
+			public IResposta execute() {
 				
-				Resposta pageResponse = new Resposta();
+				IResposta pageResponse = componenteFabrica.criarResposta();
 				pageResponse.setPageUrl(ClientePagina.class.getName());
 				
 				return pageResponse;
@@ -70,9 +70,9 @@ public class ClientePagina extends Pagina {
 
 		
 		IBotao btnCancel = componenteFabrica.criarBotao("Cancelar", new IAcao(form) {
-			public Resposta execute() {
+			public IResposta execute() {
 				
-				Resposta pageResponse = new Resposta();
+				IResposta pageResponse = componenteFabrica.criarResposta();
 				pageResponse.setPageUrl(AcessoPagina.class.getName());
 				
 				return pageResponse;

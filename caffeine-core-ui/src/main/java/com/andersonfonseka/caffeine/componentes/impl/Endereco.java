@@ -6,14 +6,30 @@ import javax.inject.Inject;
 import com.andersonfonseka.caffeine.componentes.IComponenteFabrica;
 import com.andersonfonseka.caffeine.componentes.IConteiner;
 import com.andersonfonseka.caffeine.componentes.IEndereco;
+import com.andersonfonseka.caffeine.componentes.IEntradaNumero;
+import com.andersonfonseka.caffeine.componentes.IEntradaTexto;
+import com.andersonfonseka.caffeine.componentes.ISelecao;
 
+import lombok.AccessLevel;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
 
+@EqualsAndHashCode(callSuper=false)
 public @Data class Endereco extends Componente implements IEndereco {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	@Getter
 	private IConteiner conteiner;
 	
 	@Inject
+	@Getter(AccessLevel.NONE)
+	@Setter(AccessLevel.NONE)
 	IComponenteFabrica componenteFabrica;
 	
 	Endereco(IComponenteFabrica componenteFabrica) {
@@ -26,26 +42,20 @@ public @Data class Endereco extends Componente implements IEndereco {
 		
 		conteiner = componenteFabrica.criarConteiner(4);
 		
-		EntradaTexto logradouro = new EntradaTexto();
-		logradouro.setTitulo("Logradouro");
+		IEntradaTexto logradouro = componenteFabrica.criarEntradaTexto("Logradouro", true);
 		
-		EntradaNumero numero = new EntradaNumero();
-		numero.setTitulo("Numero");
+		IEntradaNumero numero = componenteFabrica.criarEntradaNumero("Numero", false);
 
-		EntradaTexto complemento = new EntradaTexto();
-		complemento.setTitulo("Complemento");
+		IEntradaTexto complemento = componenteFabrica.criarEntradaTexto("Complemento", false);
 		
-		EntradaTexto bairro = new EntradaTexto();
-		bairro.setTitulo("Bairro");
+		IEntradaTexto bairro = componenteFabrica.criarEntradaTexto("Bairro", false);
 		
-		EntradaTexto cidade = new EntradaTexto();
-		cidade.setTitulo("Cidade");
+		IEntradaTexto cidade = componenteFabrica.criarEntradaTexto("Cidade", true);
 		
-		Selecao uf = new Selecao();
-		uf.setTitulo("UF");
-		uf.adicionar(new OpcaoSelecao("1", "PE"));
-		uf.adicionar(new OpcaoSelecao("2", "SP"));
-		uf.adicionar(new OpcaoSelecao("3", "RJ"));
+		ISelecao uf = componenteFabrica.criarSelecao("UF", true);
+		uf.adicionar(componenteFabrica.criarOpcaoSelecao("1", "PE"));
+		uf.adicionar(componenteFabrica.criarOpcaoSelecao("2", "SP"));
+		uf.adicionar(componenteFabrica.criarOpcaoSelecao("3", "RJ"));
 		
 		conteiner.adicionar(0, logradouro);
 		conteiner.adicionar(0, numero);
@@ -58,7 +68,7 @@ public @Data class Endereco extends Componente implements IEndereco {
 
 	@Override
 	public String getTemplate() {
-		return null;
+		return conteiner.getTemplate();
 	}
 
 }

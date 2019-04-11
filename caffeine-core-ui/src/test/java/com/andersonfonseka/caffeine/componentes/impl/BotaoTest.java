@@ -13,7 +13,6 @@ import org.junit.jupiter.api.Test;
 import com.andersonfonseka.caffeine.componentes.IBotao;
 import com.andersonfonseka.caffeine.componentes.IComponenteFabrica;
 import com.andersonfonseka.caffeine.componentes.acao.IAcao;
-import com.andersonfonseka.caffeine.servlet.Resposta;
 
 @EnableWeld
 class BotaoTest {

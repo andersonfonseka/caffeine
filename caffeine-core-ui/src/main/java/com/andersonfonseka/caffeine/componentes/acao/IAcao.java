@@ -1,6 +1,6 @@
 package com.andersonfonseka.caffeine.componentes.acao;
 
-import com.andersonfonseka.caffeine.servlet.Resposta;
+import com.andersonfonseka.caffeine.componentes.IResposta;
 
 import lombok.Getter;
 
@@ -13,6 +13,6 @@ public abstract class IAcao {
 		this.source = source;
 	}
 	
-	public abstract Resposta execute();
+	public abstract IResposta execute();
 
 }

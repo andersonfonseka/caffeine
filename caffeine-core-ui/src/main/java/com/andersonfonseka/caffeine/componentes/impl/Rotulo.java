@@ -5,8 +5,9 @@ import javax.enterprise.inject.Model;
 import com.andersonfonseka.caffeine.componentes.IRotulo;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
-@Model
+@EqualsAndHashCode(callSuper=false)
 public @Data class Rotulo extends Componente implements IRotulo {
 	/**
 	 * 
