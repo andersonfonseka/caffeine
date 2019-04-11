@@ -3,7 +3,7 @@
 
 	#foreach($comp in $conteiner.get($row))
 	<div class="col">
-		$comp.doRender()
+		$comp.gerarSaida()
 	</div>
 	#end
 

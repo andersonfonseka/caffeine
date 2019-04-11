@@ -1,8 +1,9 @@
 package com.andersonfonseka.caffeine.componentes.impl;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.Optional;
+import java.util.logging.Logger;
 
 import org.jboss.weld.junit5.EnableWeld;
 import org.jboss.weld.junit5.WeldInitiator;
@@ -18,7 +19,7 @@ import com.andersonfonseka.caffeine.servlet.Resposta;
 class BotaoTest {
 
 	@WeldSetup
-	public WeldInitiator weld = WeldInitiator.of(IComponenteFabrica.class).of(ComponenteFabricaImpl.class);
+	public static WeldInitiator weld = WeldInitiator.of(ComponenteFabricaImpl.class);
 
 	@Test
 	void testCriarBotao(IComponenteFabrica componenteFabrica) {
@@ -26,7 +27,9 @@ class BotaoTest {
 		IBotao button = componenteFabrica.criarBotao("Conectar", new IAcao(new Object()) {
 			@Override
 			public Resposta execute() {
-				return new Resposta();
+				Resposta resp = new Resposta();
+				resp.adicionar("blalablbalbalbalba");
+				return resp;
 			}
 		}, true);
 
@@ -40,7 +43,13 @@ class BotaoTest {
 		IBotao button = componenteFabrica.criarBotao("Conectar", new IAcao(new Object()) {
 			@Override
 			public Resposta execute() {
-				return new Resposta();
+				Resposta resp = new Resposta();
+				resp.adicionar("blalablbalbalbalba");
+				resp.setPageUrl("");
+				
+				Logger.getAnonymousLogger().fine(getSource().toString());
+				
+				return resp;
 			}
 		}, true);
 		
@@ -58,7 +67,7 @@ class BotaoTest {
 			}
 		}, true);
 		
-		assertTrue(Optional.of(button.doRender()).isPresent() && button.doRender().length() > 0);
+		assertTrue(Optional.of(button.gerarSaida()).isPresent() && button.gerarSaida().length() > 0);
 
 	}
 

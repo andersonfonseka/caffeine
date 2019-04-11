@@ -25,8 +25,7 @@ public abstract @Data class Entrada extends Componente implements IValidador {
 	private Integer comprimentoMaximo;
 
 	@Override
-	public String validate() {
-		
+	public String validar() {
 		if (obrigatorio && valor.trim().length() == 0) {
 			return new MensagemUtil().getMessage("REQUIREDFIELD", getTitulo());
 		}

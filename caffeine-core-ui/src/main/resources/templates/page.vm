@@ -41,7 +41,7 @@
 
 
 #foreach($comp in $page.getComponentes())
-	$comp.doRender()
+	$comp.gerarSaida()
 #end
 </div>
 

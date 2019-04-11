@@ -42,7 +42,7 @@ public @Data class Conteiner extends Componente implements IConteiner {
 			}
 	}
 
-	public Conteiner add(Integer row, IComponente component) {
+	public Conteiner adicionar(Integer row, IComponente component) {
 		
 		if (row < rows) {
 			this.rowCell.get(row).add(component);

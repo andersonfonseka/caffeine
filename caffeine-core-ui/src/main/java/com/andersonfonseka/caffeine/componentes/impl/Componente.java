@@ -22,70 +22,27 @@ public abstract class Componente implements IComponente, Serializable {
 	
 	private @Setter @Getter String parent;
 	
-	private @Getter String template;
-	
 	private @Getter List<IComponente> componentes = new ArrayList<IComponente>();
 	
-	public Componente() {
+	Componente() {
 		this.id = this.getClass().getSimpleName() + internalId;
 		internalId++;
 	}
 
-	public Componente add(IComponente component) {
+	public Componente adicionar(IComponente component) {
 		this.componentes.add(component);
 		component.setParent(this.getClass().getName());
 		return this;
 	}
 	
-	public Optional<IComponente> findById(IComponente component, String id) {
+	public String gerarSaida() {
 		
-		Optional<IComponente> comp = component.getComponentes().stream()
-				.filter(x -> x.getId().equals(id))
-				.findFirst();
-		
-		if (!comp.isPresent()) {
-			
-			for (IComponente component2 : component.getComponentes()) {
-
-				if (!comp.isPresent() && component2 instanceof Conteiner) {
-					
-					Conteiner gridLayout = (Conteiner) component2;
-					Iterator<Integer>  it = gridLayout.getRowCell().keySet().iterator();
-					
-					while(it.hasNext()) {
-						Integer key = it.next();
-						
-						comp = gridLayout.get(key).stream()
-								.filter(x -> x.getId().equals(id))
-								.findFirst();
-						
-						if (comp.isPresent()) {
-							break;
-						}
-					}
-				
-				} else if (!comp.isPresent()) {
-
-					comp = component.getComponentes().stream()
-							.filter(x -> x.getId().equals(id))
-							.findFirst();
-					
-					if (!comp.isPresent()) {
-						comp = findById(component2, id);
-					}
-				}
-			}
-		}
-		
-		return comp;
-	}
-	
-	public String doRender() {
-		
-		Engenho engine = new Engenho(this.getTemplate() + ".vm");
+		Engenho engine = new Engenho(getTemplate() + ".vm");
 		engine.putOnContext(this.getTemplate(), this);
 		return engine.execute();
 		
 	}
+
+	public abstract String getTemplate();
 	
 }

@@ -1,7 +1,13 @@
 package com.andersonfonseka.caffeine.componentes.impl;
 
-import javax.enterprise.context.RequestScoped;
-import javax.enterprise.inject.Model;
+import java.io.Serializable;
+import java.util.Optional;
+
+import javax.enterprise.context.spi.CreationalContext;
+import javax.enterprise.inject.spi.BeanManager;
+import javax.inject.Inject;
+
+import org.jboss.weld.bean.ManagedBean;
 
 import com.andersonfonseka.caffeine.componentes.IBotao;
 import com.andersonfonseka.caffeine.componentes.IComponenteFabrica;
@@ -16,12 +22,16 @@ import com.andersonfonseka.caffeine.componentes.IEntradaSenha;
 import com.andersonfonseka.caffeine.componentes.IEntradaTexto;
 import com.andersonfonseka.caffeine.componentes.IFormulario;
 import com.andersonfonseka.caffeine.componentes.IOpcaoSelecao;
+import com.andersonfonseka.caffeine.componentes.IPagina;
 import com.andersonfonseka.caffeine.componentes.IRotulo;
 import com.andersonfonseka.caffeine.componentes.ISelecao;
 import com.andersonfonseka.caffeine.componentes.acao.IAcao;
 
 
-public class ComponenteFabricaImpl implements IComponenteFabrica {
+public class ComponenteFabricaImpl implements IComponenteFabrica, Serializable {
+	
+	@Inject
+	private BeanManager beanManager;
 	
 	public ComponenteFabricaImpl() {}
 	
@@ -144,6 +154,28 @@ public class ComponenteFabricaImpl implements IComponenteFabrica {
 	public IOpcaoSelecao criarOpcaoSelecao(String valor, String rotulo) {
 		OpcaoSelecao opcaoSelecao = new OpcaoSelecao(valor, rotulo);
 		return opcaoSelecao;
+	}
+
+	@Override
+	public IPagina criarPagina(String id) {
+
+		IPagina page = null;
+
+		try {
+			
+			if (!beanManager.getBeans(Class.forName(id)).isEmpty()) {
+
+				ManagedBean bean = (ManagedBean) beanManager.getBeans(Class.forName(id)).iterator().next();
+		    	
+	            CreationalContext<?> creationalContext = beanManager.createCreationalContext(bean);
+                page = (IPagina) bean.create(creationalContext);
+			}
+
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+
+		return page;
 	}
 	
 }

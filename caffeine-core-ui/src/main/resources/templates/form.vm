@@ -12,6 +12,6 @@
 <input type="hidden" name="componentId" value="$form.getParent()">
 
 #foreach($comp in $form.getComponentes())
-$comp.doRender()
+$comp.gerarSaida()
 #end
 </form>

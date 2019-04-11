@@ -1,7 +1,6 @@
 package com.andersonfonseka.caffeine.componentes;
 
-import javax.enterprise.context.RequestScoped;
-import javax.enterprise.inject.Model;
+import java.util.Optional;
 
 import com.andersonfonseka.caffeine.componentes.acao.IAcao;
 
@@ -12,6 +11,8 @@ public interface IComponenteFabrica {
 	IConteiner criarConteiner(Integer rows);
 	
 	IFormulario criarFormulario();
+	
+	IPagina criarPagina(String id);
 	
 	IEndereco criarEndereco();
 	

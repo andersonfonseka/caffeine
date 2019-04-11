@@ -19,5 +19,15 @@ public @Data class OpcaoSelecao extends Componente implements IOpcaoSelecao {
 		this.valor = valor;
 		this.rotulo = rotulo;
 	}
+
+	@Override
+	public String validar() {
+		return null;
+	}
+
+	@Override
+	public String getTemplate() {
+		return null;
+	}
 	
 }

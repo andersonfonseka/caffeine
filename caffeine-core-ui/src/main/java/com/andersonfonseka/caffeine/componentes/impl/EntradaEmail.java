@@ -25,7 +25,7 @@ public @Data class EntradaEmail extends Entrada implements IEntradaEmail {
 	}
 	
 	@Override
-	public String validate() {
+	public String validar() {
 		
 		EmailValidator emailValidator = EmailValidator.getInstance();
 		

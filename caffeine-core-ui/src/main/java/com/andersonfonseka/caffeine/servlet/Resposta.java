@@ -11,7 +11,7 @@ public @Data class Resposta {
 	
 	String pageUrl;
 
-	public void addMessage(String message) {
+	public void adicionar(String message) {
 		this.messages.add(message);
 	}
 	

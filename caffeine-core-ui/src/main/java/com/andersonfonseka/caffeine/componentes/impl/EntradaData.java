@@ -26,7 +26,7 @@ public @Data class EntradaData extends Entrada implements IEntradaData {
 	}
 	
 	@Override
-	public String validate() {
+	public String validar() {
 		
 		DateValidator dateValidator = DateValidator.getInstance();
 		

@@ -20,6 +20,7 @@ import org.jboss.weld.bean.ManagedBean;
 
 import com.andersonfonseka.caffeine.componentes.IBotao;
 import com.andersonfonseka.caffeine.componentes.IComponente;
+import com.andersonfonseka.caffeine.componentes.IPagina;
 import com.andersonfonseka.caffeine.componentes.impl.Botao;
 import com.andersonfonseka.caffeine.componentes.impl.Entrada;
 import com.andersonfonseka.caffeine.componentes.impl.Pagina;
@@ -65,12 +66,12 @@ public class CaffeineServlet extends HttpServlet {
 		
 		if (componentId != null) {
 		
-			Pagina page = (Pagina) project.findPageById(componentId);
-			page.aoCarregar(getParameters(req, page));
+			IPagina page = project.obterPaginaPeloId(componentId);
+			page.aoCarregar(obterParametros(req));
 			
 			log.info(page.toString());
 			
-			Botao button = (Botao) page.findById(page, op).get();
+			Botao button = (Botao) page.obterPorId(page, op).get();
 			
 			if (!button.isImediato()) {
 				updateModel(req, page);
@@ -111,25 +112,25 @@ public class CaffeineServlet extends HttpServlet {
 		return project;
 	}
 
-	private Pagina executeAction(HttpServletRequest req, Projeto project, Pagina page, String op) {
+	private IPagina executeAction(HttpServletRequest req, Projeto project, IPagina page, String op) {
 		
-		Pagina pageResult = page;
+		IPagina pageResult = page;
 		
 		if (page.getMensagens().isEmpty()) {
 			
-			IBotao button = (Botao) page.findById(page, op).get();
+			IBotao button = (Botao) page.obterPorId(page, op).get();
 			Resposta pageResponse = button.doClick();
 			
-			pageResult = project.findPageById(pageResponse.pageUrl);
+			pageResult = project.obterPaginaPeloId(pageResponse.pageUrl);
 			pageResult.setMensagens(pageResponse.getMessages());
-			pageResult.aoCarregar(getParameters(req, page));
+			pageResult.aoCarregar(obterParametros(req));
 			
 		}
 
 		return pageResult;
 	}
 
-	private void updateModel(HttpServletRequest req, Pagina page) {
+	private void updateModel(HttpServletRequest req, IPagina page) {
 		Enumeration<String> names = req.getParameterNames();
 		while(names.hasMoreElements()) {
 			
@@ -138,8 +139,8 @@ public class CaffeineServlet extends HttpServlet {
 			
 			if (!id.equals(OP) && !id.equals(COMPONENTID)) {
 				
-				if (page.findById(page, id).isPresent()) {
-					IComponente component =  page.findById(page, id).get();
+				if (page.obterPorId(page, id).isPresent()) {
+					IComponente component =  page.obterPorId(page, id).get();
 					if (component instanceof Entrada) {
 						Entrada input = (Entrada) component;
 						input.setValor(req.getParameter(id));
@@ -149,7 +150,7 @@ public class CaffeineServlet extends HttpServlet {
 		}
 	}
 	
-	private Map<String, String> getParameters(HttpServletRequest req, Pagina page) {
+	private Map<String, String> obterParametros(HttpServletRequest req) {
 
 		Map<String, String> results = new HashMap<String, String>();
 		Enumeration<String> names = req.getParameterNames();
@@ -162,7 +163,7 @@ public class CaffeineServlet extends HttpServlet {
 		return results;
 	}
 	
-	private void applyValidation(HttpServletRequest req, Pagina page) {
+	private void applyValidation(HttpServletRequest req, IPagina page) {
 		Enumeration<String> names = req.getParameterNames();
 		while(names.hasMoreElements()) {
 			
@@ -171,30 +172,30 @@ public class CaffeineServlet extends HttpServlet {
 			
 			if (!id.equals(OP) && !id.equals(COMPONENTID)) {
 
-				if (page.findById(page, id).isPresent()) {
-					IComponente component =  page.findById(page, id).get();
+				if (page.obterPorId(page, id).isPresent()) {
+					IComponente component =  page.obterPorId(page, id).get();
 					if (component instanceof Entrada) {
 						Entrada input = (Entrada) component;
-						page.adicionaMensagem(input.validate());
+						page.adicionaMensagem(input.validar());
 					}
 				}
 			}
 		}
 	}
 
-	private void printPage(HttpServletResponse resp, Pagina page) throws IOException {
+	private void printPage(HttpServletResponse resp, IPagina page) throws IOException {
 		PrintWriter pw = new PrintWriter(resp.getOutputStream());
-		pw.write(page.doRender());
+		pw.write(page.gerarSaida());
 		pw.close();
 	}
 
 	private void printInitialPage(HttpServletResponse resp, Projeto project) throws IOException {
 		PrintWriter pw = new PrintWriter(resp.getOutputStream());
 		
-		Pagina initialPage = project.getInitialPage(); 
+		IPagina initialPage = project.getPaginaInicial(); 
 		
 		initialPage.aoCarregar(null);
-		pw.write(initialPage.doRender());
+		pw.write(initialPage.gerarSaida());
 		pw.close();
 	}
 	

@@ -43,17 +43,22 @@ public @Data class Endereco extends Componente implements IEndereco {
 		
 		Selecao uf = new Selecao();
 		uf.setTitulo("UF");
-		uf.add(new OpcaoSelecao("1", "PE"));
-		uf.add(new OpcaoSelecao("2", "SP"));
-		uf.add(new OpcaoSelecao("3", "RJ"));
+		uf.adicionar(new OpcaoSelecao("1", "PE"));
+		uf.adicionar(new OpcaoSelecao("2", "SP"));
+		uf.adicionar(new OpcaoSelecao("3", "RJ"));
 		
-		conteiner.add(0, logradouro);
-		conteiner.add(0, numero);
-		conteiner.add(1, complemento);
-		conteiner.add(1, bairro);
-		conteiner.add(2, cidade);
-		conteiner.add(2, uf);
+		conteiner.adicionar(0, logradouro);
+		conteiner.adicionar(0, numero);
+		conteiner.adicionar(1, complemento);
+		conteiner.adicionar(1, bairro);
+		conteiner.adicionar(2, cidade);
+		conteiner.adicionar(2, uf);
 		
+	}
+
+	@Override
+	public String getTemplate() {
+		return null;
 	}
 
 }

@@ -32,7 +32,7 @@ import com.andersonfonseka.caffeine.servlet.Resposta;
 class ComponenteFabricaImplTest {
 
 	@WeldSetup
-	public WeldInitiator weld = WeldInitiator.of(IComponenteFabrica.class).of(ComponenteFabricaImpl.class);
+	public static WeldInitiator weld = WeldInitiator.of(ComponenteFabricaImpl.class);
 
 	@Test
 	void testCriarBotao(IComponenteFabrica componenteFabrica) {
@@ -119,8 +119,8 @@ class ComponenteFabricaImplTest {
 	void testCriarSelecao(IComponenteFabrica componenteFabrica) {
 
 		ISelecao selecao = componenteFabrica.criarSelecao("Genero", true);
-		selecao.add(componenteFabrica.criarOpcaoSelecao("1", "Masculino"));
-		selecao.add(componenteFabrica.criarOpcaoSelecao("2", "Feminino"));
+		selecao.adicionar(componenteFabrica.criarOpcaoSelecao("1", "Masculino"));
+		selecao.adicionar(componenteFabrica.criarOpcaoSelecao("2", "Feminino"));
 		assertTrue(Optional.of(selecao).isPresent());
 	}
 

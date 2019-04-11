@@ -16,7 +16,7 @@ import com.andersonfonseka.caffeine.componentes.IConteiner;
 class ConteinerTest {
 
 	@WeldSetup
-	public WeldInitiator weld = WeldInitiator.of(IComponenteFabrica.class).of(ComponenteFabricaImpl.class);
+	public static WeldInitiator weld = WeldInitiator.of(ComponenteFabricaImpl.class);
 	
 	@Test
 	void testCriarConteiner(IComponenteFabrica componenteFabrica) {
@@ -27,7 +27,7 @@ class ConteinerTest {
 	@Test
 	void testRenderConteiner(IComponenteFabrica componenteFabrica) {
 		IConteiner conteiner = componenteFabrica.criarConteiner(1);
-		assertTrue(Optional.of(conteiner.doRender()).isPresent() && conteiner.doRender().length() > 0);
+		assertTrue(Optional.of(conteiner.gerarSaida()).isPresent() && conteiner.gerarSaida().length() > 0);
 	}
 
 }

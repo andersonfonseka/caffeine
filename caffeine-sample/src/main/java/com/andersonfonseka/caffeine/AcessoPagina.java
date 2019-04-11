@@ -54,35 +54,34 @@ public class AcessoPagina extends Pagina {
 
 				Resposta pageResponse = new Resposta();
 				
-				EntradaEmail inputText = (EntradaEmail) findById(form, txtEmail.getId()).get();
-				EntradaSenha inputPassword = (EntradaSenha) findById(form, txtSenha.getId()).get();
+				EntradaEmail inputText = (EntradaEmail) obterPorId(form, txtEmail.getId()).get();
+				EntradaSenha inputPassword = (EntradaSenha) obterPorId(form, txtSenha.getId()).get();
 				
 				if (inputText.getValor().equals("anderson.fonseka@gmail.com") &&
 						inputPassword.getValor().equals("123456")) {
 
 					pageResponse.setPageUrl(ClientePagina.class.getName());
-
-				} else {
-
-					pageResponse.addMessage(mensagemUtil.getMessage("INVALIDACCESS", inputText.getValor()));
-					pageResponse.setPageUrl(AcessoPagina.class.getName());
-					
-				}
 				
+				} else {
+				
+					pageResponse.adicionar(mensagemUtil.getMessage("INVALIDACCESS", inputText.getValor()));
+					pageResponse.setPageUrl(AcessoPagina.class.getName());
+				
+				}
 				
 				return pageResponse;
 			}
 		}, true);
 
 		conteiner.
-				add(0, txtEmail).
-				add(1, txtSenha).
-				add(2, button);
+				adicionar(0, txtEmail).
+				adicionar(1, txtSenha).
+				adicionar(2, button);
 
 		form.
-			add(conteiner);
+			adicionar(conteiner);
 
-		add(form);
+		adicionar(form);
 
 		
 	}

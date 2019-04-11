@@ -16,7 +16,7 @@ import com.andersonfonseka.caffeine.componentes.IEndereco;
 class EnderecoTest {
 	
 	@WeldSetup
-	public WeldInitiator weld = WeldInitiator.of(IComponenteFabrica.class).of(ComponenteFabricaImpl.class);
+	public static WeldInitiator weld = WeldInitiator.of(ComponenteFabricaImpl.class);
 
 	@Test
 	void testCriarEndereco(IComponenteFabrica componenteFabrica) {
@@ -27,7 +27,7 @@ class EnderecoTest {
 	@Test
 	void testRenderEndereco(IComponenteFabrica componenteFabrica) {
 		IEndereco endereco = componenteFabrica.criarEndereco();
-		assertTrue(Optional.of(endereco.doRender()).isPresent() && endereco.doRender().length() > 0);
+		assertTrue(Optional.of(endereco.getConteiner().gerarSaida()).isPresent() && endereco.getConteiner().gerarSaida().length() > 0);
 	}
 
 }

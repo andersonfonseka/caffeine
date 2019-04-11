@@ -10,8 +10,12 @@ public interface IComponente {
 	
 	void setParent(String parentName);
 	
-	IComponente add(IComponente component);
+	String getParent();
 	
-	String doRender();
+	IComponente adicionar(IComponente component);
 	
+	String gerarSaida();
+	
+	String getTemplate();
+
 }

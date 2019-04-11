@@ -48,8 +48,8 @@ public class ClientePagina extends Pagina {
 		
 		ISelecao selGender = componenteFabrica.criarSelecao("Genero", true);
 		
-		selGender.add(componenteFabrica.criarOpcaoSelecao("1", "Masculino"));
-		selGender.add(componenteFabrica.criarOpcaoSelecao("2", "Feminino"));
+		selGender.adicionar(componenteFabrica.criarOpcaoSelecao("1", "Masculino"));
+		selGender.adicionar(componenteFabrica.criarOpcaoSelecao("2", "Feminino"));
 		
 		IEntradaNumero txDependentes = componenteFabrica.criarEntradaNumero("Dependentes", false);
 		
@@ -79,25 +79,25 @@ public class ClientePagina extends Pagina {
 			}
 		}, true);
 		
-		add(form);
+		adicionar(form);
 		
 		IEndereco endereco = componenteFabrica.criarEndereco();
 		
-		form.add(conteiner);
+		form.adicionar(conteiner);
 		
-		conteiner.add(0, txtFirstName)
-					.add(0, txtLastName)
-					.add(1, txtEmail)
-					.add(1, txtDoB)
-					.add(2, selGender)
-					.add(2, txDependentes)
-					.add(3, txtDescription);
+		conteiner.adicionar(0, txtFirstName)
+					.adicionar(0, txtLastName)
+					.adicionar(1, txtEmail)
+					.adicionar(1, txtDoB)
+					.adicionar(2, selGender)
+					.adicionar(2, txDependentes)
+					.adicionar(3, txtDescription);
 		
 		endereco.getConteiner()
-					.add(3, btnApply)
-					.add(3, btnCancel);
+					.adicionar(3, btnApply)
+					.adicionar(3, btnCancel);
 		
-		form.add(endereco.getConteiner());
+		form.adicionar(endereco.getConteiner());
 
 	}
 	

@@ -18,7 +18,7 @@ public @Data class Selecao extends Entrada implements ISelecao {
 	private OpcaoSelecao selected;
 	
 	Selecao() {
-		add(new OpcaoSelecao("", "Selecione..."));
+		adicionar(new OpcaoSelecao("", "Selecione..."));
 	}
 	
 	private OpcaoSelecao getSelected() {
