@@ -1,1 +1,0 @@
-<jsp:forward page="CaffeineServlet.do"></jsp:forward>
