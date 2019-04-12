@@ -1,9 +1,9 @@
 # caffeine
-um java web framework para brasileiros
+**um java web framework para brasileiros**
 
 [![BCH compliance](https://bettercodehub.com/edge/badge/andersonfonseka/caffeine?branch=master)](https://bettercodehub.com/)
 
-por que?
+**por que?**
 
 - em sua maioria existem vários frameworks java web gringos; 
 - temos uma série de particularidades em termos de negócio;
@@ -11,7 +11,7 @@ por que?
 - normalmente o desenvolvedor necessita se adaptar ao modelo de construção do framework e, dependendo da curva de aprendizado, o negócio deixa de ser o propósito;
 - frameworks tradicionais oferecem funcionalidades além do necessário, gerando uma possivel redução de desempenho.
 
-por que eu não usaria um framework já consolidado no mercado?
+**por que eu não usaria um framework já consolidado no mercado?**
 
 você pode usar qualquer framework, porém, considere a curva de aprendizado e se realmente faz sentido gastar tanto tempo entendendo conceitos
 que já poderiam vir abstraídos do desenvolvedor pelo Caffeine:
