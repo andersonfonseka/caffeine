@@ -14,10 +14,11 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
 import com.andersonfonseka.caffeine.componentes.impl.ComponenteFabricaImpl;
-import com.andersonfonseka.caffeine.componentes.impl.mock.AcessoPagina;
-import com.andersonfonseka.caffeine.componentes.impl.mock.ClienteProjeto;
-import com.andersonfonseka.caffeine.componentes.impl.mock.MockHttpServletRequest;
-import com.andersonfonseka.caffeine.componentes.impl.mock.MockHttpServletResponse;
+import com.andersonfonseka.caffeine.servlet.mock.AcessoPagina;
+import com.andersonfonseka.caffeine.servlet.mock.ClienteProjeto;
+import com.andersonfonseka.caffeine.servlet.mock.MockHttpServletRequest;
+import com.andersonfonseka.caffeine.servlet.mock.MockHttpServletResponse;
+
 
 @EnableWeld
 class CaffeineServletTest extends Mockito {

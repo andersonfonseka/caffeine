@@ -1,6 +1,6 @@
 package com.andersonfonseka.caffeine.util;
 
-import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNotNull; 
 
 import org.jboss.weld.junit5.EnableWeld;
 import org.jboss.weld.junit5.WeldInitiator;
