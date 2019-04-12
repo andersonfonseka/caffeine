@@ -1,6 +1,8 @@
 # caffeine
 um java web framework para brasileiros
 
+[![BCH compliance](https://bettercodehub.com/edge/badge/andersonfonseka/caffeine?branch=master)](https://bettercodehub.com/)
+
 por que?
 
 - em sua maioria existem vários frameworks java web gringos; 
