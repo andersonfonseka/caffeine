@@ -27,7 +27,7 @@ public class MockServletContext implements ServletContext {
 	
 	public MockServletContext() {
 		attributes.put("project", null);
-		attributes.put("projectClass", "com.andersonfonseka.caffeine.componentes.impl.mock.ClienteProjeto");
+		attributes.put("projectClass", "com.andersonfonseka.caffeine.servlet.mock.ClienteProjeto");
 	}
 	
 	@Override
