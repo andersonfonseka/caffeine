@@ -6,15 +6,12 @@ import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 
-import com.andersonfonseka.caffeine.componentes.IBotao;
 import com.andersonfonseka.caffeine.componentes.IComponenteFabrica;
 import com.andersonfonseka.caffeine.componentes.IFormulario;
-import com.andersonfonseka.caffeine.componentes.IResposta;
-import com.andersonfonseka.caffeine.componentes.acao.IAcao;
 import com.andersonfonseka.caffeine.componentes.impl.Pagina;
 
 @RequestScoped
-public class AcessoPagina extends Pagina {
+public class ClientePagina extends Pagina {
 
 	/**
 	 * 
@@ -25,24 +22,8 @@ public class AcessoPagina extends Pagina {
 	
 	@PostConstruct
 	public void post() {
-		
 		IFormulario formulario = componenteFabrica.criarFormulario();
 		formulario.adicionar(componenteFabrica.criarEndereco().getConteiner());
-		
-		IBotao botao = componenteFabrica.criarBotao("Teste", new IAcao(new Object()) {
-			
-			@Override
-			public IResposta execute() {
-				IResposta iResposta = componenteFabrica.criarResposta();
-				iResposta.setPageUrl(AcessoPagina.class.getName());
-				return iResposta;
-			}
-		}, true);
-		
-		botao.setImediato(false);
-		
-		formulario.adicionar(botao);
-		
 		adicionar(formulario);
 	}
 

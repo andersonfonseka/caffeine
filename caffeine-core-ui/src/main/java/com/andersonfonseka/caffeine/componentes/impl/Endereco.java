@@ -17,15 +17,9 @@ import lombok.Getter;
 import lombok.Setter;
 
 @EqualsAndHashCode(callSuper=false)
-public @Data class Endereco extends Componente implements IEndereco {
+public @Data class Endereco extends Conteiner implements IEndereco {
 	
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
-
-	@Getter
-	private IConteiner conteiner;
 	
 	@Inject
 	@Getter(AccessLevel.NONE)
@@ -33,14 +27,13 @@ public @Data class Endereco extends Componente implements IEndereco {
 	IComponenteFabrica componenteFabrica;
 	
 	Endereco(IComponenteFabrica componenteFabrica) {
+		super(4);
 		this.componenteFabrica = componenteFabrica;
 		post();
 	}
 	
 	@PostConstruct
 	public void post() {
-		
-		conteiner = componenteFabrica.criarConteiner(4);
 		
 		IEntradaTexto logradouro = componenteFabrica.criarEntradaTexto("Logradouro", true);
 		
@@ -57,18 +50,17 @@ public @Data class Endereco extends Componente implements IEndereco {
 		uf.adicionar(componenteFabrica.criarOpcaoSelecao("2", "SP"));
 		uf.adicionar(componenteFabrica.criarOpcaoSelecao("3", "RJ"));
 		
-		conteiner.adicionar(0, logradouro);
-		conteiner.adicionar(0, numero);
-		conteiner.adicionar(1, complemento);
-		conteiner.adicionar(1, bairro);
-		conteiner.adicionar(2, cidade);
-		conteiner.adicionar(2, uf);
-		
+		adicionar(0, logradouro);
+		adicionar(0, numero);
+		adicionar(1, complemento);
+		adicionar(1, bairro);
+		adicionar(2, cidade);
+		adicionar(2, uf);
 	}
 
 	@Override
-	public String getTemplate() {
-		return conteiner.getTemplate();
+	public IConteiner getConteiner() {
+		return this;
 	}
 
 }

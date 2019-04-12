@@ -37,5 +37,12 @@ class EntradaEmailTest {
 		assertTrue(entradaEmail.validar().isEmpty());
 	}
 
+	@Test
+	void testInvalidaEntradaEmail(IComponenteFabrica componenteFabrica) {
+		IEntradaEmail entradaEmail = componenteFabrica.criarEntradaEmail("Email", true);
+		entradaEmail.setValor("anderson.fonseka");
+		assertTrue(!entradaEmail.validar().isEmpty());
+	}
+
 
 }

@@ -8,13 +8,14 @@ import javax.inject.Inject;
 
 import com.andersonfonseka.caffeine.componentes.IComponenteFabrica;
 import com.andersonfonseka.caffeine.componentes.IPagina;
+import com.andersonfonseka.caffeine.componentes.IProjeto;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 @ApplicationScoped
 @EqualsAndHashCode(callSuper=false)
-public abstract @Data class Projeto extends Componente {
+public abstract @Data class Projeto extends Componente implements IProjeto {
 
 	private static final long serialVersionUID = -220945867939169696L;
 

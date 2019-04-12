@@ -22,6 +22,7 @@ import com.andersonfonseka.caffeine.componentes.IEntradaTexto;
 import com.andersonfonseka.caffeine.componentes.IFormulario;
 import com.andersonfonseka.caffeine.componentes.IOpcaoSelecao;
 import com.andersonfonseka.caffeine.componentes.IPagina;
+import com.andersonfonseka.caffeine.componentes.IProjeto;
 import com.andersonfonseka.caffeine.componentes.IResposta;
 import com.andersonfonseka.caffeine.componentes.IRotulo;
 import com.andersonfonseka.caffeine.componentes.ISelecao;
@@ -38,6 +39,30 @@ public class ComponenteFabricaImpl implements IComponenteFabrica, Serializable {
 	private BeanManager beanManager;
 	
 	public ComponenteFabricaImpl() {}
+	
+	public IProjeto criarProjeto(String id) {
+		
+		IProjeto projeto = null;
+
+		try {
+			
+			if (!beanManager.getBeans(Class.forName(id)).isEmpty()) {
+
+				ManagedBean bean = (ManagedBean) beanManager.getBeans(Class.forName(id)).iterator().next();
+		    	
+	            CreationalContext<?> creationalContext = beanManager.createCreationalContext(bean);
+	            projeto = (IProjeto) bean.create(creationalContext);
+			}
+
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+
+		return projeto;
+
+		
+		
+	}
 	
 	public IResposta criarResposta() {
 		return new Resposta();

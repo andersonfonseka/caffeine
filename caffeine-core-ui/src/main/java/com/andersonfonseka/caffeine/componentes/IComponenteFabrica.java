@@ -3,6 +3,8 @@ package com.andersonfonseka.caffeine.componentes;
 import com.andersonfonseka.caffeine.componentes.acao.IAcao;
 
 public interface IComponenteFabrica {
+	
+	IProjeto criarProjeto(String id);
 
 	IResposta criarResposta();
 	

@@ -21,7 +21,7 @@ public @Data class Botao extends Componente implements IBotao {
 
 	private IAcao acao;
 	
-	private boolean imediato;
+	private boolean imediato = false;
 	
 	Botao(){}
 	

@@ -6,4 +6,6 @@ public interface IBotao extends IComponente {
 	
 	void setImediato(boolean imediato);
 	
+	boolean isImediato();
+	
 }
