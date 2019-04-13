@@ -4,7 +4,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 import javax.enterprise.context.ApplicationScoped;
-import javax.inject.Inject;
 
 import com.andersonfonseka.caffeine.componentes.IComponenteFabrica;
 import com.andersonfonseka.caffeine.componentes.IPagina;
@@ -22,6 +21,8 @@ public abstract @Data class Projeto extends Componente implements IProjeto {
 	private String titulo;
 
 	private Class<? extends IPagina> paginaInicial;
+	
+	private IComponenteFabrica componenteFabrica;
 
 	private Map<String, Class<? extends IPagina>> paginas = new HashMap<String, Class<? extends IPagina>>();
 
@@ -38,7 +39,7 @@ public abstract @Data class Projeto extends Componente implements IProjeto {
 	}
 
 	public IPagina obterPaginaPeloId(String id) {
-		return getComponenteFabrica().criarPagina(id);
+		return componenteFabrica.criarPagina(id);
 		
 	}
 

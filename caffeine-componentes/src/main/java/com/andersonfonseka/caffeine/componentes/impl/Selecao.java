@@ -45,13 +45,5 @@ public @Data class Selecao extends Entrada implements ISelecao {
 		super.setValor(value);
 		getSelected();
 	}
-
-	@Override
-	public void setComponenteFabrica(IComponenteFabrica componenteFabrica) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	
 	
 }

@@ -46,10 +46,4 @@ import lombok.EqualsAndHashCode;
 		return mensagens;
 	}
 
-	@Override
-	public void setComponenteFabrica(IComponenteFabrica componenteFabrica) {
-		// TODO Auto-generated method stub
-		
-	}
-
 }

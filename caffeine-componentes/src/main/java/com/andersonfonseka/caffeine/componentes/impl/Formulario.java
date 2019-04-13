@@ -23,12 +23,5 @@ public @Data class Formulario extends Componente implements IFormulario {
 	public String getTemplate() {
 		return "form";
 	}
-
-	@Override
-	public void setComponenteFabrica(IComponenteFabrica componenteFabrica) {
-		// TODO Auto-generated method stub
-		
-	}
-
 	
 }

@@ -24,10 +24,4 @@ public @Data class EntradaTexto extends Entrada implements IEntradaTexto {
 		return "inputtext";
 	}
 
-	@Override
-	public void setComponenteFabrica(IComponenteFabrica componenteFabrica) {
-		// TODO Auto-generated method stub
-		
-	}
-
 }

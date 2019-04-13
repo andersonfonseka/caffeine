@@ -47,10 +47,4 @@ public @Data class EntradaData extends Entrada implements IEntradaData {
 		return mensagens;
 	}
 
-	@Override
-	public void setComponenteFabrica(IComponenteFabrica componenteFabrica) {
-		// TODO Auto-generated method stub
-		
-	}
-
 }

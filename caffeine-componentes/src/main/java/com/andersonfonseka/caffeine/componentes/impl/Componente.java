@@ -31,7 +31,7 @@ public abstract @Data class Componente implements IComponente, Serializable {
 	
 	private @Getter List<IComponente> componentes = new ArrayList<IComponente>();
 	
-	private IComponenteFabrica componenteFabrica = new ComponenteFabricaImpl();
+	private IComponenteFabrica componenteFabrica;
 	
 	Componente() {
 		this.id = this.getClass().getSimpleName() + internalId;
@@ -53,5 +53,7 @@ public abstract @Data class Componente implements IComponente, Serializable {
 	}
 
 	public abstract String getTemplate();
+	
+	public void setComponenteFabrica(IComponenteFabrica componenteFabrica) {}
 	
 }

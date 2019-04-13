@@ -24,11 +24,4 @@ public @Data class EntradaArquivo extends Entrada implements IEntradaArquivo {
 		return "inputfile";
 	}
 
-	@Override
-	public void setComponenteFabrica(IComponenteFabrica componenteFabrica) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	
 }

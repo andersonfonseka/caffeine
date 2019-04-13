@@ -65,10 +65,4 @@ public @Data class Conteiner extends Componente implements IConteiner {
 		return "conteiner";
 	}
 
-	@Override
-	public void setComponenteFabrica(IComponenteFabrica componenteFabrica) {
-		// TODO Auto-generated method stub
-		
-	}
-
 }

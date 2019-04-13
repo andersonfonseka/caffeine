@@ -1,6 +1,5 @@
 package com.andersonfonseka.caffeine.componentes.impl;
 
-import com.andersonfonseka.caffeine.componentes.IComponenteFabrica;
 import com.andersonfonseka.caffeine.componentes.IRotulo;
 
 import lombok.Data;
@@ -21,12 +20,4 @@ public @Data class Rotulo extends Componente implements IRotulo {
 	public String getTemplate() {
 		return "label";
 	}
-
-	@Override
-	public void setComponenteFabrica(IComponenteFabrica componenteFabrica) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	
 }

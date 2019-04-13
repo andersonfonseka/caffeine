@@ -34,11 +34,4 @@ public @Data class OpcaoSelecao extends Componente implements IOpcaoSelecao {
 	public String getTemplate() {
 		return null;
 	}
-
-	@Override
-	public void setComponenteFabrica(IComponenteFabrica componenteFabrica) {
-		// TODO Auto-generated method stub
-		
-	}
-	
 }

@@ -25,12 +25,5 @@ public @Data class EntradaAreaTexto extends Entrada implements IEntradaAreaTexto
 	public String getTemplate() {
 		return "inputtextarea";
 	}
-
-	@Override
-	public void setComponenteFabrica(IComponenteFabrica componenteFabrica) {
-		// TODO Auto-generated method stub
-		
-	}
-
 	
 }
