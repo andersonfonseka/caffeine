@@ -4,6 +4,8 @@ import java.util.List;
 
 public interface IComponente {
 
+	void setComponenteFabrica(IComponenteFabrica componenteFabrica);
+	
 	String getId();
 	
 	List<IComponente> getComponentes();

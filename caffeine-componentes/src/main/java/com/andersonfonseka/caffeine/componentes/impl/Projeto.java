@@ -18,9 +18,6 @@ import lombok.EqualsAndHashCode;
 public abstract @Data class Projeto extends Componente implements IProjeto {
 
 	private static final long serialVersionUID = -220945867939169696L;
-
-	@Inject
-	private IComponenteFabrica componenteFabrica;
 	
 	private String titulo;
 
@@ -41,7 +38,7 @@ public abstract @Data class Projeto extends Componente implements IProjeto {
 	}
 
 	public IPagina obterPaginaPeloId(String id) {
-		return componenteFabrica.criarPagina(id);
+		return getComponenteFabrica().criarPagina(id);
 		
 	}
 

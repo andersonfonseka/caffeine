@@ -4,6 +4,8 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.Optional;
 
+import javax.enterprise.inject.spi.BeanManager;
+
 import org.jboss.weld.junit5.EnableWeld;
 import org.jboss.weld.junit5.WeldInitiator;
 import org.jboss.weld.junit5.WeldSetup;
@@ -20,7 +22,8 @@ class ProjetoTest {
 
 	@WeldSetup
 	public static WeldInitiator weld = WeldInitiator.of(WeldInitiator.createWeld()
-														.beanClasses(ClienteProjeto.class, 
+														.beanClasses(BeanManager.class,
+																	 ClienteProjeto.class, 
 																	 ComponenteFabricaImpl.class,
 																	 AcessoPagina.class));
 	
@@ -35,6 +38,8 @@ class ProjetoTest {
 		
 		IProjeto projeto = componenteFabrica.criarProjeto(ClienteProjeto.class.getName());
 		projeto.setTitulo("Hello world");
+		
+		projeto.setComponenteFabrica(componenteFabrica);
 		
 		IPagina pagina = componenteFabrica.criarPagina(AcessoPagina.class.getName());
 		

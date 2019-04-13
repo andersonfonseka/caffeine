@@ -8,6 +8,7 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.logging.Logger;
 
+import javax.enterprise.inject.spi.BeanManager;
 import javax.inject.Inject;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -22,12 +23,15 @@ import com.andersonfonseka.caffeine.componentes.IPagina;
 import com.andersonfonseka.caffeine.componentes.IProjeto;
 import com.andersonfonseka.caffeine.componentes.IResposta;
 import com.andersonfonseka.caffeine.componentes.impl.Botao;
+import com.andersonfonseka.caffeine.componentes.impl.ComponenteFabricaImpl;
 import com.andersonfonseka.caffeine.componentes.impl.Entrada;
 
 public class CaffeineServlet extends HttpServlet {
 
 	@Inject
-	private IComponenteFabrica componenteFabrica;
+	private BeanManager beanManager;
+	
+	private IComponenteFabrica componenteFabrica = new ComponenteFabricaImpl();
 
 	private static final String OP = "op";
 
@@ -40,6 +44,9 @@ public class CaffeineServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	private static Logger log = Logger.getLogger(CaffeineServlet.class.getName());
+	
+	
+	public CaffeineServlet() {}
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -49,6 +56,8 @@ public class CaffeineServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
+		this.componenteFabrica.setBeanManager(beanManager);
+		
 		IProjeto project = iniciarProjeto(req);
 
 		String op = "";
@@ -66,9 +75,8 @@ public class CaffeineServlet extends HttpServlet {
 		}
 	}
 
-	private void construirPagina(HttpServletRequest req, HttpServletResponse resp, IProjeto project, String op,
-
-			String componentId) throws IOException {
+	private void construirPagina(HttpServletRequest req, HttpServletResponse resp, IProjeto project, String op, String componentId) throws IOException {
+		
 		IPagina page = project.obterPaginaPeloId(componentId);
 		page.aoCarregar(obterParametros(req));
 
@@ -96,6 +104,8 @@ public class CaffeineServlet extends HttpServlet {
 			projeto = (IProjeto) req.getServletContext().getAttribute(PROJECT);
 		}
 
+		projeto.setComponenteFabrica(componenteFabrica);
+		
 		return projeto;
 	}
 

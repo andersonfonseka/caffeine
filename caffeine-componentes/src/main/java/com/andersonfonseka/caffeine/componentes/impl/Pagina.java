@@ -18,17 +18,11 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(callSuper=false)
 public abstract @Data class Pagina extends Componente implements IPagina {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 
 	private String titulo;
 
 	private List<String> mensagens = new ArrayList<String>();
-	
-	@Inject
-	private IComponenteFabrica componenteFabrica;
 	
 	protected Pagina() {
 		internalId = 1;

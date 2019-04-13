@@ -1,5 +1,4 @@
 package com.andersonfonseka.caffeine.componentes.impl;
-
 import java.io.Serializable;
 
 import javax.enterprise.context.spi.CreationalContext;
@@ -28,16 +27,18 @@ import com.andersonfonseka.caffeine.componentes.IRotulo;
 import com.andersonfonseka.caffeine.componentes.ISelecao;
 import com.andersonfonseka.caffeine.componentes.acao.IAcao;
 
-
 public class ComponenteFabricaImpl implements IComponenteFabrica, Serializable {
 	
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
+
 	@Inject
 	private BeanManager beanManager;
 	
+	@Override
+	public void setBeanManager(BeanManager beanManager) {
+		this.beanManager = beanManager;
+	}
+
 	public ComponenteFabricaImpl() {}
 	
 	public IProjeto criarProjeto(String id) {
@@ -207,6 +208,8 @@ public class ComponenteFabricaImpl implements IComponenteFabrica, Serializable {
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}
+		
+		page.setComponenteFabrica(this);
 
 		return page;
 	}

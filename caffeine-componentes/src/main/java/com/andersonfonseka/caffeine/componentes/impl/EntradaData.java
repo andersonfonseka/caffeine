@@ -7,6 +7,7 @@ import javax.enterprise.inject.Model;
 
 import org.apache.commons.validator.routines.DateValidator;
 
+import com.andersonfonseka.caffeine.componentes.IComponenteFabrica;
 import com.andersonfonseka.caffeine.componentes.IEntradaData;
 import com.andersonfonseka.caffeine.util.MensagemUtil;
 
@@ -44,6 +45,12 @@ public @Data class EntradaData extends Entrada implements IEntradaData {
 		}
 		
 		return mensagens;
+	}
+
+	@Override
+	public void setComponenteFabrica(IComponenteFabrica componenteFabrica) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

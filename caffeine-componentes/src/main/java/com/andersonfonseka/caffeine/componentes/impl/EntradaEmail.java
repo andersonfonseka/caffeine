@@ -7,6 +7,7 @@ import javax.enterprise.inject.Model;
 
 import org.apache.commons.validator.routines.EmailValidator;
 
+import com.andersonfonseka.caffeine.componentes.IComponenteFabrica;
 import com.andersonfonseka.caffeine.componentes.IEntradaEmail;
 import com.andersonfonseka.caffeine.util.MensagemUtil;
 
@@ -43,6 +44,12 @@ import lombok.EqualsAndHashCode;
 		}
 		
 		return mensagens;
+	}
+
+	@Override
+	public void setComponenteFabrica(IComponenteFabrica componenteFabrica) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

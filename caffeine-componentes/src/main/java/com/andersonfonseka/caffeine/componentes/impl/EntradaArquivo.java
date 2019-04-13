@@ -2,6 +2,7 @@ package com.andersonfonseka.caffeine.componentes.impl;
 
 import javax.enterprise.inject.Model;
 
+import com.andersonfonseka.caffeine.componentes.IComponenteFabrica;
 import com.andersonfonseka.caffeine.componentes.IEntradaArquivo;
 
 import lombok.Data;
@@ -21,6 +22,12 @@ public @Data class EntradaArquivo extends Entrada implements IEntradaArquivo {
 	@Override
 	public String getTemplate() {
 		return "inputfile";
+	}
+
+	@Override
+	public void setComponenteFabrica(IComponenteFabrica componenteFabrica) {
+		// TODO Auto-generated method stub
+		
 	}
 
 	

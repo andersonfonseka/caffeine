@@ -1,8 +1,12 @@
 package com.andersonfonseka.caffeine.componentes;
 
+import javax.enterprise.inject.spi.BeanManager;
+
 import com.andersonfonseka.caffeine.componentes.acao.IAcao;
 
 public interface IComponenteFabrica {
+	
+	void setBeanManager(BeanManager beanManager);
 	
 	IProjeto criarProjeto(String id);
 

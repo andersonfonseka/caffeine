@@ -3,6 +3,7 @@ package com.andersonfonseka.caffeine.componentes.impl;
 import javax.enterprise.inject.Model;
 
 import com.andersonfonseka.caffeine.componentes.IBotao;
+import com.andersonfonseka.caffeine.componentes.IComponenteFabrica;
 import com.andersonfonseka.caffeine.componentes.IResposta;
 import com.andersonfonseka.caffeine.componentes.acao.IAcao;
 
@@ -32,6 +33,12 @@ public @Data class Botao extends Componente implements IBotao {
 
 	public IResposta doClick() {
 		return this.acao.execute();
+	}
+
+	@Override
+	public void setComponenteFabrica(IComponenteFabrica componenteFabrica) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

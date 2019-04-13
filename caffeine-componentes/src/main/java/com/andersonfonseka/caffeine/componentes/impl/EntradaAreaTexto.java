@@ -2,6 +2,7 @@ package com.andersonfonseka.caffeine.componentes.impl;
 
 import javax.enterprise.inject.Model;
 
+import com.andersonfonseka.caffeine.componentes.IComponenteFabrica;
 import com.andersonfonseka.caffeine.componentes.IEntradaAreaTexto;
 
 import lombok.Data;
@@ -23,6 +24,12 @@ public @Data class EntradaAreaTexto extends Entrada implements IEntradaAreaTexto
 	@Override
 	public String getTemplate() {
 		return "inputtextarea";
+	}
+
+	@Override
+	public void setComponenteFabrica(IComponenteFabrica componenteFabrica) {
+		// TODO Auto-generated method stub
+		
 	}
 
 	

@@ -1,6 +1,7 @@
 package com.andersonfonseka.caffeine.componentes.impl;
 
 import com.andersonfonseka.caffeine.componentes.IComponente;
+import com.andersonfonseka.caffeine.componentes.IComponenteFabrica;
 import com.andersonfonseka.caffeine.componentes.ISelecao;
 
 import lombok.Data;
@@ -43,6 +44,12 @@ public @Data class Selecao extends Entrada implements ISelecao {
 	public void setValor(String value) {
 		super.setValor(value);
 		getSelected();
+	}
+
+	@Override
+	public void setComponenteFabrica(IComponenteFabrica componenteFabrica) {
+		// TODO Auto-generated method stub
+		
 	}
 
 	
