@@ -16,12 +16,12 @@ class MensagemUtilTest {
 	
 	@Test
 	void obterMensagemPorChaveValor(MensagemUtil mensagemUtil) {
-		assertNotNull(mensagemUtil.getMessage("REQUIREDFIELD", "Nome"));
+		assertNotNull(mensagemUtil.getMensagemPropriedades("REQUIREDFIELD", "Nome"));
 	}
 
 	@Test
 	void obterMensagemComum(MensagemUtil mensagemUtil) {
-		assertNotNull(mensagemUtil.getMessage("REQUIREDFIELD"));
+		assertNotNull(mensagemUtil.getMensagemTexto("REQUIREDFIELD"));
 	}
 
 	

@@ -3,18 +3,14 @@ package com.andersonfonseka.caffeine.componentes.impl;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.enterprise.inject.Model;
-
 import org.apache.commons.validator.routines.EmailValidator;
 
-import com.andersonfonseka.caffeine.componentes.IComponenteFabrica;
 import com.andersonfonseka.caffeine.componentes.IEntradaEmail;
 import com.andersonfonseka.caffeine.util.MensagemUtil;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
-@Model
 @EqualsAndHashCode(callSuper=false)
 @Data class EntradaEmail extends Entrada implements IEntradaEmail {
 
@@ -40,7 +36,7 @@ import lombok.EqualsAndHashCode;
 		EmailValidator emailValidator = EmailValidator.getInstance();
 		
 		if (!emailValidator.isValid(getValor())){
-			mensagens.add(new MensagemUtil().getMessage("EMAILFIELD", getTitulo()));	
+			mensagens.add(new MensagemUtil().getMensagemPropriedades("EMAILFIELD", getTitulo()));	
 		}
 		
 		return mensagens;

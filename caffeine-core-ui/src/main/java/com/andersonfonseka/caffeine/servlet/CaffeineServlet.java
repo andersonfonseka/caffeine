@@ -19,6 +19,7 @@ import com.andersonfonseka.caffeine.componentes.IBotao;
 import com.andersonfonseka.caffeine.componentes.IComponente;
 import com.andersonfonseka.caffeine.componentes.IComponenteFabrica;
 import com.andersonfonseka.caffeine.componentes.IEntrada;
+import com.andersonfonseka.caffeine.componentes.IEntradaCheckbox;
 import com.andersonfonseka.caffeine.componentes.IPagina;
 import com.andersonfonseka.caffeine.componentes.IProjeto;
 import com.andersonfonseka.caffeine.componentes.IResposta;
@@ -31,8 +32,6 @@ public class CaffeineServlet extends HttpServlet {
 	@Inject
 	private BeanManager beanManager;
 	
-	private IComponenteFabrica componenteFabrica = new ComponenteFabricaImpl();
-
 	private static final String OP = "op";
 
 	private static final String COMPONENTID = "componentId";
@@ -55,8 +54,9 @@ public class CaffeineServlet extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
-		this.componenteFabrica.setBeanManager(beanManager);
+		
+		IComponenteFabrica componenteFabrica = new ComponenteFabricaImpl();
+		componenteFabrica.setBeanManager(beanManager);
 		
 		IProjeto project = iniciarProjeto(req);
 
@@ -95,6 +95,10 @@ public class CaffeineServlet extends HttpServlet {
 
 	private IProjeto iniciarProjeto(HttpServletRequest req) {
 
+		IComponenteFabrica componenteFabrica = new ComponenteFabricaImpl();
+		componenteFabrica.setBeanManager(beanManager);
+		
+		
 		IProjeto projeto = null;
 
 		if (!Optional.ofNullable(req.getServletContext().getAttribute(PROJECT)).isPresent()) {

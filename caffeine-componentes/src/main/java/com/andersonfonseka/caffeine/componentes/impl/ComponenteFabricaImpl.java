@@ -13,6 +13,7 @@ import com.andersonfonseka.caffeine.componentes.IConteiner;
 import com.andersonfonseka.caffeine.componentes.IEndereco;
 import com.andersonfonseka.caffeine.componentes.IEntradaAreaTexto;
 import com.andersonfonseka.caffeine.componentes.IEntradaArquivo;
+import com.andersonfonseka.caffeine.componentes.IEntradaCheckbox;
 import com.andersonfonseka.caffeine.componentes.IEntradaData;
 import com.andersonfonseka.caffeine.componentes.IEntradaEmail;
 import com.andersonfonseka.caffeine.componentes.IEntradaNumero;
@@ -49,6 +50,7 @@ public class ComponenteFabricaImpl implements IComponenteFabrica, Serializable {
 			
 			if (!beanManager.getBeans(Class.forName(id)).isEmpty()) {
 
+				@SuppressWarnings("rawtypes")
 				ManagedBean bean = (ManagedBean) beanManager.getBeans(Class.forName(id)).iterator().next();
 		    	
 	            CreationalContext<?> creationalContext = beanManager.createCreationalContext(bean);
@@ -88,6 +90,7 @@ public class ComponenteFabricaImpl implements IComponenteFabrica, Serializable {
 		Formulario formulario = new Formulario();
 		return formulario;
 	}
+
 	
 	public IEndereco criarEndereco() {
 		return new Endereco(this);
@@ -123,6 +126,29 @@ public class ComponenteFabricaImpl implements IComponenteFabrica, Serializable {
 		entradaTexto.setObrigatorio(obrigatorio);
 		
 		return entradaTexto;
+	}
+	
+	@Override
+	public IEntradaCheckbox criarEntradaCheckbox(String titulo, String valor, boolean obrigatorio) {
+
+		EntradaCheckbox entradaCheckbox = new EntradaCheckbox();
+		entradaCheckbox.setTitulo(titulo);
+		entradaCheckbox.setObrigatorio(obrigatorio);
+		entradaCheckbox.setValor(valor);
+		
+		return entradaCheckbox;
+	}
+
+	@Override
+	public IEntradaCheckbox criarEntradaCheckbox(String id, String titulo, String valor, boolean obrigatorio) {
+
+		EntradaCheckbox entradaCheckbox = new EntradaCheckbox();
+		entradaCheckbox.setId(id);
+		entradaCheckbox.setTitulo(titulo);
+		entradaCheckbox.setObrigatorio(obrigatorio);
+		entradaCheckbox.setValor(valor);
+		
+		return entradaCheckbox;
 	}
 
 	@Override
@@ -199,17 +225,16 @@ public class ComponenteFabricaImpl implements IComponenteFabrica, Serializable {
 			
 			if (!beanManager.getBeans(Class.forName(id)).isEmpty()) {
 
+				@SuppressWarnings("rawtypes")
 				ManagedBean bean = (ManagedBean) beanManager.getBeans(Class.forName(id)).iterator().next();
-		    	
-	            CreationalContext<?> creationalContext = beanManager.createCreationalContext(bean);
+
+				CreationalContext<?> creationalContext = beanManager.createCreationalContext(bean);
                 page = (IPagina) bean.create(creationalContext);
 			}
 
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}
-		
-		page.setComponenteFabrica(this);
 
 		return page;
 	}

@@ -5,17 +5,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.enterprise.inject.Model;
-
 import com.andersonfonseka.caffeine.componentes.IComponente;
-import com.andersonfonseka.caffeine.componentes.IComponenteFabrica;
 import com.andersonfonseka.caffeine.componentes.IConteiner;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 
-@Model
 @EqualsAndHashCode(callSuper=false)
 public @Data class Conteiner extends Componente implements IConteiner {
 

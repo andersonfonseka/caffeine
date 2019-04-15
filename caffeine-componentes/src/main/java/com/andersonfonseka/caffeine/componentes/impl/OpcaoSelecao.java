@@ -2,7 +2,6 @@ package com.andersonfonseka.caffeine.componentes.impl;
 
 import java.util.List;
 
-import com.andersonfonseka.caffeine.componentes.IComponenteFabrica;
 import com.andersonfonseka.caffeine.componentes.IOpcaoSelecao;
 
 import lombok.Data;

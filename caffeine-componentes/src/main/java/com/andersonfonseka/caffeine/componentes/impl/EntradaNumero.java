@@ -3,18 +3,14 @@ package com.andersonfonseka.caffeine.componentes.impl;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.enterprise.inject.Model;
-
 import org.apache.commons.validator.routines.IntegerValidator;
 
-import com.andersonfonseka.caffeine.componentes.IComponenteFabrica;
 import com.andersonfonseka.caffeine.componentes.IEntradaNumero;
 import com.andersonfonseka.caffeine.util.MensagemUtil;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
-@Model
 @EqualsAndHashCode(callSuper=false)
 public @Data class EntradaNumero extends Entrada implements IEntradaNumero {
 
@@ -36,7 +32,7 @@ public @Data class EntradaNumero extends Entrada implements IEntradaNumero {
 		IntegerValidator integerValidator = IntegerValidator.getInstance();
 		
 		if (!integerValidator.isValid(getValor())) {
-			mensagens.add(new MensagemUtil().getMessage("NUMBERFIELD", getTitulo()));
+			mensagens.add(new MensagemUtil().getMensagemPropriedades("NUMBERFIELD", getTitulo()));
 		}
 		
 		return mensagens;

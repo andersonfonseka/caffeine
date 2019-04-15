@@ -16,12 +16,12 @@ public class MensagemUtil {
 		}
 	}
 	
-	public String getMessage(String key, String...args) {
+	public String getMensagemPropriedades(String key, String...args) {
 		MessageFormat format = new MessageFormat(properties.getProperty(key));
 		return format.format(args);
 	}
 	
-	public String getMessage(String message) {
+	public String getMensagemTexto(String message) {
 		return message;
 	}
 	

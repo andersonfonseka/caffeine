@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.annotation.PostConstruct;
 import javax.enterprise.inject.spi.BeanManager;
 import javax.inject.Inject;
 
@@ -53,7 +52,5 @@ public abstract @Data class Componente implements IComponente, Serializable {
 	}
 
 	public abstract String getTemplate();
-	
-	public void setComponenteFabrica(IComponenteFabrica componenteFabrica) {}
 	
 }

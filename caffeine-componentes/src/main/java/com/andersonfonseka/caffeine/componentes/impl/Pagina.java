@@ -6,10 +6,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
-import javax.inject.Inject;
-
 import com.andersonfonseka.caffeine.componentes.IComponente;
-import com.andersonfonseka.caffeine.componentes.IComponenteFabrica;
 import com.andersonfonseka.caffeine.componentes.IPagina;
 
 import lombok.Data;
@@ -17,7 +14,7 @@ import lombok.EqualsAndHashCode;
 
 @EqualsAndHashCode(callSuper=false)
 public abstract @Data class Pagina extends Componente implements IPagina {
-
+	
 	private static final long serialVersionUID = 1L;
 
 	private String titulo;
@@ -26,6 +23,7 @@ public abstract @Data class Pagina extends Componente implements IPagina {
 	
 	protected Pagina() {
 		internalId = 1;
+		this.setComponenteFabrica(new ComponenteFabricaImpl());
 	}
 
 	@Override

@@ -41,4 +41,8 @@ public interface IComponenteFabrica {
 	ISelecao criarSelecao(String titulo, boolean obrigatorio);
 	
 	IOpcaoSelecao criarOpcaoSelecao(String valor, String rotulo);
+
+	IEntradaCheckbox criarEntradaCheckbox(String titulo, String valor, boolean obrigatorio);
+	
+	IEntradaCheckbox criarEntradaCheckbox(String id, String titulo, String valor, boolean obrigatorio);
 }

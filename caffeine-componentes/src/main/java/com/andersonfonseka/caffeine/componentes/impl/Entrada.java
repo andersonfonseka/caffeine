@@ -35,7 +35,7 @@ public abstract @Data class Entrada extends Componente implements IValidador {
 		List<String> mensagens = new ArrayList<String>();
 		
 		if (obrigatorio && valor.trim().length() == 0) {
-			mensagens.add(new MensagemUtil().getMessage("REQUIREDFIELD", getTitulo()));
+			mensagens.add(new MensagemUtil().getMensagemPropriedades("REQUIREDFIELD", getTitulo()));
 		}
 		return mensagens;
 	}

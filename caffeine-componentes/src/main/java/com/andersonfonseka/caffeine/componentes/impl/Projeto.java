@@ -3,8 +3,6 @@ package com.andersonfonseka.caffeine.componentes.impl;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.enterprise.context.ApplicationScoped;
-
 import com.andersonfonseka.caffeine.componentes.IComponenteFabrica;
 import com.andersonfonseka.caffeine.componentes.IPagina;
 import com.andersonfonseka.caffeine.componentes.IProjeto;
@@ -12,7 +10,6 @@ import com.andersonfonseka.caffeine.componentes.IProjeto;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
-@ApplicationScoped
 @EqualsAndHashCode(callSuper=false)
 public abstract @Data class Projeto extends Componente implements IProjeto {
 
