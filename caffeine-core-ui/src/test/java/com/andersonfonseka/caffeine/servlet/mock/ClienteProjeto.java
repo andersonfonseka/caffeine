@@ -1,5 +1,7 @@
 package com.andersonfonseka.caffeine.servlet.mock;
 
+import java.util.Map;
+
 import javax.enterprise.context.SessionScoped;
 
 import com.andersonfonseka.caffeine.componentes.impl.Projeto;
@@ -12,5 +14,11 @@ public class ClienteProjeto extends Projeto {
 	public ClienteProjeto() {
 		setTitulo("Caffeine Hello World!");
 		setPaginaInicial(AcessoPagina.class);
+	}
+
+	@Override
+	public void aoCarregar(Map<String, String> parametros) {
+		// TODO Auto-generated method stub
+		
 	}
 }

@@ -10,7 +10,7 @@ import com.andersonfonseka.caffeine.componentes.IBotao;
 import com.andersonfonseka.caffeine.componentes.IComponenteFabrica;
 import com.andersonfonseka.caffeine.componentes.IFormulario;
 import com.andersonfonseka.caffeine.componentes.IResposta;
-import com.andersonfonseka.caffeine.componentes.acao.IAcao;
+import com.andersonfonseka.caffeine.componentes.acao.AcaoAbs;
 import com.andersonfonseka.caffeine.componentes.impl.Pagina;
 
 @RequestScoped
@@ -27,9 +27,9 @@ public class AcessoPagina extends Pagina {
 	public void post() {
 		
 		IFormulario formulario = componenteFabrica.criarFormulario();
-		formulario.adicionar(componenteFabrica.criarEndereco().getConteiner());
+		formulario.adicionar(componenteFabrica.criarEndereco(this).getConteiner());
 		
-		IBotao botao = componenteFabrica.criarBotao("Teste", new IAcao(new Object()) {
+		IBotao botao = componenteFabrica.criarBotao("Teste", new AcaoAbs(new Object()) {
 			
 			@Override
 			public IResposta execute() {

@@ -4,11 +4,11 @@ import com.andersonfonseka.caffeine.componentes.IResposta;
 
 import lombok.Getter;
 
-public abstract class IAcao {
+public abstract class AcaoAbs {
 	
 	private @Getter Object source;
 	
-	public IAcao(Object source) {
+	public AcaoAbs(Object source) {
 		super();
 		this.source = source;
 	}

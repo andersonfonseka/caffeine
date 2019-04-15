@@ -23,7 +23,7 @@ public class ClientePagina extends Pagina {
 	@PostConstruct
 	public void post() {
 		IFormulario formulario = componenteFabrica.criarFormulario();
-		formulario.adicionar(componenteFabrica.criarEndereco().getConteiner());
+		formulario.adicionar(componenteFabrica.criarEndereco(this).getConteiner());
 		adicionar(formulario);
 	}
 

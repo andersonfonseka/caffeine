@@ -1,5 +1,7 @@
 package com.andersonfonseka.caffeine.componentes.impl;
 
+import java.util.Map;
+
 import com.andersonfonseka.caffeine.componentes.IEntradaAreaTexto;
 
 import lombok.Data;
@@ -20,6 +22,12 @@ public @Data class EntradaAreaTexto extends Entrada implements IEntradaAreaTexto
 	@Override
 	public String getTemplate() {
 		return "inputtextarea";
+	}
+
+	@Override
+	public void aoCarregar(Map<String, String> parametros) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 }

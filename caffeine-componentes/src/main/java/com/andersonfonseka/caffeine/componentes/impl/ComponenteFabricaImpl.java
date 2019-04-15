@@ -26,7 +26,7 @@ import com.andersonfonseka.caffeine.componentes.IProjeto;
 import com.andersonfonseka.caffeine.componentes.IResposta;
 import com.andersonfonseka.caffeine.componentes.IRotulo;
 import com.andersonfonseka.caffeine.componentes.ISelecao;
-import com.andersonfonseka.caffeine.componentes.acao.IAcao;
+import com.andersonfonseka.caffeine.componentes.acao.AcaoAbs;
 
 public class ComponenteFabricaImpl implements IComponenteFabrica, Serializable {
 	
@@ -71,7 +71,7 @@ public class ComponenteFabricaImpl implements IComponenteFabrica, Serializable {
 		return new Resposta();
 	}
 	
-	public IBotao criarBotao(String titulo, IAcao acao, boolean imediato) {
+	public IBotao criarBotao(String titulo, AcaoAbs acao, boolean imediato) {
 		
 		Botao botao = new Botao();
 			  botao.setImediato(imediato);
@@ -92,8 +92,8 @@ public class ComponenteFabricaImpl implements IComponenteFabrica, Serializable {
 	}
 
 	
-	public IEndereco criarEndereco() {
-		return new Endereco(this);
+	public IEndereco criarEndereco(IPagina pagina) {
+		return new Endereco(this, pagina);
 	}
 
 	@Override
@@ -201,16 +201,6 @@ public class ComponenteFabricaImpl implements IComponenteFabrica, Serializable {
 	}
 
 	@Override
-	public ISelecao criarSelecao(String titulo, boolean obrigatorio) {
-
-		Selecao selecao = new Selecao();
-		selecao.setTitulo(titulo);
-		selecao.setObrigatorio(obrigatorio);
-		
-		return selecao;
-	}
-
-	@Override
 	public IOpcaoSelecao criarOpcaoSelecao(String valor, String rotulo) {
 		OpcaoSelecao opcaoSelecao = new OpcaoSelecao(valor, rotulo);
 		return opcaoSelecao;
@@ -237,6 +227,27 @@ public class ComponenteFabricaImpl implements IComponenteFabrica, Serializable {
 		}
 
 		return page;
+	}
+
+	@Override
+	public ISelecao criarSelecao(String titulo, boolean obrigatorio) {
+
+		Selecao selecao = new Selecao();
+		selecao.setTitulo(titulo);
+		selecao.setObrigatorio(obrigatorio);
+		
+		return selecao;
+	}
+
+	@Override
+	public ISelecao criarSelecao(String titulo, AcaoAbs acao, boolean obrigatorio) {
+
+		Selecao selecao = new Selecao();
+		selecao.setTitulo(titulo);
+		selecao.setObrigatorio(obrigatorio);
+		selecao.setAcao(acao);
+		
+		return selecao;
 	}
 	
 }

@@ -3,6 +3,7 @@ package com.andersonfonseka.caffeine.componentes.impl;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import javax.enterprise.inject.spi.BeanManager;
 import javax.inject.Inject;
@@ -37,7 +38,7 @@ public abstract @Data class Componente implements IComponente, Serializable {
 		internalId++;
 	}
 
-	public Componente adicionar(IComponente component) {
+	public IComponente adicionar(IComponente component) {
 		this.componentes.add(component);
 		component.setParent(this.getClass().getName());
 		return this;
@@ -52,5 +53,7 @@ public abstract @Data class Componente implements IComponente, Serializable {
 	}
 
 	public abstract String getTemplate();
+	
+	public abstract void aoCarregar(Map<String, String> parametros);
 	
 }

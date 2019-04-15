@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.andersonfonseka.caffeine.componentes.IBotao;
+import com.andersonfonseka.caffeine.componentes.IAcao;
 import com.andersonfonseka.caffeine.componentes.IComponente;
 import com.andersonfonseka.caffeine.componentes.IComponenteFabrica;
 import com.andersonfonseka.caffeine.componentes.IEntrada;
@@ -23,9 +23,7 @@ import com.andersonfonseka.caffeine.componentes.IEntradaCheckbox;
 import com.andersonfonseka.caffeine.componentes.IPagina;
 import com.andersonfonseka.caffeine.componentes.IProjeto;
 import com.andersonfonseka.caffeine.componentes.IResposta;
-import com.andersonfonseka.caffeine.componentes.impl.Botao;
 import com.andersonfonseka.caffeine.componentes.impl.ComponenteFabricaImpl;
-import com.andersonfonseka.caffeine.componentes.impl.Entrada;
 
 public class CaffeineServlet extends HttpServlet {
 
@@ -82,7 +80,7 @@ public class CaffeineServlet extends HttpServlet {
 
 		log.info(page.toString());
 
-		IBotao button = (IBotao) page.obterPorId(page, op).get();
+		IAcao button = (IAcao) page.obterPorId(page, op).get();
 
 		if (!button.isImediato()) {
 			atualizarModelo(req, page);
@@ -119,7 +117,7 @@ public class CaffeineServlet extends HttpServlet {
 
 		if (page.getMensagens().isEmpty()) {
 
-			IBotao button = (Botao) page.obterPorId(page, op).get();
+			IAcao button = (IAcao) page.obterPorId(page, op).get();
 			IResposta pageResponse = button.doClick();
 
 			pageResult = project.obterPaginaPeloId(pageResponse.getPageUrl());
@@ -144,8 +142,13 @@ public class CaffeineServlet extends HttpServlet {
 
 					if (page.obterPorId(page, id).isPresent()) {
 						IComponente component = page.obterPorId(page, id).get();
-						if (component instanceof Entrada) {
-							Entrada input = (Entrada) component;
+						
+						if (component instanceof IEntradaCheckbox) {
+						
+							((IEntradaCheckbox) component).setChecked(true);
+						
+						} else if (component instanceof IEntrada) {
+							IEntrada input = (IEntrada) component;
 							input.setValor(req.getParameter(id));
 						}
 					}

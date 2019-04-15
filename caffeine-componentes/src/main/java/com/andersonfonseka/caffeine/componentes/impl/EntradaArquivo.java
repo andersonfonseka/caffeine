@@ -1,5 +1,7 @@
 package com.andersonfonseka.caffeine.componentes.impl;
 
+import java.util.Map;
+
 import com.andersonfonseka.caffeine.componentes.IEntradaArquivo;
 
 import lombok.Data;
@@ -18,6 +20,12 @@ public @Data class EntradaArquivo extends Entrada implements IEntradaArquivo {
 	@Override
 	public String getTemplate() {
 		return "inputfile";
+	}
+
+	@Override
+	public void aoCarregar(Map<String, String> parametros) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

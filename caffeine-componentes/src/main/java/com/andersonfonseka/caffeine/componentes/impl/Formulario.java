@@ -1,5 +1,7 @@
 package com.andersonfonseka.caffeine.componentes.impl;
 
+import java.util.Map;
+
 import com.andersonfonseka.caffeine.componentes.IFormulario;
 
 import lombok.Data;
@@ -18,6 +20,12 @@ public @Data class Formulario extends Componente implements IFormulario {
 	@Override
 	public String getTemplate() {
 		return "form";
+	}
+
+	@Override
+	public void aoCarregar(Map<String, String> parametros) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 }

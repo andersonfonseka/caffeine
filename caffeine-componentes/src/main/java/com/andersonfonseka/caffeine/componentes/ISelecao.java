@@ -1,6 +1,11 @@
 package com.andersonfonseka.caffeine.componentes;
 
-public interface ISelecao extends IEntrada {
+import com.andersonfonseka.caffeine.componentes.acao.AcaoAbs;
+
+public interface ISelecao extends IEntrada, IAcao {
 	
+	IOpcaoSelecao getselecionado();
+	
+	AcaoAbs getAcao();
 
 }

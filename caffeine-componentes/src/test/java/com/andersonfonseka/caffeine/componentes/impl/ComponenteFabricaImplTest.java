@@ -2,6 +2,7 @@ package com.andersonfonseka.caffeine.componentes.impl;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.util.Map;
 import java.util.Optional;
 
 import org.jboss.weld.junit5.EnableWeld;
@@ -24,7 +25,7 @@ import com.andersonfonseka.caffeine.componentes.IFormulario;
 import com.andersonfonseka.caffeine.componentes.IOpcaoSelecao;
 import com.andersonfonseka.caffeine.componentes.IRotulo;
 import com.andersonfonseka.caffeine.componentes.ISelecao;
-import com.andersonfonseka.caffeine.componentes.acao.IAcao;
+import com.andersonfonseka.caffeine.componentes.acao.AcaoAbs;
 
 @EnableWeld
 class ComponenteFabricaImplTest {
@@ -35,7 +36,7 @@ class ComponenteFabricaImplTest {
 	@Test
 	void testCriarBotao(IComponenteFabrica componenteFabrica) {
 
-		IBotao button = componenteFabrica.criarBotao("Conectar", new IAcao(new Object()) {
+		IBotao button = componenteFabrica.criarBotao("Conectar", new AcaoAbs(new Object()) {
 			@Override
 			public Resposta execute() {
 				return null;
@@ -60,7 +61,14 @@ class ComponenteFabricaImplTest {
 
 	@Test
 	void testCriarEndereco(IComponenteFabrica componenteFabrica) {
-		IEndereco endereco = componenteFabrica.criarEndereco();
+		IEndereco endereco = componenteFabrica.criarEndereco(new Pagina() {
+			@Override
+			public void post() {
+			}
+
+			@Override
+			public void aoCarregar(Map<String, String> parametros) {
+			}});
 		assertTrue(Optional.of(endereco).isPresent());
 	}
 

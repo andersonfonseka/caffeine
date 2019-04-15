@@ -12,7 +12,7 @@ import org.junit.jupiter.api.Test;
 
 import com.andersonfonseka.caffeine.componentes.IBotao;
 import com.andersonfonseka.caffeine.componentes.IComponenteFabrica;
-import com.andersonfonseka.caffeine.componentes.acao.IAcao;
+import com.andersonfonseka.caffeine.componentes.acao.AcaoAbs;
 
 @EnableWeld
 class BotaoTest {
@@ -23,7 +23,7 @@ class BotaoTest {
 	@Test
 	void testCriarBotao(IComponenteFabrica componenteFabrica) {
 
-		IBotao button = componenteFabrica.criarBotao("Conectar", new IAcao(new Object()) {
+		IBotao button = componenteFabrica.criarBotao("Conectar", new AcaoAbs(new Object()) {
 			@Override
 			public Resposta execute() {
 				Resposta resp = new Resposta();
@@ -39,7 +39,7 @@ class BotaoTest {
 	@Test
 	void testClickBotao(IComponenteFabrica componenteFabrica) {
 
-		IBotao button = componenteFabrica.criarBotao("Conectar", new IAcao(new Object()) {
+		IBotao button = componenteFabrica.criarBotao("Conectar", new AcaoAbs(new Object()) {
 			@Override
 			public Resposta execute() {
 				Resposta resp = new Resposta();
@@ -59,7 +59,7 @@ class BotaoTest {
 	@Test
 	void testRenderBotao(IComponenteFabrica componenteFabrica) {
 
-		IBotao button = componenteFabrica.criarBotao("Conectar", new IAcao(new Object()) {
+		IBotao button = componenteFabrica.criarBotao("Conectar", new AcaoAbs(new Object()) {
 			@Override
 			public Resposta execute() {
 				return new Resposta();

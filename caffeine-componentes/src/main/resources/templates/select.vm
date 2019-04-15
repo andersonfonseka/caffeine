@@ -1,7 +1,12 @@
 <div class="form-group">
     <label for="$select.getId()">$select.getTitulo()</label>
 
+	#if ($select.getAcao())
+	<select class="form-control" id="$select.getId()" name="$select.getId()" onchange="setAction(this.id)">
+	#else
 	<select class="form-control" id="$select.getId()" name="$select.getId()">
+	#end
+
 	#foreach($comp in $select.getComponentes())
 		#if($comp.isSelecionado())
 		<option value="$comp.getValor()" selected>$comp.getRotulo()</option>

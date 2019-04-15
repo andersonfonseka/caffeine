@@ -2,6 +2,7 @@ package com.andersonfonseka.caffeine.componentes.impl;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.Map;
 import java.util.Optional;
 
 import org.jboss.weld.junit5.EnableWeld;
@@ -20,13 +21,28 @@ class EnderecoTest {
 
 	@Test
 	void testCriarEndereco(IComponenteFabrica componenteFabrica) {
-		IEndereco endereco = componenteFabrica.criarEndereco();
+		IEndereco endereco = componenteFabrica.criarEndereco(new Pagina() {
+			@Override
+			public void post() {
+			}
+
+			@Override
+			public void aoCarregar(Map<String, String> parametros) {
+			}});
 		assertTrue(Optional.of(endereco).isPresent());
 	}
 	
 	@Test
 	void testRenderEndereco(IComponenteFabrica componenteFabrica) {
-		IEndereco endereco = componenteFabrica.criarEndereco();
+		IEndereco endereco = componenteFabrica.criarEndereco(new Pagina() {
+			@Override
+			public void post() {
+			}
+
+			@Override
+			public void aoCarregar(Map<String, String> parametros) {
+			}
+		});
 		assertTrue(Optional.of(endereco.gerarSaida()).isPresent() && endereco.gerarSaida().length() > 0);
 	}
 

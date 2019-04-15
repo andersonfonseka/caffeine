@@ -2,7 +2,7 @@ package com.andersonfonseka.caffeine.componentes;
 
 import javax.enterprise.inject.spi.BeanManager;
 
-import com.andersonfonseka.caffeine.componentes.acao.IAcao;
+import com.andersonfonseka.caffeine.componentes.acao.AcaoAbs;
 
 public interface IComponenteFabrica {
 	
@@ -12,7 +12,7 @@ public interface IComponenteFabrica {
 
 	IResposta criarResposta();
 	
-	IBotao criarBotao(String titulo, IAcao acao, boolean imediato);
+	IBotao criarBotao(String titulo, AcaoAbs acao, boolean imediato);
 	
 	IConteiner criarConteiner(Integer rows);
 	
@@ -20,7 +20,7 @@ public interface IComponenteFabrica {
 	
 	IPagina criarPagina(String id);
 	
-	IEndereco criarEndereco();
+	IEndereco criarEndereco(IPagina pagina);
 	
 	IEntradaAreaTexto criarEntradaAreaTexto(String titulo, boolean obrigatorio, int linhas);
 	
@@ -38,11 +38,13 @@ public interface IComponenteFabrica {
 	
 	IRotulo criarRotulo(String titulo);
 	
-	ISelecao criarSelecao(String titulo, boolean obrigatorio);
-	
 	IOpcaoSelecao criarOpcaoSelecao(String valor, String rotulo);
 
 	IEntradaCheckbox criarEntradaCheckbox(String titulo, String valor, boolean obrigatorio);
 	
 	IEntradaCheckbox criarEntradaCheckbox(String id, String titulo, String valor, boolean obrigatorio);
+	
+	ISelecao criarSelecao(String titulo, boolean obrigatorio);
+
+	ISelecao criarSelecao(String titulo, AcaoAbs acao, boolean imediato);
 }

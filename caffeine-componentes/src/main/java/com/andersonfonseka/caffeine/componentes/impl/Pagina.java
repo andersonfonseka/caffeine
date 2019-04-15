@@ -1,6 +1,7 @@
 package com.andersonfonseka.caffeine.componentes.impl;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -19,6 +20,8 @@ public abstract @Data class Pagina extends Componente implements IPagina {
 
 	private String titulo;
 
+	private Map<String, IComponente> mapaObrigatorios = new HashMap<String, IComponente>();
+	
 	private List<String> mensagens = new ArrayList<String>();
 	
 	protected Pagina() {
@@ -84,9 +87,41 @@ public abstract @Data class Pagina extends Componente implements IPagina {
 		}
 		return comp;
 	}
+	
+	private void obterComponenteDoConteiner(IComponente component2, Map<String, String> parametros) {
+
+		Conteiner gridLayout = (Conteiner) component2;
+		Iterator<Integer> it = gridLayout.getRowCell().keySet().iterator();
+
+		while (it.hasNext()) {
+			Integer key = it.next();
+
+			for(IComponente componente: gridLayout.get(key)) {
+				componente.aoCarregar(parametros);
+			}
+
+		}
+	}
+
 
 	public abstract void post();
 
-	public abstract void aoCarregar(Map<String, String> parametros);
+	public void aoCarregar(Map<String, String> parametros) {
+		carregar(parametros, this);
+	}
+	
+	private void carregar(Map<String, String> parametros, IComponente componente) {
+		for (IComponente comp : componente.getComponentes()) {
+			comp.aoCarregar(parametros);
+			
+			if (comp instanceof Conteiner) {
+				obterComponenteDoConteiner(comp, parametros);
+			}
+			
+			if (!comp.getComponentes().isEmpty()) {
+				carregar(parametros, comp);
+			}
+		}
+	}
 
 }

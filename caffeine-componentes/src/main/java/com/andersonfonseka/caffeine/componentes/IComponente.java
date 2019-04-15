@@ -1,6 +1,7 @@
 package com.andersonfonseka.caffeine.componentes;
 
 import java.util.List;
+import java.util.Map;
 
 public interface IComponente {
 
@@ -19,5 +20,7 @@ public interface IComponente {
 	String gerarSaida();
 	
 	String getTemplate();
+	
+	void aoCarregar(Map<String, String> parametros);
 
 }

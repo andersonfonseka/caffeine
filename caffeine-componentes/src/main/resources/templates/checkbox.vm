@@ -1,4 +1,8 @@
 <div class="form-check">
+	#if($checkbox.isChecked())
+    <input type="checkbox" class="form-check-input" id="$checkbox.getId()" name="$checkbox.getId()" value="$checkbox.getValor()" checked>
+    #else
     <input type="checkbox" class="form-check-input" id="$checkbox.getId()" name="$checkbox.getId()" value="$checkbox.getValor()">
+    #end
     <label class="form-check-label" for="$checkbox.getId()">$checkbox.getTitulo()</label>
 </div>

@@ -1,5 +1,7 @@
 package com.andersonfonseka.caffeine.componentes.impl;
 
+import java.util.Map;
+
 import com.andersonfonseka.caffeine.componentes.IRotulo;
 
 import lombok.Data;
@@ -19,5 +21,11 @@ public @Data class Rotulo extends Componente implements IRotulo {
 	@Override
 	public String getTemplate() {
 		return "label";
+	}
+
+	@Override
+	public void aoCarregar(Map<String, String> parametros) {
+		// TODO Auto-generated method stub
+		
 	}
 }

@@ -3,6 +3,7 @@ package com.andersonfonseka.caffeine.componentes.impl;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.andersonfonseka.caffeine.componentes.IEntrada;
 import com.andersonfonseka.caffeine.componentes.validador.IValidador;
 import com.andersonfonseka.caffeine.util.MensagemUtil;
 
@@ -10,7 +11,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 @EqualsAndHashCode(callSuper=false)
-public abstract @Data class Entrada extends Componente implements IValidador {
+public abstract @Data class Entrada extends Componente implements IEntrada, IValidador {
 	
 	/**
 	 * 

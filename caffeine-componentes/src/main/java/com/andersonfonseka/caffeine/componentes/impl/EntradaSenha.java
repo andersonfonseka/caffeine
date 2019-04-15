@@ -1,5 +1,7 @@
 package com.andersonfonseka.caffeine.componentes.impl;
 
+import java.util.Map;
+
 import com.andersonfonseka.caffeine.componentes.IEntradaSenha;
 
 import lombok.Data;
@@ -18,6 +20,12 @@ import lombok.EqualsAndHashCode;
 	@Override
 	public String getTemplate() {
 		return "inputpassword";
+	}
+
+	@Override
+	public void aoCarregar(Map<String, String> parametros) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 }
