@@ -44,9 +44,6 @@ import lombok.EqualsAndHashCode;
 	}
 
 	@Override
-	public void aoCarregar(Map<String, String> parametros) {
-		// TODO Auto-generated method stub
-		
-	}
+	public void aoCarregar(Map<String, String> parametros) {}
 
 }

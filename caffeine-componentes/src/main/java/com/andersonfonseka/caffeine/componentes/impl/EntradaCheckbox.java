@@ -4,9 +4,6 @@ import java.util.Map;
 
 import com.andersonfonseka.caffeine.componentes.IEntradaCheckbox;
 
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-
 public class EntradaCheckbox extends Entrada implements IEntradaCheckbox {
 
 	/**
@@ -34,9 +31,6 @@ public class EntradaCheckbox extends Entrada implements IEntradaCheckbox {
 	}
 
 	@Override
-	public void aoCarregar(Map<String, String> parametros) {
-		// TODO Auto-generated method stub
-		
-	}
+	public void aoCarregar(Map<String, String> parametros) {}
 
 }

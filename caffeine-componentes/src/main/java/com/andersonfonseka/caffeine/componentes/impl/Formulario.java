@@ -23,9 +23,6 @@ public @Data class Formulario extends Componente implements IFormulario {
 	}
 
 	@Override
-	public void aoCarregar(Map<String, String> parametros) {
-		// TODO Auto-generated method stub
-		
-	}
+	public void aoCarregar(Map<String, String> parametros) {}
 	
 }

@@ -6,6 +6,8 @@ import com.andersonfonseka.caffeine.componentes.acao.AcaoAbs;
 
 public interface IComponenteFabrica {
 	
+	ITabela criarTabela();
+	
 	void setBeanManager(BeanManager beanManager);
 	
 	IProjeto criarProjeto(String id);

@@ -4,7 +4,7 @@ import com.andersonfonseka.caffeine.componentes.acao.AcaoAbs;
 
 public interface ISelecao extends IEntrada, IAcao {
 	
-	IOpcaoSelecao getselecionado();
+	IOpcaoSelecao getSelecionado();
 	
 	AcaoAbs getAcao();
 

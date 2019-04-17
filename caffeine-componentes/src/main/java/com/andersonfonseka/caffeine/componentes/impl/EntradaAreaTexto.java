@@ -25,9 +25,6 @@ public @Data class EntradaAreaTexto extends Entrada implements IEntradaAreaTexto
 	}
 
 	@Override
-	public void aoCarregar(Map<String, String> parametros) {
-		// TODO Auto-generated method stub
-		
-	}
+	public void aoCarregar(Map<String, String> parametros) {}
 	
 }

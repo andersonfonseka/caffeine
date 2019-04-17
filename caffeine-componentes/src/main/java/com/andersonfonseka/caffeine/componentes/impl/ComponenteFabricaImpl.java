@@ -26,6 +26,7 @@ import com.andersonfonseka.caffeine.componentes.IProjeto;
 import com.andersonfonseka.caffeine.componentes.IResposta;
 import com.andersonfonseka.caffeine.componentes.IRotulo;
 import com.andersonfonseka.caffeine.componentes.ISelecao;
+import com.andersonfonseka.caffeine.componentes.ITabela;
 import com.andersonfonseka.caffeine.componentes.acao.AcaoAbs;
 
 public class ComponenteFabricaImpl implements IComponenteFabrica, Serializable {
@@ -248,6 +249,11 @@ public class ComponenteFabricaImpl implements IComponenteFabrica, Serializable {
 		selecao.setAcao(acao);
 		
 		return selecao;
+	}
+
+	@Override
+	public ITabela criarTabela() {
+		return new Tabela();
 	}
 	
 }

@@ -9,6 +9,7 @@ import java.util.Optional;
 
 import com.andersonfonseka.caffeine.componentes.IComponente;
 import com.andersonfonseka.caffeine.componentes.IPagina;
+import com.andersonfonseka.caffeine.componentes.util.ParametroUtil;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -107,7 +108,13 @@ public abstract @Data class Pagina extends Componente implements IPagina {
 	public abstract void post();
 
 	public void aoCarregar(Map<String, String> parametros) {
+		
+		if(parametros == null)
+			return;
+
 		carregar(parametros, this);
+		new ParametroUtil().atribuirParametros(this, parametros);
+
 	}
 	
 	private void carregar(Map<String, String> parametros, IComponente componente) {

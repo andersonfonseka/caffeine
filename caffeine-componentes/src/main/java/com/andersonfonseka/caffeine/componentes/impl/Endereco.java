@@ -93,13 +93,13 @@ public @Data class Endereco extends Conteiner implements IEndereco {
 		
 		if (estado.getValor() == null) {
 			cidade.adicionar(componenteFabrica.criarOpcaoSelecao(" ", "Selecione..."));
-		} else if (estado.getselecionado().getValor().equals("1")) {
+		} else if (estado.getSelecionado().getValor().equals("1")) {
 			cidade.adicionar(componenteFabrica.criarOpcaoSelecao("1", "Recife"));
 			cidade.adicionar(componenteFabrica.criarOpcaoSelecao("2", "Olinda"));
 			cidade.adicionar(componenteFabrica.criarOpcaoSelecao("3", "Paulista"));
-		} else if (estado.getselecionado().getValor().equals("2")) {
+		} else if (estado.getSelecionado().getValor().equals("2")) {
 			cidade.adicionar(componenteFabrica.criarOpcaoSelecao("4", "São Paulo"));
-		} else if (estado.getselecionado().getValor().equals("3")) {
+		} else if (estado.getSelecionado().getValor().equals("3")) {
 			cidade.adicionar(componenteFabrica.criarOpcaoSelecao("5", "Rio de Janeiro"));
 		}
 		

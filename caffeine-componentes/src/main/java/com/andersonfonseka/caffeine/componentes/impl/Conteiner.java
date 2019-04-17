@@ -62,9 +62,6 @@ public @Data class Conteiner extends Componente implements IConteiner {
 	}
 
 	@Override
-	public void aoCarregar(Map<String, String> parametros) {
-		// TODO Auto-generated method stub
-		
-	}
+	public void aoCarregar(Map<String, String> parametros) {}
 
 }

@@ -82,7 +82,9 @@ public class CaffeineServlet extends HttpServlet {
 
 		IAcao button = (IAcao) page.obterPorId(page, op).get();
 
-		if (!button.isImediato()) {
+		if (button.isImediato()) {
+			atualizarModelo(req, page);
+		} else {
 			atualizarModelo(req, page);
 			aplicarValidacao(req, page);
 		}
@@ -122,6 +124,7 @@ public class CaffeineServlet extends HttpServlet {
 
 			pageResult = project.obterPaginaPeloId(pageResponse.getPageUrl());
 			pageResult.setMensagens(pageResponse.getMensagens());
+			
 			pageResult.aoCarregar(obterParametros(req));
 
 		}

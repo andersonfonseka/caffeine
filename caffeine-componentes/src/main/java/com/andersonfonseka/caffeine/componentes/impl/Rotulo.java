@@ -24,8 +24,5 @@ public @Data class Rotulo extends Componente implements IRotulo {
 	}
 
 	@Override
-	public void aoCarregar(Map<String, String> parametros) {
-		// TODO Auto-generated method stub
-		
-	}
+	public void aoCarregar(Map<String, String> parametros) {}
 }

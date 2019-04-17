@@ -37,13 +37,9 @@ public @Data class OpcaoSelecao extends Componente implements IOpcaoSelecao {
 
 	@Override
 	public boolean isObrigatorio() {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
-	public void aoCarregar(Map<String, String> parametros) {
-		// TODO Auto-generated method stub
-		
-	}
+	public void aoCarregar(Map<String, String> parametros) {}
 }

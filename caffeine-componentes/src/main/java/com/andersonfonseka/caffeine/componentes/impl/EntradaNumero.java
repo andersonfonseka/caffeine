@@ -40,9 +40,6 @@ public @Data class EntradaNumero extends Entrada implements IEntradaNumero {
 	}
 
 	@Override
-	public void aoCarregar(Map<String, String> parametros) {
-		// TODO Auto-generated method stub
-		
-	}
+	public void aoCarregar(Map<String, String> parametros) {}
 
 }
