@@ -27,6 +27,7 @@ import com.andersonfonseka.caffeine.componentes.IResposta;
 import com.andersonfonseka.caffeine.componentes.IRotulo;
 import com.andersonfonseka.caffeine.componentes.ISelecao;
 import com.andersonfonseka.caffeine.componentes.ITabela;
+import com.andersonfonseka.caffeine.componentes.ITabelaColuna;
 import com.andersonfonseka.caffeine.componentes.acao.AcaoAbs;
 
 public class ComponenteFabricaImpl implements IComponenteFabrica, Serializable {
@@ -254,6 +255,16 @@ public class ComponenteFabricaImpl implements IComponenteFabrica, Serializable {
 	@Override
 	public ITabela criarTabela() {
 		return new Tabela();
+	}
+
+	@Override
+	public ITabelaColuna criarTabelaColuna(String titulo, String campo) {
+		TabelaColuna tabelaColuna = new TabelaColuna();
+		
+		tabelaColuna.setTitulo(titulo);
+		tabelaColuna.setCampo(campo);
+		
+		return tabelaColuna;
 	}
 	
 }

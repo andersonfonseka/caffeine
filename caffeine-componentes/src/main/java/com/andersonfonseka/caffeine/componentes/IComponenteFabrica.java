@@ -8,6 +8,8 @@ public interface IComponenteFabrica {
 	
 	ITabela criarTabela();
 	
+	ITabelaColuna criarTabelaColuna(String titulo, String campo);
+	
 	void setBeanManager(BeanManager beanManager);
 	
 	IProjeto criarProjeto(String id);

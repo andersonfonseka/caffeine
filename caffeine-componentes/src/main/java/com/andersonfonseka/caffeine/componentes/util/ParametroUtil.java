@@ -43,8 +43,6 @@ public class ParametroUtil {
 					} else {
 						metodoValor.invoke(obj, "");
 					}
-					
-					System.out.println(obj);
 				}
 				
 			} catch (SecurityException e) {

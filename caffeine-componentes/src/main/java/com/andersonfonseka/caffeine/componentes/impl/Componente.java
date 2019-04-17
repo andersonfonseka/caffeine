@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 import javax.enterprise.inject.spi.BeanManager;
 import javax.inject.Inject;
@@ -46,9 +47,15 @@ public abstract @Data class Componente implements IComponente, Serializable {
 	
 	public String gerarSaida() {
 		
-		Engenho engine = new Engenho(getTemplate() + ".vm");
-		engine.putOnContext(this.getTemplate(), this);
-		return engine.execute();
+		String resultado = "";
+		
+		if (Optional.of(getTemplate()).isPresent()){
+			Engenho engine = new Engenho(getTemplate() + ".vm");
+			engine.putOnContext(this.getTemplate(), this);
+			resultado = engine.execute();
+		}
+
+		return resultado;
 		
 	}
 
