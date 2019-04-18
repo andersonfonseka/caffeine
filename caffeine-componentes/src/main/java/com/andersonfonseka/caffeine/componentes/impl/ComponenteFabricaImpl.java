@@ -83,6 +83,26 @@ public class ComponenteFabricaImpl implements IComponenteFabrica, Serializable {
 		return botao;
 	}
 	
+	
+	public IBotao criarBotaoCancelar(String paginaDestino) {
+		
+		IBotao btnCancel = criarBotao("Cancelar", new AcaoAbs(new Object()) {
+			public IResposta execute() {
+				
+				IResposta pageResponse = criarResposta();
+				pageResponse.setPageUrl(paginaDestino);
+				
+				return pageResponse;
+			}
+		}, true);
+		
+		btnCancel.setImediato(true);
+		
+		return btnCancel;
+	}
+
+	
+	
 	public IConteiner criarConteiner(Integer rows) {
 		Conteiner conteiner = new Conteiner(rows);
 		return conteiner;

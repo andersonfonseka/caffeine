@@ -18,6 +18,8 @@ public interface IComponenteFabrica {
 	
 	IBotao criarBotao(String titulo, AcaoAbs acao, boolean imediato);
 	
+	IBotao criarBotaoCancelar(String paginaDestino);
+	
 	IConteiner criarConteiner(Integer rows);
 	
 	IFormulario criarFormulario();
