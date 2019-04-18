@@ -1,0 +1,1 @@
+<input type="hidden" id="$inputhidden.getId()" name="$inputhidden.getId()" value="$inputhidden.getValor()">

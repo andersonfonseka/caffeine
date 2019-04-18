@@ -8,7 +8,6 @@ import javax.inject.Inject;
 import org.jboss.weld.bean.ManagedBean;
 
 import com.andersonfonseka.caffeine.componentes.IBotao;
-import com.andersonfonseka.caffeine.componentes.IBotaoCancelar;
 import com.andersonfonseka.caffeine.componentes.IComponenteFabrica;
 import com.andersonfonseka.caffeine.componentes.IConteiner;
 import com.andersonfonseka.caffeine.componentes.IEndereco;
@@ -18,6 +17,7 @@ import com.andersonfonseka.caffeine.componentes.IEntradaCheckbox;
 import com.andersonfonseka.caffeine.componentes.IEntradaData;
 import com.andersonfonseka.caffeine.componentes.IEntradaEmail;
 import com.andersonfonseka.caffeine.componentes.IEntradaNumero;
+import com.andersonfonseka.caffeine.componentes.IEntradaOculta;
 import com.andersonfonseka.caffeine.componentes.IEntradaSenha;
 import com.andersonfonseka.caffeine.componentes.IEntradaTexto;
 import com.andersonfonseka.caffeine.componentes.IFormulario;
@@ -85,7 +85,7 @@ public class ComponenteFabricaImpl implements IComponenteFabrica, Serializable {
 	}
 	
 	
-	public IBotaoCancelar criarBotaoCancelar(String paginaDestino) {
+	public IBotao criarBotaoCancelar(String paginaDestino) {
 		
 		IBotao btnCancel = criarBotao("Cancelar", new AcaoAbs(new Object()) {
 			public IResposta execute() {
@@ -99,7 +99,7 @@ public class ComponenteFabricaImpl implements IComponenteFabrica, Serializable {
 		
 		btnCancel.setImediato(true);
 		
-		return (IBotaoCancelar) btnCancel;
+		return btnCancel;
 	}
 
 	
@@ -150,6 +150,16 @@ public class ComponenteFabricaImpl implements IComponenteFabrica, Serializable {
 		
 		return entradaTexto;
 	}
+	
+	@Override
+	public IEntradaOculta criarEntradaOculta(String valor) {
+
+		EntradaOculta entradaOculta = new EntradaOculta();
+		entradaOculta.setValor(valor);
+		
+		return entradaOculta;
+	}
+
 	
 	@Override
 	public IEntradaCheckbox criarEntradaCheckbox(String titulo, String valor, boolean obrigatorio) {
@@ -279,11 +289,23 @@ public class ComponenteFabricaImpl implements IComponenteFabrica, Serializable {
 	}
 
 	@Override
+	public ITabelaColuna criarTabelaColuna(String titulo, String campo) {
+		TabelaColuna tabelaColuna = new TabelaColuna();
+		
+		tabelaColuna.setTitulo(titulo);
+		tabelaColuna.setCampo(campo);
+		tabelaColuna.setSelecionavel(false);
+		
+		return tabelaColuna;
+	}
+	
+	@Override
 	public ITabelaColuna criarTabelaColuna(String titulo, String campo, boolean selecionavel) {
 		TabelaColuna tabelaColuna = new TabelaColuna();
 		
 		tabelaColuna.setTitulo(titulo);
 		tabelaColuna.setCampo(campo);
+		tabelaColuna.setSelecionavel(selecionavel);
 		
 		return tabelaColuna;
 	}

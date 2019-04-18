@@ -10,7 +10,11 @@
      #foreach($dado in $table.getDados())
     <tr>
 	 #foreach($coluna in $table.getColunas())  
-		<td>$table.getValor($dado, $coluna.getCampo())</td>
+	 	#if ($coluna.isSelecionavel())
+			<td><input type="radio" id="$table.getId()" name="$table.getId()" value="$table.getValor($dado, $coluna.getCampo())"></td>
+	 	#else
+			<td>$table.getValor($dado, $coluna.getCampo())</td>
+	 	#end
      #end
     </tr>
     #end	
