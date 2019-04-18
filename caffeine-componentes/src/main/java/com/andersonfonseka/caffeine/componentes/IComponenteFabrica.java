@@ -8,7 +8,7 @@ public interface IComponenteFabrica {
 	
 	ITabela criarTabela();
 	
-	ITabelaColuna criarTabelaColuna(String titulo, String campo);
+	ITabelaColuna criarTabelaColuna(String titulo, String campo, boolean selecionavel);
 	
 	void setBeanManager(BeanManager beanManager);
 	
@@ -18,7 +18,7 @@ public interface IComponenteFabrica {
 	
 	IBotao criarBotao(String titulo, AcaoAbs acao, boolean imediato);
 	
-	IBotao criarBotaoCancelar(String paginaDestino);
+	IBotaoCancelar criarBotaoCancelar(String paginaDestino);
 	
 	IConteiner criarConteiner(Integer rows);
 	

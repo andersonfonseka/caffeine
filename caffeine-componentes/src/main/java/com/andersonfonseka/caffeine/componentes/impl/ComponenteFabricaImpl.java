@@ -8,6 +8,7 @@ import javax.inject.Inject;
 import org.jboss.weld.bean.ManagedBean;
 
 import com.andersonfonseka.caffeine.componentes.IBotao;
+import com.andersonfonseka.caffeine.componentes.IBotaoCancelar;
 import com.andersonfonseka.caffeine.componentes.IComponenteFabrica;
 import com.andersonfonseka.caffeine.componentes.IConteiner;
 import com.andersonfonseka.caffeine.componentes.IEndereco;
@@ -84,7 +85,7 @@ public class ComponenteFabricaImpl implements IComponenteFabrica, Serializable {
 	}
 	
 	
-	public IBotao criarBotaoCancelar(String paginaDestino) {
+	public IBotaoCancelar criarBotaoCancelar(String paginaDestino) {
 		
 		IBotao btnCancel = criarBotao("Cancelar", new AcaoAbs(new Object()) {
 			public IResposta execute() {
@@ -98,7 +99,7 @@ public class ComponenteFabricaImpl implements IComponenteFabrica, Serializable {
 		
 		btnCancel.setImediato(true);
 		
-		return btnCancel;
+		return (IBotaoCancelar) btnCancel;
 	}
 
 	
@@ -278,7 +279,7 @@ public class ComponenteFabricaImpl implements IComponenteFabrica, Serializable {
 	}
 
 	@Override
-	public ITabelaColuna criarTabelaColuna(String titulo, String campo) {
+	public ITabelaColuna criarTabelaColuna(String titulo, String campo, boolean selecionavel) {
 		TabelaColuna tabelaColuna = new TabelaColuna();
 		
 		tabelaColuna.setTitulo(titulo);

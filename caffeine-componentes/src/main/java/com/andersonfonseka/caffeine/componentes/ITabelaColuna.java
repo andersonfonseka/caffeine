@@ -7,5 +7,7 @@ public interface ITabelaColuna extends IComponente {
 	String getCampo();
 	
 	String getValor();
-
+	
+	boolean isSelecionavel();
+	
 }

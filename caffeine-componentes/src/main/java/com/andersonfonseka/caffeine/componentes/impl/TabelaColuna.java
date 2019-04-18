@@ -14,6 +14,8 @@ public @Data class TabelaColuna extends Componente implements ITabelaColuna {
 	
 	private String valor;
 	
+	private boolean selecionavel;
+	
 	TabelaColuna(){}
 	
 	public String getValor() {
