@@ -16,13 +16,12 @@ import com.andersonfonseka.caffeine.componentes.ISelecao;
 import com.andersonfonseka.caffeine.componentes.acao.AcaoAbs;
 
 import lombok.AccessLevel;
-import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 
 @EqualsAndHashCode(callSuper=false)
-public @Data class Endereco extends Conteiner implements IEndereco {
+public class Endereco extends Conteiner implements IEndereco {
 	
 	private static final long serialVersionUID = 1L;
 	
@@ -31,9 +30,19 @@ public @Data class Endereco extends Conteiner implements IEndereco {
 	@Setter(AccessLevel.NONE)
 	IComponenteFabrica componenteFabrica;
 	
-	private IPagina pagina;
+	IPagina pagina;
+	
+	IEntradaTexto logradouro;
+	
+	IEntradaNumero numero;
+
+	IEntradaTexto complemento;
+
+	IEntradaTexto bairro;
 	
 	private ISelecao estado;
+	
+	private ISelecao cidade; 
 	
 	Endereco(IComponenteFabrica componenteFabrica, IPagina pagina) {
 		super(4);
@@ -45,13 +54,13 @@ public @Data class Endereco extends Conteiner implements IEndereco {
 	@PostConstruct
 	public void post() {
 		
-		IEntradaTexto logradouro = componenteFabrica.criarEntradaTexto("Logradouro", true);
+		logradouro = componenteFabrica.criarEntradaTexto("Logradouro", true);
 		
-		IEntradaNumero numero = componenteFabrica.criarEntradaNumero("Numero", false);
+		numero = componenteFabrica.criarEntradaNumero("Numero", false);
 
-		IEntradaTexto complemento = componenteFabrica.criarEntradaTexto("Complemento", false);
+		complemento = componenteFabrica.criarEntradaTexto("Complemento", false);
 		
-		IEntradaTexto bairro = componenteFabrica.criarEntradaTexto("Bairro", false);
+		bairro = componenteFabrica.criarEntradaTexto("Bairro", false);
 		
 		estado = componenteFabrica.criarSelecao("UF", new AcaoAbs(this) {
 			
@@ -87,7 +96,7 @@ public @Data class Endereco extends Conteiner implements IEndereco {
 		
 		estado.setValor(parametros.get(estado.getId()));
 
-		ISelecao cidade = componenteFabrica.criarSelecao("Cidade", true);
+		cidade = componenteFabrica.criarSelecao("Cidade", true);
 		
 		if (estado.getValor() == null) {
 			cidade.adicionar(componenteFabrica.criarOpcaoSelecao(" ", "Selecione..."));
@@ -103,8 +112,30 @@ public @Data class Endereco extends Conteiner implements IEndereco {
 		
 		adicionar(2, cidade);
 		
-		
 	}
-	
+
+	public IEntradaTexto getLogradouro() {
+		return logradouro;
+	}
+
+	public IEntradaNumero getNumero() {
+		return numero;
+	}
+
+	public IEntradaTexto getComplemento() {
+		return complemento;
+	}
+
+	public IEntradaTexto getBairro() {
+		return bairro;
+	}
+
+	public ISelecao getEstado() {
+		return estado;
+	}
+
+	public ISelecao getCidade() {
+		return cidade;
+	}
 
 }

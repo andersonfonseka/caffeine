@@ -286,8 +286,8 @@ public class ComponenteFabricaImpl implements IComponenteFabrica, Serializable {
 	}
 
 	@Override
-	public ITabela criarTabela() {
-		return new Tabela();
+	public ITabela criarTabela(String id) {
+		return new Tabela(id);
 	}
 
 	@Override

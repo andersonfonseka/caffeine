@@ -18,17 +18,18 @@ public @Data class Tabela extends Componente implements ITabela {
 	private List<ITabelaColuna> colunas = new ArrayList<ITabelaColuna>();
 	
 	private List dados = new ArrayList();
+	
+	public Tabela(String id) {
+		setId(id);
+	}
 
 	public String getValor(Object object, String campo) {
 		
 		String resultado = "";
-
-		
 		try {
 
 			Method method = object.getClass().getMethod(campo, null);
 			resultado = String.valueOf(method.invoke(object, null));
-		
 		
 		} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
 			e.printStackTrace();

@@ -8,7 +8,7 @@ import com.andersonfonseka.caffeine.componentes.acao.AcaoAbs;
 
 public interface IComponenteFabrica {
 	
-	ITabela criarTabela();
+	ITabela criarTabela(String id);
 	
 	ITabelaColuna criarTabelaColuna(String titulo, String campo);
 	
