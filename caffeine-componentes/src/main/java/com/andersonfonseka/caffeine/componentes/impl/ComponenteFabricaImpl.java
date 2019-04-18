@@ -1,5 +1,6 @@
 package com.andersonfonseka.caffeine.componentes.impl;
 import java.io.Serializable;
+import java.util.Map;
 
 import javax.enterprise.context.spi.CreationalContext;
 import javax.enterprise.inject.spi.BeanManager;
@@ -7,6 +8,7 @@ import javax.inject.Inject;
 
 import org.jboss.weld.bean.ManagedBean;
 
+import com.andersonfonseka.caffeine.componentes.IAcesso;
 import com.andersonfonseka.caffeine.componentes.IBotao;
 import com.andersonfonseka.caffeine.componentes.IComponenteFabrica;
 import com.andersonfonseka.caffeine.componentes.IConteiner;
@@ -308,6 +310,11 @@ public class ComponenteFabricaImpl implements IComponenteFabrica, Serializable {
 		tabelaColuna.setSelecionavel(selecionavel);
 		
 		return tabelaColuna;
+	}
+
+	@Override
+	public IAcesso criarAcesso(IPagina pagina, Map<String, String> usuarios, Class paginaDestino) {
+		return new Acesso(this, pagina, usuarios, paginaDestino);
 	}
 	
 }

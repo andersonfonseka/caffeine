@@ -69,8 +69,6 @@ public @Data class Endereco extends Conteiner implements IEndereco {
 		estado.adicionar(componenteFabrica.criarOpcaoSelecao("1", "PE"));
 		estado.adicionar(componenteFabrica.criarOpcaoSelecao("2", "SP"));
 		estado.adicionar(componenteFabrica.criarOpcaoSelecao("3", "RJ"));
-
-		
 		
 		adicionar(0, logradouro);
 		adicionar(0, numero);
