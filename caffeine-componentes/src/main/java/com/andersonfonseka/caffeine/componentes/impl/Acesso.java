@@ -42,11 +42,11 @@ public @Data class Acesso extends Conteiner implements IAcesso {
 	
 	private IPagina pagina;
 	
-	private Class paginaDestino;
+	private Class<?> paginaDestino;
 	
 	private  Map<String, String> usuarios;
 	
-	Acesso(IComponenteFabrica componenteFabrica, IPagina pagina, Map<String, String> usuarios, Class paginaDestino) {
+	Acesso(IComponenteFabrica componenteFabrica, IPagina pagina, Map<String, String> usuarios, Class<?> paginaDestino) {
 		
 		super(4);
 		this.componenteFabrica = componenteFabrica;
@@ -69,16 +69,13 @@ public @Data class Acesso extends Conteiner implements IAcesso {
 
 				IResposta pageResponse = componenteFabrica.criarResposta();
 
-				IEntradaEmail inputText = (IEntradaEmail) pagina.obterPorId(pagina, txtEmail.getId()).get();
-				IEntradaSenha inputPassword = (IEntradaSenha) pagina.obterPorId(pagina, txtSenha.getId()).get();
-
-				 if (usuarios.containsKey(inputText.getValor()) && 
-						 usuarios.get(inputText.getValor()).equals(inputPassword.getValor())) {
+				 if (usuarios.containsKey(txtEmail.getValor()) && 
+						 usuarios.get(txtEmail.getValor()).equals(txtSenha.getValor())) {
 					pageResponse.setPageUrl(paginaDestino.getName());
 
 				} else {
 
-					pageResponse.adicionar(mensagemUtil.getMensagemPropriedades("INVALIDACCESS", inputText.getValor()));
+					pageResponse.adicionar(mensagemUtil.getMensagemPropriedades("INVALIDACCESS", txtEmail.getValor()));
 					pageResponse.setPageUrl(pagina.getClass().getName());
 
 				}
@@ -92,7 +89,6 @@ public @Data class Acesso extends Conteiner implements IAcesso {
 		adicionar(0, txtEmail).
 		adicionar(1, txtSenha).
 		adicionar(3, botaoAcesso);
-
 	}
 
 	@Override
@@ -104,5 +100,4 @@ public @Data class Acesso extends Conteiner implements IAcesso {
 	public void aoCarregar(Map<String, String> parametros) {
 		super.aoCarregar(parametros);
 	}
-
 }
