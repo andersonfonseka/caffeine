@@ -1,5 +1,5 @@
 # caffeine
-**um java web framework em portugues**
+**um java web framework em português**
 
 [![BCH compliance](https://bettercodehub.com/edge/badge/andersonfonseka/caffeine?branch=master)](https://bettercodehub.com/)
 
