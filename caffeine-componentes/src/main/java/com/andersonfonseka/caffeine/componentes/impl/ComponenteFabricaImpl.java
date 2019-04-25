@@ -118,6 +118,7 @@ public class ComponenteFabricaImpl implements IComponenteFabrica, Serializable {
 			}
 		}, true);
 		
+		btnCancel.setEstilo("btn-danger");
 		btnCancel.setImediato(true);
 		
 		return btnCancel;

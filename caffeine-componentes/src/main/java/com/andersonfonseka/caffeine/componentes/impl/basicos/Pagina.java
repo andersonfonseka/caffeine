@@ -19,8 +19,6 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(callSuper=false)
 public abstract @Data class Pagina extends Componente implements IPagina {
 	
-	static Integer internalId = 1;
-	
 	private static final long serialVersionUID = 1L;
 
 	private String titulo;

@@ -16,9 +16,6 @@ import lombok.Getter;
 @EqualsAndHashCode(callSuper=false)
 public @Data class Conteiner extends Componente implements IConteiner {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 
 	private Integer rows = 1;
@@ -26,6 +23,8 @@ public @Data class Conteiner extends Componente implements IConteiner {
 	private List<Integer> rowsList = new ArrayList<Integer>();
 	
 	private Integer columns = 1;
+	
+	private String orientacao = "colunas";
 	
 	private @Getter Map<Integer, List<IComponente>> rowCell = new HashMap<Integer, List<IComponente>>();
 	
@@ -59,7 +58,12 @@ public @Data class Conteiner extends Componente implements IConteiner {
 	
 	@Override
 	public String getTemplate() {
-		return "conteiner";
+
+		if (orientacao.equals("horizontal")){
+			return "conteinerTabular";
+		}
+		
+		return "conteiner";	
 	}
 
 	@Override

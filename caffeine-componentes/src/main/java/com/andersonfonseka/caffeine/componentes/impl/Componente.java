@@ -24,7 +24,7 @@ public abstract @Data class Componente implements IComponente, Serializable {
 	@Inject
 	private BeanManager beanManager;
 
-	static Integer internalId = 1;
+	public static Integer internalId = 1;
 	
 	private @Getter String id;
 	

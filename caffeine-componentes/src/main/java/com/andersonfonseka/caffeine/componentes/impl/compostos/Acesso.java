@@ -47,7 +47,7 @@ public class Acesso extends Conteiner implements IAcesso {
 	
 	public Acesso(IComponenteFabrica componenteFabrica, IPagina pagina, Map<String, String> usuarios, Class<?> paginaDestino) {
 		
-		super(4);
+		super(3);
 		this.componenteFabrica = componenteFabrica;
 		this.pagina = pagina;
 		this.paginaDestino = paginaDestino;
@@ -87,7 +87,7 @@ public class Acesso extends Conteiner implements IAcesso {
 
 		adicionar(0, email).
 		adicionar(1, senha).
-		adicionar(3, botaoAcesso);
+		adicionar(2, botaoAcesso);
 	}
 	
 	@Override
