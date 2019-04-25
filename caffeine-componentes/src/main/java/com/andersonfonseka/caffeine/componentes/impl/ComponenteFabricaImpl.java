@@ -32,6 +32,25 @@ import com.andersonfonseka.caffeine.componentes.ISelecao;
 import com.andersonfonseka.caffeine.componentes.ITabela;
 import com.andersonfonseka.caffeine.componentes.ITabelaColuna;
 import com.andersonfonseka.caffeine.componentes.acao.AcaoAbs;
+import com.andersonfonseka.caffeine.componentes.impl.basicos.Botao;
+import com.andersonfonseka.caffeine.componentes.impl.basicos.Conteiner;
+import com.andersonfonseka.caffeine.componentes.impl.basicos.EntradaAreaTexto;
+import com.andersonfonseka.caffeine.componentes.impl.basicos.EntradaArquivo;
+import com.andersonfonseka.caffeine.componentes.impl.basicos.EntradaCheckbox;
+import com.andersonfonseka.caffeine.componentes.impl.basicos.EntradaData;
+import com.andersonfonseka.caffeine.componentes.impl.basicos.EntradaEmail;
+import com.andersonfonseka.caffeine.componentes.impl.basicos.EntradaNumero;
+import com.andersonfonseka.caffeine.componentes.impl.basicos.EntradaOculta;
+import com.andersonfonseka.caffeine.componentes.impl.basicos.EntradaSenha;
+import com.andersonfonseka.caffeine.componentes.impl.basicos.EntradaTexto;
+import com.andersonfonseka.caffeine.componentes.impl.basicos.Formulario;
+import com.andersonfonseka.caffeine.componentes.impl.basicos.OpcaoSelecao;
+import com.andersonfonseka.caffeine.componentes.impl.basicos.Rotulo;
+import com.andersonfonseka.caffeine.componentes.impl.basicos.Selecao;
+import com.andersonfonseka.caffeine.componentes.impl.basicos.Tabela;
+import com.andersonfonseka.caffeine.componentes.impl.basicos.TabelaColuna;
+import com.andersonfonseka.caffeine.componentes.impl.compostos.Acesso;
+import com.andersonfonseka.caffeine.componentes.impl.compostos.Endereco;
 
 public class ComponenteFabricaImpl implements IComponenteFabrica, Serializable {
 	
@@ -313,7 +332,7 @@ public class ComponenteFabricaImpl implements IComponenteFabrica, Serializable {
 	}
 
 	@Override
-	public IAcesso criarAcesso(IPagina pagina, Map<String, String> usuarios, Class paginaDestino) {
+	public IAcesso criarAcesso(IPagina pagina, Map<String, String> usuarios, Class<? extends IPagina> paginaDestino) {
 		return new Acesso(this, pagina, usuarios, paginaDestino);
 	}
 	

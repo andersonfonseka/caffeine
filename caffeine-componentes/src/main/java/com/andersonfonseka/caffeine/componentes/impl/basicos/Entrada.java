@@ -1,9 +1,11 @@
-package com.andersonfonseka.caffeine.componentes.impl;
+package com.andersonfonseka.caffeine.componentes.impl.basicos;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import com.andersonfonseka.caffeine.componentes.IEntrada;
+import com.andersonfonseka.caffeine.componentes.impl.Componente;
 import com.andersonfonseka.caffeine.componentes.validador.IValidador;
 import com.andersonfonseka.caffeine.util.MensagemUtil;
 
@@ -39,6 +41,12 @@ public abstract @Data class Entrada extends Componente implements IEntrada, IVal
 			mensagens.add(new MensagemUtil().getMensagemPropriedades("REQUIREDFIELD", getTitulo()));
 		}
 		return mensagens;
+	}
+	
+	public void aoCarregar(Map<String, String> parametros) {
+		if (parametros.containsKey(this.getId())) {
+			this.setValor(parametros.get(this.getId()));	
+		}
 	}
 
 }

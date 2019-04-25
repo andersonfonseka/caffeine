@@ -1,4 +1,4 @@
-#($label.isNegrito())
+#if($label.isNegrito())
 <label class="font-weight-bold" id="$label.getId()" class="col-form-label">$label.getTitulo()</label>
 #else
 <label id="$label.getId()" class="col-form-label">$label.getTitulo()</label>

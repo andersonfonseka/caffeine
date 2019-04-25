@@ -1,9 +1,10 @@
-package com.andersonfonseka.caffeine.componentes.impl;
+package com.andersonfonseka.caffeine.componentes.impl.basicos;
 
 import java.util.List;
 import java.util.Map;
 
 import com.andersonfonseka.caffeine.componentes.IOpcaoSelecao;
+import com.andersonfonseka.caffeine.componentes.impl.Componente;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -19,7 +20,7 @@ public @Data class OpcaoSelecao extends Componente implements IOpcaoSelecao {
 	
 	private boolean selecionado;
 
-	OpcaoSelecao(String valor, String rotulo) {
+	public OpcaoSelecao(String valor, String rotulo) {
 		super();
 		this.valor = valor;
 		this.rotulo = rotulo;

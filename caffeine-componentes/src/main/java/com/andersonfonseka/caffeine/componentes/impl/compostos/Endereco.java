@@ -1,4 +1,4 @@
-package com.andersonfonseka.caffeine.componentes.impl;
+package com.andersonfonseka.caffeine.componentes.impl.compostos;
 
 import java.util.Map;
 
@@ -6,7 +6,6 @@ import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 
 import com.andersonfonseka.caffeine.componentes.IComponenteFabrica;
-import com.andersonfonseka.caffeine.componentes.IConteiner;
 import com.andersonfonseka.caffeine.componentes.IEndereco;
 import com.andersonfonseka.caffeine.componentes.IEntradaNumero;
 import com.andersonfonseka.caffeine.componentes.IEntradaTexto;
@@ -14,6 +13,7 @@ import com.andersonfonseka.caffeine.componentes.IPagina;
 import com.andersonfonseka.caffeine.componentes.IResposta;
 import com.andersonfonseka.caffeine.componentes.ISelecao;
 import com.andersonfonseka.caffeine.componentes.acao.AcaoAbs;
+import com.andersonfonseka.caffeine.componentes.impl.basicos.Conteiner;
 
 import lombok.AccessLevel;
 import lombok.EqualsAndHashCode;
@@ -44,7 +44,7 @@ public class Endereco extends Conteiner implements IEndereco {
 	
 	private ISelecao cidade; 
 	
-	Endereco(IComponenteFabrica componenteFabrica, IPagina pagina) {
+	public Endereco(IComponenteFabrica componenteFabrica, IPagina pagina) {
 		super(4);
 		this.componenteFabrica = componenteFabrica;
 		this.pagina = pagina;
@@ -84,11 +84,6 @@ public class Endereco extends Conteiner implements IEndereco {
 		adicionar(1, complemento);
 		adicionar(1, bairro);
 		adicionar(2, estado);
-	}
-
-	@Override
-	public IConteiner getConteiner() {
-		return this;
 	}
 	
 	@Override

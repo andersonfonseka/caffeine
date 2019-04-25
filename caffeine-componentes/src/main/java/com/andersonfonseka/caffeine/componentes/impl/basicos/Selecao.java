@@ -1,4 +1,4 @@
-package com.andersonfonseka.caffeine.componentes.impl;
+package com.andersonfonseka.caffeine.componentes.impl.basicos;
 
 import java.util.Map;
 
@@ -22,7 +22,7 @@ public @Data class Selecao extends Entrada implements ISelecao {
 	
 	private boolean imediato = false;
 	
-	Selecao() {
+	public Selecao() {
 		adicionar(new OpcaoSelecao("", "Selecione..."));
 	}
 	

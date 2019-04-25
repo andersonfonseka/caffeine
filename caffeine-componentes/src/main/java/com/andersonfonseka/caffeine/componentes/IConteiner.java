@@ -2,7 +2,7 @@ package com.andersonfonseka.caffeine.componentes;
 
 import java.util.List;
 
-import com.andersonfonseka.caffeine.componentes.impl.Conteiner;
+import com.andersonfonseka.caffeine.componentes.impl.basicos.Conteiner;
 
 public interface IConteiner extends IComponente {
 	

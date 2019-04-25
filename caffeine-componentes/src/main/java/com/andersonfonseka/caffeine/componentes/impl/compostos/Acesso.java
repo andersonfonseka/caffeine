@@ -1,4 +1,4 @@
-package com.andersonfonseka.caffeine.componentes.impl;
+package com.andersonfonseka.caffeine.componentes.impl.compostos;
 
 import java.util.Map;
 
@@ -8,22 +8,21 @@ import javax.inject.Inject;
 import com.andersonfonseka.caffeine.componentes.IAcesso;
 import com.andersonfonseka.caffeine.componentes.IBotao;
 import com.andersonfonseka.caffeine.componentes.IComponenteFabrica;
-import com.andersonfonseka.caffeine.componentes.IConteiner;
 import com.andersonfonseka.caffeine.componentes.IEntradaEmail;
 import com.andersonfonseka.caffeine.componentes.IEntradaSenha;
 import com.andersonfonseka.caffeine.componentes.IPagina;
 import com.andersonfonseka.caffeine.componentes.IResposta;
 import com.andersonfonseka.caffeine.componentes.acao.AcaoAbs;
+import com.andersonfonseka.caffeine.componentes.impl.basicos.Conteiner;
 import com.andersonfonseka.caffeine.util.MensagemUtil;
 
 import lombok.AccessLevel;
-import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 
 @EqualsAndHashCode(callSuper=false)
-public @Data class Acesso extends Conteiner implements IAcesso {
+public class Acesso extends Conteiner implements IAcesso {
 	
 	private static final long serialVersionUID = 1L;
 	
@@ -34,9 +33,9 @@ public @Data class Acesso extends Conteiner implements IAcesso {
 	@Setter(AccessLevel.NONE)
 	IComponenteFabrica componenteFabrica;
 	
-	private IEntradaEmail txtEmail;
+	private IEntradaEmail email;
 
-	private IEntradaSenha txtSenha;
+	private IEntradaSenha senha;
 	
 	private IBotao botaoAcesso;
 	
@@ -46,7 +45,7 @@ public @Data class Acesso extends Conteiner implements IAcesso {
 	
 	private  Map<String, String> usuarios;
 	
-	Acesso(IComponenteFabrica componenteFabrica, IPagina pagina, Map<String, String> usuarios, Class<?> paginaDestino) {
+	public Acesso(IComponenteFabrica componenteFabrica, IPagina pagina, Map<String, String> usuarios, Class<?> paginaDestino) {
 		
 		super(4);
 		this.componenteFabrica = componenteFabrica;
@@ -60,22 +59,22 @@ public @Data class Acesso extends Conteiner implements IAcesso {
 	@PostConstruct
 	public void post() {
 
-		txtEmail = componenteFabrica.criarEntradaEmail("Email", true);
+		email = componenteFabrica.criarEntradaEmail("Email", true);
 
-		txtSenha = componenteFabrica.criarEntradaSenha("Senha", true);
+		senha = componenteFabrica.criarEntradaSenha("Senha", true);
 
 		botaoAcesso = componenteFabrica.criarBotao("Conectar", new AcaoAbs(pagina) {
 			public IResposta execute() {
 
 				IResposta pageResponse = componenteFabrica.criarResposta();
 
-				 if (usuarios.containsKey(txtEmail.getValor()) && 
-						 usuarios.get(txtEmail.getValor()).equals(txtSenha.getValor())) {
+				 if (usuarios.containsKey(email.getValor()) && 
+						 usuarios.get(email.getValor()).equals(senha.getValor())) {
 					pageResponse.setPageUrl(paginaDestino.getName());
 
 				} else {
 
-					pageResponse.adicionar(mensagemUtil.getMensagemPropriedades("INVALIDACCESS", txtEmail.getValor()));
+					pageResponse.adicionar(mensagemUtil.getMensagemPropriedades("INVALIDACCESS", email.getValor()));
 					pageResponse.setPageUrl(pagina.getClass().getName());
 
 				}
@@ -86,18 +85,22 @@ public @Data class Acesso extends Conteiner implements IAcesso {
 
 		botaoAcesso.setImediato(false);
 
-		adicionar(0, txtEmail).
-		adicionar(1, txtSenha).
+		adicionar(0, email).
+		adicionar(1, senha).
 		adicionar(3, botaoAcesso);
-	}
-
-	@Override
-	public IConteiner getConteiner() {
-		return this;
 	}
 	
 	@Override
 	public void aoCarregar(Map<String, String> parametros) {
 		super.aoCarregar(parametros);
 	}
+
+	public IEntradaEmail getEmail() {
+		return email;
+	}
+
+	public IEntradaSenha getSenha() {
+		return senha;
+	}
+	
 }

@@ -1,8 +1,7 @@
-package com.andersonfonseka.caffeine.componentes.impl;
+package com.andersonfonseka.caffeine.componentes.impl.basicos;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import org.apache.commons.validator.routines.EmailValidator;
 
@@ -13,14 +12,11 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 @EqualsAndHashCode(callSuper=false)
-@Data class EntradaEmail extends Entrada implements IEntradaEmail {
+public @Data class EntradaEmail extends Entrada implements IEntradaEmail {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -9151902940785641660L;
 	
-	EntradaEmail(){}
+	public EntradaEmail(){}
 	
 	@Override
 	public String getTemplate() {
@@ -42,8 +38,5 @@ import lombok.EqualsAndHashCode;
 		
 		return mensagens;
 	}
-
-	@Override
-	public void aoCarregar(Map<String, String> parametros) {}
 
 }

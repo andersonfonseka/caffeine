@@ -1,6 +1,4 @@
-package com.andersonfonseka.caffeine.componentes.impl;
-
-import java.util.Map;
+package com.andersonfonseka.caffeine.componentes.impl.basicos;
 
 import com.andersonfonseka.caffeine.componentes.IEntradaAreaTexto;
 
@@ -17,14 +15,11 @@ public @Data class EntradaAreaTexto extends Entrada implements IEntradaAreaTexto
 
 	private Integer rows;
 	
-	EntradaAreaTexto(){}
+	public EntradaAreaTexto(){}
 	
 	@Override
 	public String getTemplate() {
 		return "inputtextarea";
 	}
-
-	@Override
-	public void aoCarregar(Map<String, String> parametros) {}
 	
 }

@@ -1,6 +1,4 @@
-package com.andersonfonseka.caffeine.componentes.impl;
-
-import java.util.Map;
+package com.andersonfonseka.caffeine.componentes.impl.basicos;
 
 import com.andersonfonseka.caffeine.componentes.IEntradaCheckbox;
 
@@ -13,7 +11,7 @@ public class EntradaCheckbox extends Entrada implements IEntradaCheckbox {
 	
 	private boolean checked = false;
 	
-	EntradaCheckbox(){}
+	public EntradaCheckbox(){}
 	
 	@Override
 	public String getTemplate() {
@@ -29,8 +27,5 @@ public class EntradaCheckbox extends Entrada implements IEntradaCheckbox {
 	public boolean isChecked() {
 		return this.checked;
 	}
-
-	@Override
-	public void aoCarregar(Map<String, String> parametros) {}
 
 }

@@ -26,6 +26,7 @@ import com.andersonfonseka.caffeine.componentes.IOpcaoSelecao;
 import com.andersonfonseka.caffeine.componentes.IRotulo;
 import com.andersonfonseka.caffeine.componentes.ISelecao;
 import com.andersonfonseka.caffeine.componentes.acao.AcaoAbs;
+import com.andersonfonseka.caffeine.componentes.impl.basicos.Pagina;
 
 @EnableWeld
 class ComponenteFabricaImplTest {
@@ -62,6 +63,11 @@ class ComponenteFabricaImplTest {
 	@Test
 	void testCriarEndereco(IComponenteFabrica componenteFabrica) {
 		IEndereco endereco = componenteFabrica.criarEndereco(new Pagina() {
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
+
 			@Override
 			public void post() {
 			}

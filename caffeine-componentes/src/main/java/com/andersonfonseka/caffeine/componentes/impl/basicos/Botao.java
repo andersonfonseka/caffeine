@@ -1,10 +1,11 @@
-package com.andersonfonseka.caffeine.componentes.impl;
+package com.andersonfonseka.caffeine.componentes.impl.basicos;
 
 import java.util.Map;
 
 import com.andersonfonseka.caffeine.componentes.IBotao;
 import com.andersonfonseka.caffeine.componentes.IResposta;
 import com.andersonfonseka.caffeine.componentes.acao.AcaoAbs;
+import com.andersonfonseka.caffeine.componentes.impl.Componente;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -22,7 +23,7 @@ public @Data class Botao extends Componente implements IBotao {
 	
 	private boolean imediato = false;
 	
-	Botao(){}
+	public Botao(){}
 	
 	@Override
 	public String getTemplate() {

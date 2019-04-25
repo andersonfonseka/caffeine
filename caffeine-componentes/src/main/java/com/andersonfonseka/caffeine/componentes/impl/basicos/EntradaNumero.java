@@ -1,8 +1,7 @@
-package com.andersonfonseka.caffeine.componentes.impl;
+package com.andersonfonseka.caffeine.componentes.impl.basicos;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import org.apache.commons.validator.routines.IntegerValidator;
 
@@ -17,7 +16,7 @@ public @Data class EntradaNumero extends Entrada implements IEntradaNumero {
 
 	private static final long serialVersionUID = -4340908969483338598L;
 	
-	EntradaNumero(){}
+	public EntradaNumero(){}
 	
 	@Override
 	public String getTemplate() {
@@ -38,8 +37,5 @@ public @Data class EntradaNumero extends Entrada implements IEntradaNumero {
 		
 		return mensagens;
 	}
-
-	@Override
-	public void aoCarregar(Map<String, String> parametros) {}
 
 }

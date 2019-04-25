@@ -11,7 +11,7 @@ import com.andersonfonseka.caffeine.componentes.IComponenteFabrica;
 import com.andersonfonseka.caffeine.componentes.IFormulario;
 import com.andersonfonseka.caffeine.componentes.IResposta;
 import com.andersonfonseka.caffeine.componentes.acao.AcaoAbs;
-import com.andersonfonseka.caffeine.componentes.impl.Pagina;
+import com.andersonfonseka.caffeine.componentes.impl.basicos.Pagina;
 
 @RequestScoped
 public class AcessoPagina extends Pagina {
@@ -27,7 +27,7 @@ public class AcessoPagina extends Pagina {
 	public void post() {
 		
 		IFormulario formulario = componenteFabrica.criarFormulario();
-		formulario.adicionar(componenteFabrica.criarEndereco(null).getConteiner());
+		formulario.adicionar(componenteFabrica.criarEndereco(null));
 		
 		IBotao botao = componenteFabrica.criarBotao("Teste", new AcaoAbs(new Object()) {
 			

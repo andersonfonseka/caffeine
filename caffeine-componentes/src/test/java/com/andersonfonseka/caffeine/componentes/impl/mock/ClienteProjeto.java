@@ -4,7 +4,7 @@ import java.util.Map;
 
 import javax.enterprise.context.SessionScoped;
 
-import com.andersonfonseka.caffeine.componentes.impl.Projeto;
+import com.andersonfonseka.caffeine.componentes.impl.basicos.Projeto;
 
 @SessionScoped
 public class ClienteProjeto extends Projeto {

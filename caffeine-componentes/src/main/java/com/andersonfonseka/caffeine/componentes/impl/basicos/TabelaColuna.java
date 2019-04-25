@@ -1,22 +1,25 @@
-package com.andersonfonseka.caffeine.componentes.impl;
+package com.andersonfonseka.caffeine.componentes.impl.basicos;
 
 import java.util.Map;
 
 import com.andersonfonseka.caffeine.componentes.ITabelaColuna;
+import com.andersonfonseka.caffeine.componentes.impl.Componente;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
+@EqualsAndHashCode(callSuper=false)
 public @Data class TabelaColuna extends Componente implements ITabelaColuna {
+
+	private static final long serialVersionUID = 1L;
 
 	private String titulo;
 	
 	private String campo;
 	
-	private String valor;
-	
 	private boolean selecionavel;
 	
-	TabelaColuna(){}
+	public TabelaColuna(){}
 	
 	public String getValor() {
 		return "";

@@ -1,8 +1,9 @@
-package com.andersonfonseka.caffeine.componentes.impl;
+package com.andersonfonseka.caffeine.componentes.impl.basicos;
 
 import java.util.Map;
 
 import com.andersonfonseka.caffeine.componentes.IRotulo;
+import com.andersonfonseka.caffeine.componentes.impl.Componente;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -16,7 +17,7 @@ public @Data class Rotulo extends Componente implements IRotulo {
 	
 	private boolean negrito;
 	
-	Rotulo(){}
+	public Rotulo(){}
 	
 	@Override
 	public String getTemplate() {

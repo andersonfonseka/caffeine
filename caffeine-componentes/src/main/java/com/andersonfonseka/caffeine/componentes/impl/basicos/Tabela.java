@@ -1,4 +1,4 @@
-package com.andersonfonseka.caffeine.componentes.impl;
+package com.andersonfonseka.caffeine.componentes.impl.basicos;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -8,16 +8,19 @@ import java.util.Map;
 
 import com.andersonfonseka.caffeine.componentes.ITabela;
 import com.andersonfonseka.caffeine.componentes.ITabelaColuna;
+import com.andersonfonseka.caffeine.componentes.impl.Componente;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
+@EqualsAndHashCode(callSuper=false)
 public @Data class Tabela extends Componente implements ITabela {
 
 	private static final long serialVersionUID = 1L;
 	
 	private List<ITabelaColuna> colunas = new ArrayList<ITabelaColuna>();
 	
-	private List dados = new ArrayList();
+	private List<?> dados = new ArrayList();
 	
 	public Tabela(String id) {
 		setId(id);

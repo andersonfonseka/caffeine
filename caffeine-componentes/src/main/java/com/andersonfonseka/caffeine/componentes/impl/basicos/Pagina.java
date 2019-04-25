@@ -1,4 +1,4 @@
-package com.andersonfonseka.caffeine.componentes.impl;
+package com.andersonfonseka.caffeine.componentes.impl.basicos;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -9,6 +9,8 @@ import java.util.Optional;
 
 import com.andersonfonseka.caffeine.componentes.IComponente;
 import com.andersonfonseka.caffeine.componentes.IPagina;
+import com.andersonfonseka.caffeine.componentes.impl.Componente;
+import com.andersonfonseka.caffeine.componentes.impl.ComponenteFabricaImpl;
 import com.andersonfonseka.caffeine.componentes.util.ParametroUtil;
 
 import lombok.Data;
@@ -16,6 +18,8 @@ import lombok.EqualsAndHashCode;
 
 @EqualsAndHashCode(callSuper=false)
 public abstract @Data class Pagina extends Componente implements IPagina {
+	
+	static Integer internalId = 1;
 	
 	private static final long serialVersionUID = 1L;
 
@@ -25,7 +29,7 @@ public abstract @Data class Pagina extends Componente implements IPagina {
 	
 	private List<String> mensagens = new ArrayList<String>();
 	
-	protected Pagina() {
+	public Pagina() {
 		internalId = 1;
 		this.setComponenteFabrica(new ComponenteFabricaImpl());
 	}

@@ -60,5 +60,5 @@ public interface IComponenteFabrica {
 
 	IEntradaOculta criarEntradaOculta(String valor);
 
-	IAcesso criarAcesso(IPagina pagina, Map<String, String> usuarios, Class paginaDestino);
+	IAcesso criarAcesso(IPagina pagina, Map<String, String> usuarios, Class<? extends IPagina> paginaDestino);
 }

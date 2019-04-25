@@ -12,6 +12,7 @@ import org.junit.jupiter.api.Test;
 
 import com.andersonfonseka.caffeine.componentes.IComponenteFabrica;
 import com.andersonfonseka.caffeine.componentes.IEndereco;
+import com.andersonfonseka.caffeine.componentes.impl.basicos.Pagina;
 
 @EnableWeld
 class EnderecoTest {
@@ -22,6 +23,11 @@ class EnderecoTest {
 	@Test
 	void testCriarEndereco(IComponenteFabrica componenteFabrica) {
 		IEndereco endereco = componenteFabrica.criarEndereco(new Pagina() {
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
+
 			@Override
 			public void post() {
 			}
@@ -35,6 +41,11 @@ class EnderecoTest {
 	@Test
 	void testRenderEndereco(IComponenteFabrica componenteFabrica) {
 		IEndereco endereco = componenteFabrica.criarEndereco(new Pagina() {
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
+
 			@Override
 			public void post() {
 			}

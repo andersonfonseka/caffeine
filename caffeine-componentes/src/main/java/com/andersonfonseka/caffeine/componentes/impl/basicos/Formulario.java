@@ -1,8 +1,9 @@
-package com.andersonfonseka.caffeine.componentes.impl;
+package com.andersonfonseka.caffeine.componentes.impl.basicos;
 
 import java.util.Map;
 
 import com.andersonfonseka.caffeine.componentes.IFormulario;
+import com.andersonfonseka.caffeine.componentes.impl.Componente;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -15,7 +16,7 @@ public @Data class Formulario extends Componente implements IFormulario {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	Formulario(){}
+	public Formulario(){}
 	
 	@Override
 	public String getTemplate() {

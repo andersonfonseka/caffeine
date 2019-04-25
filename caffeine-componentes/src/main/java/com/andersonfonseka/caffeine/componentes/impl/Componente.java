@@ -34,7 +34,7 @@ public abstract @Data class Componente implements IComponente, Serializable {
 	
 	private IComponenteFabrica componenteFabrica;
 	
-	Componente() {
+	public Componente() {
 		this.id = this.getClass().getSimpleName() + internalId;
 		internalId++;
 	}

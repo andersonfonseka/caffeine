@@ -11,7 +11,7 @@ import com.andersonfonseka.caffeine.componentes.IComponenteFabrica;
 import com.andersonfonseka.caffeine.componentes.IFormulario;
 import com.andersonfonseka.caffeine.componentes.IResposta;
 import com.andersonfonseka.caffeine.componentes.acao.AcaoAbs;
-import com.andersonfonseka.caffeine.componentes.impl.Pagina;
+import com.andersonfonseka.caffeine.componentes.impl.basicos.Pagina;
 
 @RequestScoped
 public class AcessoPagina extends Pagina {
@@ -27,7 +27,7 @@ public class AcessoPagina extends Pagina {
 	public void post() {
 		
 		IFormulario formulario = componenteFabrica.criarFormulario();
-		formulario.adicionar(componenteFabrica.criarEndereco(this).getConteiner());
+		formulario.adicionar(componenteFabrica.criarEndereco(this));
 		
 		IBotao botao = componenteFabrica.criarBotao("Teste", new AcaoAbs(new Object()) {
 			
@@ -47,7 +47,9 @@ public class AcessoPagina extends Pagina {
 	}
 
 	@Override
-	public void aoCarregar(Map<String, String> parametros) {}
+	public void aoCarregar(Map<String, String> parametros) {
+		super.aoCarregar(parametros);
+	}
 	
 
 }

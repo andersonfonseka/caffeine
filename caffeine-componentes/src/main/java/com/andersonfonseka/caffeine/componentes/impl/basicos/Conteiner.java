@@ -1,4 +1,4 @@
-package com.andersonfonseka.caffeine.componentes.impl;
+package com.andersonfonseka.caffeine.componentes.impl.basicos;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -7,6 +7,7 @@ import java.util.Map;
 
 import com.andersonfonseka.caffeine.componentes.IComponente;
 import com.andersonfonseka.caffeine.componentes.IConteiner;
+import com.andersonfonseka.caffeine.componentes.impl.Componente;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -28,11 +29,11 @@ public @Data class Conteiner extends Componente implements IConteiner {
 	
 	private @Getter Map<Integer, List<IComponente>> rowCell = new HashMap<Integer, List<IComponente>>();
 	
-	Conteiner() {
+	public Conteiner() {
 		this(1);
 	}
 	
-	Conteiner(Integer rows) {
+	public Conteiner(Integer rows) {
 		super();
 		this.rows = rows;
 			for (int i = 0; i < this.rows; i++) {

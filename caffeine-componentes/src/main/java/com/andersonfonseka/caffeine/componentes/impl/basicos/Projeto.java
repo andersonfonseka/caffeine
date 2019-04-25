@@ -1,4 +1,4 @@
-package com.andersonfonseka.caffeine.componentes.impl;
+package com.andersonfonseka.caffeine.componentes.impl.basicos;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -6,6 +6,7 @@ import java.util.Map;
 import com.andersonfonseka.caffeine.componentes.IComponenteFabrica;
 import com.andersonfonseka.caffeine.componentes.IPagina;
 import com.andersonfonseka.caffeine.componentes.IProjeto;
+import com.andersonfonseka.caffeine.componentes.impl.Componente;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
