@@ -8,7 +8,7 @@
 - em sua maioria existem vários frameworks java web gringos; 
 - temos uma série de particularidades em termos de negócio;
 - funcionalidades que facilmente poderiam se tornar componentes são reescritos, gerando possíveis erros;
-- normalmente o desenvolvedor necessita se adaptar ao modelo de construção do framework e, dependendo da curva de aprendizado, o negócio deixa de ser o propósito;
+- normalmente o desenvolvedor precisa se adaptar ao modelo de construção do framework e, dependendo da curva de aprendizado, o negócio deixa de ser o propósito;
 - frameworks tradicionais oferecem funcionalidades além do necessário, gerando uma possivel redução de desempenho.
 
 **por que eu não usaria um framework já consolidado no mercado?**
