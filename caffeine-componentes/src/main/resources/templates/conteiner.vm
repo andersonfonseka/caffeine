@@ -1,9 +1,11 @@
-#foreach($row in $conteiner.getRowsList())
-<div class="row">
-	#foreach($comp in $conteiner.get($row))
-	<div class="col">
-		$comp.gerarSaida()
+<div class="bd-example">
+	#foreach($row in $conteiner.getRowsList())
+	<div class="row">
+		#foreach($comp in $conteiner.get($row))
+		<div class="col">
+			$comp.gerarSaida()
+		</div>
+		#end
 	</div>
 	#end
 </div>
-#end

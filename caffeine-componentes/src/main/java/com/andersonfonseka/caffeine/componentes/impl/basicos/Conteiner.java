@@ -24,7 +24,7 @@ public @Data class Conteiner extends Componente implements IConteiner {
 	
 	private Integer columns = 1;
 	
-	private String orientacao = "colunas";
+	private String orientacao = IConteiner.COLUNAS;
 	
 	private @Getter Map<Integer, List<IComponente>> rowCell = new HashMap<Integer, List<IComponente>>();
 	
@@ -59,7 +59,7 @@ public @Data class Conteiner extends Componente implements IConteiner {
 	@Override
 	public String getTemplate() {
 
-		if (orientacao.equals("horizontal")){
+		if (orientacao.equals(IConteiner.HORIZONTAL)){
 			return "conteinerTabular";
 		}
 		
