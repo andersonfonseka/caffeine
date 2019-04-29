@@ -1,10 +1,9 @@
 package com.andersonfonseka.caffeine.componentes;
 
-import java.util.List;
+import java.util.Map;
 
 public interface IEntradaMemoria extends IEntrada {
 	
-	List<Object> getLista();
-	
+	Map<String, String> getLista();
 
 }

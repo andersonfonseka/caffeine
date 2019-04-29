@@ -12,6 +12,7 @@ import com.andersonfonseka.caffeine.componentes.IAcesso;
 import com.andersonfonseka.caffeine.componentes.IBotao;
 import com.andersonfonseka.caffeine.componentes.IComponenteFabrica;
 import com.andersonfonseka.caffeine.componentes.IConteiner;
+import com.andersonfonseka.caffeine.componentes.IDocumentacao;
 import com.andersonfonseka.caffeine.componentes.IEndereco;
 import com.andersonfonseka.caffeine.componentes.IEntradaAreaTexto;
 import com.andersonfonseka.caffeine.componentes.IEntradaArquivo;
@@ -50,6 +51,7 @@ import com.andersonfonseka.caffeine.componentes.impl.basicos.Selecao;
 import com.andersonfonseka.caffeine.componentes.impl.basicos.Tabela;
 import com.andersonfonseka.caffeine.componentes.impl.basicos.TabelaColuna;
 import com.andersonfonseka.caffeine.componentes.impl.compostos.Acesso;
+import com.andersonfonseka.caffeine.componentes.impl.compostos.Documentacao;
 import com.andersonfonseka.caffeine.componentes.impl.compostos.Endereco;
 
 public class ComponenteFabricaImpl implements IComponenteFabrica, Serializable {
@@ -335,6 +337,11 @@ public class ComponenteFabricaImpl implements IComponenteFabrica, Serializable {
 	@Override
 	public IAcesso criarAcesso(IPagina pagina, Map<String, String> usuarios, Class<? extends IPagina> paginaDestino) {
 		return new Acesso(this, pagina, usuarios, paginaDestino);
+	}
+
+	@Override
+	public IDocumentacao criarDocumentacao(Map<String, String> documentacoes) {
+		return new Documentacao(this, documentacoes);
 	}
 	
 }
