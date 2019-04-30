@@ -60,6 +60,6 @@ public @Data class Selecao extends Entrada implements ISelecao {
 	}
 	
 	@Override
-	public void aoCarregar(Map<String, String> parametros) {}
+	public void aoCarregar(Map<String, Object> parametros) {}
 	
 }

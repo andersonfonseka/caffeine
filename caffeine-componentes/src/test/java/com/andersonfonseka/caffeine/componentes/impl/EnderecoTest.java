@@ -33,7 +33,7 @@ class EnderecoTest {
 			}
 
 			@Override
-			public void aoCarregar(Map<String, String> parametros) {
+			public void aoCarregar(Map<String, Object> parametros) {
 			}});
 		assertTrue(Optional.of(endereco).isPresent());
 	}
@@ -51,7 +51,7 @@ class EnderecoTest {
 			}
 
 			@Override
-			public void aoCarregar(Map<String, String> parametros) {
+			public void aoCarregar(Map<String, Object> parametros) {
 			}
 		});
 		assertTrue(Optional.of(endereco.gerarSaida()).isPresent() && endereco.gerarSaida().length() > 0);

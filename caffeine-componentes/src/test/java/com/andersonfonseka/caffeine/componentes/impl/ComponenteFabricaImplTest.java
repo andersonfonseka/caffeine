@@ -73,7 +73,7 @@ class ComponenteFabricaImplTest {
 			}
 
 			@Override
-			public void aoCarregar(Map<String, String> parametros) {
+			public void aoCarregar(Map<String, Object> parametros) {
 			}});
 		assertTrue(Optional.of(endereco).isPresent());
 	}

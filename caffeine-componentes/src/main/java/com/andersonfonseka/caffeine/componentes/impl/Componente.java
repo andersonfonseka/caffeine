@@ -61,6 +61,6 @@ public abstract @Data class Componente implements IComponente, Serializable {
 
 	public abstract String getTemplate();
 	
-	public abstract void aoCarregar(Map<String, String> parametros);
+	public abstract void aoCarregar(Map<String, Object> parametros);
 	
 }

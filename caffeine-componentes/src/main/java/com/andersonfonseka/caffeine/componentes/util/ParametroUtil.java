@@ -13,7 +13,7 @@ import com.andersonfonseka.caffeine.componentes.IEntradaCheckbox;
 
 public class ParametroUtil {
 	
-	public void atribuirParametros(IComponente componente, Map<String, String> parametros) {
+	public void atribuirParametros(IComponente componente, Map<String, Object> parametros) {
 		
 		Field[] campos = componente.getClass().getDeclaredFields();
 		

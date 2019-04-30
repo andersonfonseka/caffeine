@@ -13,6 +13,8 @@ public @Data class Resposta implements IResposta {
 	
 	List<String> mensagens = new ArrayList<String>();
 	
+	Object atributo;
+	
 	String pageUrl;
 	
 	protected Resposta() {}

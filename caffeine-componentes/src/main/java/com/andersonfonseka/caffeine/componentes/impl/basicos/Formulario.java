@@ -24,6 +24,6 @@ public @Data class Formulario extends Componente implements IFormulario {
 	}
 
 	@Override
-	public void aoCarregar(Map<String, String> parametros) {}
+	public void aoCarregar(Map<String, Object> parametros) {}
 	
 }

@@ -28,7 +28,7 @@ public class ClientePagina extends Pagina {
 	}
 
 	@Override
-	public void aoCarregar(Map<String, String> parametros) {}
+	public void aoCarregar(Map<String, Object> parametros) {}
 	
 
 }

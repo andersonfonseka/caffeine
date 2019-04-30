@@ -57,6 +57,6 @@ public @Data class Tabela extends Componente implements ITabela {
 	
 
 	@Override
-	public void aoCarregar(Map<String, String> parametros) {}
+	public void aoCarregar(Map<String, Object> parametros) {}
 
 }

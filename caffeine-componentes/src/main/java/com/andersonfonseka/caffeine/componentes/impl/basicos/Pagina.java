@@ -91,7 +91,7 @@ public abstract @Data class Pagina extends Componente implements IPagina {
 		return comp;
 	}
 	
-	private void obterComponenteDoConteiner(IComponente component2, Map<String, String> parametros) {
+	private void obterComponenteDoConteiner(IComponente component2, Map<String, Object> parametros) {
 
 		Conteiner gridLayout = (Conteiner) component2;
 		Iterator<Integer> it = gridLayout.getRowCell().keySet().iterator();
@@ -109,7 +109,7 @@ public abstract @Data class Pagina extends Componente implements IPagina {
 
 	public abstract void post();
 
-	public void aoCarregar(Map<String, String> parametros) {
+	public void aoCarregar(Map<String, Object> parametros) {
 		
 		if(parametros == null)
 			return;
@@ -119,7 +119,7 @@ public abstract @Data class Pagina extends Componente implements IPagina {
 
 	}
 	
-	private void carregar(Map<String, String> parametros, IComponente componente) {
+	private void carregar(Map<String, Object> parametros, IComponente componente) {
 		for (IComponente comp : componente.getComponentes()) {
 			comp.aoCarregar(parametros);
 			

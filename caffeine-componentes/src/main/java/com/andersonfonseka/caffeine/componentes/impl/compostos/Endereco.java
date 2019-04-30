@@ -68,7 +68,6 @@ public class Endereco extends Conteiner implements IEndereco {
 			public IResposta execute() {
 				IResposta resposta = componenteFabrica.criarResposta();
 				resposta.setPageUrl(pagina.getClass().getName());
-				
 				return resposta;
 			}
 		}, true);
@@ -87,13 +86,13 @@ public class Endereco extends Conteiner implements IEndereco {
 	}
 	
 	@Override
-	public void aoCarregar(Map<String, String> parametros) {
+	public void aoCarregar(Map<String, Object> parametros) {
 		
-		estado.setValor(parametros.get(estado.getId()));
+		estado.setValor(String.valueOf(parametros.get(estado.getId())));
 
 		cidade = componenteFabrica.criarSelecao("Cidade", true);
 		
-		if (estado.getValor() == null) {
+		if (estado.getSelecionado() == null) {
 			cidade.adicionar(componenteFabrica.criarOpcaoSelecao(" ", "Selecione..."));
 		} else if (estado.getSelecionado().getValor().equals("1")) {
 			cidade.adicionar(componenteFabrica.criarOpcaoSelecao("1", "Recife"));

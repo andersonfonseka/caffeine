@@ -12,4 +12,8 @@ public interface IResposta {
 	
 	List<String> getMensagens();
 	
+	void setAtributo(Object obj);
+	
+	Object getAtributo();
+	
 }

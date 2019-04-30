@@ -46,6 +46,6 @@ public @Data class Botao extends Componente implements IBotao {
 	}
 
 	@Override
-	public void aoCarregar(Map<String, String> parametros) {}
+	public void aoCarregar(Map<String, Object> parametros) {}
 
 }

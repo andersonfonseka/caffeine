@@ -43,9 +43,9 @@ public abstract @Data class Entrada extends Componente implements IEntrada, IVal
 		return mensagens;
 	}
 	
-	public void aoCarregar(Map<String, String> parametros) {
+	public void aoCarregar(Map<String, Object> parametros) {
 		if (parametros.containsKey(this.getId())) {
-			this.setValor(parametros.get(this.getId()));	
+			this.setValor(String.valueOf(parametros.get(this.getId())));	
 		}
 	}
 

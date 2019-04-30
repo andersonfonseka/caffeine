@@ -31,7 +31,7 @@ public @Data class TabelaColuna extends Componente implements ITabelaColuna {
 	}
 
 	@Override
-	public void aoCarregar(Map<String, String> parametros) {}
+	public void aoCarregar(Map<String, Object> parametros) {}
 	
 	
 }

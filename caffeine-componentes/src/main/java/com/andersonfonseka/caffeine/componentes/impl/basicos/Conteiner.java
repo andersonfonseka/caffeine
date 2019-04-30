@@ -67,6 +67,6 @@ public @Data class Conteiner extends Componente implements IConteiner {
 	}
 
 	@Override
-	public void aoCarregar(Map<String, String> parametros) {}
+	public void aoCarregar(Map<String, Object> parametros) {}
 
 }

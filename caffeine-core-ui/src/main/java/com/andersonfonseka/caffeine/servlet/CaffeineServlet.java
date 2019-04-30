@@ -120,13 +120,20 @@ public class CaffeineServlet extends HttpServlet {
 		if (page.getMensagens().isEmpty()) {
 
 			IAcao button = (IAcao) page.obterPorId(page, op).get();
+			IComponente componente = (IComponente) button;
+			
 			IResposta pageResponse = button.doClick();
 
 			pageResult = project.obterPaginaPeloId(pageResponse.getPageUrl());
 			pageResult.setMensagens(pageResponse.getMensagens());
 			
-			pageResult.aoCarregar(obterParametros(req));
-
+			Map<String, Object> atributos = obterParametros(req);
+			
+			if (pageResponse.getAtributo() != null) {
+				atributos.put(componente.getId(), pageResponse.getAtributo());
+			}
+			
+			pageResult.aoCarregar(atributos);
 		}
 
 		return pageResult;
@@ -147,7 +154,6 @@ public class CaffeineServlet extends HttpServlet {
 						IComponente component = page.obterPorId(page, id).get();
 						
 						if (component instanceof IEntradaCheckbox) {
-						
 							((IEntradaCheckbox) component).setChecked(true);
 						
 						} else if (component instanceof IEntrada) {
@@ -157,14 +163,12 @@ public class CaffeineServlet extends HttpServlet {
 					}
 				}
 			}
-
 		}
-
 	}
 
-	private Map<String, String> obterParametros(HttpServletRequest req) {
+	private Map<String, Object> obterParametros(HttpServletRequest req) {
 
-		Map<String, String> results = new HashMap<String, String>();
+		Map<String, Object> results = new HashMap<String, Object>();
 		Enumeration<String> names = req.getParameterNames();
 
 		if (Optional.ofNullable(names).isPresent()) {

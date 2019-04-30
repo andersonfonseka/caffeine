@@ -21,6 +21,6 @@ public interface IComponente {
 	
 	String getTemplate();
 	
-	void aoCarregar(Map<String, String> parametros);
+	void aoCarregar(Map<String, Object> parametros);
 
 }

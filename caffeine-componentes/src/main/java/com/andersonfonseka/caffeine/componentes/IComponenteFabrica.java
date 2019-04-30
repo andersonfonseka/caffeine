@@ -1,10 +1,12 @@
 package com.andersonfonseka.caffeine.componentes;
 
+import java.util.List;
 import java.util.Map;
 
 import javax.enterprise.inject.spi.BeanManager;
 
 import com.andersonfonseka.caffeine.componentes.acao.AcaoAbs;
+import com.andersonfonseka.caffeine.componentes.impl.compostos.dominio.TipoValorBean;
 
 public interface IComponenteFabrica {
 	
@@ -61,6 +63,6 @@ public interface IComponenteFabrica {
 	IEntradaOculta criarEntradaOculta(String valor);
 
 	IAcesso criarAcesso(IPagina pagina, Map<String, String> usuarios, Class<? extends IPagina> paginaDestino);
-	
-	IDocumentacao criarDocumentacao(Map<String, String> documentacoes);
+
+	ITipoValor criarTipoValor(IPagina pagina, ISelecao selecaoTipo);
 }
