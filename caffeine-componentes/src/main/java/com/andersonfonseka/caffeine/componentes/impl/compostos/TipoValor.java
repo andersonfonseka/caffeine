@@ -50,15 +50,16 @@ public class TipoValor extends Conteiner implements ITipoValor {
 		this.componenteFabrica = componenteFabrica;
 		this.pagina = pPagina;
 		
-		this.txDados = componenteFabrica.criarEntradaOculta("");
+		this.txDados = componenteFabrica.criarEntradaOculta(this.getId()+"_EntradaOculta", "");
 		
 		this.selTipo = selecaoTipo;
 		
-		this.txValor = componenteFabrica.criarEntradaTexto("Valor", true);
+		this.txValor = componenteFabrica.criarEntradaTexto("Valor", false);
 
-		this.tblTipoValores = componenteFabrica.criarTabela("tblTipoValor");
-		this.tblTipoValores.adicionaColuna(componenteFabrica.criarTabelaColuna("Tipo", "getTipo"));
-		this.tblTipoValores.adicionaColuna(componenteFabrica.criarTabelaColuna("Valor", "getValor"));
+		this.tblTipoValores = componenteFabrica.criarTabela("tbl" + getId())
+				.adicionaColuna(componenteFabrica.criarTabelaColuna("#", "getId", true))
+				.adicionaColuna(componenteFabrica.criarTabelaColuna("Tipo", "getTipo"))
+				.adicionaColuna(componenteFabrica.criarTabelaColuna("Valor", "getValor"));
 		
 		this.btnAdicionar = componenteFabrica.criarBotao("Adicionar", new AcaoAbs(tblTipoValores) {
 			@Override
@@ -68,15 +69,18 @@ public class TipoValor extends Conteiner implements ITipoValor {
 				documento.setTipo(selTipo.getSelecionado().getRotulo());
 				documento.setValor(txValor.getValor());
 				
+				txDados.setValor(txDados.getValor() + documento.toString());
+				
 				IResposta resposta = componenteFabrica.criarResposta();
-				resposta.setAtributo(txDados.getValor() + documento.toString());
-				resposta.setPageUrl(pagina.getClass().getName());
+				resposta.setAtributo(txDados.getId(), txDados.getValor());
+				resposta.setPageUrl(pagina.getClass());
 				return resposta;
 
 			}
 		}, true);
 		
 		this.btnAdicionar.setImediato(true);
+		this.btnAdicionar.setParent(this.getId());
 		
 		adicionar(0, txDados);
 		adicionar(1, selTipo);
@@ -97,8 +101,9 @@ public class TipoValor extends Conteiner implements ITipoValor {
 			String[] doc = resultado[i].split("#");
 			
 			TipoValorBean documento = new TipoValorBean();
-			documento.setTipo(doc[0]);
-			documento.setValor(doc[1]);
+			documento.setId(doc[0]);
+			documento.setTipo(doc[1]);
+			documento.setValor(doc[2]);
 
 			documentos.add(documento);
 		}
@@ -110,15 +115,13 @@ public class TipoValor extends Conteiner implements ITipoValor {
 	public void aoCarregar(Map<String, Object> parametros) {
 		super.aoCarregar(parametros);
 		
-		if (parametros.containsKey("attrib_")) {
-			txDados.setValor(String.valueOf(parametros.get("attrib_")));
-			System.out.println(txDados.getValor());
-			tblTipoValores.setDados(getListaValores());
+		if (parametros.containsKey(txDados.getId())) {
+			txDados.setValor(String.valueOf(parametros.get(txDados.getId())));
+			
+			if (txDados.getValor().trim().length() > 0) {
+				tblTipoValores.setDados(getListaValores());	
+			}
 		}
-	}
-
-	public IEntradaOculta getDados() {
-		return txDados;
 	}
 	
 }

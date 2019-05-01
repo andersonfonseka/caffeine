@@ -1,19 +1,20 @@
 package com.andersonfonseka.caffeine.componentes;
 
 import java.util.List;
+import java.util.Map;
 
 public interface IResposta {
 
 	void adicionar(String message);
 	
-	String getPageUrl();
+	Class<?extends IPagina> getPageUrl();
 	
-	void setPageUrl(String endereco);
+	void setPageUrl(Class<? extends IPagina> clazz);
 	
 	List<String> getMensagens();
 	
-	void setAtributo(Object obj);
+	void setAtributo(String chave, Object valor);
 	
-	Object getAtributo();
+	Map<String, Object> getAtributo();
 	
 }

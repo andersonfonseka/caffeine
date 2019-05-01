@@ -124,13 +124,13 @@ public class CaffeineServlet extends HttpServlet {
 			
 			IResposta pageResponse = button.doClick();
 
-			pageResult = project.obterPaginaPeloId(pageResponse.getPageUrl());
+			pageResult = project.obterPaginaPeloId(pageResponse.getPageUrl().getName());
 			pageResult.setMensagens(pageResponse.getMensagens());
 			
 			Map<String, Object> atributos = obterParametros(req);
 			
 			if (pageResponse.getAtributo() != null) {
-				atributos.put(componente.getId(), pageResponse.getAtributo());
+				atributos.putAll(pageResponse.getAtributo());
 			}
 			
 			pageResult.aoCarregar(atributos);

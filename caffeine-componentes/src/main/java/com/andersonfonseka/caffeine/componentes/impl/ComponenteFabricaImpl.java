@@ -1,6 +1,5 @@
 package com.andersonfonseka.caffeine.componentes.impl;
 import java.io.Serializable;
-import java.util.List;
 import java.util.Map;
 
 import javax.enterprise.context.spi.CreationalContext;
@@ -13,7 +12,6 @@ import com.andersonfonseka.caffeine.componentes.IAcesso;
 import com.andersonfonseka.caffeine.componentes.IBotao;
 import com.andersonfonseka.caffeine.componentes.IComponenteFabrica;
 import com.andersonfonseka.caffeine.componentes.IConteiner;
-import com.andersonfonseka.caffeine.componentes.ITipoValor;
 import com.andersonfonseka.caffeine.componentes.IEndereco;
 import com.andersonfonseka.caffeine.componentes.IEntradaAreaTexto;
 import com.andersonfonseka.caffeine.componentes.IEntradaArquivo;
@@ -33,6 +31,7 @@ import com.andersonfonseka.caffeine.componentes.IRotulo;
 import com.andersonfonseka.caffeine.componentes.ISelecao;
 import com.andersonfonseka.caffeine.componentes.ITabela;
 import com.andersonfonseka.caffeine.componentes.ITabelaColuna;
+import com.andersonfonseka.caffeine.componentes.ITipoValor;
 import com.andersonfonseka.caffeine.componentes.acao.AcaoAbs;
 import com.andersonfonseka.caffeine.componentes.impl.basicos.Botao;
 import com.andersonfonseka.caffeine.componentes.impl.basicos.Conteiner;
@@ -52,9 +51,8 @@ import com.andersonfonseka.caffeine.componentes.impl.basicos.Selecao;
 import com.andersonfonseka.caffeine.componentes.impl.basicos.Tabela;
 import com.andersonfonseka.caffeine.componentes.impl.basicos.TabelaColuna;
 import com.andersonfonseka.caffeine.componentes.impl.compostos.Acesso;
-import com.andersonfonseka.caffeine.componentes.impl.compostos.TipoValor;
 import com.andersonfonseka.caffeine.componentes.impl.compostos.Endereco;
-import com.andersonfonseka.caffeine.componentes.impl.compostos.dominio.TipoValorBean;
+import com.andersonfonseka.caffeine.componentes.impl.compostos.TipoValor;
 
 public class ComponenteFabricaImpl implements IComponenteFabrica, Serializable {
 	
@@ -110,7 +108,7 @@ public class ComponenteFabricaImpl implements IComponenteFabrica, Serializable {
 	}
 	
 	
-	public IBotao criarBotaoCancelar(String paginaDestino) {
+	public IBotao criarBotaoCancelar(Class<? extends IPagina> paginaDestino) {
 		
 		IBotao btnCancel = criarBotao("Cancelar", new AcaoAbs(new Object()) {
 			public IResposta execute() {
@@ -344,6 +342,16 @@ public class ComponenteFabricaImpl implements IComponenteFabrica, Serializable {
 	@Override
 	public ITipoValor criarTipoValor(IPagina pagina, ISelecao selecaoTipo) {
 		return new TipoValor(this, pagina, selecaoTipo);
+	}
+
+	@Override
+	public IEntradaOculta criarEntradaOculta(String id, String valor) {
+
+		EntradaOculta entradaOculta = new EntradaOculta();
+		entradaOculta.setId(id);
+		entradaOculta.setValor(valor);
+		
+		return entradaOculta;
 	}
 	
 }
