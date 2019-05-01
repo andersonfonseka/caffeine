@@ -44,7 +44,6 @@ class BotaoTest {
 			public Resposta execute() {
 				Resposta resp = new Resposta();
 				resp.adicionar("blalablbalbalbalba");
-				resp.setPageUrl("");
 				
 				Logger.getAnonymousLogger().fine(getSource().toString());
 				

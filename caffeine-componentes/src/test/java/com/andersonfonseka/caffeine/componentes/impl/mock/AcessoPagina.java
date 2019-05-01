@@ -34,7 +34,7 @@ public class AcessoPagina extends Pagina {
 			@Override
 			public IResposta execute() {
 				IResposta iResposta = componenteFabrica.criarResposta();
-				iResposta.setPageUrl(AcessoPagina.class.getName());
+				iResposta.setPageUrl(AcessoPagina.class);
 				return iResposta;
 			}
 		}, true);

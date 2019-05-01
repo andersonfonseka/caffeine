@@ -1,8 +1,12 @@
 package com.andersonfonseka.caffeine.componentes.impl.compostos.dominio;
 
+import java.util.UUID;
+
 import lombok.Data;
 
 public @Data class TipoValorBean {
+	
+	private String id = UUID.randomUUID().toString();
 	
 	private String tipo;
 	
@@ -10,7 +14,7 @@ public @Data class TipoValorBean {
 
 	@Override
 	public String toString() {
-		return tipo + "#" + valor + ";";
+		return id + "#" + tipo + "#" + valor + ";";
 	}
 	
 }

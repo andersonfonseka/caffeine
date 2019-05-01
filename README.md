@@ -1,5 +1,5 @@
 # caffeine
-**um java web framework em portugu�s**
+**um java web framework em portugu�s**
 
 [![BCH compliance](https://bettercodehub.com/edge/badge/andersonfonseka/caffeine?branch=master)](https://bettercodehub.com/)
 
@@ -7,7 +7,7 @@
 
 - em sua maioria existem vários frameworks java web gringos; 
 - temos uma série de particularidades em termos de negócio;
-- funcionalidades que facilmente poderiam se tornar componentes são reescritos, gerando possíveis erros;
+- funcionalidades que facilmente poderiam se tornar componentes são reescritos, gerando um maior esforço de construção e a introdução de possíveis erros;
 - normalmente o desenvolvedor precisa se adaptar ao modelo de construção do framework e, dependendo da curva de aprendizado, o negócio deixa de ser o propósito;
 - frameworks tradicionais oferecem funcionalidades além do necessário, gerando uma possivel redução de desempenho.
 
@@ -16,7 +16,7 @@
 você pode usar qualquer framework, porém, considere a curva de aprendizado e se realmente faz sentido gastar tanto tempo entendendo conceitos
 que já poderiam vir abstraídos do desenvolvedor pelo Caffeine:
 
-- pense como você implementa o fluxo de nevegação, 
+- pense como você implementa o fluxo de navegação, 
 - quantos descritores (XML/Anotações) você precisa definir, 
 - quantas páginas HTML/CSS + ManagedBean você precisa criar.
 - por que você precisa se preocupar tanto com escopos como: session, request, etc?
@@ -28,9 +28,10 @@ que já poderiam vir abstraídos do desenvolvedor pelo Caffeine:
 **diferenciais**
 
 - 100% java, sem necessidade de conhecimentos em HTML, CSS, Javascript, ...
-- uma linguagem para a construção de paginas e formularios em portugues;
-- simplificação na configuração e aprendizado;
-- componentes como CPF, CNPJ conforme os padrões brasileiros;
+- uma linguagem para a construção de paginas e formularios em português;
+- simplificação na configuração do projeto 
+- menor curva de aprendizado;
+- componentes que vão além caixas de entrada e exibição previstos na maioria dos frameworks generalistas;
 - flexivel, sendo possível criar seus próprios componentes;
 - gratuíto, livre e de uso irrestrito.
 

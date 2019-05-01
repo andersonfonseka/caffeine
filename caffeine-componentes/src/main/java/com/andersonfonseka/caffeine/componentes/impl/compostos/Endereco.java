@@ -67,7 +67,7 @@ public class Endereco extends Conteiner implements IEndereco {
 			@Override
 			public IResposta execute() {
 				IResposta resposta = componenteFabrica.criarResposta();
-				resposta.setPageUrl(pagina.getClass().getName());
+				resposta.setPageUrl(pagina.getClass());
 				return resposta;
 			}
 		}, true);

@@ -41,11 +41,11 @@ public class Acesso extends Conteiner implements IAcesso {
 	
 	private IPagina pagina;
 	
-	private Class<?> paginaDestino;
+	private Class<? extends IPagina> paginaDestino;
 	
 	private  Map<String, String> usuarios;
 	
-	public Acesso(IComponenteFabrica componenteFabrica, IPagina pagina, Map<String, String> usuarios, Class<?> paginaDestino) {
+	public Acesso(IComponenteFabrica componenteFabrica, IPagina pagina, Map<String, String> usuarios, Class<? extends IPagina> paginaDestino) {
 		
 		super(3);
 		this.componenteFabrica = componenteFabrica;
@@ -70,12 +70,12 @@ public class Acesso extends Conteiner implements IAcesso {
 
 				 if (usuarios.containsKey(email.getValor()) && 
 						 usuarios.get(email.getValor()).equals(senha.getValor())) {
-					pageResponse.setPageUrl(paginaDestino.getName());
+					pageResponse.setPageUrl(paginaDestino);
 
 				} else {
 
 					pageResponse.adicionar(mensagemUtil.getMensagemPropriedades("INVALIDACCESS", email.getValor()));
-					pageResponse.setPageUrl(pagina.getClass().getName());
+					pageResponse.setPageUrl(pagina.getClass());
 
 				}
 

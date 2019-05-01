@@ -1,12 +1,10 @@
 package com.andersonfonseka.caffeine.componentes;
 
-import java.util.List;
 import java.util.Map;
 
 import javax.enterprise.inject.spi.BeanManager;
 
 import com.andersonfonseka.caffeine.componentes.acao.AcaoAbs;
-import com.andersonfonseka.caffeine.componentes.impl.compostos.dominio.TipoValorBean;
 
 public interface IComponenteFabrica {
 	
@@ -24,7 +22,7 @@ public interface IComponenteFabrica {
 	
 	IBotao criarBotao(String titulo, AcaoAbs acao, boolean imediato);
 	
-	IBotao criarBotaoCancelar(String paginaDestino);
+	IBotao criarBotaoCancelar(Class<? extends IPagina> paginaDestino);
 	
 	IConteiner criarConteiner(Integer rows);
 	
@@ -61,6 +59,8 @@ public interface IComponenteFabrica {
 	ISelecao criarSelecao(String titulo, AcaoAbs acao, boolean imediato);
 
 	IEntradaOculta criarEntradaOculta(String valor);
+	
+	IEntradaOculta criarEntradaOculta(String id, String valor);
 
 	IAcesso criarAcesso(IPagina pagina, Map<String, String> usuarios, Class<? extends IPagina> paginaDestino);
 
