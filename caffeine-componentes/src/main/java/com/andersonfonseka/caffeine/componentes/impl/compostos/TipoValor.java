@@ -31,19 +31,19 @@ public class TipoValor extends Conteiner implements ITipoValor, Serializable {
 	@Inject
 	@Getter(AccessLevel.NONE)
 	@Setter(AccessLevel.NONE)
-	IComponenteFabrica componenteFabrica;
+	private transient IComponenteFabrica componenteFabrica;
 	
-	private ISelecao selTipo;
+	private transient ISelecao selTipo;
 	
-	private IEntradaTexto txValor;
+	private transient IEntradaTexto txValor;
 	
-	private IBotao btnAdicionar;
+	private transient IBotao btnAdicionar;
 	
-	private ITabela tblTipoValores;
+	private transient ITabela tblTipoValores;
 	
-	private IPagina pagina;
+	private transient IPagina pagina;
 	
-	private IEntradaOculta txDados;
+	private transient IEntradaOculta txDados;
 	
 	public TipoValor(IComponenteFabrica componenteFabrica, IPagina pPagina, ISelecao selecaoTipo) {
 

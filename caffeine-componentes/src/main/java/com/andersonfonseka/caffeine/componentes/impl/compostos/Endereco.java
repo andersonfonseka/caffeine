@@ -29,21 +29,21 @@ public class Endereco extends Conteiner implements IEndereco, Serializable {
 	@Inject
 	@Getter(AccessLevel.NONE)
 	@Setter(AccessLevel.NONE)
-	IComponenteFabrica componenteFabrica;
+	private transient IComponenteFabrica componenteFabrica;
 	
-	IPagina pagina;
+	private transient IPagina pagina;
 	
-	IEntradaTexto logradouro;
+	private transient IEntradaTexto logradouro;
 	
-	IEntradaNumero numero;
+	private transient IEntradaNumero numero;
 
-	IEntradaTexto complemento;
+	private transient IEntradaTexto complemento;
 
-	IEntradaTexto bairro;
+	private transient IEntradaTexto bairro;
 	
-	private ISelecao estado;
+	private transient ISelecao estado;
 	
-	private ISelecao cidade; 
+	private transient ISelecao cidade; 
 	
 	public Endereco(IComponenteFabrica componenteFabrica, IPagina pagina) {
 		super(4);

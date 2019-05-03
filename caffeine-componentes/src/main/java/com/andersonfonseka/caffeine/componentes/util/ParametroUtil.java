@@ -21,44 +21,43 @@ public class ParametroUtil {
 			try {
 				
 				List<Class> list = Arrays.asList(field.getType().getInterfaces());	
+
+				field.setAccessible(true);;
 				
 				if (field.getType().equals(IEntradaCheckbox.class)) {
-				
-					field.setAccessible(true);;
-					IEntradaCheckbox obj = (IEntradaCheckbox) field.get(componente);
-					Method metodoValor = obj.getClass().getMethod("setChecked", boolean.class);
-					
-					if (parametros.get(obj.getId()) != null) {
-						metodoValor.invoke(obj, true);
-					}
-				
+					trataEntradaCheckbox(componente, parametros, field);
 				} else if (list.contains(IEntrada.class)) {
-					
-					field.setAccessible(true);;
-					IEntrada obj = (IEntrada) field.get(componente);
-					Method metodoValor = obj.getClass().getMethod("setValor", String.class);
-					
-					if (parametros.get(obj.getId()) != null) {
-						metodoValor.invoke(obj, parametros.get(obj.getId()));
-					} else {
-						metodoValor.invoke(obj, "");
-					}
+					trataEntradaGenerica(componente, parametros, field);
 				}
 				
-			} catch (SecurityException e) {
-				e.printStackTrace();
-			} catch (IllegalArgumentException e) {
-				e.printStackTrace();
-			} catch (IllegalAccessException e) {
-				e.printStackTrace();
-			} catch (NoSuchMethodException e) {
-				e.printStackTrace();
-			} catch (InvocationTargetException e) {
+			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		}
 		
 		
+	}
+
+	private void trataEntradaGenerica(IComponente componente, Map<String, Object> parametros, Field field)
+			throws IllegalAccessException, NoSuchMethodException, InvocationTargetException {
+		IEntrada obj = (IEntrada) field.get(componente);
+		Method metodoValor = obj.getClass().getMethod("setValor", String.class);
+		
+		if (parametros.get(obj.getId()) != null) {
+			metodoValor.invoke(obj, parametros.get(obj.getId()));
+		} else {
+			metodoValor.invoke(obj, "");
+		}
+	}
+
+	private void trataEntradaCheckbox(IComponente componente, Map<String, Object> parametros, Field field)
+			throws IllegalAccessException, NoSuchMethodException, InvocationTargetException {
+		IEntradaCheckbox obj = (IEntradaCheckbox) field.get(componente);
+		Method metodoValor = obj.getClass().getMethod("setChecked", boolean.class);
+		
+		if (parametros.get(obj.getId()) != null) {
+			metodoValor.invoke(obj, true);
+		}
 	}
 
 }

@@ -27,20 +27,20 @@ public class Acesso extends Conteiner implements IAcesso, Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	
-	private MensagemUtil mensagemUtil = new MensagemUtil();
+	private transient MensagemUtil mensagemUtil = new MensagemUtil();
 	
 	@Inject
 	@Getter(AccessLevel.NONE)
 	@Setter(AccessLevel.NONE)
 	IComponenteFabrica componenteFabrica;
 	
-	private IEntradaEmail email;
+	private transient IEntradaEmail email;
 
-	private IEntradaSenha senha;
+	private transient IEntradaSenha senha;
 	
-	private IBotao botaoAcesso;
+	private transient IBotao botaoAcesso;
 	
-	private IPagina pagina;
+	private transient IPagina pagina;
 	
 	private Class<? extends IPagina> paginaDestino;
 	
