@@ -9,8 +9,8 @@ import org.jboss.weld.junit5.WeldInitiator;
 import org.jboss.weld.junit5.WeldSetup;
 import org.junit.jupiter.api.Test;
 
-import com.andersonfonseka.caffeine.componentes.IComponenteFabrica;
-import com.andersonfonseka.caffeine.componentes.ISelecao;
+import com.andersonfonseka.caffeine.IComponenteFabrica;
+import com.andersonfonseka.caffeine.ISelecao;
 
 @EnableWeld
 class SelecaoTest {

@@ -6,15 +6,15 @@ import java.util.Map;
 
 import javax.inject.Inject;
 
-import com.andersonfonseka.caffeine.componentes.IBotao;
-import com.andersonfonseka.caffeine.componentes.IComponenteFabrica;
-import com.andersonfonseka.caffeine.componentes.ITipoValor;
-import com.andersonfonseka.caffeine.componentes.IEntradaOculta;
-import com.andersonfonseka.caffeine.componentes.IEntradaTexto;
-import com.andersonfonseka.caffeine.componentes.IPagina;
-import com.andersonfonseka.caffeine.componentes.IResposta;
-import com.andersonfonseka.caffeine.componentes.ISelecao;
-import com.andersonfonseka.caffeine.componentes.ITabela;
+import com.andersonfonseka.caffeine.IBotao;
+import com.andersonfonseka.caffeine.IComponenteFabrica;
+import com.andersonfonseka.caffeine.IEntradaOculta;
+import com.andersonfonseka.caffeine.IEntradaTexto;
+import com.andersonfonseka.caffeine.IPagina;
+import com.andersonfonseka.caffeine.IResposta;
+import com.andersonfonseka.caffeine.ISelecao;
+import com.andersonfonseka.caffeine.ITabela;
+import com.andersonfonseka.caffeine.ITipoValor;
 import com.andersonfonseka.caffeine.componentes.acao.AcaoAbs;
 import com.andersonfonseka.caffeine.componentes.impl.basicos.Conteiner;
 import com.andersonfonseka.caffeine.componentes.impl.compostos.dominio.TipoValorBean;

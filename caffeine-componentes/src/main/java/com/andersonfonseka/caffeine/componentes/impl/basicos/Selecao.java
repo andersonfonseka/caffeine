@@ -2,10 +2,10 @@ package com.andersonfonseka.caffeine.componentes.impl.basicos;
 
 import java.util.Map;
 
-import com.andersonfonseka.caffeine.componentes.IComponente;
-import com.andersonfonseka.caffeine.componentes.IOpcaoSelecao;
-import com.andersonfonseka.caffeine.componentes.IResposta;
-import com.andersonfonseka.caffeine.componentes.ISelecao;
+import com.andersonfonseka.caffeine.IComponente;
+import com.andersonfonseka.caffeine.IOpcaoSelecao;
+import com.andersonfonseka.caffeine.IResposta;
+import com.andersonfonseka.caffeine.ISelecao;
 import com.andersonfonseka.caffeine.componentes.acao.AcaoAbs;
 
 import lombok.Data;

@@ -5,8 +5,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.andersonfonseka.caffeine.componentes.IPagina;
-import com.andersonfonseka.caffeine.componentes.IResposta;
+import com.andersonfonseka.caffeine.IPagina;
+import com.andersonfonseka.caffeine.IResposta;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;

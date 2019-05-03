@@ -10,21 +10,21 @@ import org.jboss.weld.junit5.WeldInitiator;
 import org.jboss.weld.junit5.WeldSetup;
 import org.junit.jupiter.api.Test;
 
-import com.andersonfonseka.caffeine.componentes.IBotao;
-import com.andersonfonseka.caffeine.componentes.IComponenteFabrica;
-import com.andersonfonseka.caffeine.componentes.IConteiner;
-import com.andersonfonseka.caffeine.componentes.IEndereco;
-import com.andersonfonseka.caffeine.componentes.IEntradaAreaTexto;
-import com.andersonfonseka.caffeine.componentes.IEntradaArquivo;
-import com.andersonfonseka.caffeine.componentes.IEntradaData;
-import com.andersonfonseka.caffeine.componentes.IEntradaEmail;
-import com.andersonfonseka.caffeine.componentes.IEntradaNumero;
-import com.andersonfonseka.caffeine.componentes.IEntradaSenha;
-import com.andersonfonseka.caffeine.componentes.IEntradaTexto;
-import com.andersonfonseka.caffeine.componentes.IFormulario;
-import com.andersonfonseka.caffeine.componentes.IOpcaoSelecao;
-import com.andersonfonseka.caffeine.componentes.IRotulo;
-import com.andersonfonseka.caffeine.componentes.ISelecao;
+import com.andersonfonseka.caffeine.IBotao;
+import com.andersonfonseka.caffeine.IComponenteFabrica;
+import com.andersonfonseka.caffeine.IConteiner;
+import com.andersonfonseka.caffeine.IEndereco;
+import com.andersonfonseka.caffeine.IEntradaAreaTexto;
+import com.andersonfonseka.caffeine.IEntradaArquivo;
+import com.andersonfonseka.caffeine.IEntradaData;
+import com.andersonfonseka.caffeine.IEntradaEmail;
+import com.andersonfonseka.caffeine.IEntradaNumero;
+import com.andersonfonseka.caffeine.IEntradaSenha;
+import com.andersonfonseka.caffeine.IEntradaTexto;
+import com.andersonfonseka.caffeine.IFormulario;
+import com.andersonfonseka.caffeine.IOpcaoSelecao;
+import com.andersonfonseka.caffeine.IRotulo;
+import com.andersonfonseka.caffeine.ISelecao;
 import com.andersonfonseka.caffeine.componentes.acao.AcaoAbs;
 import com.andersonfonseka.caffeine.componentes.impl.basicos.Pagina;
 
@@ -63,9 +63,7 @@ class ComponenteFabricaImplTest {
 	@Test
 	void testCriarEndereco(IComponenteFabrica componenteFabrica) {
 		IEndereco endereco = componenteFabrica.criarEndereco(new Pagina() {
-			/**
-			 * 
-			 */
+
 			private static final long serialVersionUID = 1L;
 
 			@Override

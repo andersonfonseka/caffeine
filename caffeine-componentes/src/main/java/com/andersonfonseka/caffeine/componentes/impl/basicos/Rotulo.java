@@ -2,7 +2,7 @@ package com.andersonfonseka.caffeine.componentes.impl.basicos;
 
 import java.util.Map;
 
-import com.andersonfonseka.caffeine.componentes.IRotulo;
+import com.andersonfonseka.caffeine.IRotulo;
 import com.andersonfonseka.caffeine.componentes.impl.Componente;
 
 import lombok.Data;

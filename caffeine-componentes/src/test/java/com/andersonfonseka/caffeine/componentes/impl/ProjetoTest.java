@@ -11,9 +11,9 @@ import org.jboss.weld.junit5.WeldInitiator;
 import org.jboss.weld.junit5.WeldSetup;
 import org.junit.jupiter.api.Test;
 
-import com.andersonfonseka.caffeine.componentes.IComponenteFabrica;
-import com.andersonfonseka.caffeine.componentes.IPagina;
-import com.andersonfonseka.caffeine.componentes.IProjeto;
+import com.andersonfonseka.caffeine.IComponenteFabrica;
+import com.andersonfonseka.caffeine.IPagina;
+import com.andersonfonseka.caffeine.IProjeto;
 import com.andersonfonseka.caffeine.componentes.impl.mock.AcessoPagina;
 import com.andersonfonseka.caffeine.componentes.impl.mock.ClienteProjeto;
 

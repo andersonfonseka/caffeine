@@ -9,7 +9,7 @@
 
 	<modules>
 		<module>caffeine-componentes</module>
-		<module>caffeine-core-ui</module>
+		<module>caffeine-api</module>
 		<module>caffeine-comum</module>
 	</modules>
 

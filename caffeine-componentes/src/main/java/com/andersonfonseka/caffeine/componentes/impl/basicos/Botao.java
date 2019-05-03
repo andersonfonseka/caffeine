@@ -2,15 +2,13 @@ package com.andersonfonseka.caffeine.componentes.impl.basicos;
 
 import java.util.Map;
 
-import com.andersonfonseka.caffeine.componentes.IBotao;
-import com.andersonfonseka.caffeine.componentes.IResposta;
+import com.andersonfonseka.caffeine.IBotao;
+import com.andersonfonseka.caffeine.IResposta;
 import com.andersonfonseka.caffeine.componentes.acao.AcaoAbs;
 import com.andersonfonseka.caffeine.componentes.impl.Componente;
 
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 
-@EqualsAndHashCode(callSuper=false)
 public @Data class Botao extends Componente implements IBotao {
 
 	private static final long serialVersionUID = 1L;

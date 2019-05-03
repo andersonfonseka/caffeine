@@ -1,6 +1,6 @@
 package com.andersonfonseka.caffeine.componentes.impl.basicos;
 
-import com.andersonfonseka.caffeine.componentes.IEntradaAreaTexto;
+import com.andersonfonseka.caffeine.IEntradaAreaTexto;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;

@@ -6,8 +6,8 @@ import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 
-import com.andersonfonseka.caffeine.componentes.IComponenteFabrica;
-import com.andersonfonseka.caffeine.componentes.IFormulario;
+import com.andersonfonseka.caffeine.IComponenteFabrica;
+import com.andersonfonseka.caffeine.IFormulario;
 import com.andersonfonseka.caffeine.componentes.impl.basicos.Pagina;
 
 @RequestScoped

@@ -9,8 +9,8 @@ import java.util.Optional;
 import javax.enterprise.inject.spi.BeanManager;
 import javax.inject.Inject;
 
-import com.andersonfonseka.caffeine.componentes.IComponente;
-import com.andersonfonseka.caffeine.componentes.IComponenteFabrica;
+import com.andersonfonseka.caffeine.IComponente;
+import com.andersonfonseka.caffeine.IComponenteFabrica;
 import com.andersonfonseka.caffeine.engine.Engenho;
 
 import lombok.Data;

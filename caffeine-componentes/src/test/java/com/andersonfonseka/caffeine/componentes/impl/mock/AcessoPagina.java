@@ -6,10 +6,10 @@ import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 
-import com.andersonfonseka.caffeine.componentes.IBotao;
-import com.andersonfonseka.caffeine.componentes.IComponenteFabrica;
-import com.andersonfonseka.caffeine.componentes.IFormulario;
-import com.andersonfonseka.caffeine.componentes.IResposta;
+import com.andersonfonseka.caffeine.IBotao;
+import com.andersonfonseka.caffeine.IComponenteFabrica;
+import com.andersonfonseka.caffeine.IFormulario;
+import com.andersonfonseka.caffeine.IResposta;
 import com.andersonfonseka.caffeine.componentes.acao.AcaoAbs;
 import com.andersonfonseka.caffeine.componentes.impl.basicos.Pagina;
 

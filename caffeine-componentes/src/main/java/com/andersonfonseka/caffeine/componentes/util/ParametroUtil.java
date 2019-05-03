@@ -7,9 +7,9 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
-import com.andersonfonseka.caffeine.componentes.IComponente;
-import com.andersonfonseka.caffeine.componentes.IEntrada;
-import com.andersonfonseka.caffeine.componentes.IEntradaCheckbox;
+import com.andersonfonseka.caffeine.IComponente;
+import com.andersonfonseka.caffeine.IEntrada;
+import com.andersonfonseka.caffeine.IEntradaCheckbox;
 
 public class ParametroUtil {
 	

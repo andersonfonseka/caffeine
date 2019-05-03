@@ -1,6 +1,6 @@
 package com.andersonfonseka.caffeine.componentes.impl.basicos;
 
-import com.andersonfonseka.caffeine.componentes.IEntradaCheckbox;
+import com.andersonfonseka.caffeine.IEntradaCheckbox;
 
 public class EntradaCheckbox extends Entrada implements IEntradaCheckbox {
 

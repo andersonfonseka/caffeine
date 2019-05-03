@@ -4,10 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import com.andersonfonseka.caffeine.componentes.IEntrada;
+import com.andersonfonseka.caffeine.IEntrada;
 import com.andersonfonseka.caffeine.componentes.impl.Componente;
-import com.andersonfonseka.caffeine.componentes.validador.IValidador;
 import com.andersonfonseka.caffeine.util.MensagemUtil;
+import com.andersonfonseka.caffeine.validador.IValidador;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;

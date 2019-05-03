@@ -5,8 +5,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.andersonfonseka.caffeine.componentes.IComponente;
-import com.andersonfonseka.caffeine.componentes.IConteiner;
+import com.andersonfonseka.caffeine.IComponente;
+import com.andersonfonseka.caffeine.IConteiner;
 import com.andersonfonseka.caffeine.componentes.impl.Componente;
 
 import lombok.Data;

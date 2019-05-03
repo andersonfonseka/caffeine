@@ -3,9 +3,9 @@ package com.andersonfonseka.caffeine.componentes.impl.basicos;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.andersonfonseka.caffeine.componentes.IComponenteFabrica;
-import com.andersonfonseka.caffeine.componentes.IPagina;
-import com.andersonfonseka.caffeine.componentes.IProjeto;
+import com.andersonfonseka.caffeine.IComponenteFabrica;
+import com.andersonfonseka.caffeine.IPagina;
+import com.andersonfonseka.caffeine.IProjeto;
 import com.andersonfonseka.caffeine.componentes.impl.Componente;
 
 import lombok.Data;

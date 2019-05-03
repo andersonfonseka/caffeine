@@ -5,13 +5,13 @@ import java.util.Map;
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 
-import com.andersonfonseka.caffeine.componentes.IComponenteFabrica;
-import com.andersonfonseka.caffeine.componentes.IEndereco;
-import com.andersonfonseka.caffeine.componentes.IEntradaNumero;
-import com.andersonfonseka.caffeine.componentes.IEntradaTexto;
-import com.andersonfonseka.caffeine.componentes.IPagina;
-import com.andersonfonseka.caffeine.componentes.IResposta;
-import com.andersonfonseka.caffeine.componentes.ISelecao;
+import com.andersonfonseka.caffeine.IComponenteFabrica;
+import com.andersonfonseka.caffeine.IEndereco;
+import com.andersonfonseka.caffeine.IEntradaNumero;
+import com.andersonfonseka.caffeine.IEntradaTexto;
+import com.andersonfonseka.caffeine.IPagina;
+import com.andersonfonseka.caffeine.IResposta;
+import com.andersonfonseka.caffeine.ISelecao;
 import com.andersonfonseka.caffeine.componentes.acao.AcaoAbs;
 import com.andersonfonseka.caffeine.componentes.impl.basicos.Conteiner;
 

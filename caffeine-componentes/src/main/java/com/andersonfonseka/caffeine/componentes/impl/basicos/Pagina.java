@@ -7,8 +7,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
-import com.andersonfonseka.caffeine.componentes.IComponente;
-import com.andersonfonseka.caffeine.componentes.IPagina;
+import com.andersonfonseka.caffeine.IComponente;
+import com.andersonfonseka.caffeine.IPagina;
 import com.andersonfonseka.caffeine.componentes.impl.Componente;
 import com.andersonfonseka.caffeine.componentes.impl.ComponenteFabricaImpl;
 import com.andersonfonseka.caffeine.componentes.util.ParametroUtil;
@@ -21,6 +21,8 @@ public abstract @Data class Pagina extends Componente implements IPagina {
 	
 	private static final long serialVersionUID = 1L;
 
+	private String tituloProjeto;
+	
 	private String titulo;
 
 	private Map<String, IComponente> mapaObrigatorios = new HashMap<String, IComponente>();

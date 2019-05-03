@@ -5,7 +5,7 @@ import java.util.List;
 
 import org.apache.commons.validator.routines.EmailValidator;
 
-import com.andersonfonseka.caffeine.componentes.IEntradaEmail;
+import com.andersonfonseka.caffeine.IEntradaEmail;
 import com.andersonfonseka.caffeine.util.MensagemUtil;
 
 import lombok.Data;

@@ -5,7 +5,7 @@ import java.util.List;
 
 import org.apache.commons.validator.routines.IntegerValidator;
 
-import com.andersonfonseka.caffeine.componentes.IEntradaNumero;
+import com.andersonfonseka.caffeine.IEntradaNumero;
 import com.andersonfonseka.caffeine.util.MensagemUtil;
 
 import lombok.Data;
