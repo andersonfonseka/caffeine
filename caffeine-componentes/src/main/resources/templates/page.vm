@@ -31,6 +31,7 @@
         <div id="content">
             
 			<h2>$page.getTitulo()</h2>
+			<h6>$page.getSubTitulo()</h6>
 			
 			#if(!$page.getMensagens().isEmpty())
 			<div class="alert alert-warning alert-dismissible fade show" role="alert">

@@ -24,6 +24,8 @@ public abstract @Data class Pagina extends Componente implements IPagina {
 	private String tituloProjeto;
 	
 	private String titulo;
+	
+	private String subTitulo = "";
 
 	private Map<String, IComponente> mapaObrigatorios = new HashMap<String, IComponente>();
 	
