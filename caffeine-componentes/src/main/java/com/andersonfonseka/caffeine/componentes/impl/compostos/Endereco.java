@@ -1,5 +1,6 @@
 package com.andersonfonseka.caffeine.componentes.impl.compostos;
 
+import java.io.Serializable;
 import java.util.Map;
 
 import javax.annotation.PostConstruct;
@@ -21,7 +22,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 @EqualsAndHashCode(callSuper=false)
-public class Endereco extends Conteiner implements IEndereco {
+public class Endereco extends Conteiner implements IEndereco, Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	

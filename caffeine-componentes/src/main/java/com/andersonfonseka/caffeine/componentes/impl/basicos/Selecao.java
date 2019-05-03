@@ -16,7 +16,7 @@ public @Data class Selecao extends Entrada implements ISelecao {
 
 	private static final long serialVersionUID = 6966867488997712703L;
 	
-	private AcaoAbs acao;
+	private transient AcaoAbs acao;
 	
 	private OpcaoSelecao selected;
 	
@@ -60,6 +60,8 @@ public @Data class Selecao extends Entrada implements ISelecao {
 	}
 	
 	@Override
-	public void aoCarregar(Map<String, Object> parametros) {}
+	public void aoCarregar(Map<String, Object> parametros) {
+		throw new UnsupportedOperationException();
+	}
 	
 }

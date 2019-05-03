@@ -1,5 +1,6 @@
 package com.andersonfonseka.caffeine.componentes.impl.compostos;
 
+import java.io.Serializable;
 import java.util.Map;
 
 import javax.annotation.PostConstruct;
@@ -22,7 +23,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 @EqualsAndHashCode(callSuper=false)
-public class Acesso extends Conteiner implements IAcesso {
+public class Acesso extends Conteiner implements IAcesso, Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	

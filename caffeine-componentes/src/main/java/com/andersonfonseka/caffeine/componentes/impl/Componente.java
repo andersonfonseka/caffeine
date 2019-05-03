@@ -30,9 +30,9 @@ public abstract @Data class Componente implements IComponente, Serializable {
 	
 	private @Setter @Getter String parent;
 	
-	private @Getter List<IComponente> componentes = new ArrayList<IComponente>();
+	private transient @Getter List<IComponente> componentes = new ArrayList<IComponente>();
 	
-	private IComponenteFabrica componenteFabrica;
+	private transient IComponenteFabrica componenteFabrica;
 	
 	public Componente() {
 		this.id = this.getClass().getSimpleName() + internalId;

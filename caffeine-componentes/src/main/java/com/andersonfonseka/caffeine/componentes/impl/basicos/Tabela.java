@@ -18,9 +18,9 @@ public @Data class Tabela extends Componente implements ITabela {
 
 	private static final long serialVersionUID = 1L;
 	
-	private List<ITabelaColuna> colunas = new ArrayList<ITabelaColuna>();
+	private transient List<ITabelaColuna> colunas = new ArrayList<ITabelaColuna>();
 	
-	private List<?> dados = new ArrayList();
+	private transient List<?> dados = new ArrayList();
 	
 	public Tabela(String id) {
 		setId(id);
@@ -57,6 +57,8 @@ public @Data class Tabela extends Componente implements ITabela {
 	
 
 	@Override
-	public void aoCarregar(Map<String, Object> parametros) {}
+	public void aoCarregar(Map<String, Object> parametros) {
+		throw new UnsupportedOperationException();
+	}
 
 }

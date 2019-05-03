@@ -14,11 +14,11 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(callSuper=false)
 public @Data class Resposta implements IResposta {
 	
-	List<String> mensagens = new ArrayList<String>();
+	private transient List<String> mensagens = new ArrayList<String>();
 	
-	Map<String, Object> atributo = new HashMap<String, Object>();
+	private transient Map<String, Object> atributo = new HashMap<String, Object>();
 	
-	Class<? extends IPagina> pageUrl;
+	private Class<? extends IPagina> pageUrl;
 	
 	protected Resposta() {}
 

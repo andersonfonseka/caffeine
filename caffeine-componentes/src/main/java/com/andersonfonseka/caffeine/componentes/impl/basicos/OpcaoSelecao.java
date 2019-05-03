@@ -42,5 +42,7 @@ public @Data class OpcaoSelecao extends Componente implements IOpcaoSelecao {
 	}
 
 	@Override
-	public void aoCarregar(Map<String, Object> parametros) {}
+	public void aoCarregar(Map<String, Object> parametros) {
+		throw new UnsupportedOperationException();
+	}
 }

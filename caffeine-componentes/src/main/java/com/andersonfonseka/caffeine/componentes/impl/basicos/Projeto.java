@@ -20,7 +20,7 @@ public abstract @Data class Projeto extends Componente implements IProjeto {
 
 	private Class<? extends IPagina> paginaInicial;
 	
-	private IComponenteFabrica componenteFabrica;
+	private transient IComponenteFabrica componenteFabrica;
 
 	private Map<String, Class<? extends IPagina>> paginas = new HashMap<String, Class<? extends IPagina>>();
 

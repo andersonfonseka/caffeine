@@ -26,7 +26,7 @@ public @Data class Conteiner extends Componente implements IConteiner {
 	
 	private String orientacao = IConteiner.COLUNAS;
 	
-	private @Getter Map<Integer, List<IComponente>> rowCell = new HashMap<Integer, List<IComponente>>();
+	private transient @Getter Map<Integer, List<IComponente>> rowCell = new HashMap<Integer, List<IComponente>>();
 	
 	public Conteiner() {
 		this(1);

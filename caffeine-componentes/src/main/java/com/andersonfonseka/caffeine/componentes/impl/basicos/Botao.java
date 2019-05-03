@@ -19,7 +19,7 @@ public @Data class Botao extends Componente implements IBotao {
 
 	private Componente origem;
 
-	private AcaoAbs acao;
+	private transient AcaoAbs acao;
 	
 	private boolean imediato = false;
 	

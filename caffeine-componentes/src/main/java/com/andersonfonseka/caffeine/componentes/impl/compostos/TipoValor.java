@@ -1,5 +1,6 @@
 package com.andersonfonseka.caffeine.componentes.impl.compostos;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -23,7 +24,7 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
 
-public class TipoValor extends Conteiner implements ITipoValor {
+public class TipoValor extends Conteiner implements ITipoValor, Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
