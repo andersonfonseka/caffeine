@@ -10,7 +10,7 @@
 - funcionalidades que facilmente poderiam se tornar componentes são reescritos, gerando um maior esforço de construção e a introdução de possíveis erros;
 - normalmente o desenvolvedor precisa se adaptar ao modelo de construção do framework e, dependendo da curva de aprendizado, o negócio deixa de ser o propósito;
 - frameworks tradicionais oferecem funcionalidades além do necessário, gerando uma possivel redução de desempenho;
-- falamos em qualidade no desenvolvimento, mas, nem sabemos se o framework que utilizamos possui qualidade em termos de manutenibilidade, facilitando a evolução e aprendizado.
+- falamos em qualidade no desenvolvimento, porém, nem sempre é possível saber se o framework utilizado possui uma qualidade adequada.
 
 **por que eu não usaria um framework já consolidado no mercado?**
 
@@ -34,6 +34,7 @@ que já poderiam vir abstraídos do desenvolvedor pelo Caffeine:
 - menor curva de aprendizado;
 - componentes que vão além caixas de entrada e exibição previstos na maioria dos frameworks generalistas;
 - flexivel, sendo possível criar seus próprios componentes;
-- gratuíto, livre e de uso irrestrito.
+- gratuíto, livre e de uso irrestrito;
+- a qualidade é um dos principais focos do framework. 
 
 abraços.
