@@ -67,31 +67,39 @@ public class CaffeineServlet extends HttpServlet {
 		}
 
 		if (Optional.ofNullable(componentId).isPresent()) {
-			construirPagina(req, resp, project, op, componentId);
+			
+			CaffeineServletDados caffeineServletDados = new CaffeineServletDados();
+			caffeineServletDados.setComponentId(componentId);
+			caffeineServletDados.setOp(op);
+			caffeineServletDados.setReq(req);
+			caffeineServletDados.setResp(resp);
+			caffeineServletDados.setProject(project);
+			
+			construirPagina(caffeineServletDados);
 		} else {
 			renderizarPaginaInicial(resp, project);
 		}
 	}
 
-	private void construirPagina(HttpServletRequest req, HttpServletResponse resp, IProjeto project, String op, String componentId) throws IOException {
+	private void construirPagina(CaffeineServletDados caffeineServletDados) throws IOException {
 		
-		IPagina page = project.obterPaginaPeloId(componentId);
-		page.aoCarregar(obterParametros(req));
+		IPagina page = caffeineServletDados.getProject().obterPaginaPeloId(caffeineServletDados.getComponentId());
+		page.aoCarregar(obterParametros(caffeineServletDados.getReq()));
 
 		log.info(page.toString());
 
-		IAcao button = (IAcao) page.obterPorId(page, op).get();
+		IAcao button = (IAcao) page.obterPorId(page, caffeineServletDados.getOp()).get();
 
 		if (button.isImediato()) {
-			atualizarModelo(req, page);
+			atualizarModelo(caffeineServletDados.getReq(), page);
 		} else {
-			atualizarModelo(req, page);
-			aplicarValidacao(req, page);
+			atualizarModelo(caffeineServletDados.getReq(), page);
+			aplicarValidacao(caffeineServletDados.getReq(), page);
 		}
 
-		page = executarAcao(req, project, page, op);
-		page.setTituloProjeto(project.getTitulo());
-		renderizarPagina(resp, page);
+		page = executarAcao(caffeineServletDados, page);
+		page.setTituloProjeto(caffeineServletDados.getProject().getTitulo());
+		renderizarPagina(caffeineServletDados.getResp(), page);
 	}
 
 	private IProjeto iniciarProjeto(HttpServletRequest req) {
@@ -114,21 +122,19 @@ public class CaffeineServlet extends HttpServlet {
 		return projeto;
 	}
 
-	private IPagina executarAcao(HttpServletRequest req, IProjeto project, IPagina page, String op) {
+	private IPagina executarAcao(CaffeineServletDados caffeineServletDados, IPagina page) {
 
 		IPagina pageResult = page;
 
 		if (page.getMensagens().isEmpty()) {
 
-			IAcao button = (IAcao) page.obterPorId(page, op).get();
-			IComponente componente = (IComponente) button;
-			
+			IAcao button = (IAcao) page.obterPorId(page, caffeineServletDados.getOp()).get();
 			IResposta pageResponse = button.doClick();
 
-			pageResult = project.obterPaginaPeloId(pageResponse.getPageUrl().getName());
+			pageResult = caffeineServletDados.getProject().obterPaginaPeloId(pageResponse.getPageUrl().getName());
 			pageResult.setMensagens(pageResponse.getMensagens());
 			
-			Map<String, Object> atributos = obterParametros(req);
+			Map<String, Object> atributos = obterParametros(caffeineServletDados.getReq());
 			
 			if (pageResponse.getAtributo() != null) {
 				atributos.putAll(pageResponse.getAtributo());
