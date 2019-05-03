@@ -11,8 +11,6 @@ public class EntradaCheckbox extends Entrada implements IEntradaCheckbox {
 	
 	private boolean checked = false;
 	
-	public EntradaCheckbox(){}
-	
 	@Override
 	public String getTemplate() {
 		return "checkbox";

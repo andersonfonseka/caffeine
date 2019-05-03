@@ -15,8 +15,6 @@ public @Data class EntradaAreaTexto extends Entrada implements IEntradaAreaTexto
 
 	private Integer rows;
 	
-	public EntradaAreaTexto(){}
-	
 	@Override
 	public String getTemplate() {
 		return "inputtextarea";

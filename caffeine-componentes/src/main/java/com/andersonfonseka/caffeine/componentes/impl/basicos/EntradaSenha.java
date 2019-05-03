@@ -10,8 +10,6 @@ public @Data class EntradaSenha extends Entrada implements IEntradaSenha {
 	
 	private static final long serialVersionUID = 592825479279322462L;
 	
-	public EntradaSenha(){}
-	
 	@Override
 	public String getTemplate() {
 		return "inputpassword";

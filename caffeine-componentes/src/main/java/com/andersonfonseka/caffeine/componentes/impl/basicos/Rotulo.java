@@ -17,8 +17,6 @@ public @Data class Rotulo extends Componente implements IRotulo {
 	
 	private boolean negrito;
 	
-	public Rotulo(){}
-	
 	@Override
 	public String getTemplate() {
 		return "label";

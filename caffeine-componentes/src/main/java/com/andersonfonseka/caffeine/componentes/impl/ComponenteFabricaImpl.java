@@ -65,8 +65,6 @@ public class ComponenteFabricaImpl implements IComponenteFabrica, Serializable {
 	public void setBeanManager(BeanManager beanManager) {
 		this.beanManager = beanManager;
 	}
-
-	public ComponenteFabricaImpl() {}
 	
 	public IProjeto criarProjeto(String id) {
 		

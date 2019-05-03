@@ -20,8 +20,6 @@ public @Data class EntradaData extends Entrada implements IEntradaData {
 	private static final long serialVersionUID = -3955625665174027266L;
 	private String pattern;
 	
-	public EntradaData(){}
-	
 	@Override
 	public String getTemplate() {
 		return "inputdate";

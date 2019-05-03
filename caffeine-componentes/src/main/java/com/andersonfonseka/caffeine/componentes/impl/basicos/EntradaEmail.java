@@ -16,8 +16,6 @@ public @Data class EntradaEmail extends Entrada implements IEntradaEmail {
 
 	private static final long serialVersionUID = -9151902940785641660L;
 	
-	public EntradaEmail(){}
-	
 	@Override
 	public String getTemplate() {
 		return "inputemail";

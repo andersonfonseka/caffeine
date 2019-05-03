@@ -15,8 +15,6 @@ public @Data class Formulario extends Componente implements IFormulario {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-
-	public Formulario(){}
 	
 	@Override
 	public String getTemplate() {

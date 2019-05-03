@@ -13,8 +13,6 @@ public @Data class EntradaArquivo extends Entrada implements IEntradaArquivo {
 	 */
 	private static final long serialVersionUID = -8439811151946472472L;
 	
-	public EntradaArquivo(){}
-	
 	@Override
 	public String getTemplate() {
 		return "inputfile";

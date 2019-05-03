@@ -23,8 +23,6 @@ public @Data class Botao extends Componente implements IBotao {
 	
 	private boolean imediato = false;
 	
-	public Botao(){}
-	
 	@Override
 	public String getTemplate() {
 		return "button";
@@ -44,6 +42,8 @@ public @Data class Botao extends Componente implements IBotao {
 	}
 
 	@Override
-	public void aoCarregar(Map<String, Object> parametros) {}
+	public void aoCarregar(Map<String, Object> parametros) {
+		throw new UnsupportedOperationException();
+	}
 
 }

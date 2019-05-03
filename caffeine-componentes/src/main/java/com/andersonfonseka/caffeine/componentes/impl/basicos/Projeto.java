@@ -24,8 +24,6 @@ public abstract @Data class Projeto extends Componente implements IProjeto {
 
 	private Map<String, Class<? extends IPagina>> paginas = new HashMap<String, Class<? extends IPagina>>();
 
-	public Projeto() {}
-
 	@Override
 	public String getTemplate() {
 		return "project";
