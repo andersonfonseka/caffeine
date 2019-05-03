@@ -6,6 +6,7 @@ import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.enterprise.inject.spi.BeanManager;
@@ -27,9 +28,11 @@ import com.andersonfonseka.caffeine.componentes.impl.ComponenteFabricaImpl;
 
 public class CaffeineServlet extends HttpServlet {
 
+	private static final Logger log = Logger.getLogger(CaffeineServlet.class.getName());
+
 	@Inject
 	private BeanManager beanManager;
-	
+
 	private static final String OP = "op";
 
 	private static final String COMPONENTID = "componentId";
@@ -40,22 +43,22 @@ public class CaffeineServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 
-	private static Logger log = Logger.getLogger(CaffeineServlet.class.getName());
-	
-	
-	public CaffeineServlet() {}
-
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		doPost(req, resp);
+		try {
+			doPost(req, resp);
+		} catch (Exception e) {
+			log.log(Level.WARNING, e.getMessage());
+		}
+
 	}
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
+
 		IComponenteFabrica componenteFabrica = new ComponenteFabricaImpl();
 		componenteFabrica.setBeanManager(beanManager);
-		
+
 		IProjeto project = iniciarProjeto(req);
 
 		String op = "";
@@ -67,30 +70,33 @@ public class CaffeineServlet extends HttpServlet {
 		}
 
 		if (Optional.ofNullable(componentId).isPresent()) {
-			
+
 			CaffeineServletDados caffeineServletDados = new CaffeineServletDados();
 			caffeineServletDados.setComponentId(componentId);
 			caffeineServletDados.setOp(op);
 			caffeineServletDados.setReq(req);
 			caffeineServletDados.setResp(resp);
 			caffeineServletDados.setProject(project);
-			
+
 			construirPagina(caffeineServletDados);
 		} else {
 			renderizarPaginaInicial(resp, project);
 		}
 	}
 
-	private void construirPagina(CaffeineServletDados caffeineServletDados) throws IOException {
-		
+	private void construirPagina(CaffeineServletDados caffeineServletDados) {
+
 		IPagina page = caffeineServletDados.getProject().obterPaginaPeloId(caffeineServletDados.getComponentId());
 		page.aoCarregar(obterParametros(caffeineServletDados.getReq()));
 
-		log.info(page.toString());
+		IAcao button = null;
+		Optional<IComponente> componente = page.obterPorId(page, caffeineServletDados.getOp());
 
-		IAcao button = (IAcao) page.obterPorId(page, caffeineServletDados.getOp()).get();
+		if (componente.isPresent()) {
+			button = (IAcao) componente.get();
+		}
 
-		if (button.isImediato()) {
+		if (Optional.ofNullable(button).isPresent() && button.isImediato()) {
 			atualizarModelo(caffeineServletDados.getReq(), page);
 		} else {
 			atualizarModelo(caffeineServletDados.getReq(), page);
@@ -106,8 +112,7 @@ public class CaffeineServlet extends HttpServlet {
 
 		IComponenteFabrica componenteFabrica = new ComponenteFabricaImpl();
 		componenteFabrica.setBeanManager(beanManager);
-		
-		
+
 		IProjeto projeto = null;
 
 		if (!Optional.ofNullable(req.getServletContext().getAttribute(PROJECT)).isPresent()) {
@@ -118,7 +123,7 @@ public class CaffeineServlet extends HttpServlet {
 		}
 
 		projeto.setComponenteFabrica(componenteFabrica);
-		
+
 		return projeto;
 	}
 
@@ -128,25 +133,58 @@ public class CaffeineServlet extends HttpServlet {
 
 		if (page.getMensagens().isEmpty()) {
 
-			IAcao button = (IAcao) page.obterPorId(page, caffeineServletDados.getOp()).get();
-			IResposta pageResponse = button.doClick();
+			IAcao button = null;
+			Optional<IComponente> componente = page.obterPorId(page, caffeineServletDados.getOp());
 
-			pageResult = caffeineServletDados.getProject().obterPaginaPeloId(pageResponse.getPageUrl().getName());
-			pageResult.setMensagens(pageResponse.getMensagens());
-			
-			Map<String, Object> atributos = obterParametros(caffeineServletDados.getReq());
-			
-			if (pageResponse.getAtributo() != null) {
-				atributos.putAll(pageResponse.getAtributo());
+			if (componente.isPresent()) {
+				button = (IAcao) componente.get();
+
+				IResposta pageResponse = button.doClick();
+
+				pageResult = caffeineServletDados.getProject().obterPaginaPeloId(pageResponse.getPageUrl().getName());
+				pageResult.setMensagens(pageResponse.getMensagens());
+
+				Map<String, Object> atributos = obterParametros(caffeineServletDados.getReq());
+
+				if (pageResponse.getAtributo() != null) {
+					atributos.putAll(pageResponse.getAtributo());
+				}
+
+				pageResult.aoCarregar(atributos);
 			}
-			
-			pageResult.aoCarregar(atributos);
+
 		}
 
 		return pageResult;
 	}
 
 	private void atualizarModelo(HttpServletRequest req, IPagina page) {
+
+		Optional<Enumeration<String>> names = Optional.ofNullable(req.getParameterNames());
+
+		if (names.isPresent()) {
+
+			while (names.get().hasMoreElements()) {
+				String id = names.get().nextElement();
+
+				if (!id.equals(OP) && !id.equals(COMPONENTID) && page.obterPorId(page, id).isPresent()) {
+
+					Optional<IComponente> component = page.obterPorId(page, id);
+
+					if (component.isPresent() && component.get() instanceof IEntradaCheckbox) {
+						((IEntradaCheckbox) component.get()).setChecked(true);
+
+					} else if (component.isPresent() && component.get() instanceof IEntrada) {
+						((IEntrada) component.get()).setValor(req.getParameter(id));
+					}
+				}
+			}
+
+		}
+
+	}
+
+	private void aplicarValidacao(HttpServletRequest req, IPagina page) {
 
 		Enumeration<String> names = req.getParameterNames();
 
@@ -155,21 +193,18 @@ public class CaffeineServlet extends HttpServlet {
 			while (names.hasMoreElements()) {
 				String id = names.nextElement();
 
-				if (!id.equals(OP) && !id.equals(COMPONENTID)) {
+				if (!id.equals(OP) && !id.equals(COMPONENTID) && page.obterPorId(page, id).isPresent()) {
 
-					if (page.obterPorId(page, id).isPresent()) {
-						IComponente component = page.obterPorId(page, id).get();
-						
-						if (component instanceof IEntradaCheckbox) {
-							((IEntradaCheckbox) component).setChecked(true);
-						
-						} else if (component instanceof IEntrada) {
-							IEntrada input = (IEntrada) component;
-							input.setValor(req.getParameter(id));
+					Optional<IComponente> component = page.obterPorId(page, id);
+
+					if (component.isPresent() && component.get() instanceof IEntrada) {
+						for (String msg : ((IEntrada) component.get()).validar()) {
+							page.adicionaMensagem(msg);
 						}
 					}
 				}
 			}
+
 		}
 	}
 
@@ -191,46 +226,33 @@ public class CaffeineServlet extends HttpServlet {
 		return results;
 	}
 
-	private void aplicarValidacao(HttpServletRequest req, IPagina page) {
+	private void renderizarPagina(HttpServletResponse resp, IPagina page) {
 
-		Enumeration<String> names = req.getParameterNames();
-
-		if (Optional.ofNullable(names).isPresent()) {
-
-			while (names.hasMoreElements()) {
-				String id = names.nextElement();
-
-				if (!id.equals(OP) && !id.equals(COMPONENTID)) {
-
-					if (page.obterPorId(page, id).isPresent()) {
-						IComponente component = page.obterPorId(page, id).get();
-						if (component instanceof IEntrada) {
-							IEntrada input = (IEntrada) component;
-
-							for (String msg : input.validar()) {
-								page.adicionaMensagem(msg);
-							}
-						}
-					}
-				}
-			}
-		}
-	}
-
-	private void renderizarPagina(HttpServletResponse resp, IPagina page) throws IOException {
-
-		PrintWriter pw = new PrintWriter(resp.getOutputStream());
-		pw.write(page.gerarSaida());
-		pw.close();
-	}
-
-	private void renderizarPaginaInicial(HttpServletResponse resp, IProjeto project) throws IOException {
-
-		PrintWriter pw = new PrintWriter(resp.getOutputStream());
-		IPagina paginaInicial = project.getPaginaInicial();
-		paginaInicial.setTituloProjeto(project.getTitulo());
+		try {
+			
+			PrintWriter pw = new PrintWriter(resp.getOutputStream());
+			pw.write(page.gerarSaida());
+			pw.close();
 		
-		pw.write(paginaInicial.gerarSaida());
-		pw.close();
+		} catch (Exception e) {
+			log.log(Level.WARNING, e.getMessage());
+		}
+
+	}
+
+	private void renderizarPaginaInicial(HttpServletResponse resp, IProjeto project) {
+
+		try {
+		
+			PrintWriter pw = new PrintWriter(resp.getOutputStream());
+			IPagina paginaInicial = project.getPaginaInicial();
+			paginaInicial.setTituloProjeto(project.getTitulo());
+
+			pw.write(paginaInicial.gerarSaida());
+			pw.close();
+
+		} catch (Exception e) {
+			log.log(Level.WARNING, e.getMessage());
+		}
 	}
 }

@@ -59,9 +59,4 @@ public @Data class Selecao extends Entrada implements ISelecao {
 		return this.acao.execute();
 	}
 	
-	@Override
-	public void aoCarregar(Map<String, Object> parametros) {
-		throw new UnsupportedOperationException();
-	}
-	
 }

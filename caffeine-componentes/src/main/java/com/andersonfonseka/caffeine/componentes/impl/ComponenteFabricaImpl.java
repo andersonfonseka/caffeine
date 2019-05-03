@@ -1,6 +1,8 @@
 package com.andersonfonseka.caffeine.componentes.impl;
 import java.io.Serializable;
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.enterprise.context.spi.CreationalContext;
 import javax.enterprise.inject.spi.BeanManager;
@@ -58,6 +60,8 @@ public class ComponenteFabricaImpl implements IComponenteFabrica, Serializable {
 	
 	private static final long serialVersionUID = 1L;
 
+	private static final Logger log = Logger.getLogger(ComponenteFabricaImpl.class.getName());
+	
 	@Inject
 	private BeanManager beanManager;
 	
@@ -82,7 +86,7 @@ public class ComponenteFabricaImpl implements IComponenteFabrica, Serializable {
 			}
 
 		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
+			log.log(Level.WARNING, e.getMessage());
 		}
 
 		return projeto;
@@ -127,13 +131,11 @@ public class ComponenteFabricaImpl implements IComponenteFabrica, Serializable {
 	
 	
 	public IConteiner criarConteiner(Integer rows) {
-		Conteiner conteiner = new Conteiner(rows);
-		return conteiner;
+		return new Conteiner(rows);
 	}
 
 	public IFormulario criarFormulario() {
-		Formulario formulario = new Formulario();
-		return formulario;
+		return new Formulario();
 	}
 
 	
@@ -257,8 +259,7 @@ public class ComponenteFabricaImpl implements IComponenteFabrica, Serializable {
 
 	@Override
 	public IOpcaoSelecao criarOpcaoSelecao(String valor, String rotulo) {
-		OpcaoSelecao opcaoSelecao = new OpcaoSelecao(valor, rotulo);
-		return opcaoSelecao;
+		return new OpcaoSelecao(valor, rotulo);
 	}
 
 	@Override
@@ -278,7 +279,7 @@ public class ComponenteFabricaImpl implements IComponenteFabrica, Serializable {
 			}
 
 		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
+			log.log(Level.WARNING, e.getMessage());
 		}
 
 		return page;

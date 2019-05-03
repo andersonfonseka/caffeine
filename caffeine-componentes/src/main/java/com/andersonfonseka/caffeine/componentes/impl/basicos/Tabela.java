@@ -5,6 +5,8 @@ import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import com.andersonfonseka.caffeine.ITabela;
 import com.andersonfonseka.caffeine.ITabelaColuna;
@@ -15,6 +17,8 @@ import lombok.EqualsAndHashCode;
 
 @EqualsAndHashCode(callSuper=false)
 public @Data class Tabela extends Componente implements ITabela {
+	
+	private transient Logger log = Logger.getLogger(Tabela.class.getName());
 
 	private static final long serialVersionUID = 1L;
 	
@@ -35,11 +39,11 @@ public @Data class Tabela extends Componente implements ITabela {
 			resultado = String.valueOf(method.invoke(object, null));
 		
 		} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
-			e.printStackTrace();
+			log.log(Level.WARNING, e.getMessage());
 		} catch (NoSuchMethodException e) {
-			e.printStackTrace();
+			log.log(Level.WARNING, e.getMessage());
 		} catch (SecurityException e) {
-			e.printStackTrace();
+			log.log(Level.WARNING, e.getMessage());
 		}
 		
 		return resultado;
@@ -54,11 +58,5 @@ public @Data class Tabela extends Componente implements ITabela {
 		this.colunas.add(tabelaColuna);
 		return this;
 	}
-	
-
-	@Override
-	public void aoCarregar(Map<String, Object> parametros) {
-		throw new UnsupportedOperationException();
-	}
-
+		
 }

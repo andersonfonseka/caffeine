@@ -6,12 +6,16 @@ import java.lang.reflect.Method;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import com.andersonfonseka.caffeine.IComponente;
 import com.andersonfonseka.caffeine.IEntrada;
 import com.andersonfonseka.caffeine.IEntradaCheckbox;
 
 public class ParametroUtil {
+	
+	private static final Logger log = Logger.getLogger(ParametroUtil.class.getName());
 	
 	public void atribuirParametros(IComponente componente, Map<String, Object> parametros) {
 		
@@ -20,7 +24,7 @@ public class ParametroUtil {
 		for (Field field : campos) {
 			try {
 				
-				List<Class> list = Arrays.asList(field.getType().getInterfaces());	
+				List<Class<?>> list = Arrays.asList(field.getType().getInterfaces());	
 
 				field.setAccessible(true);;
 				
@@ -31,7 +35,7 @@ public class ParametroUtil {
 				}
 				
 			} catch (Exception e) {
-				e.printStackTrace();
+				log.log(Level.WARNING, e.getMessage());
 			}
 		}
 		

@@ -41,13 +41,13 @@ class CaffeineServletTest extends Mockito {
 		assertTrue(Optional.of(caffeineServlet).isPresent());
 	}
 	
-	//@Test
+	@Test
 	void testDoPost(CaffeineServlet caffeineServlet) throws ServletException, IOException {
 		
 		CaffeineServlet cs = caffeineServlet;
 		MockHttpServletRequest request = new MockHttpServletRequest();
 
-		request.setAttribute("op", "Botao13");
+		request.setAttribute("op", "Botao12");
 		request.setAttribute("componentId", AcessoPagina.class.getName());
 		
 		cs.doPost(request, new MockHttpServletResponse());
@@ -55,13 +55,13 @@ class CaffeineServletTest extends Mockito {
 		assertTrue(Optional.ofNullable(caffeineServlet).isPresent());
 	}
 	
-	//@Test
+	@Test
 	void testDoGet(CaffeineServlet caffeineServlet) throws ServletException, IOException {
 		
 		CaffeineServlet cs = caffeineServlet;
 		MockHttpServletRequest request = new MockHttpServletRequest();
 
-		request.setAttribute("op", "Botao13");
+		request.setAttribute("op", "Botao12");
 		request.setAttribute("componentId", AcessoPagina.class.getName());
 		
 		cs.doGet(request, new MockHttpServletResponse());

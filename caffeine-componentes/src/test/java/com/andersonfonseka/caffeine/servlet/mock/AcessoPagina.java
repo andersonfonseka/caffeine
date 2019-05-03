@@ -16,9 +16,6 @@ import com.andersonfonseka.caffeine.componentes.impl.basicos.Pagina;
 @RequestScoped
 public class AcessoPagina extends Pagina {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	@Inject
 	IComponenteFabrica componenteFabrica;

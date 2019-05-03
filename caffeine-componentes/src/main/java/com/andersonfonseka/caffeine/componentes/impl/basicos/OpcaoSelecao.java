@@ -1,5 +1,6 @@
 package com.andersonfonseka.caffeine.componentes.impl.basicos;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -28,7 +29,7 @@ public @Data class OpcaoSelecao extends Componente implements IOpcaoSelecao {
 
 	@Override
 	public List<String> validar() {
-		return null;
+		return new ArrayList<String>();
 	}
 
 	@Override
@@ -39,10 +40,5 @@ public @Data class OpcaoSelecao extends Componente implements IOpcaoSelecao {
 	@Override
 	public boolean isObrigatorio() {
 		return false;
-	}
-
-	@Override
-	public void aoCarregar(Map<String, Object> parametros) {
-		throw new UnsupportedOperationException();
 	}
 }

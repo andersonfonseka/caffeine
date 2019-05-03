@@ -2,13 +2,11 @@ package com.andersonfonseka.caffeine;
 
 import java.util.List;
 
+import com.andersonfonseka.caffeine.componentes.ConteinerEnum;
+
 public interface IConteiner extends IComponente {
 	
-	String COLUNAS = "colunas";
-	
-	String HORIZONTAL = "horizontal";
-	
-	public void setOrientacao(String orientacao);
+	public void setOrientacao(ConteinerEnum orientacao);
 	
 	public IConteiner adicionar(Integer row, IComponente component);
 	

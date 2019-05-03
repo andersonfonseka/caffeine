@@ -27,11 +27,4 @@ public @Data class TabelaColuna extends Componente implements ITabelaColuna {
 	public String getTemplate() {
 		return null;
 	}
-
-	@Override
-	public void aoCarregar(Map<String, Object> parametros) {
-		throw new UnsupportedOperationException();
-	}
-	
-	
 }

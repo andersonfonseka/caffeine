@@ -7,6 +7,7 @@ import java.util.Map;
 
 import com.andersonfonseka.caffeine.IComponente;
 import com.andersonfonseka.caffeine.IConteiner;
+import com.andersonfonseka.caffeine.componentes.ConteinerEnum;
 import com.andersonfonseka.caffeine.componentes.impl.Componente;
 
 import lombok.Data;
@@ -24,7 +25,7 @@ public @Data class Conteiner extends Componente implements IConteiner {
 	
 	private Integer columns = 1;
 	
-	private String orientacao = IConteiner.COLUNAS;
+	private ConteinerEnum orientacao = ConteinerEnum.COLUNAS;
 	
 	private transient @Getter Map<Integer, List<IComponente>> rowCell = new HashMap<Integer, List<IComponente>>();
 	
@@ -59,16 +60,11 @@ public @Data class Conteiner extends Componente implements IConteiner {
 	@Override
 	public String getTemplate() {
 
-		if (orientacao.equals(IConteiner.HORIZONTAL)){
+		if (orientacao.equals(ConteinerEnum.HORIZONTAL)){
 			return "conteinerTabular";
 		}
 		
 		return "conteiner";	
-	}
-
-	@Override
-	public void aoCarregar(Map<String, Object> parametros) {
-		throw new UnsupportedOperationException();
 	}
 
 }

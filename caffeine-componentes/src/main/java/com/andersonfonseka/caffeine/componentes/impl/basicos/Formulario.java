@@ -21,9 +21,6 @@ public @Data class Formulario extends Componente implements IFormulario {
 		return "form";
 	}
 
-	@Override
-	public void aoCarregar(Map<String, Object> parametros) {
-		throw new UnsupportedOperationException();
-	}
+	
 	
 }

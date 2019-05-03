@@ -21,9 +21,4 @@ public @Data class Rotulo extends Componente implements IRotulo {
 	public String getTemplate() {
 		return "label";
 	}
-
-	@Override
-	public void aoCarregar(Map<String, Object> parametros) {
-		throw new UnsupportedOperationException();
-	}
 }

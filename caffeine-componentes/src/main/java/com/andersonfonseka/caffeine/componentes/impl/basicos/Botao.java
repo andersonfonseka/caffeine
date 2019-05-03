@@ -41,9 +41,4 @@ public @Data class Botao extends Componente implements IBotao {
 		return this.acao.execute();
 	}
 
-	@Override
-	public void aoCarregar(Map<String, Object> parametros) {
-		throw new UnsupportedOperationException();
-	}
-
 }
