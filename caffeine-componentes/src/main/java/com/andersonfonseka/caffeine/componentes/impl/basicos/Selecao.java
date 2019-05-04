@@ -1,7 +1,5 @@
 package com.andersonfonseka.caffeine.componentes.impl.basicos;
 
-import java.util.Map;
-
 import com.andersonfonseka.caffeine.IComponente;
 import com.andersonfonseka.caffeine.IOpcaoSelecao;
 import com.andersonfonseka.caffeine.IResposta;

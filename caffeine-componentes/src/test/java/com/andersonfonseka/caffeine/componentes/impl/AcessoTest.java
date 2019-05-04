@@ -13,7 +13,6 @@ import org.junit.jupiter.api.Test;
 
 import com.andersonfonseka.caffeine.IAcesso;
 import com.andersonfonseka.caffeine.IComponenteFabrica;
-import com.andersonfonseka.caffeine.IEndereco;
 import com.andersonfonseka.caffeine.componentes.impl.basicos.Pagina;
 import com.andersonfonseka.caffeine.servlet.mock.AcessoPagina;
 
@@ -28,6 +27,8 @@ class AcessoTest {
 		Map<String,String> mapUsuarios = new HashMap<String, String>();
 		IAcesso acesso = componenteFabrica.criarAcesso(new Pagina() {
 			
+			private static final long serialVersionUID = 1L;
+
 			@Override
 			public void post() {
 				// TODO Auto-generated method stub
@@ -43,6 +44,11 @@ class AcessoTest {
 		Map<String,String> mapUsuarios = new HashMap<String, String>();
 		IAcesso acesso = componenteFabrica.criarAcesso(new Pagina() {
 			
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
+
 			@Override
 			public void post() {
 				// TODO Auto-generated method stub

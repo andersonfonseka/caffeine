@@ -218,12 +218,9 @@ public class CaffeineServlet extends HttpServlet {
 		Enumeration<String> names = req.getParameterNames();
 
 		if (Optional.ofNullable(names).isPresent()) {
-
-			if (Optional.ofNullable(names).isPresent()) {
-				while (names.hasMoreElements()) {
-					String id = names.nextElement();
-					results.put(id, req.getParameter(id));
-				}
+			while (names.hasMoreElements()) {
+				String id = names.nextElement();
+				results.put(id, req.getParameter(id));
 			}
 		}
 

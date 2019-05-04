@@ -1,7 +1,5 @@
 package com.andersonfonseka.caffeine.componentes.impl.basicos;
 
-import java.util.Map;
-
 import com.andersonfonseka.caffeine.IRotulo;
 import com.andersonfonseka.caffeine.componentes.impl.Componente;
 

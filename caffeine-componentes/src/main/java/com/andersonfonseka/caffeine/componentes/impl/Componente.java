@@ -30,7 +30,7 @@ public abstract @Data class Componente implements IComponente, Serializable {
 
 	private @Setter @Getter String parent;
 
-	private transient @Getter List<IComponente> componentes = new ArrayList<IComponente>();
+	private transient @Getter List<IComponente> componentes = new ArrayList<>();
 
 	private transient IComponenteFabrica componenteFabrica;
 

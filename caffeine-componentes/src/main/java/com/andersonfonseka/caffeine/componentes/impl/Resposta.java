@@ -14,9 +14,9 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(callSuper=false)
 public @Data class Resposta implements IResposta {
 	
-	private List<String> mensagens = new ArrayList<String>();
+	private List<String> mensagens = new ArrayList<>();
 	
-	private Map<String, Object> atributo = new HashMap<String, Object>();
+	private Map<String, Object> atributo = new HashMap<>();
 	
 	private Class<? extends IPagina> pageUrl;
 	

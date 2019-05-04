@@ -1,9 +1,10 @@
 package com.andersonfonseka.caffeine;
 
+import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
 
-public interface IComponente {
+public interface IComponente extends Serializable {
 
 	void setComponenteFabrica(IComponenteFabrica componenteFabrica);
 	

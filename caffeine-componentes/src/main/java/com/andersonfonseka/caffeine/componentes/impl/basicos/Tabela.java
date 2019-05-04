@@ -4,9 +4,10 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import org.apache.commons.lang.ObjectUtils.Null;
 
 import com.andersonfonseka.caffeine.ITabela;
 import com.andersonfonseka.caffeine.ITabelaColuna;
@@ -24,7 +25,7 @@ public @Data class Tabela extends Componente implements ITabela {
 	
 	private transient List<ITabelaColuna> colunas = new ArrayList<ITabelaColuna>();
 	
-	private transient List<?> dados = new ArrayList();
+	private transient List<?> dados = new ArrayList<>();
 	
 	public Tabela(String id) {
 		setId(id);
@@ -35,8 +36,8 @@ public @Data class Tabela extends Componente implements ITabela {
 		String resultado = "";
 		try {
 
-			Method method = object.getClass().getMethod(campo, null);
-			resultado = String.valueOf(method.invoke(object, null));
+			Method method = object.getClass().getMethod(campo, Null.class);
+			resultado = String.valueOf(method.invoke(object, Null.class));
 		
 		} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
 			log.log(Level.WARNING, e.getMessage());
