@@ -91,7 +91,7 @@ public class TipoValor extends Conteiner implements ITipoValor, Serializable {
 
 	}
 	
-	private List<TipoValorBean> getListaValores(){
+	public List<TipoValorBean> getListaValores(){
 		
 		String valores = txDados.getValor();
 		List<TipoValorBean> documentos = new ArrayList<TipoValorBean>();
@@ -123,6 +123,18 @@ public class TipoValor extends Conteiner implements ITipoValor, Serializable {
 				tblTipoValores.setDados(getListaValores());	
 			}
 		}
+	}
+
+	public IEntradaTexto getTxValor() {
+		return txValor;
+	}
+
+	public IBotao getBtnAdicionar() {
+		return btnAdicionar;
+	}
+
+	public ISelecao getSelTipo() {
+		return selTipo;
 	}
 	
 }

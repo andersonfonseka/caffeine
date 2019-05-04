@@ -166,22 +166,24 @@ public class CaffeineServlet extends HttpServlet {
 
 			while (names.get().hasMoreElements()) {
 				String id = names.get().nextElement();
-
-				if (!id.equals(OP) && !id.equals(COMPONENTID) && page.obterPorId(page, id).isPresent()) {
-
-					Optional<IComponente> component = page.obterPorId(page, id);
-
-					if (component.isPresent() && component.get() instanceof IEntradaCheckbox) {
-						((IEntradaCheckbox) component.get()).setChecked(true);
-
-					} else if (component.isPresent() && component.get() instanceof IEntrada) {
-						((IEntrada) component.get()).setValor(req.getParameter(id));
-					}
-				}
+				obterComponenteAtualizarModelo(req, page, id);
 			}
-
 		}
 
+	}
+
+	private void obterComponenteAtualizarModelo(HttpServletRequest req, IPagina page, String id) {
+		if (!id.equals(OP) && !id.equals(COMPONENTID) && page.obterPorId(page, id).isPresent()) {
+
+			Optional<IComponente> component = page.obterPorId(page, id);
+
+			if (component.isPresent() && component.get() instanceof IEntradaCheckbox) {
+				((IEntradaCheckbox) component.get()).setChecked(true);
+
+			} else if (component.isPresent() && component.get() instanceof IEntrada) {
+				((IEntrada) component.get()).setValor(req.getParameter(id));
+			}
+		}
 	}
 
 	private void aplicarValidacao(HttpServletRequest req, IPagina page) {
@@ -189,22 +191,24 @@ public class CaffeineServlet extends HttpServlet {
 		Enumeration<String> names = req.getParameterNames();
 
 		if (Optional.ofNullable(names).isPresent()) {
-
 			while (names.hasMoreElements()) {
 				String id = names.nextElement();
-
-				if (!id.equals(OP) && !id.equals(COMPONENTID) && page.obterPorId(page, id).isPresent()) {
-
-					Optional<IComponente> component = page.obterPorId(page, id);
-
-					if (component.isPresent() && component.get() instanceof IEntrada) {
-						for (String msg : ((IEntrada) component.get()).validar()) {
-							page.adicionaMensagem(msg);
-						}
-					}
-				}
+				obterComponenteValidacao(page, id);
 			}
 
+		}
+	}
+
+	private void obterComponenteValidacao(IPagina page, String id) {
+		if (!id.equals(OP) && !id.equals(COMPONENTID) && page.obterPorId(page, id).isPresent()) {
+
+			Optional<IComponente> component = page.obterPorId(page, id);
+
+			if (component.isPresent() && component.get() instanceof IEntrada) {
+				for (String msg : ((IEntrada) component.get()).validar()) {
+					page.adicionaMensagem(msg);
+				}
+			}
 		}
 	}
 
