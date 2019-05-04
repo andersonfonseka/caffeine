@@ -24,7 +24,7 @@ public @Data class EntradaEmail extends Entrada implements IEntradaEmail {
 	@Override
 	public List<String> validar() {
 		
-		List<String> mensagens = new ArrayList<String>();
+		List<String> mensagens = new ArrayList<>();
 		
 		mensagens.addAll(super.validar());	
 		

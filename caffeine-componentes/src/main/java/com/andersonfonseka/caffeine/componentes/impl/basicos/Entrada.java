@@ -35,7 +35,7 @@ public abstract @Data class Entrada extends Componente implements IEntrada, IVal
 	@Override
 	public List<String> validar() {
 		
-		List<String> mensagens = new ArrayList<String>();
+		List<String> mensagens = new ArrayList<>();
 		
 		if (obrigatorio && valor.trim().length() == 0) {
 			mensagens.add(new MensagemUtil().getMensagemPropriedades("REQUIREDFIELD", getTitulo()));

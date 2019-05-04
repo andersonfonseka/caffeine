@@ -27,9 +27,9 @@ public abstract @Data class Pagina extends Componente implements IPagina {
 	
 	private String subTitulo = "";
 
-	private transient Map<String, IComponente> mapaObrigatorios = new HashMap<String, IComponente>();
+	private transient Map<String, IComponente> mapaObrigatorios = new HashMap<>();
 	
-	private List<String> mensagens = new ArrayList<String>();
+	private List<String> mensagens = new ArrayList<>();
 	
 	public Pagina() {
 		internalId = 1;

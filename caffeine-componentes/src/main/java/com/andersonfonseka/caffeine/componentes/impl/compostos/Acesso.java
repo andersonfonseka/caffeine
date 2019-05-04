@@ -91,11 +91,6 @@ public class Acesso extends Conteiner implements IAcesso, Serializable {
 		adicionar(2, botaoAcesso);
 	}
 	
-	@Override
-	public void aoCarregar(Map<String, Object> parametros) {
-		super.aoCarregar(parametros);
-	}
-
 	public IEntradaEmail getEmail() {
 		return email;
 	}

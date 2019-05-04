@@ -214,7 +214,7 @@ public class CaffeineServlet extends HttpServlet {
 
 	private Map<String, Object> obterParametros(HttpServletRequest req) {
 
-		Map<String, Object> results = new HashMap<String, Object>();
+		Map<String, Object> results = new HashMap<>();
 		Enumeration<String> names = req.getParameterNames();
 
 		if (Optional.ofNullable(names).isPresent()) {

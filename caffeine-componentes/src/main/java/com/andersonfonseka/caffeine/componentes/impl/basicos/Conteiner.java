@@ -21,13 +21,13 @@ public @Data class Conteiner extends Componente implements IConteiner {
 
 	private Integer rows = 1;
 	
-	private List<Integer> rowsList = new ArrayList<Integer>();
+	private List<Integer> rowsList = new ArrayList<>();
 	
 	private Integer columns = 1;
 	
 	private ConteinerEnum orientacao = ConteinerEnum.COLUNAS;
 	
-	private transient @Getter Map<Integer, List<IComponente>> rowCell = new HashMap<Integer, List<IComponente>>();
+	private transient @Getter Map<Integer, List<IComponente>> rowCell = new HashMap<>();
 	
 	public Conteiner() {
 		this(1);

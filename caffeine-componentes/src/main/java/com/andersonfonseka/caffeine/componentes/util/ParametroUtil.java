@@ -26,7 +26,7 @@ public class ParametroUtil {
 				
 				List<Class<?>> list = Arrays.asList(field.getType().getInterfaces());	
 
-				field.setAccessible(true);;
+				field.setAccessible(true);
 				
 				if (field.getType().equals(IEntradaCheckbox.class)) {
 					trataEntradaCheckbox(componente, parametros, field);

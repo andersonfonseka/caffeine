@@ -23,7 +23,7 @@ public @Data class Tabela extends Componente implements ITabela {
 
 	private static final long serialVersionUID = 1L;
 	
-	private transient List<ITabelaColuna> colunas = new ArrayList<ITabelaColuna>();
+	private transient List<ITabelaColuna> colunas = new ArrayList<>();
 	
 	private transient List<?> dados = new ArrayList<>();
 	
@@ -39,11 +39,7 @@ public @Data class Tabela extends Componente implements ITabela {
 			Method method = object.getClass().getMethod(campo, Null.class);
 			resultado = String.valueOf(method.invoke(object, Null.class));
 		
-		} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
-			log.log(Level.WARNING, e.getMessage());
-		} catch (NoSuchMethodException e) {
-			log.log(Level.WARNING, e.getMessage());
-		} catch (SecurityException e) {
+		} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException | NoSuchMethodException | SecurityException e) {
 			log.log(Level.WARNING, e.getMessage());
 		}
 		

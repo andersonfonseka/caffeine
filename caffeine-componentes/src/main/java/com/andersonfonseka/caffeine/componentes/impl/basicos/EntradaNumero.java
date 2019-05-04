@@ -23,7 +23,7 @@ public @Data class EntradaNumero extends Entrada implements IEntradaNumero {
 	
 	public List<String> validar() {
 		
-		List<String> mensagens = new ArrayList<String>();
+		List<String> mensagens = new ArrayList<>();
 		
 		mensagens.addAll(super.validar());	
 		

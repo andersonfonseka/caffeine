@@ -2,6 +2,9 @@ package com.andersonfonseka.caffeine.componentes.impl.basicos;
 
 import com.andersonfonseka.caffeine.IEntradaCheckbox;
 
+import lombok.EqualsAndHashCode;
+
+@EqualsAndHashCode(callSuper=false)
 public class EntradaCheckbox extends Entrada implements IEntradaCheckbox {
 
 	/**

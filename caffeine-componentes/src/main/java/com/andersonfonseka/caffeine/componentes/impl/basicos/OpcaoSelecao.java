@@ -28,7 +28,7 @@ public @Data class OpcaoSelecao extends Componente implements IOpcaoSelecao {
 
 	@Override
 	public List<String> validar() {
-		return new ArrayList<String>();
+		return new ArrayList<>();
 	}
 
 	@Override

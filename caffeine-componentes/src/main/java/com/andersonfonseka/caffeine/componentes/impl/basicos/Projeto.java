@@ -22,7 +22,7 @@ public abstract @Data class Projeto extends Componente implements IProjeto {
 	
 	private transient IComponenteFabrica componenteFabrica;
 
-	private Map<String, Class<? extends IPagina>> paginas = new HashMap<String, Class<? extends IPagina>>();
+	private Map<String, Class<? extends IPagina>> paginas = new HashMap<>();
 
 	@Override
 	public String getTemplate() {

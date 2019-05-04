@@ -21,9 +21,11 @@ import com.andersonfonseka.caffeine.componentes.impl.basicos.Conteiner;
 import com.andersonfonseka.caffeine.componentes.impl.compostos.dominio.TipoValorBean;
 
 import lombok.AccessLevel;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 
+@EqualsAndHashCode(callSuper=false)
 public class TipoValor extends Conteiner implements ITipoValor, Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -94,7 +96,7 @@ public class TipoValor extends Conteiner implements ITipoValor, Serializable {
 	public List<TipoValorBean> getListaValores(){
 		
 		String valores = txDados.getValor();
-		List<TipoValorBean> documentos = new ArrayList<TipoValorBean>();
+		List<TipoValorBean> documentos = new ArrayList<>();
 		String[] resultado = valores.split(";");
 		
 		for (int i = 0; i < resultado.length; i++) {
