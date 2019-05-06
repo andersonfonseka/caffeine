@@ -142,7 +142,6 @@ public abstract @Data class Pagina extends Componente implements IPagina {
 	
 	public void setMenu(IMenu iMenu) {
 		this.menu = iMenu;
-		adicionar(iMenu);
 	}
 	
 	public IMenu getMenu() {

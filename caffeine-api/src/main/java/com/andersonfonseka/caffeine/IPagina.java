@@ -17,4 +17,6 @@ public interface IPagina extends IComponente {
 	
 	List<String> getMensagens();
 	
+	IMenu getMenu();
+	
 }

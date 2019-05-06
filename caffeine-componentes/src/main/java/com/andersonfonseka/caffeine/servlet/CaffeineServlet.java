@@ -95,6 +95,11 @@ public class CaffeineServlet extends HttpServlet {
 
 		if (componente.isPresent()) {
 			button = (IAcao) componente.get();
+		} else {
+			componente = page.obterPorId(page.getMenu(), caffeineServletDados.getOp());
+			if (componente.isPresent()) {
+				button = (IAcao) componente.get();
+			}
 		}
 
 		if (Optional.ofNullable(button).isPresent() && button.isImediato()) {
@@ -139,20 +144,24 @@ public class CaffeineServlet extends HttpServlet {
 
 			if (componente.isPresent()) {
 				button = (IAcao) componente.get();
-
-				IResposta pageResponse = button.doClick();
-
-				pageResult = caffeineServletDados.getProject().obterPaginaPeloId(pageResponse.getPageUrl().getName());
-				pageResult.setMensagens(pageResponse.getMensagens());
-
-				Map<String, Object> atributos = obterParametros(caffeineServletDados.getReq());
-
-				if (pageResponse.getAtributo() != null) {
-					atributos.putAll(pageResponse.getAtributo());
-				}
-
-				pageResult.aoCarregar(atributos);
+			} else {
+				componente = page.obterPorId(page.getMenu(), caffeineServletDados.getOp());
+				button = (IAcao) componente.get();
 			}
+			
+			IResposta pageResponse = button.doClick();
+
+			pageResult = caffeineServletDados.getProject().obterPaginaPeloId(pageResponse.getPageUrl().getName());
+			pageResult.setMensagens(pageResponse.getMensagens());
+
+			Map<String, Object> atributos = obterParametros(caffeineServletDados.getReq());
+
+			if (pageResponse.getAtributo() != null) {
+				atributos.putAll(pageResponse.getAtributo());
+			}
+
+			pageResult.aoCarregar(atributos);
+
 
 		}
 
@@ -174,7 +183,7 @@ public class CaffeineServlet extends HttpServlet {
 	}
 
 	private void obterComponenteAtualizarModelo(CaffeineServletDados caffeineServletDados, String id) {
-		if (!id.equals(OP) && !id.equals(COMPONENTID) && caffeineServletDados.getPage().obterPorId(caffeineServletDados.getPage(), id).isPresent()) {
+		if (!id.equals(OP) && !id.equals(COMPONENTID)) {
 
 			Optional<IComponente> component = caffeineServletDados.getPage().obterPorId(caffeineServletDados.getPage(), id);
 

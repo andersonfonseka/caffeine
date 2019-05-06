@@ -8,6 +8,8 @@ import javax.inject.Inject;
 
 import com.andersonfonseka.caffeine.IBotao;
 import com.andersonfonseka.caffeine.IComponenteFabrica;
+import com.andersonfonseka.caffeine.IEntradaCheckbox;
+import com.andersonfonseka.caffeine.IEntradaTexto;
 import com.andersonfonseka.caffeine.IFormulario;
 import com.andersonfonseka.caffeine.IResposta;
 import com.andersonfonseka.caffeine.componentes.acao.AcaoAbs;
@@ -23,11 +25,19 @@ public class AcessoPagina extends Pagina {
 	@Inject
 	IComponenteFabrica componenteFabrica;
 	
+	IEntradaTexto entradaTexto;
+	
+	IEntradaCheckbox entradaCheckbox;
+	
 	@PostConstruct
 	public void post() {
 		
 		IFormulario formulario = componenteFabrica.criarFormulario();
 		formulario.adicionar(componenteFabrica.criarEndereco(this));
+		
+		this.entradaTexto = componenteFabrica.criarEntradaTexto("Teste", false);
+		
+		this.entradaCheckbox = componenteFabrica.criarEntradaCheckbox("Teste", "1", false);
 		
 		IBotao botao = componenteFabrica.criarBotao("Teste", new AcaoAbs(new Object()) {
 			
@@ -41,6 +51,8 @@ public class AcessoPagina extends Pagina {
 		
 		botao.setImediato(false);
 		
+		formulario.adicionar(this.entradaTexto);
+		formulario.adicionar(this.entradaCheckbox);
 		formulario.adicionar(botao);
 		
 		adicionar(formulario);
@@ -50,6 +62,9 @@ public class AcessoPagina extends Pagina {
 	public void aoCarregar(Map<String, Object> parametros) {
 		super.aoCarregar(parametros);
 	}
-	
 
+	public IEntradaTexto getEntradaTexto() {
+		return entradaTexto;
+	}
+	
 }
