@@ -151,18 +151,23 @@ public class CaffeineServlet extends HttpServlet {
 				}
 			}
 
-			IResposta pageResponse = button.doClick();
+			if (Optional.ofNullable(button).isPresent()) {
 
-			pageResult = caffeineServletDados.getProject().obterPaginaPeloId(pageResponse.getPageUrl().getName());
-			pageResult.setMensagens(pageResponse.getMensagens());
+				IResposta pageResponse = button.doClick();
 
-			Map<String, Object> atributos = obterParametros(caffeineServletDados.getReq());
+				pageResult = caffeineServletDados.getProject().obterPaginaPeloId(pageResponse.getPageUrl().getName());
+				pageResult.setMensagens(pageResponse.getMensagens());
 
-			if (pageResponse.getAtributo() != null) {
-				atributos.putAll(pageResponse.getAtributo());
+				Map<String, Object> atributos = obterParametros(caffeineServletDados.getReq());
+
+				if (pageResponse.getAtributo() != null) {
+					atributos.putAll(pageResponse.getAtributo());
+				}
+
+				pageResult.aoCarregar(atributos);
+				
 			}
-
-			pageResult.aoCarregar(atributos);
+			
 
 		}
 
