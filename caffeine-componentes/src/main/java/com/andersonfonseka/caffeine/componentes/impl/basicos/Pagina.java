@@ -8,6 +8,7 @@ import java.util.Map;
 import java.util.Optional;
 
 import com.andersonfonseka.caffeine.IComponente;
+import com.andersonfonseka.caffeine.IMenu;
 import com.andersonfonseka.caffeine.IPagina;
 import com.andersonfonseka.caffeine.componentes.impl.Componente;
 import com.andersonfonseka.caffeine.componentes.impl.ComponenteFabricaImpl;
@@ -27,6 +28,8 @@ public abstract @Data class Pagina extends Componente implements IPagina {
 	
 	private String subTitulo = "";
 
+	private IMenu menu;
+	
 	private transient Map<String, IComponente> mapaObrigatorios = new HashMap<>();
 	
 	private List<String> mensagens = new ArrayList<>();
@@ -135,6 +138,21 @@ public abstract @Data class Pagina extends Componente implements IPagina {
 				carregar(parametros, comp);
 			}
 		}
+	}
+	
+	public void setMenu(IMenu iMenu) {
+		this.menu = iMenu;
+		adicionar(iMenu);
+	}
+	
+	public IMenu getMenu() {
+		IMenu pMenu = this.menu;
+		
+		if (!Optional.ofNullable(pMenu).isPresent()) {
+			pMenu = getComponenteFabrica().criarMenu("");	
+		}
+
+		return pMenu;
 	}
 
 }

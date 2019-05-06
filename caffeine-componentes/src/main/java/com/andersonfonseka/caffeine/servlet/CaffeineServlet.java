@@ -88,6 +88,7 @@ public class CaffeineServlet extends HttpServlet {
 
 		IPagina page = caffeineServletDados.getProject().obterPaginaPeloId(caffeineServletDados.getComponentId());
 		page.aoCarregar(obterParametros(caffeineServletDados.getReq()));
+		caffeineServletDados.setPage(page);
 
 		IAcao button = null;
 		Optional<IComponente> componente = page.obterPorId(page, caffeineServletDados.getOp());
@@ -97,10 +98,10 @@ public class CaffeineServlet extends HttpServlet {
 		}
 
 		if (Optional.ofNullable(button).isPresent() && button.isImediato()) {
-			atualizarModelo(caffeineServletDados.getReq(), page);
+			atualizarModelo(caffeineServletDados);
 		} else {
-			atualizarModelo(caffeineServletDados.getReq(), page);
-			aplicarValidacao(caffeineServletDados.getReq(), page);
+			atualizarModelo(caffeineServletDados);
+			aplicarValidacao(caffeineServletDados);
 		}
 
 		page = executarAcao(caffeineServletDados, page);
@@ -158,42 +159,42 @@ public class CaffeineServlet extends HttpServlet {
 		return pageResult;
 	}
 
-	private void atualizarModelo(HttpServletRequest req, IPagina page) {
+	private void atualizarModelo(CaffeineServletDados caffeineServletDados) {
 
-		Optional<Enumeration<String>> names = Optional.ofNullable(req.getParameterNames());
+		Optional<Enumeration<String>> names = Optional.ofNullable(caffeineServletDados.getReq().getParameterNames());
 
 		if (names.isPresent()) {
 
 			while (names.get().hasMoreElements()) {
 				String id = names.get().nextElement();
-				obterComponenteAtualizarModelo(req, page, id);
+				obterComponenteAtualizarModelo(caffeineServletDados, id);
 			}
 		}
 
 	}
 
-	private void obterComponenteAtualizarModelo(HttpServletRequest req, IPagina page, String id) {
-		if (!id.equals(OP) && !id.equals(COMPONENTID) && page.obterPorId(page, id).isPresent()) {
+	private void obterComponenteAtualizarModelo(CaffeineServletDados caffeineServletDados, String id) {
+		if (!id.equals(OP) && !id.equals(COMPONENTID) && caffeineServletDados.getPage().obterPorId(caffeineServletDados.getPage(), id).isPresent()) {
 
-			Optional<IComponente> component = page.obterPorId(page, id);
+			Optional<IComponente> component = caffeineServletDados.getPage().obterPorId(caffeineServletDados.getPage(), id);
 
 			if (component.isPresent() && component.get() instanceof IEntradaCheckbox) {
 				((IEntradaCheckbox) component.get()).setChecked(true);
 
 			} else if (component.isPresent() && component.get() instanceof IEntrada) {
-				((IEntrada) component.get()).setValor(req.getParameter(id));
+				((IEntrada) component.get()).setValor(caffeineServletDados.getReq().getParameter(id));
 			}
 		}
 	}
 
-	private void aplicarValidacao(HttpServletRequest req, IPagina page) {
+	private void aplicarValidacao(CaffeineServletDados caffeineServletDados) {
 
-		Enumeration<String> names = req.getParameterNames();
+		Enumeration<String> names = caffeineServletDados.getReq().getParameterNames();
 
 		if (Optional.ofNullable(names).isPresent()) {
 			while (names.hasMoreElements()) {
 				String id = names.nextElement();
-				obterComponenteValidacao(page, id);
+				obterComponenteValidacao(caffeineServletDados.getPage(), id);
 			}
 
 		}

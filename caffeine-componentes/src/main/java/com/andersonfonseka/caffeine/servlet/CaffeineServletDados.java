@@ -3,6 +3,7 @@ package com.andersonfonseka.caffeine.servlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.andersonfonseka.caffeine.IPagina;
 import com.andersonfonseka.caffeine.IProjeto;
 
 import lombok.Data;
@@ -14,7 +15,7 @@ public @Data class CaffeineServletDados {
 	private IProjeto project;
 	private String op;
 	private String componentId;
-	
+	private IPagina page;
 	
 
 }

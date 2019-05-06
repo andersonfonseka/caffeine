@@ -7,8 +7,6 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import org.apache.commons.lang.ObjectUtils.Null;
-
 import com.andersonfonseka.caffeine.ITabela;
 import com.andersonfonseka.caffeine.ITabelaColuna;
 import com.andersonfonseka.caffeine.componentes.impl.Componente;
@@ -36,8 +34,8 @@ public @Data class Tabela extends Componente implements ITabela {
 		String resultado = "";
 		try {
 
-			Method method = object.getClass().getMethod(campo, Null.class);
-			resultado = String.valueOf(method.invoke(object, Null.class));
+			Method method = object.getClass().getMethod(campo);
+			resultado = String.valueOf(method.invoke(object));
 		
 		} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException | NoSuchMethodException | SecurityException e) {
 			log.log(Level.WARNING, e.getMessage());

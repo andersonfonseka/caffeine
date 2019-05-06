@@ -25,6 +25,8 @@ import com.andersonfonseka.caffeine.IEntradaOculta;
 import com.andersonfonseka.caffeine.IEntradaSenha;
 import com.andersonfonseka.caffeine.IEntradaTexto;
 import com.andersonfonseka.caffeine.IFormulario;
+import com.andersonfonseka.caffeine.IMenu;
+import com.andersonfonseka.caffeine.IMenuItem;
 import com.andersonfonseka.caffeine.IOpcaoSelecao;
 import com.andersonfonseka.caffeine.IPagina;
 import com.andersonfonseka.caffeine.IProjeto;
@@ -47,6 +49,8 @@ import com.andersonfonseka.caffeine.componentes.impl.basicos.EntradaOculta;
 import com.andersonfonseka.caffeine.componentes.impl.basicos.EntradaSenha;
 import com.andersonfonseka.caffeine.componentes.impl.basicos.EntradaTexto;
 import com.andersonfonseka.caffeine.componentes.impl.basicos.Formulario;
+import com.andersonfonseka.caffeine.componentes.impl.basicos.Menu;
+import com.andersonfonseka.caffeine.componentes.impl.basicos.MenuItem;
 import com.andersonfonseka.caffeine.componentes.impl.basicos.OpcaoSelecao;
 import com.andersonfonseka.caffeine.componentes.impl.basicos.Rotulo;
 import com.andersonfonseka.caffeine.componentes.impl.basicos.Selecao;
@@ -69,6 +73,22 @@ public class ComponenteFabricaImpl implements IComponenteFabrica, Serializable {
 	public void setBeanManager(BeanManager beanManager) {
 		this.beanManager = beanManager;
 	}
+
+	public IMenu criarMenu(String titulo) {
+		Menu menu = new Menu();
+		menu.setTitulo(titulo);
+		return menu;
+	}
+	
+	public IMenuItem criarMenuItem(String titulo, AcaoAbs acao) {
+		MenuItem menuItem = new MenuItem();
+		menuItem.setTitulo(titulo);
+		menuItem.setAcao(acao);
+		menuItem.setImediato(true);
+		
+		return menuItem;
+	}
+
 	
 	public IProjeto criarProjeto(String id) {
 		

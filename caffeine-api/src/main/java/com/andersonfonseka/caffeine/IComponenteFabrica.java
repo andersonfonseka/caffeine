@@ -8,6 +8,10 @@ import com.andersonfonseka.caffeine.componentes.acao.AcaoAbs;
 
 public interface IComponenteFabrica {
 	
+	public IMenu criarMenu(String titulo);
+	
+	public IMenuItem criarMenuItem(String titulo, AcaoAbs acao);
+	
 	ITabela criarTabela(String id);
 	
 	ITabelaColuna criarTabelaColuna(String titulo, String campo);
