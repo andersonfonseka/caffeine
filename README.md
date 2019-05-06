@@ -4,6 +4,7 @@
 [![BCH compliance](https://bettercodehub.com/edge/badge/andersonfonseka/caffeine?branch=master)](https://bettercodehub.com/)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=com.andersonfonseka%3Acaffeine&metric=alert_status)](https://sonarcloud.io/dashboard?id=com.andersonfonseka%3Acaffeine)
 [![Build Status](https://travis-ci.org/andersonfonseka/caffeine.svg?branch=master)](https://travis-ci.org/andersonfonseka/caffeine)
+[![Coverage Status](https://coveralls.io/repos/github/andersonfonseka/caffeine/badge.svg?branch=master)](https://coveralls.io/github/andersonfonseka/caffeine?branch=master)
 
 **por que?**
 
