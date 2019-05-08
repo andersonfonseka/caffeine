@@ -12,6 +12,7 @@ import org.jboss.weld.bean.ManagedBean;
 
 import com.andersonfonseka.caffeine.IAcesso;
 import com.andersonfonseka.caffeine.IBotao;
+import com.andersonfonseka.caffeine.ICard;
 import com.andersonfonseka.caffeine.IComponenteFabrica;
 import com.andersonfonseka.caffeine.IConteiner;
 import com.andersonfonseka.caffeine.IEndereco;
@@ -38,6 +39,7 @@ import com.andersonfonseka.caffeine.ITabelaColuna;
 import com.andersonfonseka.caffeine.ITipoValor;
 import com.andersonfonseka.caffeine.componentes.acao.AcaoAbs;
 import com.andersonfonseka.caffeine.componentes.impl.basicos.Botao;
+import com.andersonfonseka.caffeine.componentes.impl.basicos.Card;
 import com.andersonfonseka.caffeine.componentes.impl.basicos.Conteiner;
 import com.andersonfonseka.caffeine.componentes.impl.basicos.EntradaAreaTexto;
 import com.andersonfonseka.caffeine.componentes.impl.basicos.EntradaArquivo;
@@ -72,6 +74,19 @@ public class ComponenteFabricaImpl implements IComponenteFabrica, Serializable {
 	@Override
 	public void setBeanManager(BeanManager beanManager) {
 		this.beanManager = beanManager;
+	}
+	
+	public ICard criarCard(String imagem, String titulo, String texto, IBotao botao) {
+
+		Card card = new Card();
+
+		card.setTitulo(titulo);
+		card.setTexto(texto);
+		card.setImagem(imagem);
+		
+		card.adicionar(botao);
+		
+		return card;
 	}
 
 	public IMenu criarMenu(String titulo) {

@@ -100,7 +100,7 @@ public class Endereco extends Conteiner implements IEndereco, Serializable {
 			cidade.adicionar(componenteFabrica.criarOpcaoSelecao("2", "Olinda"));
 			cidade.adicionar(componenteFabrica.criarOpcaoSelecao("3", "Paulista"));
 		} else if (estado.getSelecionado().getValor().equals("2")) {
-			cidade.adicionar(componenteFabrica.criarOpcaoSelecao("4", "São Paulo"));
+			cidade.adicionar(componenteFabrica.criarOpcaoSelecao("4", "Sao Paulo"));
 		} else if (estado.getSelecionado().getValor().equals("3")) {
 			cidade.adicionar(componenteFabrica.criarOpcaoSelecao("5", "Rio de Janeiro"));
 		}

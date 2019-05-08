@@ -1,5 +1,8 @@
 <div class="form-group">
     <label for="$inputfile.getId()">$inputfile.getTitulo()</label>
-    <input type="file" class="form-control" id="$inputfile.getId()" name="$inputfile.getId()" value="$inputfile.getValor()">
+    <input type="file" class="form-control" onchange="uploadFiles($inputfile.getId())" id="$inputfile.getId()" name="$inputfile.getId()"  value="fake.jpg" accept="image/png, image/jpeg">
+	#foreach($comp in $inputfile.getComponentes())
+		$comp.gerarSaida()
+	#end
 </div>
 

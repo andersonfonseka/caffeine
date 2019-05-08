@@ -20,6 +20,7 @@ import com.andersonfonseka.caffeine.IAcao;
 import com.andersonfonseka.caffeine.IComponente;
 import com.andersonfonseka.caffeine.IComponenteFabrica;
 import com.andersonfonseka.caffeine.IEntrada;
+import com.andersonfonseka.caffeine.IEntradaArquivo;
 import com.andersonfonseka.caffeine.IEntradaCheckbox;
 import com.andersonfonseka.caffeine.IPagina;
 import com.andersonfonseka.caffeine.IProjeto;
@@ -165,10 +166,7 @@ public class CaffeineServlet extends HttpServlet {
 				}
 
 				pageResult.aoCarregar(atributos);
-				
 			}
-			
-
 		}
 
 		return pageResult;
@@ -182,13 +180,20 @@ public class CaffeineServlet extends HttpServlet {
 
 			while (names.get().hasMoreElements()) {
 				String id = names.get().nextElement();
-				obterComponenteAtualizarModelo(caffeineServletDados, id);
+				
+				if (id.indexOf("_hidden") != -1) {
+					id = id.substring(0, id.indexOf("_hidden"));
+					obterComponenteAtualizarModelo(caffeineServletDados, id, true);
+				} else {
+					obterComponenteAtualizarModelo(caffeineServletDados, id, false);	
+				}
+				
 			}
 		}
 
 	}
 
-	private void obterComponenteAtualizarModelo(CaffeineServletDados caffeineServletDados, String id) {
+	private void obterComponenteAtualizarModelo(CaffeineServletDados caffeineServletDados, String id, boolean obterSessao) {
 		if (!id.equals(OP) && !id.equals(COMPONENTID)) {
 
 			Optional<IComponente> component = caffeineServletDados.getPage().obterPorId(caffeineServletDados.getPage(),
@@ -198,7 +203,18 @@ public class CaffeineServlet extends HttpServlet {
 				((IEntradaCheckbox) component.get()).setChecked(true);
 
 			} else if (component.isPresent() && component.get() instanceof IEntrada) {
-				((IEntrada) component.get()).setValor(caffeineServletDados.getReq().getParameter(id));
+				if (obterSessao) {
+					String valor = String.valueOf(caffeineServletDados.getReq().getSession().getAttribute(id));
+					
+					if (component.get() instanceof IEntradaArquivo) {
+						((IEntradaArquivo) component.get()).getEntradaOculta().setValor(valor);
+					}
+					
+					caffeineServletDados.getReq().getSession().removeAttribute(id);
+				} else {
+					((IEntrada) component.get()).setValor(caffeineServletDados.getReq().getParameter(id));	
+				}
+				
 			}
 		}
 	}

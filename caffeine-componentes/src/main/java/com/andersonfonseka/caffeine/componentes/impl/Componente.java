@@ -26,7 +26,7 @@ public abstract @Data class Componente implements IComponente, Serializable {
 
 	protected static Integer internalId = 1;
 
-	private @Getter String id;
+	private String id;
 
 	private @Setter @Getter String parent;
 

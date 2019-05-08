@@ -5,21 +5,30 @@
 	<parent>
 		<groupId>com.andersonfonseka</groupId>
 		<artifactId>caffeine</artifactId>
-		<version>0.0.1-SNAPSHOT</version>
+		<version>0.0.1</version>
 	</parent>
 	<artifactId>caffeine-componentes</artifactId>
+	<url>https://github.com/andersonfonseka/caffeine</url>
 
+	<licenses>
+		<license>
+			<name>MIT License</name>
+			<url>https://github.com/andersonfonseka/caffeine/blob/master/LICENSE</url>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
+	
 	<dependencies>
 		<dependency>
 			<groupId>com.andersonfonseka</groupId>
 			<artifactId>caffeine-comum</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
+			<version>0.0.1</version>
 		</dependency>
 		
 		<dependency>
 			<groupId>com.andersonfonseka</groupId>
 			<artifactId>caffeine-api</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
+			<version>0.0.1</version>
 		</dependency>
 	</dependencies>
 
