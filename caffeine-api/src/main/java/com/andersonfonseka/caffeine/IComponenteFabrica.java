@@ -8,7 +8,7 @@ import com.andersonfonseka.caffeine.componentes.acao.AcaoAbs;
 
 public interface IComponenteFabrica {
 
-	ICard criarCard(String imagem, String titulo, String texto, IBotao botao);
+	ICard criarCard(String imagem, String titulo, String texto);
 	
 	IMenu criarMenu(String titulo);
 	

@@ -1,5 +1,6 @@
 package com.andersonfonseka.caffeine.componentes.impl.basicos;
 
+import com.andersonfonseka.caffeine.IBotao;
 import com.andersonfonseka.caffeine.ICard;
 import com.andersonfonseka.caffeine.componentes.impl.Componente;
 
@@ -20,5 +21,10 @@ public @Data class Card extends Componente implements ICard {
 	@Override
 	public String getTemplate() {
 		return "card";
+	}
+
+	@Override
+	public void setBotao(IBotao botao) {
+		adicionar(botao);
 	}
 }

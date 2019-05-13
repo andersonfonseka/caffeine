@@ -76,15 +76,13 @@ public class ComponenteFabricaImpl implements IComponenteFabrica, Serializable {
 		this.beanManager = beanManager;
 	}
 	
-	public ICard criarCard(String imagem, String titulo, String texto, IBotao botao) {
+	public ICard criarCard(String imagem, String titulo, String texto) {
 
 		Card card = new Card();
 
 		card.setTitulo(titulo);
 		card.setTexto(texto);
 		card.setImagem(imagem);
-		
-		card.adicionar(botao);
 		
 		return card;
 	}

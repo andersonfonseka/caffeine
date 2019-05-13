@@ -93,6 +93,13 @@ public abstract @Data class Pagina extends Componente implements IPagina {
 
 			if (comp.isPresent()) {
 				break;
+			} else {
+				for (IComponente cmp: gridLayout.get(key)) {
+					comp = obterPorId(cmp, id);
+					if (comp.isPresent()) {
+						break;
+					}
+				}
 			}
 		}
 		return comp;

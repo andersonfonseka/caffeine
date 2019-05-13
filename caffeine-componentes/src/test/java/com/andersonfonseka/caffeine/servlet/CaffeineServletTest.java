@@ -20,6 +20,7 @@ import com.andersonfonseka.caffeine.servlet.mock.MockHttpServletRequest;
 import com.andersonfonseka.caffeine.servlet.mock.MockHttpServletResponse;
 
 
+
 @EnableWeld
 class CaffeineServletTest extends Mockito {
 	
