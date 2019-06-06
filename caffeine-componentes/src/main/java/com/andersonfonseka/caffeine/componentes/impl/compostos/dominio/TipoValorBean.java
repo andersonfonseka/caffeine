@@ -14,7 +14,7 @@ public @Data class TipoValorBean {
 
 	@Override
 	public String toString() {
-		return id + "#" + tipo + "#" + valor + ";";
+		return getId() + "#" + getTipo() + "#" + getValor() + ";";
 	}
 	
 }
