@@ -15,9 +15,6 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(callSuper=false)
 public abstract @Data class Entrada extends Componente implements IEntrada, IValidador {
 	
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 
 	private String nome;
@@ -31,6 +28,8 @@ public abstract @Data class Entrada extends Componente implements IEntrada, IVal
 	private Integer tamanho;
 	
 	private Integer comprimentoMaximo;
+	
+	private List<String> mensagens = new ArrayList<>();
 	
 	@Override
 	public List<String> validar() {

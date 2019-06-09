@@ -1,6 +1,5 @@
 package com.andersonfonseka.caffeine.componentes.impl.basicos;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.commons.validator.routines.IntegerValidator;
@@ -22,18 +21,16 @@ public @Data class EntradaNumero extends Entrada implements IEntradaNumero {
 	}
 	
 	public List<String> validar() {
-		
-		List<String> mensagens = new ArrayList<>();
-		
-		mensagens.addAll(super.validar());	
+			
+		getMensagens().addAll(super.validar());	
 		
 		IntegerValidator integerValidator = IntegerValidator.getInstance();
 		
 		if (!integerValidator.isValid(getValor())) {
-			mensagens.add(new MensagemUtil().getMensagemPropriedades("NUMBERFIELD", getTitulo()));
+			getMensagens().add(new MensagemUtil().getMensagemPropriedades("NUMBERFIELD", getTitulo()));
 		}
 		
-		return mensagens;
+		return getMensagens();
 	}
 
 }

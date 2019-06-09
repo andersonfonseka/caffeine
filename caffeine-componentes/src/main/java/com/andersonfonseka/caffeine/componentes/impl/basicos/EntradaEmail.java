@@ -1,6 +1,5 @@
 package com.andersonfonseka.caffeine.componentes.impl.basicos;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.commons.validator.routines.EmailValidator;
@@ -24,17 +23,14 @@ public @Data class EntradaEmail extends Entrada implements IEntradaEmail {
 	@Override
 	public List<String> validar() {
 		
-		List<String> mensagens = new ArrayList<>();
-		
-		mensagens.addAll(super.validar());	
+		getMensagens().addAll(super.validar());	
 		
 		EmailValidator emailValidator = EmailValidator.getInstance();
 		
 		if (!emailValidator.isValid(getValor())){
-			mensagens.add(new MensagemUtil().getMensagemPropriedades("EMAILFIELD", getTitulo()));	
+			getMensagens().add(new MensagemUtil().getMensagemPropriedades("EMAILFIELD", getTitulo()));	
 		}
 		
-		return mensagens;
+		return getMensagens();
 	}
-
 }
