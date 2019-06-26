@@ -16,6 +16,7 @@ import com.andersonfonseka.caffeine.ISelecao;
 import com.andersonfonseka.caffeine.componentes.acao.AcaoAbs;
 import com.andersonfonseka.caffeine.componentes.impl.Resposta;
 import com.andersonfonseka.caffeine.componentes.impl.basicos.Conteiner;
+import com.andersonfonseka.caffeine.componentes.impl.basicos.EntradaTexto;
 
 import lombok.AccessLevel;
 import lombok.EqualsAndHashCode;
@@ -56,13 +57,13 @@ public class Endereco extends Conteiner implements IEndereco, Serializable {
 	@PostConstruct
 	public void post() {
 		
-		logradouro = componenteFabrica.criarEntradaTexto("Logradouro", true);
+		logradouro = new EntradaTexto.Builder("Logradouro", true).build();
 		
 		numero = componenteFabrica.criarEntradaNumero("Numero", false);
 
-		complemento = componenteFabrica.criarEntradaTexto("Complemento", false);
+		complemento = new EntradaTexto.Builder("Complemento", false).build();
 		
-		bairro = componenteFabrica.criarEntradaTexto("Bairro", false);
+		bairro = new EntradaTexto.Builder("Bairro", false).build();
 		
 		estado = componenteFabrica.criarSelecao("UF", new AcaoAbs(this) {
 			

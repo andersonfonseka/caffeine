@@ -110,17 +110,6 @@ public class ComponenteFabricaImpl implements IComponenteFabrica, Serializable {
 	}
 
 	@Override
-	public IEntradaEditorTexto criarEntradaEditorTexto(String titulo, boolean obrigatorio, int linhas) {
-		
-		EntradaEditorTexto entradaAreaTexto = new EntradaEditorTexto();
-		entradaAreaTexto.setTitulo(titulo);
-		entradaAreaTexto.setObrigatorio(obrigatorio);
-		entradaAreaTexto.setRows(linhas);
-		
-		return entradaAreaTexto;
-	}
-
-	@Override
 	public IEntradaData criarEntradaData(String titulo, String pattern, boolean obrigatorio) {
 		
 		EntradaData entradaData = new EntradaData();
@@ -129,16 +118,6 @@ public class ComponenteFabricaImpl implements IComponenteFabrica, Serializable {
 		entradaData.setObrigatorio(obrigatorio);
 		
 		return entradaData;
-	}
-
-	@Override
-	public IEntradaTexto criarEntradaTexto(String titulo, boolean obrigatorio) {
-
-		EntradaTexto entradaTexto = new EntradaTexto();
-		entradaTexto.setTitulo(titulo);
-		entradaTexto.setObrigatorio(obrigatorio);
-		
-		return entradaTexto;
 	}
 	
 	@Override

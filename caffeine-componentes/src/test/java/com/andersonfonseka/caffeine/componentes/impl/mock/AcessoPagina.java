@@ -16,6 +16,7 @@ import com.andersonfonseka.caffeine.componentes.acao.AcaoAbs;
 import com.andersonfonseka.caffeine.componentes.impl.Resposta;
 import com.andersonfonseka.caffeine.componentes.impl.basicos.Botao;
 import com.andersonfonseka.caffeine.componentes.impl.basicos.EntradaCheckbox;
+import com.andersonfonseka.caffeine.componentes.impl.basicos.EntradaTexto;
 import com.andersonfonseka.caffeine.componentes.impl.basicos.Formulario;
 import com.andersonfonseka.caffeine.componentes.impl.basicos.Pagina;
 
@@ -39,7 +40,7 @@ public class AcessoPagina extends Pagina {
 		IFormulario formulario = new Formulario.Builder().build();
 		formulario.adicionar(componenteFabrica.criarEndereco(this));
 		
-		this.entradaTexto = componenteFabrica.criarEntradaTexto("Teste", false);
+		this.entradaTexto = new EntradaTexto.Builder("Teste", false).build();
 		
 		this.entradaCheckbox = new EntradaCheckbox.Builder("Teste", "1", false).build();
 		

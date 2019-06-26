@@ -29,6 +29,7 @@ import com.andersonfonseka.caffeine.componentes.acao.AcaoAbs;
 import com.andersonfonseka.caffeine.componentes.impl.basicos.Botao;
 import com.andersonfonseka.caffeine.componentes.impl.basicos.EntradaAreaTexto;
 import com.andersonfonseka.caffeine.componentes.impl.basicos.EntradaArquivo;
+import com.andersonfonseka.caffeine.componentes.impl.basicos.EntradaTexto;
 import com.andersonfonseka.caffeine.componentes.impl.basicos.Formulario;
 import com.andersonfonseka.caffeine.componentes.impl.basicos.Pagina;
 
@@ -94,7 +95,7 @@ class ComponenteFabricaImplTest {
 
 	@Test
 	void testCriarEntradaTexto(IComponenteFabrica componenteFabrica) {
-		IEntradaTexto txtFirstName = componenteFabrica.criarEntradaTexto("Primeiro nome", true);
+		IEntradaTexto txtFirstName = new EntradaTexto.Builder("Primeiro nome", true).build();
 		assertTrue(Optional.of(txtFirstName).isPresent());
 	}
 

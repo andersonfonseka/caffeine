@@ -20,6 +20,7 @@ import com.andersonfonseka.caffeine.componentes.acao.AcaoAbs;
 import com.andersonfonseka.caffeine.componentes.impl.Resposta;
 import com.andersonfonseka.caffeine.componentes.impl.basicos.Botao;
 import com.andersonfonseka.caffeine.componentes.impl.basicos.Conteiner;
+import com.andersonfonseka.caffeine.componentes.impl.basicos.EntradaTexto;
 import com.andersonfonseka.caffeine.componentes.impl.basicos.Tabela;
 import com.andersonfonseka.caffeine.componentes.impl.basicos.TabelaColuna;
 import com.andersonfonseka.caffeine.componentes.impl.compostos.dominio.TipoValorBean;
@@ -61,7 +62,7 @@ public class TipoValor extends Conteiner implements ITipoValor, Serializable {
 		
 		this.selTipo = selecaoTipo;
 		
-		this.txValor = componenteFabrica.criarEntradaTexto("Valor", false);
+		this.txValor = new EntradaTexto.Builder("Valor", false).build();
 
 		this.tblTipoValores = new Tabela.Builder("tbl" + getId()).build()
 				.adicionaColuna(new TabelaColuna.Builder("#", "getId", true).build())

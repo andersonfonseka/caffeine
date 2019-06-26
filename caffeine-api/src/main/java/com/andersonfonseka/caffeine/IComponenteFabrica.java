@@ -23,12 +23,10 @@ public interface IComponenteFabrica {
 	IAcesso criarAcesso(IPagina pagina, Map<String, String> usuarios, Class<? extends IPagina> paginaDestino);
 
 	ITipoValor criarTipoValor(IPagina pagina, ISelecao selecaoTipo);
-	
-	IEntradaEditorTexto criarEntradaEditorTexto(String titulo, boolean obrigatorio, int linhas);
+
+	// ---------------------------------------------------------------------------------------
 	
 	IEntradaData criarEntradaData(String titulo, String pattern, boolean obrigatorio);
-	
-	IEntradaTexto criarEntradaTexto(String titulo, boolean obrigatorio);
 	
 	IEntradaEmail criarEntradaEmail(String titulo, boolean obrigatorio);
 	
