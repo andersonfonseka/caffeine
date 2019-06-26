@@ -25,7 +25,7 @@ public @Data class Tabela extends Componente implements ITabela {
 	
 	private transient List<?> dados = new ArrayList<>();
 	
-	public Tabela(String id) {
+	private Tabela(String id) {
 		setId(id);
 	}
 
@@ -53,5 +53,20 @@ public @Data class Tabela extends Componente implements ITabela {
 		this.colunas.add(tabelaColuna);
 		return this;
 	}
+	
+	public static class Builder {
+
+		String id;
+
+		public Builder(String id) {
+			super();
+			this.id = id;
+		}
+
+		public ITabela build() {
+			return new Tabela(id);
+		}
+	}
+
 		
 }

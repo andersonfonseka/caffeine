@@ -7,18 +7,6 @@ import javax.enterprise.inject.spi.BeanManager;
 import com.andersonfonseka.caffeine.componentes.acao.AcaoAbs;
 
 public interface IComponenteFabrica {
-
-	ICard criarCard(String imagem, String titulo, String texto);
-	
-	IMenu criarMenu(String titulo);
-	
-	IMenuItem criarMenuItem(String titulo, AcaoAbs acao);
-	
-	ITabela criarTabela(String id);
-	
-	ITabelaColuna criarTabelaColuna(String titulo, String campo);
-	
-	ITabelaColuna criarTabelaColuna(String titulo, String campo, boolean selecionavel);
 	
 	void setBeanManager(BeanManager beanManager);
 	

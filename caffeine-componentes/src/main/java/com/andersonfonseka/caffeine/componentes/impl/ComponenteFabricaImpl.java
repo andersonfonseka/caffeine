@@ -12,7 +12,6 @@ import org.jboss.weld.bean.ManagedBean;
 
 import com.andersonfonseka.caffeine.IAcesso;
 import com.andersonfonseka.caffeine.IBotao;
-import com.andersonfonseka.caffeine.ICard;
 import com.andersonfonseka.caffeine.IComponenteFabrica;
 import com.andersonfonseka.caffeine.IConteiner;
 import com.andersonfonseka.caffeine.IEndereco;
@@ -27,20 +26,15 @@ import com.andersonfonseka.caffeine.IEntradaOculta;
 import com.andersonfonseka.caffeine.IEntradaSenha;
 import com.andersonfonseka.caffeine.IEntradaTexto;
 import com.andersonfonseka.caffeine.IFormulario;
-import com.andersonfonseka.caffeine.IMenu;
-import com.andersonfonseka.caffeine.IMenuItem;
 import com.andersonfonseka.caffeine.IOpcaoSelecao;
 import com.andersonfonseka.caffeine.IPagina;
 import com.andersonfonseka.caffeine.IProjeto;
 import com.andersonfonseka.caffeine.IResposta;
 import com.andersonfonseka.caffeine.IRotulo;
 import com.andersonfonseka.caffeine.ISelecao;
-import com.andersonfonseka.caffeine.ITabela;
-import com.andersonfonseka.caffeine.ITabelaColuna;
 import com.andersonfonseka.caffeine.ITipoValor;
 import com.andersonfonseka.caffeine.componentes.acao.AcaoAbs;
 import com.andersonfonseka.caffeine.componentes.impl.basicos.Botao;
-import com.andersonfonseka.caffeine.componentes.impl.basicos.Card;
 import com.andersonfonseka.caffeine.componentes.impl.basicos.Conteiner;
 import com.andersonfonseka.caffeine.componentes.impl.basicos.EntradaAreaTexto;
 import com.andersonfonseka.caffeine.componentes.impl.basicos.EntradaArquivo;
@@ -53,13 +47,9 @@ import com.andersonfonseka.caffeine.componentes.impl.basicos.EntradaOculta;
 import com.andersonfonseka.caffeine.componentes.impl.basicos.EntradaSenha;
 import com.andersonfonseka.caffeine.componentes.impl.basicos.EntradaTexto;
 import com.andersonfonseka.caffeine.componentes.impl.basicos.Formulario;
-import com.andersonfonseka.caffeine.componentes.impl.basicos.Menu;
-import com.andersonfonseka.caffeine.componentes.impl.basicos.MenuItem;
 import com.andersonfonseka.caffeine.componentes.impl.basicos.OpcaoSelecao;
 import com.andersonfonseka.caffeine.componentes.impl.basicos.Rotulo;
 import com.andersonfonseka.caffeine.componentes.impl.basicos.Selecao;
-import com.andersonfonseka.caffeine.componentes.impl.basicos.Tabela;
-import com.andersonfonseka.caffeine.componentes.impl.basicos.TabelaColuna;
 import com.andersonfonseka.caffeine.componentes.impl.compostos.Acesso;
 import com.andersonfonseka.caffeine.componentes.impl.compostos.Endereco;
 import com.andersonfonseka.caffeine.componentes.impl.compostos.TipoValor;
@@ -77,33 +67,6 @@ public class ComponenteFabricaImpl implements IComponenteFabrica, Serializable {
 	public void setBeanManager(BeanManager beanManager) {
 		this.beanManager = beanManager;
 	}
-	
-	public ICard criarCard(String imagem, String titulo, String texto) {
-
-		Card card = new Card();
-
-		card.setTitulo(titulo);
-		card.setTexto(texto);
-		card.setImagem(imagem);
-		
-		return card;
-	}
-
-	public IMenu criarMenu(String titulo) {
-		Menu menu = new Menu();
-		menu.setTitulo(titulo);
-		return menu;
-	}
-	
-	public IMenuItem criarMenuItem(String titulo, AcaoAbs acao) {
-		MenuItem menuItem = new MenuItem();
-		menuItem.setTitulo(titulo);
-		menuItem.setAcao(acao);
-		menuItem.setImediato(true);
-		
-		return menuItem;
-	}
-
 	
 	public IProjeto criarProjeto(String id) {
 		
@@ -351,32 +314,28 @@ public class ComponenteFabricaImpl implements IComponenteFabrica, Serializable {
 		return selecao;
 	}
 
-	@Override
-	public ITabela criarTabela(String id) {
-		return new Tabela(id);
-	}
 
-	@Override
-	public ITabelaColuna criarTabelaColuna(String titulo, String campo) {
-		TabelaColuna tabelaColuna = new TabelaColuna();
-		
-		tabelaColuna.setTitulo(titulo);
-		tabelaColuna.setCampo(campo);
-		tabelaColuna.setSelecionavel(false);
-		
-		return tabelaColuna;
-	}
-	
-	@Override
-	public ITabelaColuna criarTabelaColuna(String titulo, String campo, boolean selecionavel) {
-		TabelaColuna tabelaColuna = new TabelaColuna();
-		
-		tabelaColuna.setTitulo(titulo);
-		tabelaColuna.setCampo(campo);
-		tabelaColuna.setSelecionavel(selecionavel);
-		
-		return tabelaColuna;
-	}
+//	@Override
+//	public ITabelaColuna criarTabelaColuna(String titulo, String campo) {
+//		TabelaColuna tabelaColuna = new TabelaColuna();
+//		
+//		tabelaColuna.setTitulo(titulo);
+//		tabelaColuna.setCampo(campo);
+//		tabelaColuna.setSelecionavel(false);
+//		
+//		return tabelaColuna;
+//	}
+//	
+//	@Override
+//	public ITabelaColuna criarTabelaColuna(String titulo, String campo, boolean selecionavel) {
+//		TabelaColuna tabelaColuna = new TabelaColuna();
+//		
+//		tabelaColuna.setTitulo(titulo);
+//		tabelaColuna.setCampo(campo);
+//		tabelaColuna.setSelecionavel(selecionavel);
+//		
+//		return tabelaColuna;
+//	}
 
 	@Override
 	public IAcesso criarAcesso(IPagina pagina, Map<String, String> usuarios, Class<? extends IPagina> paginaDestino) {

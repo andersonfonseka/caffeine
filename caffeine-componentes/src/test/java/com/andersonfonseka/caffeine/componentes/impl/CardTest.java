@@ -11,6 +11,7 @@ import org.junit.jupiter.api.Test;
 
 import com.andersonfonseka.caffeine.ICard;
 import com.andersonfonseka.caffeine.IComponenteFabrica;
+import com.andersonfonseka.caffeine.componentes.impl.basicos.Card;
 
 @EnableWeld
 class CardTest {
@@ -20,13 +21,13 @@ class CardTest {
 
 	@Test
 	void testCriarCard(IComponenteFabrica componenteFabrica) {
-		ICard card = componenteFabrica.criarCard("", "", "");
+		ICard card = new Card.Builder("", "", "").build();
 		assertTrue(Optional.ofNullable(card).isPresent());
 	}
 	
 	@Test
 	void testRenderCard(IComponenteFabrica componenteFabrica) {
-		ICard card = componenteFabrica.criarCard("", "", "");
+		ICard card = new Card.Builder("", "", "").build();
 		assertTrue(Optional.ofNullable(card.gerarSaida()).isPresent());
 	}
 }

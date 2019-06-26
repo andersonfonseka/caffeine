@@ -18,6 +18,8 @@ public @Data class Card extends Componente implements ICard {
 	
 	private String imagem;
 	
+	private Card() {}
+	
 	@Override
 	public String getTemplate() {
 		return "card";
@@ -27,4 +29,32 @@ public @Data class Card extends Componente implements ICard {
 	public void setBotao(IBotao botao) {
 		adicionar(botao);
 	}
+	
+	public static class Builder {
+		
+		String imagem;
+		String titulo; 
+		String texto;
+		
+		public Builder(String imagem, String titulo, String texto) {
+			super();
+			this.imagem = imagem;
+			this.titulo = titulo;
+			this.texto = texto;
+		}
+		
+		public ICard build() {
+			
+			Card card = new Card();
+
+			card.setTitulo(titulo);
+			card.setTexto(texto);
+			card.setImagem(imagem);
+			
+			return card;
+		}
+		
+	}
+
+	
 }

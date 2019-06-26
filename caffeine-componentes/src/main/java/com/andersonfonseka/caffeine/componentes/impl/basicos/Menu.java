@@ -13,9 +13,29 @@ public @Data class Menu extends Componente implements IMenu {
 
 	private String titulo;
 	
+	private Menu() {}
+	
 	@Override
 	public String getTemplate() {
 		return "menu";
+	}
+	
+	public static class Builder {
+		
+		String titulo;
+		
+		public Builder(String titulo) {
+			super();
+			this.titulo = titulo;
+		}
+		
+		public IMenu build() {
+
+			Menu menu = new Menu();
+			menu.setTitulo(titulo);
+			return menu;
+		}
+		
 	}
 
 }

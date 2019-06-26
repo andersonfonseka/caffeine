@@ -17,6 +17,8 @@ public @Data class TabelaColuna extends Componente implements ITabelaColuna {
 	
 	private boolean selecionavel;
 	
+	private TabelaColuna() {}
+	
 	public String getValor() {
 		return "";
 	}
@@ -24,5 +26,33 @@ public @Data class TabelaColuna extends Componente implements ITabelaColuna {
 	@Override
 	public String getTemplate() {
 		return null;
+	}
+	
+	public static class Builder {
+
+		private String titulo;
+		
+		private String campo;
+		
+		private boolean selecionavel;
+
+		public Builder(String titulo, String campo, boolean selecionavel) {
+			super();
+			this.titulo = titulo;
+			this.campo = campo;
+			this.selecionavel = selecionavel;
+		}
+
+		public ITabelaColuna build() {
+
+			TabelaColuna tabelaColuna = new TabelaColuna();
+			
+			tabelaColuna.setTitulo(titulo);
+			tabelaColuna.setCampo(campo);
+			tabelaColuna.setSelecionavel(selecionavel);
+			
+			return tabelaColuna;
+
+		}
 	}
 }

@@ -155,7 +155,7 @@ public abstract @Data class Pagina extends Componente implements IPagina {
 		IMenu pMenu = this.menu;
 		
 		if (!Optional.ofNullable(pMenu).isPresent()) {
-			pMenu = getComponenteFabrica().criarMenu("");	
+			pMenu = new Menu.Builder("").build();	
 		}
 
 		return pMenu;

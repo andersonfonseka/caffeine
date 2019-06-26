@@ -18,6 +18,8 @@ import com.andersonfonseka.caffeine.ITabela;
 import com.andersonfonseka.caffeine.ITipoValor;
 import com.andersonfonseka.caffeine.componentes.acao.AcaoAbs;
 import com.andersonfonseka.caffeine.componentes.impl.basicos.Conteiner;
+import com.andersonfonseka.caffeine.componentes.impl.basicos.Tabela;
+import com.andersonfonseka.caffeine.componentes.impl.basicos.TabelaColuna;
 import com.andersonfonseka.caffeine.componentes.impl.compostos.dominio.TipoValorBean;
 
 import lombok.AccessLevel;
@@ -59,10 +61,10 @@ public class TipoValor extends Conteiner implements ITipoValor, Serializable {
 		
 		this.txValor = componenteFabrica.criarEntradaTexto("Valor", false);
 
-		this.tblTipoValores = componenteFabrica.criarTabela("tbl" + getId())
-				.adicionaColuna(componenteFabrica.criarTabelaColuna("#", "getId", true))
-				.adicionaColuna(componenteFabrica.criarTabelaColuna("Tipo", "getTipo"))
-				.adicionaColuna(componenteFabrica.criarTabelaColuna("Valor", "getValor"));
+		this.tblTipoValores = new Tabela.Builder("tbl" + getId()).build()
+				.adicionaColuna(new TabelaColuna.Builder("#", "getId", true).build())
+				.adicionaColuna(new TabelaColuna.Builder("Tipo", "getTipo", false).build())
+				.adicionaColuna(new TabelaColuna.Builder("Valor", "getValor", false).build());
 		
 		this.btnAdicionar = componenteFabrica.criarBotao("Adicionar", new AcaoAbs(tblTipoValores) {
 			@Override
