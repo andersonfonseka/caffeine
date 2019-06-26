@@ -11,6 +11,7 @@ import org.junit.jupiter.api.Test;
 
 import com.andersonfonseka.caffeine.IComponenteFabrica;
 import com.andersonfonseka.caffeine.IEntradaSenha;
+import com.andersonfonseka.caffeine.componentes.impl.basicos.EntradaSenha;
 
 @EnableWeld
 class EntradaSenhaTest {
@@ -20,19 +21,19 @@ class EntradaSenhaTest {
 	
 	@Test
 	void testCriarEntradaSenha(IComponenteFabrica componenteFabrica) {
-		IEntradaSenha entradaSenha = componenteFabrica.criarEntradaSenha("Senha", true);
+		IEntradaSenha entradaSenha = new EntradaSenha.Builder("Senha", true).build();
 		assertTrue(Optional.ofNullable(entradaSenha).isPresent());
 	}
 	
 	@Test
 	void testRenderEntradaSenha(IComponenteFabrica componenteFabrica) {
-		IEntradaSenha entradaSenha = componenteFabrica.criarEntradaSenha("Senha", true);
+		IEntradaSenha entradaSenha = new EntradaSenha.Builder("Senha", true).build();
 		assertTrue(Optional.ofNullable(entradaSenha.gerarSaida()).isPresent() && entradaSenha.gerarSaida().length() > 0);
 	}
 	
 	@Test
 	void testValidarEntradaSenha(IComponenteFabrica componenteFabrica) {
-		IEntradaSenha entradaSenha = componenteFabrica.criarEntradaSenha("Senha", true);
+		IEntradaSenha entradaSenha = new EntradaSenha.Builder("Senha", true).build();
 		entradaSenha.setValor("123");
 		assertTrue(entradaSenha.validar().isEmpty());
 	}

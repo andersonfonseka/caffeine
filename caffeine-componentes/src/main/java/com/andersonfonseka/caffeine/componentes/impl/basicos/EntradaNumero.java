@@ -20,6 +20,8 @@ public @Data class EntradaNumero extends Entrada implements IEntradaNumero {
 		return "inputnumber";
 	}
 	
+	private EntradaNumero() {}
+	
 	public List<String> validar() {
 			
 		getMensagens().addAll(super.validar());	
@@ -32,5 +34,26 @@ public @Data class EntradaNumero extends Entrada implements IEntradaNumero {
 		
 		return getMensagens();
 	}
+	
+	public static class Builder {
+		
+		String titulo;
+		boolean obrigatorio;
+		
+		public Builder(String titulo, boolean obrigatorio) {
+			super();
+			this.titulo = titulo;
+			this.obrigatorio = obrigatorio;
+		}
+		
+		public IEntradaNumero build() {
+			
+			EntradaNumero entradaNumero = new EntradaNumero();
+			entradaNumero.setTitulo(titulo);
+			entradaNumero.setObrigatorio(obrigatorio);
+			
+			return entradaNumero;
 
+		}
+	}
 }

@@ -26,16 +26,6 @@ public interface IComponenteFabrica {
 
 	// ---------------------------------------------------------------------------------------
 	
-	IEntradaData criarEntradaData(String titulo, String pattern, boolean obrigatorio);
-	
-	IEntradaEmail criarEntradaEmail(String titulo, boolean obrigatorio);
-	
-	IEntradaNumero criarEntradaNumero(String titulo, boolean obrigatorio);
-	
-	IEntradaSenha criarEntradaSenha(String titulo, boolean obrigatorio);
-	
-	IRotulo criarRotulo(String titulo);
-	
 	IOpcaoSelecao criarOpcaoSelecao(String valor, String rotulo);
 	
 	ISelecao criarSelecao(String titulo, boolean obrigatorio);

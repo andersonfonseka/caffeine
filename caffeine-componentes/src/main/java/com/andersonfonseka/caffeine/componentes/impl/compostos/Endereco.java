@@ -16,6 +16,7 @@ import com.andersonfonseka.caffeine.ISelecao;
 import com.andersonfonseka.caffeine.componentes.acao.AcaoAbs;
 import com.andersonfonseka.caffeine.componentes.impl.Resposta;
 import com.andersonfonseka.caffeine.componentes.impl.basicos.Conteiner;
+import com.andersonfonseka.caffeine.componentes.impl.basicos.EntradaNumero;
 import com.andersonfonseka.caffeine.componentes.impl.basicos.EntradaTexto;
 
 import lombok.AccessLevel;
@@ -59,7 +60,7 @@ public class Endereco extends Conteiner implements IEndereco, Serializable {
 		
 		logradouro = new EntradaTexto.Builder("Logradouro", true).build();
 		
-		numero = componenteFabrica.criarEntradaNumero("Numero", false);
+		numero = new EntradaNumero.Builder("Numero", false).build();
 
 		complemento = new EntradaTexto.Builder("Complemento", false).build();
 		

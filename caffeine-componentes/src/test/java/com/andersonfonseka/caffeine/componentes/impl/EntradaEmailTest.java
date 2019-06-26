@@ -11,6 +11,7 @@ import org.junit.jupiter.api.Test;
 
 import com.andersonfonseka.caffeine.IComponenteFabrica;
 import com.andersonfonseka.caffeine.IEntradaEmail;
+import com.andersonfonseka.caffeine.componentes.impl.basicos.EntradaEmail;
 
 @EnableWeld
 class EntradaEmailTest {
@@ -20,26 +21,26 @@ class EntradaEmailTest {
 	
 	@Test
 	void testCriarEntradaEmail(IComponenteFabrica componenteFabrica) {
-		IEntradaEmail entradaEmail = componenteFabrica.criarEntradaEmail("Email", true);
+		IEntradaEmail entradaEmail = new EntradaEmail.Builder("Email", true).build();
 		assertTrue(Optional.of(entradaEmail).isPresent());
 	}
 	
 	@Test
 	void testRenderEntradaEmail(IComponenteFabrica componenteFabrica) {
-		IEntradaEmail entradaEmail = componenteFabrica.criarEntradaEmail("Email", true);
+		IEntradaEmail entradaEmail = new EntradaEmail.Builder("Email", true).build();
 		assertTrue(Optional.of(entradaEmail.gerarSaida()).isPresent() && entradaEmail.gerarSaida().length() > 0);
 	}
 	
 	@Test
 	void testValidarEntradaEmail(IComponenteFabrica componenteFabrica) {
-		IEntradaEmail entradaEmail = componenteFabrica.criarEntradaEmail("Email", true);
+		IEntradaEmail entradaEmail = new EntradaEmail.Builder("Email", true).build();
 		entradaEmail.setValor("anderson.fonseka@gmail.com");
 		assertTrue(entradaEmail.validar().isEmpty());
 	}
 
 	@Test
 	void testInvalidaEntradaEmail(IComponenteFabrica componenteFabrica) {
-		IEntradaEmail entradaEmail = componenteFabrica.criarEntradaEmail("Email", true);
+		IEntradaEmail entradaEmail = new EntradaEmail.Builder("Email", true).build();
 		entradaEmail.setValor("anderson.fonseka");
 		assertTrue(!entradaEmail.validar().isEmpty());
 	}

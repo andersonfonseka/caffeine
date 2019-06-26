@@ -29,9 +29,14 @@ import com.andersonfonseka.caffeine.componentes.acao.AcaoAbs;
 import com.andersonfonseka.caffeine.componentes.impl.basicos.Botao;
 import com.andersonfonseka.caffeine.componentes.impl.basicos.EntradaAreaTexto;
 import com.andersonfonseka.caffeine.componentes.impl.basicos.EntradaArquivo;
+import com.andersonfonseka.caffeine.componentes.impl.basicos.EntradaData;
+import com.andersonfonseka.caffeine.componentes.impl.basicos.EntradaEmail;
+import com.andersonfonseka.caffeine.componentes.impl.basicos.EntradaNumero;
+import com.andersonfonseka.caffeine.componentes.impl.basicos.EntradaSenha;
 import com.andersonfonseka.caffeine.componentes.impl.basicos.EntradaTexto;
 import com.andersonfonseka.caffeine.componentes.impl.basicos.Formulario;
 import com.andersonfonseka.caffeine.componentes.impl.basicos.Pagina;
+import com.andersonfonseka.caffeine.componentes.impl.basicos.Rotulo;
 
 @EnableWeld
 class ComponenteFabricaImplTest {
@@ -89,7 +94,7 @@ class ComponenteFabricaImplTest {
 
 	@Test
 	void testCriarEntradaData(IComponenteFabrica componenteFabrica) {
-		IEntradaData txtDoB = componenteFabrica.criarEntradaData("Data de nascimento", "yyyy-MM-dd", true);
+		IEntradaData txtDoB = new EntradaData.Builder("Data de nascimento", "yyyy-MM-dd", true).build();
 		assertTrue(Optional.of(txtDoB).isPresent());
 	}
 
@@ -107,25 +112,25 @@ class ComponenteFabricaImplTest {
 
 	@Test
 	void testCriarEntradaEmail(IComponenteFabrica componenteFabrica) {
-		IEntradaEmail txtEmail = componenteFabrica.criarEntradaEmail("Email", true);
+		IEntradaEmail txtEmail = new EntradaEmail.Builder("Email", true).build();
 		assertTrue(Optional.of(txtEmail).isPresent());
 	}
 
 	@Test
 	void testCriarEntradaNumero(IComponenteFabrica componenteFabrica) {
-		IEntradaNumero txDependentes = componenteFabrica.criarEntradaNumero("Dependentes", false);
+		IEntradaNumero txDependentes = new EntradaNumero.Builder("Dependentes", false).build();
 		assertTrue(Optional.of(txDependentes).isPresent());
 	}
 
 	@Test
 	void testCriarEntradaSenha(IComponenteFabrica componenteFabrica) {
-		IEntradaSenha txtSenha = componenteFabrica.criarEntradaSenha("Senha", true);
+		IEntradaSenha txtSenha = new EntradaSenha.Builder("Senha", true).build();
 		assertTrue(Optional.of(txtSenha).isPresent());
 	}
 
 	@Test
 	void testCriarRotulo(IComponenteFabrica componenteFabrica) {
-		IRotulo rotulo = componenteFabrica.criarRotulo("Rotulo");
+		IRotulo rotulo = new Rotulo.Builder("Rotulo").build();
 		assertTrue(Optional.of(rotulo).isPresent());
 	}
 

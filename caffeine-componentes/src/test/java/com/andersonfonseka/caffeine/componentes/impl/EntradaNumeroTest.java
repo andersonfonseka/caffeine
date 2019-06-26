@@ -11,6 +11,7 @@ import org.junit.jupiter.api.Test;
 
 import com.andersonfonseka.caffeine.IComponenteFabrica;
 import com.andersonfonseka.caffeine.IEntradaNumero;
+import com.andersonfonseka.caffeine.componentes.impl.basicos.EntradaNumero;
 
 @EnableWeld
 class EntradaNumeroTest {
@@ -20,26 +21,26 @@ class EntradaNumeroTest {
 	
 	@Test
 	void testCriarEntradaNumero(IComponenteFabrica componenteFabrica) {
-		IEntradaNumero entradaNumero = componenteFabrica.criarEntradaNumero("Email", true);
+		IEntradaNumero entradaNumero = new EntradaNumero.Builder("Email", true).build();
 		assertTrue(Optional.of(entradaNumero).isPresent());
 	}
 	
 	@Test
 	void testRenderEntradaNumero(IComponenteFabrica componenteFabrica) {
-		IEntradaNumero entradaNumero = componenteFabrica.criarEntradaNumero("Email", true);
+		IEntradaNumero entradaNumero = new EntradaNumero.Builder("Email", true).build();
 		assertTrue(Optional.of(entradaNumero.gerarSaida()).isPresent() && entradaNumero.gerarSaida().length() > 0);
 	}
 	
 	@Test
 	void testValidarEntradaNumero(IComponenteFabrica componenteFabrica) {
-		IEntradaNumero entradaNumero = componenteFabrica.criarEntradaNumero("Email", true);
+		IEntradaNumero entradaNumero = new EntradaNumero.Builder("Email", true).build();
 		entradaNumero.setValor("123");
 		assertTrue(entradaNumero.validar().isEmpty());
 	}
 	
 	@Test
 	void testValidarErroEntradaNumero(IComponenteFabrica componenteFabrica) {
-		IEntradaNumero entradaNumero = componenteFabrica.criarEntradaNumero("Email", true);
+		IEntradaNumero entradaNumero = new EntradaNumero.Builder("Email", true).build();
 		entradaNumero.setValor("AAAA");
 		assertTrue(!entradaNumero.validar().isEmpty());
 	}

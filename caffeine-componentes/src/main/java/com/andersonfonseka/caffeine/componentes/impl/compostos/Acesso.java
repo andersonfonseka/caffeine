@@ -17,6 +17,8 @@ import com.andersonfonseka.caffeine.componentes.acao.AcaoAbs;
 import com.andersonfonseka.caffeine.componentes.impl.Resposta;
 import com.andersonfonseka.caffeine.componentes.impl.basicos.Botao;
 import com.andersonfonseka.caffeine.componentes.impl.basicos.Conteiner;
+import com.andersonfonseka.caffeine.componentes.impl.basicos.EntradaEmail;
+import com.andersonfonseka.caffeine.componentes.impl.basicos.EntradaSenha;
 import com.andersonfonseka.caffeine.util.MensagemUtil;
 
 import lombok.AccessLevel;
@@ -62,9 +64,9 @@ public class Acesso extends Conteiner implements IAcesso, Serializable {
 	@PostConstruct
 	public void post() {
 
-		email = componenteFabrica.criarEntradaEmail("Email", true);
+		email = new EntradaEmail.Builder("Email", true).build();
 
-		senha = componenteFabrica.criarEntradaSenha("Senha", true);
+		senha = new EntradaSenha.Builder("Senha", true).build();
 
 		botaoAcesso = new Botao.Builder("Conectar", new AcaoAbs(pagina) {
 			public IResposta execute() {

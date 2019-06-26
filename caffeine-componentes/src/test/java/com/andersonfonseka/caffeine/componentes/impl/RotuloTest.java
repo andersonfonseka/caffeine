@@ -11,6 +11,7 @@ import org.junit.jupiter.api.Test;
 
 import com.andersonfonseka.caffeine.IComponenteFabrica;
 import com.andersonfonseka.caffeine.IRotulo;
+import com.andersonfonseka.caffeine.componentes.impl.basicos.Rotulo;
 
 @EnableWeld
 class RotuloTest {
@@ -20,13 +21,13 @@ class RotuloTest {
 
 	@Test
 	void testCriarRotulo(IComponenteFabrica componenteFabrica) {
-		IRotulo rotulo = componenteFabrica.criarRotulo("Rotulo");
+		IRotulo rotulo = new Rotulo.Builder("Rotulo").build();
 		assertTrue(Optional.ofNullable(rotulo).isPresent());
 	}
 	
 	@Test
 	void testRenderRotulo(IComponenteFabrica componenteFabrica) {
-		IRotulo rotulo = componenteFabrica.criarRotulo("Rotulo");
+		IRotulo rotulo = new Rotulo.Builder("Rotulo").build();
 		assertTrue(Optional.ofNullable(rotulo.gerarSaida()).isPresent());
 	}
 }

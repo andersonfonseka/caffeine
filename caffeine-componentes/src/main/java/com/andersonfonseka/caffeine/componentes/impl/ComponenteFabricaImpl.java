@@ -15,32 +15,18 @@ import com.andersonfonseka.caffeine.IBotao;
 import com.andersonfonseka.caffeine.IComponenteFabrica;
 import com.andersonfonseka.caffeine.IConteiner;
 import com.andersonfonseka.caffeine.IEndereco;
-import com.andersonfonseka.caffeine.IEntradaData;
-import com.andersonfonseka.caffeine.IEntradaEditorTexto;
-import com.andersonfonseka.caffeine.IEntradaEmail;
-import com.andersonfonseka.caffeine.IEntradaNumero;
 import com.andersonfonseka.caffeine.IEntradaOculta;
-import com.andersonfonseka.caffeine.IEntradaSenha;
-import com.andersonfonseka.caffeine.IEntradaTexto;
 import com.andersonfonseka.caffeine.IOpcaoSelecao;
 import com.andersonfonseka.caffeine.IPagina;
 import com.andersonfonseka.caffeine.IProjeto;
 import com.andersonfonseka.caffeine.IResposta;
-import com.andersonfonseka.caffeine.IRotulo;
 import com.andersonfonseka.caffeine.ISelecao;
 import com.andersonfonseka.caffeine.ITipoValor;
 import com.andersonfonseka.caffeine.componentes.acao.AcaoAbs;
 import com.andersonfonseka.caffeine.componentes.impl.basicos.Botao;
 import com.andersonfonseka.caffeine.componentes.impl.basicos.Conteiner;
-import com.andersonfonseka.caffeine.componentes.impl.basicos.EntradaData;
-import com.andersonfonseka.caffeine.componentes.impl.basicos.EntradaEditorTexto;
-import com.andersonfonseka.caffeine.componentes.impl.basicos.EntradaEmail;
-import com.andersonfonseka.caffeine.componentes.impl.basicos.EntradaNumero;
 import com.andersonfonseka.caffeine.componentes.impl.basicos.EntradaOculta;
-import com.andersonfonseka.caffeine.componentes.impl.basicos.EntradaSenha;
-import com.andersonfonseka.caffeine.componentes.impl.basicos.EntradaTexto;
 import com.andersonfonseka.caffeine.componentes.impl.basicos.OpcaoSelecao;
-import com.andersonfonseka.caffeine.componentes.impl.basicos.Rotulo;
 import com.andersonfonseka.caffeine.componentes.impl.basicos.Selecao;
 import com.andersonfonseka.caffeine.componentes.impl.compostos.Acesso;
 import com.andersonfonseka.caffeine.componentes.impl.compostos.Endereco;
@@ -108,17 +94,6 @@ public class ComponenteFabricaImpl implements IComponenteFabrica, Serializable {
 	public IEndereco criarEndereco(IPagina pagina) {
 		return new Endereco(this, pagina);
 	}
-
-	@Override
-	public IEntradaData criarEntradaData(String titulo, String pattern, boolean obrigatorio) {
-		
-		EntradaData entradaData = new EntradaData();
-		entradaData.setTitulo(titulo);
-		entradaData.setPattern(pattern);
-		entradaData.setObrigatorio(obrigatorio);
-		
-		return entradaData;
-	}
 	
 	@Override
 	public IEntradaOculta criarEntradaOculta(String valor) {
@@ -128,46 +103,7 @@ public class ComponenteFabricaImpl implements IComponenteFabrica, Serializable {
 		
 		return entradaOculta;
 	}
-
-	@Override
-	public IEntradaEmail criarEntradaEmail(String titulo, boolean obrigatorio) {
-
-		EntradaEmail entradaEmail = new EntradaEmail();
-		entradaEmail.setTitulo(titulo);
-		entradaEmail.setObrigatorio(obrigatorio);
-		
-		return entradaEmail;
-	}
-
-	@Override
-	public IEntradaNumero criarEntradaNumero(String titulo, boolean obrigatorio) {
-
-		EntradaNumero entradaNumero = new EntradaNumero();
-		entradaNumero.setTitulo(titulo);
-		entradaNumero.setObrigatorio(obrigatorio);
-		
-		return entradaNumero;
-	}
-
-	@Override
-	public IEntradaSenha criarEntradaSenha(String titulo, boolean obrigatorio) {
-		
-		EntradaSenha entradaSenha = new EntradaSenha();
-		entradaSenha.setTitulo(titulo);
-		entradaSenha.setObrigatorio(obrigatorio);
-		
-		return entradaSenha;
-	}
-
-	@Override
-	public IRotulo criarRotulo(String titulo) {
-		
-		Rotulo rotulo = new Rotulo();
-		rotulo.setTitulo(titulo);
-		
-		return rotulo;
-	}
-
+	
 	@Override
 	public IOpcaoSelecao criarOpcaoSelecao(String valor, String rotulo) {
 		return new OpcaoSelecao(valor, rotulo);

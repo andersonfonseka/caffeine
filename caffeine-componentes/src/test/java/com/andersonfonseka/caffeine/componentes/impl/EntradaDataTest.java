@@ -11,6 +11,7 @@ import org.junit.jupiter.api.Test;
 
 import com.andersonfonseka.caffeine.IComponenteFabrica;
 import com.andersonfonseka.caffeine.IEntradaData;
+import com.andersonfonseka.caffeine.componentes.impl.basicos.EntradaData;
 
 @EnableWeld
 class EntradaDataTest {
@@ -20,33 +21,33 @@ class EntradaDataTest {
 	
 	@Test
 	void testCriarEntradaEmail(IComponenteFabrica componenteFabrica) {
-		IEntradaData entradaEmail = componenteFabrica.criarEntradaData("DoB", "yyyy-mm-aa", true);
+		IEntradaData entradaEmail = new EntradaData.Builder("DoB", "yyyy-mm-aa", true).build();
 		assertTrue(Optional.of(entradaEmail).isPresent());
 	}
 	
 	@Test
 	void testRenderEntradaEmail(IComponenteFabrica componenteFabrica) {
-		IEntradaData entradaEmail = componenteFabrica.criarEntradaData("DoB", "yyyy-mm-aa", true);
+		IEntradaData entradaEmail = new EntradaData.Builder("DoB", "yyyy-mm-aa", true).build();
 		assertTrue(Optional.of(entradaEmail.gerarSaida()).isPresent() && entradaEmail.gerarSaida().length() > 0);
 	}
 	
 	@Test
 	void testValidarEntradaEmail(IComponenteFabrica componenteFabrica) {
-		IEntradaData entradaEmail = componenteFabrica.criarEntradaData("DoB", "yyyy-MM-dd", true);
+		IEntradaData entradaEmail = new EntradaData.Builder("DoB", "yyyy-MM-dd", true).build();
 		entradaEmail.setValor("1975-06-20");
 		assertTrue(entradaEmail.validar().isEmpty());
 	}
 
 	@Test
 	void testInvalidarEntradaEmail(IComponenteFabrica componenteFabrica) {
-		IEntradaData entradaEmail = componenteFabrica.criarEntradaData("DoB", "yyyy-MM-dd", true);
+		IEntradaData entradaEmail = new EntradaData.Builder("DoB", "yyyy-MM-dd", true).build();
 		entradaEmail.setValor("1975-20-06");
 		assertTrue(!entradaEmail.validar().isEmpty());
 	}
 	
 	@Test
 	void testObrigatorioEntradaEmail(IComponenteFabrica componenteFabrica) {
-		IEntradaData entradaEmail = componenteFabrica.criarEntradaData("DoB", "yyyy-MM-dd", true);
+		IEntradaData entradaEmail = new EntradaData.Builder("DoB", "yyyy-MM-dd", true).build();
 		assertTrue(!entradaEmail.validar().isEmpty());
 	}
 
