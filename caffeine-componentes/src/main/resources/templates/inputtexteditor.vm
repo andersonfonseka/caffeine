@@ -1,0 +1,8 @@
+<div class="form-group">
+    <label for="$inputtexteditor.getId()">$inputtexteditor.getTitulo()</label>
+    <textarea class="form-control" id="$inputtexteditor.getId()" name="$inputtexteditor.getId()" rows="$inputtexteditor.getRows()">$inputtexteditor.getValor()</textarea>
+</div>
+
+<script>
+   CKEDITOR.replace('$inputtexteditor.getId()');
+</script>

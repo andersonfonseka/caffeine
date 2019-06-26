@@ -20,6 +20,7 @@ import com.andersonfonseka.caffeine.IEntradaAreaTexto;
 import com.andersonfonseka.caffeine.IEntradaArquivo;
 import com.andersonfonseka.caffeine.IEntradaCheckbox;
 import com.andersonfonseka.caffeine.IEntradaData;
+import com.andersonfonseka.caffeine.IEntradaEditorTexto;
 import com.andersonfonseka.caffeine.IEntradaEmail;
 import com.andersonfonseka.caffeine.IEntradaNumero;
 import com.andersonfonseka.caffeine.IEntradaOculta;
@@ -45,6 +46,7 @@ import com.andersonfonseka.caffeine.componentes.impl.basicos.EntradaAreaTexto;
 import com.andersonfonseka.caffeine.componentes.impl.basicos.EntradaArquivo;
 import com.andersonfonseka.caffeine.componentes.impl.basicos.EntradaCheckbox;
 import com.andersonfonseka.caffeine.componentes.impl.basicos.EntradaData;
+import com.andersonfonseka.caffeine.componentes.impl.basicos.EntradaEditorTexto;
 import com.andersonfonseka.caffeine.componentes.impl.basicos.EntradaEmail;
 import com.andersonfonseka.caffeine.componentes.impl.basicos.EntradaNumero;
 import com.andersonfonseka.caffeine.componentes.impl.basicos.EntradaOculta;
@@ -123,8 +125,6 @@ public class ComponenteFabricaImpl implements IComponenteFabrica, Serializable {
 		}
 
 		return projeto;
-
-		
 		
 	}
 	
@@ -176,6 +176,18 @@ public class ComponenteFabricaImpl implements IComponenteFabrica, Serializable {
 		return new Endereco(this, pagina);
 	}
 
+	@Override
+	public IEntradaEditorTexto criarEntradaEditorTexto(String titulo, boolean obrigatorio, int linhas) {
+		
+		EntradaEditorTexto entradaAreaTexto = new EntradaEditorTexto();
+		entradaAreaTexto.setTitulo(titulo);
+		entradaAreaTexto.setObrigatorio(obrigatorio);
+		entradaAreaTexto.setRows(linhas);
+		
+		return entradaAreaTexto;
+	}
+
+	
 	@Override
 	public IEntradaAreaTexto criarEntradaAreaTexto(String titulo, boolean obrigatorio, int linhas) {
 		

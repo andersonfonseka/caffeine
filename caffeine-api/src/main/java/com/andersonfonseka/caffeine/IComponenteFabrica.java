@@ -40,6 +40,8 @@ public interface IComponenteFabrica {
 	
 	IEntradaAreaTexto criarEntradaAreaTexto(String titulo, boolean obrigatorio, int linhas);
 	
+	IEntradaEditorTexto criarEntradaEditorTexto(String titulo, boolean obrigatorio, int linhas);
+	
 	IEntradaData criarEntradaData(String titulo, String pattern, boolean obrigatorio);
 	
 	IEntradaTexto criarEntradaTexto(String titulo, boolean obrigatorio);

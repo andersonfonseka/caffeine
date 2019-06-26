@@ -28,7 +28,7 @@ class ParametroUtilTest {
 		AcessoPagina pagina = (AcessoPagina) componenteFabrica.criarPagina(AcessoPagina.class.getName());
 		pagina.post();
 		
-		Map<String, Object> map = new HashMap();
+		Map<String, Object> map = new HashMap<String, Object>();
 		map.put(pagina.getEntradaTexto().getId(), "Teste");
 		
 		ParametroUtil parametroUtil = new ParametroUtil();
