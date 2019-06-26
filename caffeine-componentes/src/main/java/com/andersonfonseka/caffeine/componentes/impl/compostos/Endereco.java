@@ -14,6 +14,7 @@ import com.andersonfonseka.caffeine.IPagina;
 import com.andersonfonseka.caffeine.IResposta;
 import com.andersonfonseka.caffeine.ISelecao;
 import com.andersonfonseka.caffeine.componentes.acao.AcaoAbs;
+import com.andersonfonseka.caffeine.componentes.impl.Resposta;
 import com.andersonfonseka.caffeine.componentes.impl.basicos.Conteiner;
 
 import lombok.AccessLevel;
@@ -67,7 +68,7 @@ public class Endereco extends Conteiner implements IEndereco, Serializable {
 			
 			@Override
 			public IResposta execute() {
-				IResposta resposta = componenteFabrica.criarResposta();
+				IResposta resposta = new Resposta.Builder().build();
 				resposta.setPageUrl(pagina.getClass());
 				return resposta;
 			}

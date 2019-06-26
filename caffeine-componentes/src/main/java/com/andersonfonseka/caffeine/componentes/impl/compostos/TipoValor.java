@@ -17,6 +17,8 @@ import com.andersonfonseka.caffeine.ISelecao;
 import com.andersonfonseka.caffeine.ITabela;
 import com.andersonfonseka.caffeine.ITipoValor;
 import com.andersonfonseka.caffeine.componentes.acao.AcaoAbs;
+import com.andersonfonseka.caffeine.componentes.impl.Resposta;
+import com.andersonfonseka.caffeine.componentes.impl.basicos.Botao;
 import com.andersonfonseka.caffeine.componentes.impl.basicos.Conteiner;
 import com.andersonfonseka.caffeine.componentes.impl.basicos.Tabela;
 import com.andersonfonseka.caffeine.componentes.impl.basicos.TabelaColuna;
@@ -66,7 +68,7 @@ public class TipoValor extends Conteiner implements ITipoValor, Serializable {
 				.adicionaColuna(new TabelaColuna.Builder("Tipo", "getTipo", false).build())
 				.adicionaColuna(new TabelaColuna.Builder("Valor", "getValor", false).build());
 		
-		this.btnAdicionar = componenteFabrica.criarBotao("Adicionar", new AcaoAbs(tblTipoValores) {
+		this.btnAdicionar = new Botao.Builder("Adicionar", new AcaoAbs(tblTipoValores) {
 			@Override
 			public IResposta execute() {
 
@@ -76,13 +78,13 @@ public class TipoValor extends Conteiner implements ITipoValor, Serializable {
 				
 				txDados.setValor(txDados.getValor() + documento.toString());
 				
-				IResposta resposta = componenteFabrica.criarResposta();
+				IResposta resposta = new Resposta.Builder().build();
 				resposta.setAtributo(txDados.getId(), txDados.getValor());
 				resposta.setPageUrl(pagina.getClass());
 				return resposta;
 
 			}
-		}, true);
+		}, true).build();
 		
 		this.btnAdicionar.setImediato(true);
 		this.btnAdicionar.setParent(this.getId());

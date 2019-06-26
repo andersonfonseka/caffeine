@@ -11,6 +11,7 @@ import org.junit.jupiter.api.Test;
 
 import com.andersonfonseka.caffeine.IComponenteFabrica;
 import com.andersonfonseka.caffeine.IEntradaArquivo;
+import com.andersonfonseka.caffeine.componentes.impl.basicos.EntradaArquivo;
 
 @EnableWeld
 class EntradaArquivoTest {
@@ -20,13 +21,13 @@ class EntradaArquivoTest {
 	
 	@Test
 	void testCriarEntradaArquivo(IComponenteFabrica componenteFabrica) {
-		IEntradaArquivo entradaarquivo = componenteFabrica.criarEntradaArquivo("Observacoes", true);
+		IEntradaArquivo entradaarquivo = new EntradaArquivo.Builder("Observacoes", true).build();
 		assertTrue(Optional.of(entradaarquivo).isPresent());
 	}
 	
 	@Test
 	void testRenderEntradaArquivo(IComponenteFabrica componenteFabrica) {
-		IEntradaArquivo entradaarquivo = componenteFabrica.criarEntradaArquivo("Observacoes", true);
+		IEntradaArquivo entradaarquivo = new EntradaArquivo.Builder("Observacoes", true).build();
 		assertTrue(Optional.of(entradaarquivo.gerarSaida()).isPresent() && entradaarquivo.gerarSaida().length() > 0);
 	}
 

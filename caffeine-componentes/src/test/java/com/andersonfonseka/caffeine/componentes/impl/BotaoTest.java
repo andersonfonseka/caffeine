@@ -12,7 +12,9 @@ import org.junit.jupiter.api.Test;
 
 import com.andersonfonseka.caffeine.IBotao;
 import com.andersonfonseka.caffeine.IComponenteFabrica;
+import com.andersonfonseka.caffeine.IResposta;
 import com.andersonfonseka.caffeine.componentes.acao.AcaoAbs;
+import com.andersonfonseka.caffeine.componentes.impl.basicos.Botao;
 
 @EnableWeld
 class BotaoTest {
@@ -23,14 +25,14 @@ class BotaoTest {
 	@Test
 	void testCriarBotao(IComponenteFabrica componenteFabrica) {
 
-		IBotao button = componenteFabrica.criarBotao("Conectar", new AcaoAbs(new Object()) {
+		IBotao button = new Botao.Builder("Conectar", new AcaoAbs(new Object()) {
 			@Override
-			public Resposta execute() {
-				Resposta resp = new Resposta();
+			public IResposta execute() {
+				IResposta resp = new Resposta.Builder().build();
 				resp.adicionar("blalablbalbalbalba");
 				return resp;
 			}
-		}, true);
+		}, true).build();
 
 		assertTrue(Optional.of(button).isPresent());
 
@@ -39,17 +41,17 @@ class BotaoTest {
 	@Test
 	void testClickBotao(IComponenteFabrica componenteFabrica) {
 
-		IBotao button = componenteFabrica.criarBotao("Conectar", new AcaoAbs(new Object()) {
+		IBotao button = new Botao.Builder("Conectar", new AcaoAbs(new Object()) {
 			@Override
-			public Resposta execute() {
-				Resposta resp = new Resposta();
+			public IResposta execute() {
+				IResposta resp = new Resposta.Builder().build();
 				resp.adicionar("blalablbalbalbalba");
 				
 				Logger.getAnonymousLogger().fine(getSource().toString());
 				
 				return resp;
 			}
-		}, true);
+		}, true).build();
 		
 		assertTrue(Optional.of(button.doClick()).isPresent());
 
@@ -58,12 +60,12 @@ class BotaoTest {
 	@Test
 	void testRenderBotao(IComponenteFabrica componenteFabrica) {
 
-		IBotao button = componenteFabrica.criarBotao("Conectar", new AcaoAbs(new Object()) {
+		IBotao button = new Botao.Builder("Conectar", new AcaoAbs(new Object()) {
 			@Override
-			public Resposta execute() {
-				return new Resposta();
+			public IResposta execute() {
+				return new Resposta.Builder().build();
 			}
-		}, true);
+		}, true).build();
 		
 		assertTrue(Optional.of(button.gerarSaida()).isPresent() && button.gerarSaida().length() > 0);
 

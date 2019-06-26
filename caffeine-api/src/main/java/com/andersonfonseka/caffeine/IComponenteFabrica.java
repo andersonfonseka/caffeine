@@ -11,30 +11,24 @@ public interface IComponenteFabrica {
 	void setBeanManager(BeanManager beanManager);
 	
 	IProjeto criarProjeto(String id);
-
-	IResposta criarResposta();
-	
-	IBotao criarBotao(String titulo, AcaoAbs acao, boolean imediato);
 	
 	IBotao criarBotaoCancelar(Class<? extends IPagina> paginaDestino);
 	
 	IConteiner criarConteiner(Integer rows);
 	
-	IFormulario criarFormulario();
-	
 	IPagina criarPagina(String id);
 	
 	IEndereco criarEndereco(IPagina pagina);
-	
-	IEntradaAreaTexto criarEntradaAreaTexto(String titulo, boolean obrigatorio, int linhas);
+
+	IAcesso criarAcesso(IPagina pagina, Map<String, String> usuarios, Class<? extends IPagina> paginaDestino);
+
+	ITipoValor criarTipoValor(IPagina pagina, ISelecao selecaoTipo);
 	
 	IEntradaEditorTexto criarEntradaEditorTexto(String titulo, boolean obrigatorio, int linhas);
 	
 	IEntradaData criarEntradaData(String titulo, String pattern, boolean obrigatorio);
 	
 	IEntradaTexto criarEntradaTexto(String titulo, boolean obrigatorio);
-	
-	IEntradaArquivo criarEntradaArquivo(String titulo, boolean obrigatorio);
 	
 	IEntradaEmail criarEntradaEmail(String titulo, boolean obrigatorio);
 	
@@ -45,10 +39,6 @@ public interface IComponenteFabrica {
 	IRotulo criarRotulo(String titulo);
 	
 	IOpcaoSelecao criarOpcaoSelecao(String valor, String rotulo);
-
-	IEntradaCheckbox criarEntradaCheckbox(String titulo, String valor, boolean obrigatorio);
-	
-	IEntradaCheckbox criarEntradaCheckbox(String id, String titulo, String valor, boolean obrigatorio);
 	
 	ISelecao criarSelecao(String titulo, boolean obrigatorio);
 
@@ -58,7 +48,4 @@ public interface IComponenteFabrica {
 	
 	IEntradaOculta criarEntradaOculta(String id, String valor);
 
-	IAcesso criarAcesso(IPagina pagina, Map<String, String> usuarios, Class<? extends IPagina> paginaDestino);
-
-	ITipoValor criarTipoValor(IPagina pagina, ISelecao selecaoTipo);
 }

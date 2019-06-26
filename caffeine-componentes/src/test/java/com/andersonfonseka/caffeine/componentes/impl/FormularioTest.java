@@ -11,6 +11,7 @@ import org.junit.jupiter.api.Test;
 
 import com.andersonfonseka.caffeine.IComponenteFabrica;
 import com.andersonfonseka.caffeine.IFormulario;
+import com.andersonfonseka.caffeine.componentes.impl.basicos.Formulario;
 
 @EnableWeld
 class FormularioTest {
@@ -20,13 +21,13 @@ class FormularioTest {
 
 	@Test
 	void testCriarFormulario(IComponenteFabrica componenteFabrica) {
-		IFormulario formulario = componenteFabrica.criarFormulario();
+		IFormulario formulario = new Formulario.Builder().build();
 		assertTrue(Optional.ofNullable(formulario).isPresent());
 	}
 	
 	@Test
 	void testRenderFormulario(IComponenteFabrica componenteFabrica) {
-		IFormulario formulario = componenteFabrica.criarFormulario();
+		IFormulario formulario = new Formulario.Builder().build();
 		assertTrue(Optional.ofNullable(formulario.gerarSaida()).isPresent() && formulario.gerarSaida().length() > 0);
 	}
 

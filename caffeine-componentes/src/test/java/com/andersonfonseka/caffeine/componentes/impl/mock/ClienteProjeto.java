@@ -9,14 +9,11 @@ import com.andersonfonseka.caffeine.IComponente;
 import com.andersonfonseka.caffeine.IComponenteFabrica;
 import com.andersonfonseka.caffeine.IPagina;
 import com.andersonfonseka.caffeine.IProjeto;
-import com.andersonfonseka.caffeine.componentes.impl.basicos.Projeto;
 
 @SessionScoped
 public class ClienteProjeto implements IProjeto {
 	
 	private static final long serialVersionUID = 1L;
-	
-	private Projeto projeto;
 
 	public ClienteProjeto() {}
 

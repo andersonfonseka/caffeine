@@ -15,7 +15,7 @@ public @Data class EntradaArquivo extends Entrada implements IEntradaArquivo {
 	
 	EntradaOculta entradaOculta;
 	
-	public EntradaArquivo() {
+	private EntradaArquivo() {
 		
 		entradaOculta = new EntradaOculta();
 		entradaOculta.setId(this.getId() +"_hidden");
@@ -27,6 +27,26 @@ public @Data class EntradaArquivo extends Entrada implements IEntradaArquivo {
 		return "inputfile";
 	}
 	
-	
+	public static class Builder {
+		
+		String titulo;
+		boolean obrigatorio;
+		
+		public Builder(String titulo, boolean obrigatorio) {
+			super();
+			this.titulo = titulo;
+			this.obrigatorio = obrigatorio;
+		}
+
+		public IEntradaArquivo build() {
+			
+			EntradaArquivo entradaArquivo = new EntradaArquivo();
+			entradaArquivo.setTitulo(titulo);
+			entradaArquivo.setObrigatorio(obrigatorio);
+			
+			return entradaArquivo;
+		}
+		
+	}
 
 }

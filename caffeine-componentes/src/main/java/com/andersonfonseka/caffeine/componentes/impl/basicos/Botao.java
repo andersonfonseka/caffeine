@@ -23,6 +23,8 @@ public @Data class Botao extends Componente implements IBotao {
 	
 	private boolean imediato = false;
 	
+	private Botao() {}
+	
 	@Override
 	public String getTemplate() {
 		return "button";
@@ -41,4 +43,29 @@ public @Data class Botao extends Componente implements IBotao {
 		return this.acao.execute();
 	}
 
+	public static class Builder {
+		
+		String titulo;
+		AcaoAbs acao;
+		boolean imediato;
+		public Builder(String titulo, AcaoAbs acao, boolean imediato) {
+			super();
+			this.titulo = titulo;
+			this.acao = acao;
+			this.imediato = imediato;
+		}
+		
+		public IBotao build() {
+			
+			Botao botao = new Botao();
+			  botao.setImediato(imediato);
+			  botao.setTitulo(titulo);
+			  botao.setAcao(acao);
+		
+			  return botao;
+			
+		}
+		
+	}
+	
 }

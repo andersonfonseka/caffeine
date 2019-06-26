@@ -15,9 +15,6 @@ import com.andersonfonseka.caffeine.IBotao;
 import com.andersonfonseka.caffeine.IComponenteFabrica;
 import com.andersonfonseka.caffeine.IConteiner;
 import com.andersonfonseka.caffeine.IEndereco;
-import com.andersonfonseka.caffeine.IEntradaAreaTexto;
-import com.andersonfonseka.caffeine.IEntradaArquivo;
-import com.andersonfonseka.caffeine.IEntradaCheckbox;
 import com.andersonfonseka.caffeine.IEntradaData;
 import com.andersonfonseka.caffeine.IEntradaEditorTexto;
 import com.andersonfonseka.caffeine.IEntradaEmail;
@@ -25,7 +22,6 @@ import com.andersonfonseka.caffeine.IEntradaNumero;
 import com.andersonfonseka.caffeine.IEntradaOculta;
 import com.andersonfonseka.caffeine.IEntradaSenha;
 import com.andersonfonseka.caffeine.IEntradaTexto;
-import com.andersonfonseka.caffeine.IFormulario;
 import com.andersonfonseka.caffeine.IOpcaoSelecao;
 import com.andersonfonseka.caffeine.IPagina;
 import com.andersonfonseka.caffeine.IProjeto;
@@ -36,9 +32,6 @@ import com.andersonfonseka.caffeine.ITipoValor;
 import com.andersonfonseka.caffeine.componentes.acao.AcaoAbs;
 import com.andersonfonseka.caffeine.componentes.impl.basicos.Botao;
 import com.andersonfonseka.caffeine.componentes.impl.basicos.Conteiner;
-import com.andersonfonseka.caffeine.componentes.impl.basicos.EntradaAreaTexto;
-import com.andersonfonseka.caffeine.componentes.impl.basicos.EntradaArquivo;
-import com.andersonfonseka.caffeine.componentes.impl.basicos.EntradaCheckbox;
 import com.andersonfonseka.caffeine.componentes.impl.basicos.EntradaData;
 import com.andersonfonseka.caffeine.componentes.impl.basicos.EntradaEditorTexto;
 import com.andersonfonseka.caffeine.componentes.impl.basicos.EntradaEmail;
@@ -46,7 +39,6 @@ import com.andersonfonseka.caffeine.componentes.impl.basicos.EntradaNumero;
 import com.andersonfonseka.caffeine.componentes.impl.basicos.EntradaOculta;
 import com.andersonfonseka.caffeine.componentes.impl.basicos.EntradaSenha;
 import com.andersonfonseka.caffeine.componentes.impl.basicos.EntradaTexto;
-import com.andersonfonseka.caffeine.componentes.impl.basicos.Formulario;
 import com.andersonfonseka.caffeine.componentes.impl.basicos.OpcaoSelecao;
 import com.andersonfonseka.caffeine.componentes.impl.basicos.Rotulo;
 import com.andersonfonseka.caffeine.componentes.impl.basicos.Selecao;
@@ -91,49 +83,27 @@ public class ComponenteFabricaImpl implements IComponenteFabrica, Serializable {
 		
 	}
 	
-	public IResposta criarResposta() {
-		return new Resposta();
-	}
-	
-	public IBotao criarBotao(String titulo, AcaoAbs acao, boolean imediato) {
-		
-		Botao botao = new Botao();
-			  botao.setImediato(imediato);
-			  botao.setTitulo(titulo);
-			  botao.setAcao(acao);
-		
-		return botao;
-	}
-	
-	
 	public IBotao criarBotaoCancelar(Class<? extends IPagina> paginaDestino) {
 		
-		IBotao btnCancel = criarBotao("Cancelar", new AcaoAbs(new Object()) {
+		IBotao btnCancel = new Botao.Builder("Cancelar", new AcaoAbs(new Object()) {
 			public IResposta execute() {
 				
-				IResposta pageResponse = criarResposta();
+				IResposta pageResponse = new Resposta.Builder().build();
 				pageResponse.setPageUrl(paginaDestino);
 				
 				return pageResponse;
 			}
-		}, true);
+		}, true).build();
 		
 		btnCancel.setEstilo("btn-danger");
 		btnCancel.setImediato(true);
 		
 		return btnCancel;
 	}
-
-	
 	
 	public IConteiner criarConteiner(Integer rows) {
 		return new Conteiner(rows);
 	}
-
-	public IFormulario criarFormulario() {
-		return new Formulario();
-	}
-
 	
 	public IEndereco criarEndereco(IPagina pagina) {
 		return new Endereco(this, pagina);
@@ -143,18 +113,6 @@ public class ComponenteFabricaImpl implements IComponenteFabrica, Serializable {
 	public IEntradaEditorTexto criarEntradaEditorTexto(String titulo, boolean obrigatorio, int linhas) {
 		
 		EntradaEditorTexto entradaAreaTexto = new EntradaEditorTexto();
-		entradaAreaTexto.setTitulo(titulo);
-		entradaAreaTexto.setObrigatorio(obrigatorio);
-		entradaAreaTexto.setRows(linhas);
-		
-		return entradaAreaTexto;
-	}
-
-	
-	@Override
-	public IEntradaAreaTexto criarEntradaAreaTexto(String titulo, boolean obrigatorio, int linhas) {
-		
-		EntradaAreaTexto entradaAreaTexto = new EntradaAreaTexto();
 		entradaAreaTexto.setTitulo(titulo);
 		entradaAreaTexto.setObrigatorio(obrigatorio);
 		entradaAreaTexto.setRows(linhas);
@@ -190,40 +148,6 @@ public class ComponenteFabricaImpl implements IComponenteFabrica, Serializable {
 		entradaOculta.setValor(valor);
 		
 		return entradaOculta;
-	}
-
-	
-	@Override
-	public IEntradaCheckbox criarEntradaCheckbox(String titulo, String valor, boolean obrigatorio) {
-
-		EntradaCheckbox entradaCheckbox = new EntradaCheckbox();
-		entradaCheckbox.setTitulo(titulo);
-		entradaCheckbox.setObrigatorio(obrigatorio);
-		entradaCheckbox.setValor(valor);
-		
-		return entradaCheckbox;
-	}
-
-	@Override
-	public IEntradaCheckbox criarEntradaCheckbox(String id, String titulo, String valor, boolean obrigatorio) {
-
-		EntradaCheckbox entradaCheckbox = new EntradaCheckbox();
-		entradaCheckbox.setId(id);
-		entradaCheckbox.setTitulo(titulo);
-		entradaCheckbox.setObrigatorio(obrigatorio);
-		entradaCheckbox.setValor(valor);
-		
-		return entradaCheckbox;
-	}
-
-	@Override
-	public IEntradaArquivo criarEntradaArquivo(String titulo, boolean obrigatorio) {
-
-		EntradaArquivo entradaArquivo = new EntradaArquivo();
-		entradaArquivo.setTitulo(titulo);
-		entradaArquivo.setObrigatorio(obrigatorio);
-		
-		return entradaArquivo;
 	}
 
 	@Override

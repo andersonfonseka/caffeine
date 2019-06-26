@@ -14,6 +14,8 @@ public class EntradaCheckbox extends Entrada implements IEntradaCheckbox {
 	
 	private boolean checked = false;
 	
+	private EntradaCheckbox() {}
+	
 	@Override
 	public String getTemplate() {
 		return "checkbox";
@@ -27,6 +29,33 @@ public class EntradaCheckbox extends Entrada implements IEntradaCheckbox {
 	@Override
 	public boolean isChecked() {
 		return this.checked;
+	}
+	
+	public static class Builder {
+		
+		String titulo;
+		String valor;
+		boolean obrigatorio;
+		
+		public Builder(String titulo, String valor, boolean obrigatorio) {
+			super();
+			this.titulo = titulo;
+			this.valor = valor;
+			this.obrigatorio = obrigatorio;
+		}
+		
+		public IEntradaCheckbox build() {
+			
+			EntradaCheckbox entradaCheckbox = new EntradaCheckbox();
+			entradaCheckbox.setTitulo(titulo);
+			entradaCheckbox.setObrigatorio(obrigatorio);
+			entradaCheckbox.setValor(valor);
+			
+			return entradaCheckbox;
+			
+		}
+		
+		
 	}
 
 }

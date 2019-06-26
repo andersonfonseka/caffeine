@@ -26,6 +26,10 @@ import com.andersonfonseka.caffeine.IOpcaoSelecao;
 import com.andersonfonseka.caffeine.IRotulo;
 import com.andersonfonseka.caffeine.ISelecao;
 import com.andersonfonseka.caffeine.componentes.acao.AcaoAbs;
+import com.andersonfonseka.caffeine.componentes.impl.basicos.Botao;
+import com.andersonfonseka.caffeine.componentes.impl.basicos.EntradaAreaTexto;
+import com.andersonfonseka.caffeine.componentes.impl.basicos.EntradaArquivo;
+import com.andersonfonseka.caffeine.componentes.impl.basicos.Formulario;
 import com.andersonfonseka.caffeine.componentes.impl.basicos.Pagina;
 
 @EnableWeld
@@ -37,12 +41,12 @@ class ComponenteFabricaImplTest {
 	@Test
 	void testCriarBotao(IComponenteFabrica componenteFabrica) {
 
-		IBotao button = componenteFabrica.criarBotao("Conectar", new AcaoAbs(new Object()) {
+		IBotao button = new Botao.Builder("Conectar", new AcaoAbs(new Object()) {
 			@Override
 			public Resposta execute() {
 				return null;
 			}
-		}, true);
+		}, true).build();
 
 		assertTrue(Optional.of(button).isPresent());
 
@@ -56,7 +60,7 @@ class ComponenteFabricaImplTest {
 
 	@Test
 	void testCriarFormulario(IComponenteFabrica componenteFabrica) {
-		IFormulario formulario = componenteFabrica.criarFormulario();
+		IFormulario formulario = new Formulario.Builder().build();
 		assertTrue(Optional.of(formulario).isPresent());
 	}
 
@@ -78,7 +82,7 @@ class ComponenteFabricaImplTest {
 
 	@Test
 	void testCriarEntradaAreaTexto(IComponenteFabrica componenteFabrica) {
-		IEntradaAreaTexto entradaAreaTexto = componenteFabrica.criarEntradaAreaTexto("Observacoes", true, 5);
+		IEntradaAreaTexto entradaAreaTexto = new EntradaAreaTexto.Builder("Observacoes", true, 5).build();
 		assertTrue(Optional.of(entradaAreaTexto).isPresent());
 	}
 
@@ -96,7 +100,7 @@ class ComponenteFabricaImplTest {
 
 	@Test
 	void testCriarEntradaArquivo(IComponenteFabrica componenteFabrica) {
-		IEntradaArquivo entradaArquivo = componenteFabrica.criarEntradaArquivo("Teste", true);
+		IEntradaArquivo entradaArquivo = new EntradaArquivo.Builder("Teste", true).build();
 		assertTrue(Optional.of(entradaArquivo).isPresent());
 	}
 

@@ -13,6 +13,10 @@ import com.andersonfonseka.caffeine.IEntradaTexto;
 import com.andersonfonseka.caffeine.IFormulario;
 import com.andersonfonseka.caffeine.IResposta;
 import com.andersonfonseka.caffeine.componentes.acao.AcaoAbs;
+import com.andersonfonseka.caffeine.componentes.impl.Resposta;
+import com.andersonfonseka.caffeine.componentes.impl.basicos.Botao;
+import com.andersonfonseka.caffeine.componentes.impl.basicos.EntradaCheckbox;
+import com.andersonfonseka.caffeine.componentes.impl.basicos.Formulario;
 import com.andersonfonseka.caffeine.componentes.impl.basicos.Pagina;
 
 @RequestScoped
@@ -32,22 +36,22 @@ public class AcessoPagina extends Pagina {
 	@PostConstruct
 	public void post() {
 		
-		IFormulario formulario = componenteFabrica.criarFormulario();
+		IFormulario formulario = new Formulario.Builder().build();
 		formulario.adicionar(componenteFabrica.criarEndereco(this));
 		
 		this.entradaTexto = componenteFabrica.criarEntradaTexto("Teste", false);
 		
-		this.entradaCheckbox = componenteFabrica.criarEntradaCheckbox("Teste", "1", false);
+		this.entradaCheckbox = new EntradaCheckbox.Builder("Teste", "1", false).build();
 		
-		IBotao botao = componenteFabrica.criarBotao("Teste", new AcaoAbs(new Object()) {
+		IBotao botao = new Botao.Builder("Teste", new AcaoAbs(new Object()) {
 			
 			@Override
 			public IResposta execute() {
-				IResposta iResposta = componenteFabrica.criarResposta();
+				IResposta iResposta = new Resposta.Builder().build();
 				iResposta.setPageUrl(AcessoPagina.class);
 				return iResposta;
 			}
-		}, true);
+		}, true).build();
 		
 		botao.setImediato(false);
 		

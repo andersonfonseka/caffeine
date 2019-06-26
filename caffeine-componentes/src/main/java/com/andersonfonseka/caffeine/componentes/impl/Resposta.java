@@ -20,7 +20,7 @@ public @Data class Resposta implements IResposta {
 	
 	private Class<? extends IPagina> pageUrl;
 	
-	protected Resposta() {}
+	private Resposta() {}
 
 	public void adicionar(String message) {
 		this.mensagens.add(message);
@@ -29,6 +29,16 @@ public @Data class Resposta implements IResposta {
 	@Override
 	public void setAtributo(String chave, Object valor) {
 		this.atributo.put(chave, valor);
+	}
+
+	public static class Builder {
+		
+		public Builder() {}
+		
+		public IResposta build() {
+			return new Resposta();
+		}
+		
 	}
 	
 }

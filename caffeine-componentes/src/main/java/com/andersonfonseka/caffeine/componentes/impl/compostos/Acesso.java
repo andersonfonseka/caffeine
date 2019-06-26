@@ -14,6 +14,8 @@ import com.andersonfonseka.caffeine.IEntradaSenha;
 import com.andersonfonseka.caffeine.IPagina;
 import com.andersonfonseka.caffeine.IResposta;
 import com.andersonfonseka.caffeine.componentes.acao.AcaoAbs;
+import com.andersonfonseka.caffeine.componentes.impl.Resposta;
+import com.andersonfonseka.caffeine.componentes.impl.basicos.Botao;
 import com.andersonfonseka.caffeine.componentes.impl.basicos.Conteiner;
 import com.andersonfonseka.caffeine.util.MensagemUtil;
 
@@ -64,10 +66,10 @@ public class Acesso extends Conteiner implements IAcesso, Serializable {
 
 		senha = componenteFabrica.criarEntradaSenha("Senha", true);
 
-		botaoAcesso = componenteFabrica.criarBotao("Conectar", new AcaoAbs(pagina) {
+		botaoAcesso = new Botao.Builder("Conectar", new AcaoAbs(pagina) {
 			public IResposta execute() {
 
-				IResposta pageResponse = componenteFabrica.criarResposta();
+				IResposta pageResponse = new Resposta.Builder().build();
 
 				 if (usuarios.containsKey(email.getValor()) && 
 						 usuarios.get(email.getValor()).equals(senha.getValor())) {
@@ -82,7 +84,7 @@ public class Acesso extends Conteiner implements IAcesso, Serializable {
 
 				return pageResponse;
 			}
-		}, true);
+		}, true).build();
 
 		botaoAcesso.setImediato(false);
 

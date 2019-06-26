@@ -11,6 +11,7 @@ import org.junit.jupiter.api.Test;
 
 import com.andersonfonseka.caffeine.IComponenteFabrica;
 import com.andersonfonseka.caffeine.IEntradaAreaTexto;
+import com.andersonfonseka.caffeine.componentes.impl.basicos.EntradaAreaTexto;
 
 @EnableWeld
 class EntradaAreaTextoTest {
@@ -20,13 +21,13 @@ class EntradaAreaTextoTest {
 	
 	@Test
 	void testCriarEntradaAreaTexto(IComponenteFabrica componenteFabrica) {
-		IEntradaAreaTexto entradaAreaTexto = componenteFabrica.criarEntradaAreaTexto("Observacoes", true, 5);
+		IEntradaAreaTexto entradaAreaTexto = new EntradaAreaTexto.Builder("Observacoes", true, 5).build();
 		assertTrue(Optional.of(entradaAreaTexto).isPresent());
 	}
 	
 	@Test
 	void testRenderEntradaAreaTexto(IComponenteFabrica componenteFabrica) {
-		IEntradaAreaTexto entradaAreaTexto = componenteFabrica.criarEntradaAreaTexto("Observacoes", true, 5);
+		IEntradaAreaTexto entradaAreaTexto = new EntradaAreaTexto.Builder("Observacoes", true, 5).build();
 		assertTrue(Optional.of(entradaAreaTexto.gerarSaida()).isPresent() && entradaAreaTexto.gerarSaida().length() > 0);
 	}
 

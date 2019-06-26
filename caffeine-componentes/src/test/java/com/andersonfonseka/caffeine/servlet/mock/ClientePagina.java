@@ -8,6 +8,7 @@ import javax.inject.Inject;
 
 import com.andersonfonseka.caffeine.IComponenteFabrica;
 import com.andersonfonseka.caffeine.IFormulario;
+import com.andersonfonseka.caffeine.componentes.impl.basicos.Formulario;
 import com.andersonfonseka.caffeine.componentes.impl.basicos.Pagina;
 
 @RequestScoped
@@ -22,7 +23,7 @@ public class ClientePagina extends Pagina {
 	
 	@PostConstruct
 	public void post() {
-		IFormulario formulario = componenteFabrica.criarFormulario();
+		IFormulario formulario = new Formulario.Builder().build();
 		formulario.adicionar(componenteFabrica.criarEndereco(this));
 		adicionar(formulario);
 	}
