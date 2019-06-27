@@ -25,7 +25,6 @@ public class UploadDownload {
 			resultado = Base64.getEncoder().encodeToString(imageInByte);
 		
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		

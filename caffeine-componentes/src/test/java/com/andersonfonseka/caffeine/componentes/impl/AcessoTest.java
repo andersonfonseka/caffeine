@@ -30,10 +30,8 @@ class AcessoTest {
 			private static final long serialVersionUID = 1L;
 
 			@Override
-			public void post() {
-				// TODO Auto-generated method stub
-				
-			}
+			public void post() {}
+			
 		}, mapUsuarios, AcessoPagina.class);		
 				
 		assertTrue(Optional.of(acesso).isPresent());
@@ -44,16 +42,11 @@ class AcessoTest {
 		Map<String,String> mapUsuarios = new HashMap<String, String>();
 		IAcesso acesso = componenteFabrica.criarAcesso(new Pagina() {
 			
-			/**
-			 * 
-			 */
 			private static final long serialVersionUID = 1L;
 
 			@Override
-			public void post() {
-				// TODO Auto-generated method stub
-				
-			}
+			public void post() {}
+
 		}, mapUsuarios, AcessoPagina.class);		
 		
 		assertTrue(Optional.of(acesso.gerarSaida()).isPresent() && acesso.gerarSaida().length() > 0);
