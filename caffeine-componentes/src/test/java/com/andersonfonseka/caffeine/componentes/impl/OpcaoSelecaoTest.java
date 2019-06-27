@@ -11,6 +11,7 @@ import org.junit.jupiter.api.Test;
 
 import com.andersonfonseka.caffeine.IComponenteFabrica;
 import com.andersonfonseka.caffeine.IOpcaoSelecao;
+import com.andersonfonseka.caffeine.componentes.impl.basicos.OpcaoSelecao;
 
 @EnableWeld
 class OpcaoSelecaoTest {
@@ -21,7 +22,7 @@ class OpcaoSelecaoTest {
 	
 	@Test
 	void testCriarOpcaoSelecao(IComponenteFabrica componenteFabrica) {
-		IOpcaoSelecao opcaoSelecao = componenteFabrica.criarOpcaoSelecao("1", "Selecione");
+		IOpcaoSelecao opcaoSelecao = new OpcaoSelecao.Builder("1", "Selecione").build();
 		assertTrue(Optional.ofNullable(opcaoSelecao).isPresent());
 	}
 

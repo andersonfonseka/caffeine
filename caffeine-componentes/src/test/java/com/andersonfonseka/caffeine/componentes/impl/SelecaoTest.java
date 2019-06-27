@@ -11,6 +11,8 @@ import org.junit.jupiter.api.Test;
 
 import com.andersonfonseka.caffeine.IComponenteFabrica;
 import com.andersonfonseka.caffeine.ISelecao;
+import com.andersonfonseka.caffeine.componentes.impl.basicos.OpcaoSelecao;
+import com.andersonfonseka.caffeine.componentes.impl.basicos.Selecao;
 
 @EnableWeld
 class SelecaoTest {
@@ -21,21 +23,21 @@ class SelecaoTest {
 	
 	@Test
 	void testCriarSelecao(IComponenteFabrica componenteFabrica) {
-		ISelecao selecao = componenteFabrica.criarSelecao("Genero", true);
+		ISelecao selecao = new Selecao.Builder("Genero", true).build();
 		assertTrue(Optional.ofNullable(selecao).isPresent());
 	}
 	
 	@Test
 	void testRenderSelecao(IComponenteFabrica componenteFabrica) {
-		ISelecao selecao = componenteFabrica.criarSelecao("Genero", true);
+		ISelecao selecao = new Selecao.Builder("Genero", true).build();
 		assertTrue(Optional.ofNullable(selecao.gerarSaida()).isPresent() && selecao.gerarSaida().length() > 0);
 	}
 
 	@Test
 	void testSelecionadoSelecao(IComponenteFabrica componenteFabrica) {
-		ISelecao selecao = componenteFabrica.criarSelecao("Genero", true);
-		selecao.adicionar(componenteFabrica.criarOpcaoSelecao("1", "Masculino"));
-		selecao.adicionar(componenteFabrica.criarOpcaoSelecao("2", "Feminino"));
+		ISelecao selecao = new Selecao.Builder("Genero", true).build();
+		selecao.adicionar(new OpcaoSelecao.Builder("1", "Masculino").build());
+		selecao.adicionar(new OpcaoSelecao.Builder("2", "Feminino").build());
 		
 		selecao.setValor("1");
 		

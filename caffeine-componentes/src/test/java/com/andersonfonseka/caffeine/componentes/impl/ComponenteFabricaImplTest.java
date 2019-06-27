@@ -35,8 +35,10 @@ import com.andersonfonseka.caffeine.componentes.impl.basicos.EntradaNumero;
 import com.andersonfonseka.caffeine.componentes.impl.basicos.EntradaSenha;
 import com.andersonfonseka.caffeine.componentes.impl.basicos.EntradaTexto;
 import com.andersonfonseka.caffeine.componentes.impl.basicos.Formulario;
+import com.andersonfonseka.caffeine.componentes.impl.basicos.OpcaoSelecao;
 import com.andersonfonseka.caffeine.componentes.impl.basicos.Pagina;
 import com.andersonfonseka.caffeine.componentes.impl.basicos.Rotulo;
+import com.andersonfonseka.caffeine.componentes.impl.basicos.Selecao;
 
 @EnableWeld
 class ComponenteFabricaImplTest {
@@ -137,15 +139,15 @@ class ComponenteFabricaImplTest {
 	@Test
 	void testCriarSelecao(IComponenteFabrica componenteFabrica) {
 
-		ISelecao selecao = componenteFabrica.criarSelecao("Genero", true);
-		selecao.adicionar(componenteFabrica.criarOpcaoSelecao("1", "Masculino"));
-		selecao.adicionar(componenteFabrica.criarOpcaoSelecao("2", "Feminino"));
+		ISelecao selecao = new Selecao.Builder("Genero", true).build();
+		selecao.adicionar(new OpcaoSelecao.Builder("1", "Masculino").build());
+		selecao.adicionar(new OpcaoSelecao.Builder("2", "Feminino").build());
 		assertTrue(Optional.of(selecao).isPresent());
 	}
 
 	@Test
 	void testCriarOpcaoSelecao(IComponenteFabrica componenteFabrica) {
-		IOpcaoSelecao opcaoSelecao = componenteFabrica.criarOpcaoSelecao("1", "Masculino");
+		IOpcaoSelecao opcaoSelecao = new OpcaoSelecao.Builder("1", "Masculino").build();
 		assertTrue(Optional.of(opcaoSelecao).isPresent());
 	}
 

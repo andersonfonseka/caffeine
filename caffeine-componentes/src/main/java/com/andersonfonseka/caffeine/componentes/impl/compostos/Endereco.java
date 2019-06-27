@@ -18,6 +18,8 @@ import com.andersonfonseka.caffeine.componentes.impl.Resposta;
 import com.andersonfonseka.caffeine.componentes.impl.basicos.Conteiner;
 import com.andersonfonseka.caffeine.componentes.impl.basicos.EntradaNumero;
 import com.andersonfonseka.caffeine.componentes.impl.basicos.EntradaTexto;
+import com.andersonfonseka.caffeine.componentes.impl.basicos.OpcaoSelecao;
+import com.andersonfonseka.caffeine.componentes.impl.basicos.Selecao;
 
 import lombok.AccessLevel;
 import lombok.EqualsAndHashCode;
@@ -66,7 +68,7 @@ public class Endereco extends Conteiner implements IEndereco, Serializable {
 		
 		bairro = new EntradaTexto.Builder("Bairro", false).build();
 		
-		estado = componenteFabrica.criarSelecao("UF", new AcaoAbs(this) {
+		estado = new Selecao.Builder("UF", new AcaoAbs(this) {
 			
 			@Override
 			public IResposta execute() {
@@ -74,13 +76,13 @@ public class Endereco extends Conteiner implements IEndereco, Serializable {
 				resposta.setPageUrl(pagina.getClass());
 				return resposta;
 			}
-		}, true);
+		}, true).build();
 		
 		estado.setImediato(true);
 		
-		estado.adicionar(componenteFabrica.criarOpcaoSelecao("1", "PE"));
-		estado.adicionar(componenteFabrica.criarOpcaoSelecao("2", "SP"));
-		estado.adicionar(componenteFabrica.criarOpcaoSelecao("3", "RJ"));
+		estado.adicionar(new OpcaoSelecao.Builder("1", "PE").build());
+		estado.adicionar(new OpcaoSelecao.Builder("2", "SP").build());
+		estado.adicionar(new OpcaoSelecao.Builder("3", "RJ").build());
 		
 		adicionar(0, logradouro);
 		adicionar(0, numero);
@@ -94,18 +96,18 @@ public class Endereco extends Conteiner implements IEndereco, Serializable {
 		
 		estado.setValor(String.valueOf(parametros.get(estado.getId())));
 
-		cidade = componenteFabrica.criarSelecao("Cidade", true);
+		cidade = new Selecao.Builder("Cidade", true).build();
 		
 		if (estado.getSelecionado() == null) {
-			cidade.adicionar(componenteFabrica.criarOpcaoSelecao(" ", "Selecione..."));
+			cidade.adicionar(new OpcaoSelecao.Builder(" ", "Selecione...").build());
 		} else if (estado.getSelecionado().getValor().equals("1")) {
-			cidade.adicionar(componenteFabrica.criarOpcaoSelecao("1", "Recife"));
-			cidade.adicionar(componenteFabrica.criarOpcaoSelecao("2", "Olinda"));
-			cidade.adicionar(componenteFabrica.criarOpcaoSelecao("3", "Paulista"));
+			cidade.adicionar(new OpcaoSelecao.Builder("1", "Recife").build());
+			cidade.adicionar(new OpcaoSelecao.Builder("2", "Olinda").build());
+			cidade.adicionar(new OpcaoSelecao.Builder("3", "Paulista").build());
 		} else if (estado.getSelecionado().getValor().equals("2")) {
-			cidade.adicionar(componenteFabrica.criarOpcaoSelecao("4", "Sao Paulo"));
+			cidade.adicionar(new OpcaoSelecao.Builder("4", "Sao Paulo").build());
 		} else if (estado.getSelecionado().getValor().equals("3")) {
-			cidade.adicionar(componenteFabrica.criarOpcaoSelecao("5", "Rio de Janeiro"));
+			cidade.adicionar(new OpcaoSelecao.Builder("5", "Rio de Janeiro").build());
 		}
 		
 		adicionar(2, cidade);

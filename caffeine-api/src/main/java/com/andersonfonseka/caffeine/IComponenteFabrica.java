@@ -4,8 +4,6 @@ import java.util.Map;
 
 import javax.enterprise.inject.spi.BeanManager;
 
-import com.andersonfonseka.caffeine.componentes.acao.AcaoAbs;
-
 public interface IComponenteFabrica {
 	
 	void setBeanManager(BeanManager beanManager);
@@ -23,17 +21,5 @@ public interface IComponenteFabrica {
 	IAcesso criarAcesso(IPagina pagina, Map<String, String> usuarios, Class<? extends IPagina> paginaDestino);
 
 	ITipoValor criarTipoValor(IPagina pagina, ISelecao selecaoTipo);
-
-	// ---------------------------------------------------------------------------------------
-	
-	IOpcaoSelecao criarOpcaoSelecao(String valor, String rotulo);
-	
-	ISelecao criarSelecao(String titulo, boolean obrigatorio);
-
-	ISelecao criarSelecao(String titulo, AcaoAbs acao, boolean imediato);
-
-	IEntradaOculta criarEntradaOculta(String valor);
-	
-	IEntradaOculta criarEntradaOculta(String id, String valor);
 
 }

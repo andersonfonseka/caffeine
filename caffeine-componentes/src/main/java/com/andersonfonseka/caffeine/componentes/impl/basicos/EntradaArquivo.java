@@ -1,6 +1,7 @@
 package com.andersonfonseka.caffeine.componentes.impl.basicos;
 
 import com.andersonfonseka.caffeine.IEntradaArquivo;
+import com.andersonfonseka.caffeine.IEntradaOculta;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -13,12 +14,10 @@ public @Data class EntradaArquivo extends Entrada implements IEntradaArquivo {
 	 */
 	private static final long serialVersionUID = -8439811151946472472L;
 	
-	EntradaOculta entradaOculta;
+	IEntradaOculta entradaOculta;
 	
 	private EntradaArquivo() {
-		
-		entradaOculta = new EntradaOculta();
-		entradaOculta.setId(this.getId() +"_hidden");
+		entradaOculta = new EntradaOculta.Builder(this.getId() +"_hidden", "").build();
 		adicionar(entradaOculta);
 	}
 	

@@ -25,21 +25,23 @@ public class ParametroUtil {
 			try {
 				
 				List<Class<?>> list = Arrays.asList(field.getType().getInterfaces());	
-
 				field.setAccessible(true);
-				
-				if (field.getType().equals(IEntradaCheckbox.class)) {
-					trataEntradaCheckbox(componente, parametros, field);
-				} else if (list.contains(IEntrada.class)) {
-					trataEntradaGenerica(componente, parametros, field);
-				}
+				tratarEntrada(componente, parametros, field, list);
 				
 			} catch (Exception e) {
 				log.log(Level.WARNING, e.getMessage());
 			}
 		}
-		
-		
+	}
+
+	private void tratarEntrada(IComponente componente, Map<String, Object> parametros, Field field, List<Class<?>> list)
+			throws IllegalAccessException, NoSuchMethodException, InvocationTargetException {
+
+		if (field.getType().equals(IEntradaCheckbox.class)) {
+			trataEntradaCheckbox(componente, parametros, field);
+		} else if (list.contains(IEntrada.class)) {
+			trataEntradaGenerica(componente, parametros, field);
+		}
 	}
 
 	private void trataEntradaGenerica(IComponente componente, Map<String, Object> parametros, Field field)

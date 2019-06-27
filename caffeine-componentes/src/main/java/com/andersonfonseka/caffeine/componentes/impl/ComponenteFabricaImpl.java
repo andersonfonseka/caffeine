@@ -15,8 +15,6 @@ import com.andersonfonseka.caffeine.IBotao;
 import com.andersonfonseka.caffeine.IComponenteFabrica;
 import com.andersonfonseka.caffeine.IConteiner;
 import com.andersonfonseka.caffeine.IEndereco;
-import com.andersonfonseka.caffeine.IEntradaOculta;
-import com.andersonfonseka.caffeine.IOpcaoSelecao;
 import com.andersonfonseka.caffeine.IPagina;
 import com.andersonfonseka.caffeine.IProjeto;
 import com.andersonfonseka.caffeine.IResposta;
@@ -25,9 +23,6 @@ import com.andersonfonseka.caffeine.ITipoValor;
 import com.andersonfonseka.caffeine.componentes.acao.AcaoAbs;
 import com.andersonfonseka.caffeine.componentes.impl.basicos.Botao;
 import com.andersonfonseka.caffeine.componentes.impl.basicos.Conteiner;
-import com.andersonfonseka.caffeine.componentes.impl.basicos.EntradaOculta;
-import com.andersonfonseka.caffeine.componentes.impl.basicos.OpcaoSelecao;
-import com.andersonfonseka.caffeine.componentes.impl.basicos.Selecao;
 import com.andersonfonseka.caffeine.componentes.impl.compostos.Acesso;
 import com.andersonfonseka.caffeine.componentes.impl.compostos.Endereco;
 import com.andersonfonseka.caffeine.componentes.impl.compostos.TipoValor;
@@ -94,20 +89,6 @@ public class ComponenteFabricaImpl implements IComponenteFabrica, Serializable {
 	public IEndereco criarEndereco(IPagina pagina) {
 		return new Endereco(this, pagina);
 	}
-	
-	@Override
-	public IEntradaOculta criarEntradaOculta(String valor) {
-
-		EntradaOculta entradaOculta = new EntradaOculta();
-		entradaOculta.setValor(valor);
-		
-		return entradaOculta;
-	}
-	
-	@Override
-	public IOpcaoSelecao criarOpcaoSelecao(String valor, String rotulo) {
-		return new OpcaoSelecao(valor, rotulo);
-	}
 
 	@Override
 	public IPagina criarPagina(String id) {
@@ -131,50 +112,7 @@ public class ComponenteFabricaImpl implements IComponenteFabrica, Serializable {
 
 		return page;
 	}
-
-	@Override
-	public ISelecao criarSelecao(String titulo, boolean obrigatorio) {
-
-		Selecao selecao = new Selecao();
-		selecao.setTitulo(titulo);
-		selecao.setObrigatorio(obrigatorio);
-		
-		return selecao;
-	}
-
-	@Override
-	public ISelecao criarSelecao(String titulo, AcaoAbs acao, boolean obrigatorio) {
-
-		Selecao selecao = new Selecao();
-		selecao.setTitulo(titulo);
-		selecao.setObrigatorio(obrigatorio);
-		selecao.setAcao(acao);
-		
-		return selecao;
-	}
-
-
-//	@Override
-//	public ITabelaColuna criarTabelaColuna(String titulo, String campo) {
-//		TabelaColuna tabelaColuna = new TabelaColuna();
-//		
-//		tabelaColuna.setTitulo(titulo);
-//		tabelaColuna.setCampo(campo);
-//		tabelaColuna.setSelecionavel(false);
-//		
-//		return tabelaColuna;
-//	}
-//	
-//	@Override
-//	public ITabelaColuna criarTabelaColuna(String titulo, String campo, boolean selecionavel) {
-//		TabelaColuna tabelaColuna = new TabelaColuna();
-//		
-//		tabelaColuna.setTitulo(titulo);
-//		tabelaColuna.setCampo(campo);
-//		tabelaColuna.setSelecionavel(selecionavel);
-//		
-//		return tabelaColuna;
-//	}
+	
 
 	@Override
 	public IAcesso criarAcesso(IPagina pagina, Map<String, String> usuarios, Class<? extends IPagina> paginaDestino) {
@@ -184,16 +122,6 @@ public class ComponenteFabricaImpl implements IComponenteFabrica, Serializable {
 	@Override
 	public ITipoValor criarTipoValor(IPagina pagina, ISelecao selecaoTipo) {
 		return new TipoValor(this, pagina, selecaoTipo);
-	}
-
-	@Override
-	public IEntradaOculta criarEntradaOculta(String id, String valor) {
-
-		EntradaOculta entradaOculta = new EntradaOculta();
-		entradaOculta.setId(id);
-		entradaOculta.setValor(valor);
-		
-		return entradaOculta;
 	}
 	
 }

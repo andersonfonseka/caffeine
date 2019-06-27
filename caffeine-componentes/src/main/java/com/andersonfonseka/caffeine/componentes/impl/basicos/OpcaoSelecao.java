@@ -20,7 +20,7 @@ public @Data class OpcaoSelecao extends Componente implements IOpcaoSelecao {
 	
 	private boolean selecionado;
 
-	public OpcaoSelecao(String valor, String rotulo) {
+	private OpcaoSelecao(String valor, String rotulo) {
 		super();
 		this.valor = valor;
 		this.rotulo = rotulo;
@@ -39,5 +39,22 @@ public @Data class OpcaoSelecao extends Componente implements IOpcaoSelecao {
 	@Override
 	public boolean isObrigatorio() {
 		return false;
+	}
+	
+	public static class Builder {
+		
+		String valor;
+		String rotulo;
+		
+		public Builder(String valor, String rotulo) {
+			super();
+			this.valor = valor;
+			this.rotulo = rotulo;
+		}
+		
+		public IOpcaoSelecao build() {
+			return new OpcaoSelecao(valor, rotulo);
+		}
+		
 	}
 }

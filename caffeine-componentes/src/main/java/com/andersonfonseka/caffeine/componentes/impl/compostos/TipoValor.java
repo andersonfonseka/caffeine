@@ -20,6 +20,7 @@ import com.andersonfonseka.caffeine.componentes.acao.AcaoAbs;
 import com.andersonfonseka.caffeine.componentes.impl.Resposta;
 import com.andersonfonseka.caffeine.componentes.impl.basicos.Botao;
 import com.andersonfonseka.caffeine.componentes.impl.basicos.Conteiner;
+import com.andersonfonseka.caffeine.componentes.impl.basicos.EntradaOculta;
 import com.andersonfonseka.caffeine.componentes.impl.basicos.EntradaTexto;
 import com.andersonfonseka.caffeine.componentes.impl.basicos.Tabela;
 import com.andersonfonseka.caffeine.componentes.impl.basicos.TabelaColuna;
@@ -58,7 +59,7 @@ public class TipoValor extends Conteiner implements ITipoValor, Serializable {
 		this.componenteFabrica = componenteFabrica;
 		this.pagina = pPagina;
 		
-		this.txDados = componenteFabrica.criarEntradaOculta(this.getId()+"_EntradaOculta", "");
+		this.txDados = new EntradaOculta.Builder(this.getId()+"_EntradaOculta", "").build();
 		
 		this.selTipo = selecaoTipo;
 		

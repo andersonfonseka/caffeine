@@ -12,7 +12,9 @@ import org.junit.jupiter.api.Test;
 import com.andersonfonseka.caffeine.IComponenteFabrica;
 import com.andersonfonseka.caffeine.ISelecao;
 import com.andersonfonseka.caffeine.ITipoValor;
+import com.andersonfonseka.caffeine.componentes.impl.basicos.OpcaoSelecao;
 import com.andersonfonseka.caffeine.componentes.impl.basicos.Pagina;
+import com.andersonfonseka.caffeine.componentes.impl.basicos.Selecao;
 
 @EnableWeld
 class TipoValorTest {
@@ -23,7 +25,7 @@ class TipoValorTest {
 	@Test
 	void testCriarTipoValor(IComponenteFabrica componenteFabrica) {
 
-		ISelecao selecaoTipo = componenteFabrica.criarSelecao("Selecao", false);
+		ISelecao selecaoTipo = new Selecao.Builder("Selecao", false).build();
 
 		ITipoValor tipoValor = componenteFabrica.criarTipoValor(new Pagina() {
 			/**
@@ -41,7 +43,7 @@ class TipoValorTest {
 
 	@Test
 	void testRenderTipoValor(IComponenteFabrica componenteFabrica) {
-		ISelecao selecaoTipo = componenteFabrica.criarSelecao("Selecao", false);
+		ISelecao selecaoTipo = new Selecao.Builder("Selecao", false).build();
 
 		ITipoValor tipoValor = componenteFabrica.criarTipoValor(new Pagina() {
 			/**
@@ -63,13 +65,11 @@ class TipoValorTest {
 		
 		
 		
-		ISelecao selecaoTipo = componenteFabrica.criarSelecao("Selecao", false);
-		selecaoTipo.adicionar(componenteFabrica.criarOpcaoSelecao("1", "RotuloTeste"));
+		ISelecao selecaoTipo = new Selecao.Builder("Selecao", false).build();
+		selecaoTipo.adicionar(new OpcaoSelecao.Builder("1", "RotuloTeste").build());
 
 		ITipoValor tipoValor = componenteFabrica.criarTipoValor(new Pagina() {
-			/**
-			 * 
-			 */
+
 			private static final long serialVersionUID = 1L;
 
 			@Override

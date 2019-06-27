@@ -20,8 +20,8 @@ public @Data class Selecao extends Entrada implements ISelecao {
 	
 	private boolean imediato = false;
 	
-	public Selecao() {
-		adicionar(new OpcaoSelecao("", "Selecione..."));
+	private Selecao() {
+		adicionar(new OpcaoSelecao.Builder("", "Selecione...").build());
 	}
 	
 	private OpcaoSelecao getSelected() {
@@ -57,4 +57,43 @@ public @Data class Selecao extends Entrada implements ISelecao {
 		return this.acao.execute();
 	}
 	
+	public static class Builder {
+		
+		String titulo;
+		
+		boolean obrigatorio;
+		
+		AcaoAbs acao;
+		
+		boolean imediato;
+		
+		public Builder(String titulo, boolean obrigatorio) {
+			super();
+			this.titulo = titulo;
+			this.obrigatorio = obrigatorio;
+		}
+
+		public Builder(String titulo, AcaoAbs acao, boolean imediato) {
+			super();
+			this.titulo = titulo;
+			this.acao = acao;
+			this.imediato = imediato;
+		}
+		
+		public ISelecao build() {
+			
+			Selecao selecao = new Selecao();
+			
+			if (acao == null) {
+				selecao.setTitulo(titulo);
+				selecao.setObrigatorio(obrigatorio);
+			} else {
+				selecao.setTitulo(titulo);
+				selecao.setObrigatorio(obrigatorio);
+				selecao.setAcao(acao);
+			}
+			
+			return selecao;
+		}
+	}
 }
